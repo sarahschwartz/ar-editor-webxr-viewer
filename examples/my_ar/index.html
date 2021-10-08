@@ -9,21 +9,21 @@
 		<script src="../libs/three/three.min.js"></script>
 		<link rel="stylesheet" href="../common.css"/>
 		<link rel="stylesheet" href="./dom.css"/>
-		<script src="../models/TeapotBufferGeometry.js"></script>
 	</head>
 	<body>
 		<div id="description">
-			<h2>Simple AR Example</h2>
-			<p>This example displays the Utah Teapot positioned in front of the viewer at head height.</p>
+			<h2>Simple AR DOM Example</h2>
+			<p>My DOM test</p>
 		</div>
 
 		<button type=button id=go-button>Go</button>
 
-		<div id="xr-overlay">
+		<div style="visibility: hidden;" id="xr-overlay">
 			<div id="add-button">Add</div>
 		</div>
 
 		<script type=module>
+
 			// some dependencies and utilities
 			import * as mat4 from '../libs/gl-matrix/mat4.js';
 			import * as vec3 from '../libs/gl-matrix/vec3.js';
@@ -47,6 +47,7 @@
 			let posX = 0;
 			let posY = 0;
 			let posZ = 0;
+
 			
 			// temporary working variables
 			const workingMatrix = mat4.create();
@@ -75,14 +76,9 @@
 
 				
 				//axes helper at the origin of the eye-level coordinate system
-					
-					engine.addAxesHelper([0,0,0], [0.2,0.2,0.2]);
-
-				// Add Teapot
-					// engine.addTeapot([0,0, -1]);
+				engine.addAxesHelper([0,0,0], [0.2,0.2,0.2]);
 				
 
-				
 				
 			}
 
@@ -108,17 +104,17 @@
 			const onButtonClick = event => {
 				if (!session) {
 					navigator.xr.requestSession('immersive-ar',{ optionalFeatures: ["dom-overlay"], domOverlay: { root: document.getElementById("xr-overlay")}})
-						.then(xrSession => {
-							initSession(xrSession);
-							goButton.innerText = 'End';
-						}).catch(err => {
-							console.error('Session setup error', err);
-						});
+					.then(xrSession => {
+						initSession(xrSession);
+						goButton.innerText = 'End';
+					}).catch(err => {
+						console.error('Session setup error', err);
+					});
 				} else {
 					session.end();
 				}
 			};
-
+			
 			// After Go button is pressed, 
 			const initSession = async xrSession => {
 				session = xrSession;
@@ -156,6 +152,9 @@
 					session.requestAnimationFrame(handleAnimationFrame);
 				});
 
+				// turn DOM from hidden to visible
+				document.getElementById("xr-overlay").style.visibility = "visible";
+
 				addScene();
 				
 			};
@@ -166,6 +165,8 @@
 				viewerReferenceSpace = null;
 				localReferenceSpace = null;
 				goButton.innerText = 'Go';
+				// hide DOM
+				document.getElementById("xr-overlay").style.visibility = "hidden";
 			};
 
 			// render loop			
