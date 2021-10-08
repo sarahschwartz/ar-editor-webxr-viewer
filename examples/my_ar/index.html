@@ -19,8 +19,84 @@
 		<button type=button id=go-button>Go</button>
 
 		<div style="visibility: hidden;" id="xr-overlay">
-			<button id="end-session">X</button>
-			<button id="add-button">Add</button>
+			<!--- Left Toolbar --->
+			<section id="left-toolbar">
+
+				<div class="toolbar-button-container">
+					<button class="toolbar-button" id="end-session">X</button>
+					<div class="button-description">
+						Back
+					</div>
+				</div>
+
+				<div class="toolbar-button-container">
+					<button class="toolbar-button active" id="add-button">+</button>
+					<div class="button-description">
+						Add
+					</div>
+				</div>
+
+				<div class="toolbar-button-container">
+					<button class="toolbar-button" id="edit-button">X</button>
+					<div class="button-description">
+						Edit
+					</div>
+				</div>
+
+				<div class="toolbar-button-container">
+					<button class="toolbar-button" id="delete-button">X</button>
+					<div class="button-description">
+						Delete
+					</div>
+				</div>
+
+			</section>
+
+			<!--- Bottom Toolbar --->
+			<section id="bottom-toolbar">
+				<p>Tap an object to add it to the scene</p>
+				<!--- Add Toolbar --->
+				<section id="add-toolbar">
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="cube-button">X</button>
+						<div class="button-description">
+							Cube
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="sphere-button">X</button>
+						<div class="button-description">
+							Sphere
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="cylinder-button">X</button>
+						<div class="button-description">
+							Cylinder
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="plane-button">X</button>
+						<div class="button-description">
+							Plane
+						</div>
+					</div>
+
+				</section>
+	
+				<!--- Edit Toolbar --->
+				<section style="visibility: hidden;" id="edit-toolbar">
+					<button class="toolbar-button" id="scale-button">Scale</button>
+					<button class="toolbar-button" id="rotate-button">Rotate</button>
+					<button class="toolbar-button" id="color-button">Color</button>
+					<button class="toolbar-button" id="move-button">Move</button>
+				</section>
+			</section>
+
 		</div>
 
 		<script type=module>
@@ -46,7 +122,7 @@
 			let scaleZ = 0.1;
 
 			let posX = 0;
-			let posY = 0;
+			let posY = 0; 
 			let posZ = 0;
 
 			
@@ -54,9 +130,17 @@
 			const workingMatrix = mat4.create();
 			const workingVec3 = vec3.create();
 
+			// Start AR session button
 			const goButton = document.getElementById('go-button');
+
+			// Left Toolbar
 			const endButton = document.getElementById('end-session');
 			const addButton = document.getElementById('add-button');
+
+			// Bottom Toolbar
+
+			// Add Toolbar
+			const cubeButton = document.getElementById('cube-button');
 
 			const addScene = () => {
 
@@ -82,7 +166,7 @@
 				endButton.addEventListener("click", endSession)
 
 				// Add a cube when button is clicked
-				addButton.addEventListener("click", addCube)
+				cubeButton.addEventListener("click", addCube)
 
 				
 				//axes helper at the origin of the eye-level coordinate system
