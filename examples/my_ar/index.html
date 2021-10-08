@@ -19,7 +19,8 @@
 		<button type=button id=go-button>Go</button>
 
 		<div style="visibility: hidden;" id="xr-overlay">
-			<div id="add-button">Add</div>
+			<button id="end-session">X</button>
+			<button id="add-button">Add</button>
 		</div>
 
 		<script type=module>
@@ -54,6 +55,7 @@
 			const workingVec3 = vec3.create();
 
 			const goButton = document.getElementById('go-button');
+			const endButton = document.getElementById('end-session');
 			const addButton = document.getElementById('add-button');
 
 			const addScene = () => {
@@ -61,6 +63,11 @@
 				let color = new THREE.Color(redVal, greenVal, blueVal);
 				let position = [posX, posY, posZ];
 				let scale = [scaleX, scaleY, scaleZ];
+
+				// End session function
+				const endSession = () => {
+					window.history.back();
+				}
 
 				// Add a cube function
 				const addCube = () => {
@@ -70,6 +77,9 @@
 				// initialize scene
 				engine.addAmbientLight();
 				engine.addDirectionalLight();
+
+				// End the session button
+				endButton.addEventListener("click", endSession)
 
 				// Add a cube when button is clicked
 				addButton.addEventListener("click", addCube)
