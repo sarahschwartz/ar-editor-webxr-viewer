@@ -166,7 +166,8 @@
 					console.log('No pose');
 					return;
 				}
-
+				
+				// when user taps the screen, get the pose, add an anchor with createSceneGraphNode
 				if (isSelecting && inputSource) {
 					const inputPose = frame.getPose(inputSource.targetRaySpace, localReferenceSpace);
 					vec3.set(workingVec3, 0, 0, -1.0);
