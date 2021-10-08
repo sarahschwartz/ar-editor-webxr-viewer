@@ -56,7 +56,7 @@
 			<section id="bottom-toolbar">
 				<p>Tap an object to add it to the scene</p>
 				<!--- Add Toolbar --->
-				<section id="add-toolbar">
+				<section class="active-toolbar" id="add-toolbar">
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="cube-button">X</button>
@@ -87,14 +87,40 @@
 					</div>
 
 				</section>
-	
-				<!--- Edit Toolbar --->
-				<section style="visibility: hidden;" id="edit-toolbar">
-					<button class="toolbar-button" id="scale-button">Scale</button>
-					<button class="toolbar-button" id="rotate-button">Rotate</button>
-					<button class="toolbar-button" id="color-button">Color</button>
-					<button class="toolbar-button" id="move-button">Move</button>
+
+				<section style="display: none;" id="edit-toolbar">
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button active-edit" id="scale-button">X</button>
+						<div class="button-description">
+							Scale
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="rotate-button">X</button>
+						<div class="button-description">
+							Rotate
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="color-button">X</button>
+						<div class="button-description">
+							Color
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="move-button">X</button>
+						<div class="button-description">
+							Move
+						</div>
+					</div>
+
 				</section>
+	
+
 			</section>
 
 		</div>
@@ -136,37 +162,98 @@
 			// Left Toolbar
 			const endButton = document.getElementById('end-session');
 			const addButton = document.getElementById('add-button');
+			const editButton = document.getElementById('edit-button');
+			const deleteButton = document.getElementById('delete-button');
 
 			// Bottom Toolbar
 
 			// Add Toolbar
+			const addToolbar = document.getElementById('add-toolbar');
 			const cubeButton = document.getElementById('cube-button');
+			const sphereButton = document.getElementById('sphere-button');
+			const cylinderButton = document.getElementById('cylinder-button');
+			const planeButton = document.getElementById('plane-button');
+
+			// Edit Toolbar
+			const editToolbar = document.getElementById('edit-toolbar');
+			const scaleButton = document.getElementById('scale-button');
+			const rotateButton = document.getElementById('rotate-button');
+			const colorButton = document.getElementById('color-button');
+			const moveButton = document.getElementById('move-button');
 
 			const addScene = () => {
 
 				let color = new THREE.Color(redVal, greenVal, blueVal);
 				let position = [posX, posY, posZ];
 				let scale = [scaleX, scaleY, scaleZ];
+				let isDeleting = false;
 
-				// End session function
+				// End session
 				const endSession = () => {
 					window.history.back();
 				}
+				endButton.addEventListener("click", endSession)
 
-				// Add a cube function
+				// Add button
+				const addScene = () => {
+					if(!isDeleting)
+					{
+						let activeToolbar = document.querySelector(".active-toolbar")
+						activeToolbar.classList.remove("active-toolbar");
+						activeToolbar.style.display = "none";
+					} else {
+						isDeleting = false;
+					}
+					let activeElement = document.querySelector(".active")
+					activeElement.classList.remove("active");
+					addButton.classList.add("active");
+					addToolbar.classList.add("active-toolbar");
+					addToolbar.style.display = "flex";
+				}
+				addButton.addEventListener("click", addScene)
+
+				// Edit button
+				const editScene = () => {
+					if(!isDeleting)
+					{
+						let activeToolbar = document.querySelector(".active-toolbar")
+						activeToolbar.classList.remove("active-toolbar");
+						activeToolbar.style.display = "none";
+					} else {
+						isDeleting = false;
+					}
+					let activeElement = document.querySelector(".active")
+					activeElement.classList.remove("active");
+					editButton.classList.add("active");
+					editToolbar.classList.add("active-toolbar");
+					editToolbar.style.display = "flex";
+				}
+				editButton.addEventListener("click", editScene)
+
+				// Delete button
+				const deleteScene = () => {
+				let activeElement = document.querySelector(".active")
+				let activeToolbar = document.querySelector(".active-toolbar")
+				activeElement.classList.remove("active");
+				activeToolbar.classList.remove("active-toolbar");
+				activeToolbar.style.display = "none";
+				deleteButton.classList.add("active");
+				isDeleting = true;
+				}
+				deleteButton.addEventListener("click", deleteScene)
+
+				// Add a cube
 				const addCube = () => {
 					engine.addBox(position, scale, color);
 				}
+				cubeButton.addEventListener("click", addCube)
 
 				// initialize scene
 				engine.addAmbientLight();
 				engine.addDirectionalLight();
 
-				// End the session button
-				endButton.addEventListener("click", endSession)
 
-				// Add a cube when button is clicked
-				cubeButton.addEventListener("click", addCube)
+
 
 				
 				//axes helper at the origin of the eye-level coordinate system
