@@ -1,0 +1,12 @@
+#add-button {
+    background-color: blue;
+    color: white;
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    display: grid;
+    place-items: center;
+    position: fixed;
+    bottom: 5vh;
+    left: 5vw;
+}
