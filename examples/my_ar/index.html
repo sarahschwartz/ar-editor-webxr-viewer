@@ -143,13 +143,13 @@
 			let greenVal = 0;
 			let blueVal = 1;
 
-			let scaleX = 0.1;
-			let scaleY = 0.1;
-			let scaleZ = 0.1;
+			let scaleX = 0.05;
+			let scaleY = 0.05;
+			let scaleZ = 0.05;
 
 			let posX = 0;
 			let posY = 0; 
-			let posZ = 0;
+			let posZ = -0.1;
 
 			
 			// temporary working variables
@@ -251,6 +251,24 @@
 					engine.addBox(position, scale, color);
 				}
 				cubeButton.addEventListener("click", addCube)
+
+				// Add a sphere
+				const addSphere = () => {
+					engine.addSphere(position, scale, color);
+				}
+				sphereButton.addEventListener("click", addSphere)
+
+				// Add a cylinder
+				const addCylinder = () => {
+					engine.addCylinder(position, scale, color);
+				}
+				cylinderButton.addEventListener("click", addCylinder)
+
+				// Add a plane
+				const addPlane = () => {
+					engine.addPlane(position, scale, color);
+				}
+				planeButton.addEventListener("click", addPlane)
 
 				// initialize scene
 				engine.addAmbientLight();

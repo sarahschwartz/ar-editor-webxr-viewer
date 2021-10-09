@@ -135,6 +135,27 @@ export default class XREngine {
 		this._root.add(box)
 		return box
 	}
+
+	addCylinder(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+		const geometry = new THREE.CylinderGeometry(size[0], size[2], size[1], 20 );
+		const material = new THREE.MeshBasicMaterial( {color: color} );
+		const cylinder = new THREE.Mesh( geometry, material );
+		cylinder.position.set(...position)
+		this._root.add(cylinder)
+		return cylinder
+	}
+
+	addPlane(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+		const geometry = new THREE.PlaneGeometry(size[0], size[2]);
+		const material = new THREE.MeshBasicMaterial({
+			color: color,
+			side: THREE.DoubleSide
+		});
+		const plane = new THREE.Mesh( geometry, material );
+		plane.position.set(...position)
+		this._root.add(plane)
+		return plane
+	}
 	
 	addAxesHelper( position=[0,0,0], size=[1,1,1] ) {
 		let helper = this.createAxesHelper(size)
