@@ -130,6 +130,7 @@
 			// some dependencies and utilities
 			import * as mat4 from '../libs/gl-matrix/mat4.js';
 			import * as vec3 from '../libs/gl-matrix/vec3.js';
+			import { initializeLight } from './jsm/test.js';
 
 			import XREngine from '../XREngine.js';
 
@@ -196,7 +197,7 @@
 				endButton.addEventListener("click", endSession)
 
 				// Add button
-				const addScene = () => {
+				const addObject = () => {
 					if(!isDeleting)
 					{
 						let activeToolbar = document.querySelector(".active-toolbar")
@@ -212,10 +213,10 @@
 					addToolbar.style.display = "flex";
 					toolbarInstructions.innerHTML = "Tap an object to add it to the scene";
 				}
-				addButton.addEventListener("click", addScene)
+				addButton.addEventListener("click", addObject)
 
 				// Edit button
-				const editScene = () => {
+				const editObject = () => {
 					if(!isDeleting)
 					{
 						let activeToolbar = document.querySelector(".active-toolbar")
@@ -231,10 +232,10 @@
 					editToolbar.style.display = "flex";
 					toolbarInstructions.innerHTML = "Tap to select an edit tool";
 				}
-				editButton.addEventListener("click", editScene)
+				editButton.addEventListener("click", editObject)
 
 				// Delete button
-				const deleteScene = () => {
+				const deleteObject = () => {
 				let activeElement = document.querySelector(".active")
 				let activeToolbar = document.querySelector(".active-toolbar")
 				activeElement.classList.remove("active");
@@ -244,7 +245,7 @@
 				isDeleting = true;
 				toolbarInstructions.innerHTML = "Tap an object to delete it";
 				}
-				deleteButton.addEventListener("click", deleteScene)
+				deleteButton.addEventListener("click", deleteObject)
 
 				// Add a cube
 				const addCube = () => {
@@ -270,16 +271,18 @@
 				}
 				planeButton.addEventListener("click", addPlane)
 
-				// initialize scene
-				engine.addAmbientLight();
-				engine.addDirectionalLight();
+				initializeLight(engine);
+
+				// // initialize scene
+				// engine.addAmbientLight();
+				// engine.addDirectionalLight();
 
 
 
 
 				
-				//axes helper at the origin of the eye-level coordinate system
-				engine.addAxesHelper([0,0,0], [0.2,0.2,0.2]);
+				// //axes helper at the origin of the eye-level coordinate system
+				// engine.addAxesHelper([0,0,0], [0.2,0.2,0.2]);
 				
 
 				
