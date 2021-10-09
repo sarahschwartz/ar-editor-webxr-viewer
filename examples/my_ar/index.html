@@ -54,7 +54,7 @@
 
 			<!--- Bottom Toolbar --->
 			<section id="bottom-toolbar">
-				<p>Tap an object to add it to the scene</p>
+				<p id="toolbar-instructions">Tap an object to add it to the scene</p>
 				<!--- Add Toolbar --->
 				<section class="active-toolbar" id="add-toolbar">
 
@@ -166,6 +166,7 @@
 			const deleteButton = document.getElementById('delete-button');
 
 			// Bottom Toolbar
+			const toolbarInstructions = document.getElementById('toolbar-instructions');
 
 			// Add Toolbar
 			const addToolbar = document.getElementById('add-toolbar');
@@ -209,6 +210,7 @@
 					addButton.classList.add("active");
 					addToolbar.classList.add("active-toolbar");
 					addToolbar.style.display = "flex";
+					toolbarInstructions.innerHTML = "Tap an object to add it to the scene";
 				}
 				addButton.addEventListener("click", addScene)
 
@@ -227,6 +229,7 @@
 					editButton.classList.add("active");
 					editToolbar.classList.add("active-toolbar");
 					editToolbar.style.display = "flex";
+					toolbarInstructions.innerHTML = "Tap to select an edit tool";
 				}
 				editButton.addEventListener("click", editScene)
 
@@ -239,6 +242,7 @@
 				activeToolbar.style.display = "none";
 				deleteButton.classList.add("active");
 				isDeleting = true;
+				toolbarInstructions.innerHTML = "Tap an object to delete it";
 				}
 				deleteButton.addEventListener("click", deleteScene)
 
