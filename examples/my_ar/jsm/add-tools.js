@@ -1,4 +1,4 @@
-function addTools(engine, sceneObjects, position, scale, color, debug) {
+function addTools(engine, position, scale, color, debug) {
 
     
     const cubeButton = document.getElementById('cube-button');
