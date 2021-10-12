@@ -1,5 +1,6 @@
-function addTools(engine, position, scale, color) {
+function addTools(engine, sceneObjects, position, scale, color, debug) {
 
+    
     const cubeButton = document.getElementById('cube-button');
     const sphereButton = document.getElementById('sphere-button');
     const cylinderButton = document.getElementById('cylinder-button');
@@ -13,6 +14,7 @@ function addTools(engine, position, scale, color) {
     // Add a sphere
     const addSphere = () => {
         engine.addSphere(position, scale, color);
+        debug.innerHTML = sceneObjects.length
     }
 
     // Add a cylinder

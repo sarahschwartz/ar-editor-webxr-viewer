@@ -10,6 +10,15 @@
     border: 3px solid blue;
 }
 
+#touch-space{
+    /* background-color: blue; */
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+}
+
 #left-toolbar{
     position: fixed;
     left: 0px;
@@ -34,6 +43,18 @@
     align-items: center;
     background-color: grey;
 
+}
+
+#debug{
+    position: fixed;
+    left: 0px;
+    bottom: 22vh;
+    height: 20vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    word-wrap: break-word;
+    overflow: scroll;
 }
 
 #add-toolbar, #edit-toolbar{
