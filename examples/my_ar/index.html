@@ -130,7 +130,8 @@
 			// some dependencies and utilities
 			import * as mat4 from '../libs/gl-matrix/mat4.js';
 			import * as vec3 from '../libs/gl-matrix/vec3.js';
-			import { initializeLight } from './jsm/test.js';
+			import { initializeLight } from './jsm/light.js';
+			import { addTools } from './jsm/add-tools.js';
 
 			import XREngine from '../XREngine.js';
 
@@ -171,10 +172,11 @@
 
 			// Add Toolbar
 			const addToolbar = document.getElementById('add-toolbar');
-			const cubeButton = document.getElementById('cube-button');
-			const sphereButton = document.getElementById('sphere-button');
-			const cylinderButton = document.getElementById('cylinder-button');
-			const planeButton = document.getElementById('plane-button');
+			// const cubeButton = document.getElementById('cube-button');
+			// const sphereButton = document.getElementById('sphere-button');
+			// const cylinderButton = document.getElementById('cylinder-button');
+			// const planeButton = document.getElementById('plane-button');
+
 
 			// Edit Toolbar
 			const editToolbar = document.getElementById('edit-toolbar');
@@ -236,56 +238,48 @@
 
 				// Delete button
 				const deleteObject = () => {
-				let activeElement = document.querySelector(".active")
-				let activeToolbar = document.querySelector(".active-toolbar")
-				activeElement.classList.remove("active");
-				activeToolbar.classList.remove("active-toolbar");
-				activeToolbar.style.display = "none";
-				deleteButton.classList.add("active");
-				isDeleting = true;
-				toolbarInstructions.innerHTML = "Tap an object to delete it";
+					let activeElement = document.querySelector(".active")
+					let activeToolbar = document.querySelector(".active-toolbar")
+					activeElement.classList.remove("active");
+					activeToolbar.classList.remove("active-toolbar");
+					activeToolbar.style.display = "none";
+					deleteButton.classList.add("active");
+					isDeleting = true;
+					toolbarInstructions.innerHTML = "Tap an object to delete it";
 				}
-				deleteButton.addEventListener("click", deleteObject)
+				deleteButton.addEventListener("click", deleteObject);
 
-				// Add a cube
-				const addCube = () => {
-					engine.addBox(position, scale, color);
-				}
-				cubeButton.addEventListener("click", addCube)
-
-				// Add a sphere
-				const addSphere = () => {
-					engine.addSphere(position, scale, color);
-				}
-				sphereButton.addEventListener("click", addSphere)
-
-				// Add a cylinder
-				const addCylinder = () => {
-					engine.addCylinder(position, scale, color);
-				}
-				cylinderButton.addEventListener("click", addCylinder)
-
-				// Add a plane
-				const addPlane = () => {
-					engine.addPlane(position, scale, color);
-				}
-				planeButton.addEventListener("click", addPlane)
+				
 
 				initializeLight(engine);
-
-				// // initialize scene
-				// engine.addAmbientLight();
-				// engine.addDirectionalLight();
-
-
-
-
 				
-				// //axes helper at the origin of the eye-level coordinate system
-				// engine.addAxesHelper([0,0,0], [0.2,0.2,0.2]);
+				addTools(engine, position, scale, color);
 				
+				// // Add a cube
+				// const addCube = () => {
+				// 	engine.addBox(position, scale, color);
+				// }
 
-				
+				// // Add a sphere
+				// const addSphere = () => {
+				// 	engine.addSphere(position, scale, color);
+				// }
+
+				// // Add a cylinder
+				// const addCylinder = () => {
+				// 	engine.addCylinder(position, scale, color);
+				// }
+
+				// // Add a plane
+				// const addPlane = () => {
+				// 	engine.addPlane(position, scale, color);
+				// }
+
+				// cubeButton.addEventListener("click", addTools.addCube)
+				// sphereButton.addEventListener("click", addSphere)
+				// cylinderButton.addEventListener("click", addCylinder)
+				// planeButton.addEventListener("click", addPlane)
+									
 			}
 
 
