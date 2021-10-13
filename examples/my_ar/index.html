@@ -161,6 +161,7 @@
 			let posY = 0; 
 			let posZ = -0.2;
 
+			let currentObjectIndex = 0;
 			let currentEditTool = "scale";
   			let currentGeometry;
 
@@ -193,19 +194,31 @@
 
 				const scaleObject = () => {
 					currentEditTool = "scale";
+					let activeTool = document.querySelector(".active-edit")
+            		activeTool.classList.remove("active-edit");
+					scaleButton.classList.add("active-edit");
 				}
 
 				const rotateObject = () => {
 					currentEditTool = "rotate";
+					let activeTool = document.querySelector(".active-edit")
+            		activeTool.classList.remove("active-edit");
+					rotateButton.classList.add("active-edit");
 				}          
 
 
 				const colorObject = () => {
 					currentEditTool = "color";
+					let activeTool = document.querySelector(".active-edit")
+            		activeTool.classList.remove("active-edit");
+					colorButton.classList.add("active-edit");
 				}
 
 				const moveObject = () => {
 					currentEditTool = "move";
+					let activeTool = document.querySelector(".active-edit")
+            		activeTool.classList.remove("active-edit");
+					moveButton.classList.add("active-edit");
 				}
 
 
@@ -306,7 +319,8 @@
 			const handleAnimationFrame = (t, frame) => {
 				if(!session || session.ended) return;
 
-				updateScene(engine, currentEditTool, debug);
+				currentObjectIndex = engine._root.children.length - 1;
+				updateScene(engine, currentObjectIndex, currentEditTool, debug);
 
 				session.requestAnimationFrame(handleAnimationFrame);
 				const pose = frame.getViewerPose(localReferenceSpace);

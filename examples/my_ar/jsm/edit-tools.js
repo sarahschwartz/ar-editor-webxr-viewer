@@ -8,6 +8,7 @@ function editTools(currentEditTool) {
 
     const scaleObject = () => {
         currentEditTool = "scale";
+        
     }
 
     const rotateObject = () => {

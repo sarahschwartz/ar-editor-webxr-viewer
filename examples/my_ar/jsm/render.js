@@ -1,6 +1,8 @@
-function updateScene(engine, currentEditTool, debug) {
-    let last = engine._root.children.length - 1
+function updateScene(engine, currentObjectIndex, currentEditTool, debug) {
+    let last = currentObjectIndex
     const editToolbar = document.getElementById('edit-toolbar');
+
+
     // If Edit toolbar is active
     if (editToolbar.classList.contains("active-toolbar")) {
         switch (engine._root.children[last].geometry.type) {
@@ -25,31 +27,14 @@ function updateScene(engine, currentEditTool, debug) {
                 debug.innerHTML = "Plane";
                 debug.innerHTML += " Width: " + engine._root.children[last].geometry.parameters.width;
                 debug.innerHTML += " Height: " + engine._root.children[last].geometry.parameters.height;
-                debug.innerHTML += "Current edit tool: " + currentEditTool
                 break;
             default:
+                debug.innerHTML = "Geometry not found "
         }
-        
+        debug.innerHTML += "Current edit tool: " + currentEditTool
     }
 }
 
 export { updateScene }
 
 
-
-// switch (engine._root.children[last].geometry.type) {
-//     case "CylinderGeometry":
-//         currentGeometry = "Cylinder";
-//         break;
-//     case "BoxBufferGeometry":
-//         currentGeometry = "Box";
-//         break;
-//     case "SphereBufferGeometry":
-//         currentGeometry = "Sphere";
-//         break;
-//     case "PlaneGeometry":
-//         currentGeometry = "Plane";
-//         break;
-//     default:
-//         currentGeometry = null;
-// }
