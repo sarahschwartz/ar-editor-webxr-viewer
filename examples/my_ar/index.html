@@ -140,32 +140,36 @@
 			import { initializeLight } from './jsm/light.js';
 			import { addLeftToolbar } from './jsm/left-toolbar.js';
 			import { addTools } from './jsm/add-tools.js';
-			import { editTools } from './jsm/edit-tools.js';
 			import { updateScene } from './jsm/render.js';
-			// import { touchScale } from './jsm/touch.js';
+
 
 			let session = null;
 			let localReferenceSpace = null;
 			let viewerReferenceSpace = null;
 			let engine = null;
 
-			let sceneObjects = new Array();
-
 			// Use values between 0 and 1. 1 = 100%, 0 = 0%
 			let redVal = 0;
 			let greenVal = 0;
 			let blueVal = 1;
 
-			let scaleX = 0.05;
-			let scaleY = 0.05;
-			let scaleZ = 0.05;
+			let scaleX = 0.1;
+			let scaleY = 0.1;
+			let scaleZ = 0.1;
 
 			let posX = 0;
 			let posY = 0; 
-			let posZ = -0.1;
+			let posZ = -0.2;
 
+			let currentEditTool = "scale";
+  			let currentGeometry;
+
+			let color = new THREE.Color(redVal, greenVal, blueVal);
+			let position = [posX, posY, posZ];
+			let scale = [scaleX, scaleY, scaleZ];
+
+			// Debug Box
 			const debug = document.getElementById('debug');
-
 			
 			// temporary working variables
 			const workingMatrix = mat4.create();
@@ -177,14 +181,38 @@
 			// Add light and toolbar functionality
 			const addScene = () => {
 
-				let color = new THREE.Color(redVal, greenVal, blueVal);
-				let position = [posX, posY, posZ];
-				let scale = [scaleX, scaleY, scaleZ];
-				
 				initializeLight(engine);
 				addLeftToolbar();
 				addTools(engine, position, scale, color, debug);		
-				editTools(engine, position, scale, color, debug);	
+
+				const scaleButton = document.getElementById('scale-button');
+				const rotateButton = document.getElementById('rotate-button');
+				const colorButton = document.getElementById('color-button');
+				const moveButton = document.getElementById('move-button');
+
+
+				const scaleObject = () => {
+					currentEditTool = "scale";
+				}
+
+				const rotateObject = () => {
+					currentEditTool = "rotate";
+				}          
+
+
+				const colorObject = () => {
+					currentEditTool = "color";
+				}
+
+				const moveObject = () => {
+					currentEditTool = "move";
+				}
+
+
+				scaleButton.addEventListener("click", scaleObject)
+				rotateButton.addEventListener("click", rotateObject)
+				colorButton.addEventListener("click", colorObject)
+				moveButton.addEventListener("click", moveObject)
 			}
 
 
@@ -278,7 +306,7 @@
 			const handleAnimationFrame = (t, frame) => {
 				if(!session || session.ended) return;
 
-				updateScene(engine, debug);
+				updateScene(engine, currentEditTool, debug);
 
 				session.requestAnimationFrame(handleAnimationFrame);
 				const pose = frame.getViewerPose(localReferenceSpace);

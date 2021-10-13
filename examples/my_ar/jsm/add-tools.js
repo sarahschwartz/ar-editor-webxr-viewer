@@ -14,7 +14,6 @@ function addTools(engine, position, scale, color, debug) {
     // Add a sphere
     const addSphere = () => {
         engine.addSphere(position, scale, color);
-        debug.innerHTML = sceneObjects.length
     }
 
     // Add a cylinder
