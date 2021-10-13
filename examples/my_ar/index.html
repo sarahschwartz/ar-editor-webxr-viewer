@@ -141,6 +141,8 @@
 			import { addLeftToolbar } from './jsm/left-toolbar.js';
 			import { addTools } from './jsm/add-tools.js';
 			import { editTools } from './jsm/edit-tools.js';
+			import { updateScene } from './jsm/render.js';
+			// import { touchScale } from './jsm/touch.js';
 
 			let session = null;
 			let localReferenceSpace = null;
@@ -275,6 +277,8 @@
 			// render loop			
 			const handleAnimationFrame = (t, frame) => {
 				if(!session || session.ended) return;
+
+				updateScene(engine, debug);
 
 				session.requestAnimationFrame(handleAnimationFrame);
 				const pose = frame.getViewerPose(localReferenceSpace);
