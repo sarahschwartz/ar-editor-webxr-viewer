@@ -1,8 +1,4 @@
-function editTools() {
-    
-    const redSlider = document.getElementById("red-slider-input");
-    const greenSlider = document.getElementById("green-slider-input");
-    const blueSlider = document.getElementById("blue-slider-input");
+function editTools(redSlider, greenSlider, blueSlider) {
 
     const redOutput = document.getElementById("red-slider-output");
     const greenOutput = document.getElementById("green-slider-output");
