@@ -128,6 +128,21 @@
 
 			<section id="debug">Debug</section>
 
+			<section id="color-sliders">
+				<div id="red-slider-output" class="color-output">Red: </div>
+				<div class="slider-container">
+					<input type="range" min="0" max="255" value="0" class="slider" id="red-slider-input">
+				</div>
+				<div id="green-slider-output" class="color-output">Green: </div>
+				<div class="slider-container">
+					<input type="range" min="0" max="255" value="0" class="slider" id="green-slider-input">
+				</div>
+				<div id="blue-slider-output" class="color-output">Blue: </div>
+				<div class="slider-container">
+					<input type="range" min="0" max="255" value="0" class="slider" id="blue-slider-input">
+				</div>
+			</section>
+
 		</div>
 
 		<script type=module>
@@ -140,6 +155,7 @@
 			import { initializeLight } from './jsm/light.js';
 			import { addLeftToolbar } from './jsm/left-toolbar.js';
 			import { addTools } from './jsm/add-tools.js';
+			import { editTools } from './jsm/edit-tools.js';
 			import { updateScene } from './jsm/render.js';
 
 
@@ -184,7 +200,9 @@
 
 				initializeLight(engine);
 				addLeftToolbar();
-				addTools(engine, position, scale, color, debug);		
+				addTools(engine, position, scale, color, debug);	
+				editTools();	
+
 
 				const scaleButton = document.getElementById('scale-button');
 				const rotateButton = document.getElementById('rotate-button');

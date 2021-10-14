@@ -63,8 +63,65 @@
     gap: 5px;
 }
 
+#color-sliders{
+    position: fixed;
+    left: 5vw;;
+    bottom: 42vh;
+    width: 90vw;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 40px 40px 40px;
+}
+
 .toolbar-button-container{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+.slider-container{
+    /* background-color: blue; */
+    width: 80%;
+    height: 30px;
+    display: grid;
+    place-items: center;
+}
+
+.slider{
+    width: 80%;
+    -webkit-appearance: none;
+    height: 15px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #04AA6D;
+  }
+
+
+/* 
+.slider {
+    /* Override default CSS styles */
+    /* -webkit-appearance: none;   */
+    /* appearance: none; */
+    /* width: 80%; Full-width */
+    /* height: 35px; Specified height */
+    /* background: #d3d3d3; Grey background */
+    /* outline: none; Remove outline */
+    /* opacity: 0.7; Set transparency (for mouse-over effects on hover) */
+    /* 0.2 seconds transition on hover */
+    /* -webkit-transition: .2s;  */
+    /* transition: opacity .2s; 
+  }
+   */

@@ -1,34 +1,26 @@
-function editTools(currentEditTool) {
+function editTools() {
     
-    const scaleButton = document.getElementById('scale-button');
-    const rotateButton = document.getElementById('rotate-button');
-    const colorButton = document.getElementById('color-button');
-    const moveButton = document.getElementById('move-button');
+    const redSlider = document.getElementById("red-slider-input");
+    const greenSlider = document.getElementById("green-slider-input");
+    const blueSlider = document.getElementById("blue-slider-input");
 
+    const redOutput = document.getElementById("red-slider-output");
+    const greenOutput = document.getElementById("green-slider-output");
+    const blueOutput = document.getElementById("blue-slider-output");
 
-    const scaleObject = () => {
-        currentEditTool = "scale";
-        
+    redOutput.innerHTML = "Red: " + redSlider.value;
+    greenOutput.innerHTML = "Green: " + greenSlider.value;
+    blueOutput.innerHTML = "Blue: " + blueSlider.value;
+
+    redSlider.oninput = function() {
+        redOutput.innerHTML = "Red: " + this.value;
     }
-
-    const rotateObject = () => {
-        currentEditTool = "rotate";
-    }          
-
-
-    const colorObject = () => {
-        currentEditTool = "color";
+    greenSlider.oninput = function() {
+        greenOutput.innerHTML = "Green: " + this.value;
     }
-
-    const moveObject = () => {
-        currentEditTool = "move";
+    blueSlider.oninput = function() {
+        blueOutput.innerHTML = "Blue: " + this.value;
     }
-
-
-    scaleButton.addEventListener("click", scaleObject)
-    rotateButton.addEventListener("click", rotateObject)
-    colorButton.addEventListener("click", colorObject)
-    moveButton.addEventListener("click", moveObject)
 
     
 }
