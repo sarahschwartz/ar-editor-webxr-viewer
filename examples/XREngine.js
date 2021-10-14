@@ -108,7 +108,10 @@ export default class XREngine {
 	addSphere(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
 		const sphere = new THREE.Mesh(
 			new THREE.SphereBufferGeometry(...size),
-			new THREE.MeshLambertMaterial({ color: color })
+			new THREE.MeshLambertMaterial({
+				color: color,
+				side: THREE.DoubleSide
+			})
 		)
 		sphere.position.set(...position)
 		this._root.add(sphere)
@@ -129,7 +132,10 @@ export default class XREngine {
 	addBox(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
 		const box = new THREE.Mesh(
 			new THREE.BoxBufferGeometry(...size),
-			new THREE.MeshLambertMaterial({ color: color })
+			new THREE.MeshLambertMaterial({
+				color: color,
+				side: THREE.DoubleSide
+			})
 		)
 		box.position.set(...position)
 		this._root.add(box)
@@ -138,7 +144,10 @@ export default class XREngine {
 
 	addCylinder(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
 		const geometry = new THREE.CylinderGeometry(size[0], size[2], size[1], 20 );
-		const material = new THREE.MeshBasicMaterial( {color: color} );
+		const material = new THREE.MeshLambertMaterial({
+			color: color,
+			side: THREE.DoubleSide
+		});
 		const cylinder = new THREE.Mesh( geometry, material );
 		cylinder.position.set(...position)
 		this._root.add(cylinder)
@@ -147,7 +156,7 @@ export default class XREngine {
 
 	addPlane(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
 		const geometry = new THREE.PlaneGeometry(size[0], size[2]);
-		const material = new THREE.MeshBasicMaterial({
+		const material = new THREE.MeshLambertMaterial({
 			color: color,
 			side: THREE.DoubleSide
 		});
