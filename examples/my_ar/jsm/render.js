@@ -3,15 +3,8 @@ function updateScene(engine, currentObjectIndex, currentEditTool, debug) {
     const editToolbar = document.getElementById('edit-toolbar');
 
     let scaleIncrement = 0.01;
-    let scaleMax = 3;
+    let scaleMax = 1.5;
     let scaleX, scaleY, scaleZ;
-
-    if (engine._root.children[last].scale.x < scaleMax) {
-        scaleX = engine._root.children[last].scale.x + scaleIncrement
-        scaleY = engine._root.children[last].scale.y + scaleIncrement
-        scaleZ = engine._root.children[last].scale.z + scaleIncrement
-        
-    }
 
 
     // If Edit toolbar is active
@@ -19,7 +12,12 @@ function updateScene(engine, currentObjectIndex, currentEditTool, debug) {
         switch (currentEditTool) {
             case "scale":
                 debug.innerHTML = "Scale tool <br>";
-                engine._root.children[last].scale.set(scaleX, scaleY, scaleZ);
+                if (engine._root.children[last].scale.x < scaleMax) {
+                    scaleX = engine._root.children[last].scale.x + scaleIncrement
+                    scaleY = engine._root.children[last].scale.y + scaleIncrement
+                    scaleZ = engine._root.children[last].scale.z + scaleIncrement
+                    engine._root.children[last].scale.set(scaleX, scaleY, scaleZ);
+                }
                 break;
             case "rotate":
                 debug.innerHTML = "Rotate tool <br>";
