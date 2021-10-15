@@ -143,6 +143,21 @@
 				</div>
 			</section>
 
+			<section id="position-sliders" style="display: none;" >
+				<div id="posX-slider-output" class="position-output">X: </div>
+				<div class="slider-container">
+					<input type="range" min="-2" max="2" step="0.01" value="0" class="slider" id="posX-slider-input">
+				</div>
+				<div id="posY-slider-output" class="position-output">Y: </div>
+				<div class="slider-container">
+					<input type="range" min="-2" max="2" step="0.01" value="0" class="slider" id="posY-slider-input">
+				</div>
+				<div id="posZ-slider-output" class="position-output">Z: </div>
+				<div class="slider-container">
+					<input type="range" min="-2" max="2" step="0.01" value="-0.5" class="slider" id="posZ-slider-input">
+				</div>
+			</section>
+
 		</div>
 
 		<script type=module>
@@ -173,6 +188,12 @@
 			const greenSlider = document.getElementById("green-slider-input");
 			const blueSlider = document.getElementById("blue-slider-input");
 
+			// Position Sliders
+			const posSliders = document.getElementById('position-sliders');
+			const posXSlider = document.getElementById("posX-slider-input");
+			const posYSlider = document.getElementById("posY-slider-input");
+			const posZSlider = document.getElementById("posZ-slider-input");
+
 			// Edit Tools
 			const editToolbar = document.getElementById('edit-toolbar');
 			const scaleButton = document.getElementById('scale-button');
@@ -195,9 +216,9 @@
 			let scaleY = 0.1;
 			let scaleZ = 0.1;
 
-			let posX = 0;
-			let posY = 0; 
-			let posZ = -0.5;
+			let posX = posXSlider.value;
+			let posY = posYSlider.value;
+			let posZ = posZSlider.value;
 
 			let currentObjectIndex = 0;
 			let currentObject;
@@ -228,7 +249,7 @@
 				initializeLight(engine);
 				addLeftToolbar();
 				// addTools(engine, position, scale, color, debug);	
-				editTools(redSlider, greenSlider, blueSlider);	
+				editTools(redSlider, greenSlider, blueSlider,  posXSlider,  posYSlider,  posZSlider);	
 
 
 					// Add a cube
@@ -383,15 +404,24 @@
 			const handleAnimationFrame = (t, frame) => {
 				if(!session || session.ended) return;
 
-				//update colors based on slider value
+				//update colors from slider value
 				redVal = redSlider.value;
 				greenVal = greenSlider.value;
 				blueVal = blueSlider.value;
 				"rgb(255, 0, 0)"
 				color = new THREE.Color("rgb(" + redVal + "," + greenVal + "," + blueVal + ")");
 
+				//update position from slider values
+				posX = posXSlider.value;
+				posY = posYSlider.value;
+				posZ = posZSlider.value;
+
+				// get latest object (for now)
 				currentObjectIndex = engine._root.children.length - 1;
+				// set to current object
 				currentObject = engine._root.children[currentObjectIndex];
+
+				//render.js
 				updateScene(currentObject, 
 				currentEditTool, 
 				editToolbar, 
@@ -399,6 +429,7 @@
 				color,
 				scaleIncrement,
 				scaleMax,
+				posSliders,
 				posIncrement,
 				posMax,
 				debug);

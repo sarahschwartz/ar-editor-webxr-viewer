@@ -5,6 +5,7 @@ function updateScene(currentObject,
     color,
     scaleIncrement,
     scaleMax,
+    posSliders,
     posIncrement,
     posMax,
     debug) {
@@ -16,6 +17,12 @@ function updateScene(currentObject,
     const removeColorSliders = () => {
         if (colorSliders.style.display === "grid") {
             colorSliders.style.display = "none";
+        }
+    }
+
+    const removePosSliders = () => {
+        if (posSliders.style.display === "grid") {
+            posSliders.style.display = "none";
         }
     }
 
@@ -32,29 +39,35 @@ function updateScene(currentObject,
                     currentObject.scale.set(scaleX, scaleY, scaleZ);
                 }
                 removeColorSliders();
+                removePosSliders();
                 break;
             case "rotate":
                 debug.innerHTML = "Rotate tool <br>";
                 currentObject.rotation.y = currentObject.rotation.y + 0.01;
                 removeColorSliders();
+                removePosSliders();
                 break;
             case "color":
                 debug.innerHTML = "Color tool <br>";
-                currentObject.material.color = color;
+                if (currentObject.material.color !== color) {
+                    currentObject.material.color = color;
+                }
                 colorSliders.style.display = "grid";
+                removePosSliders();
                 break;
             case "move":
                 debug.innerHTML = "Move tool <br>";
-                if (currentObject.position.x < posMax) {
-                    posX = currentObject.position.x + posIncrement
-                } else {
-                    posX = currentObject.position.x
-                }
-                posY = currentObject.position.y;
-                posZ = currentObject.position.z;
-                if (currentObject.position.x !== posX || currentObject.position.y !== posY || currentObject.position.z !== posZ) {
-                    currentObject.position.set(posX, posY, posZ);
-                }
+                posSliders.style.display = "grid";
+                // if (currentObject.position.x < posMax) {
+                //     posX = currentObject.position.x + posIncrement
+                // } else {
+                //     posX = currentObject.position.x
+                // }
+                // posY = currentObject.position.y;
+                // posZ = currentObject.position.z;
+                // if (currentObject.position.x !== posX || currentObject.position.y !== posY || currentObject.position.z !== posZ) {
+                //     currentObject.position.set(posX, posY, posZ);
+                // }
                 removeColorSliders();
                 break;
             default:
@@ -65,6 +78,7 @@ function updateScene(currentObject,
 
     } else {
         removeColorSliders();
+        removePosSliders();
         
     }
 }
