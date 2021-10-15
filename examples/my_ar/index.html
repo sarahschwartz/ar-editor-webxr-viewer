@@ -128,6 +128,21 @@
 
 			<section id="debug">Debug</section>
 
+			<section id="rotate-sliders" style="display: none;" >
+				<div id="rotateX-slider-output" class="color-output">X: </div>
+				<div class="slider-container">
+					<input type="range" min="0" max="360" step="15" value="0" class="slider" id="rotateX-slider-input">
+				</div>
+				<div id="rotateY-slider-output" class="color-output">Y: </div>
+				<div class="slider-container">
+					<input type="range" min="0" max="360" step="15" value="0" class="slider" id="rotateY-slider-input">
+				</div>
+				<div id="rotateZ-slider-output" class="color-output">Z: </div>
+				<div class="slider-container">
+					<input type="range" min="0" max="360" step="15" value="0" class="slider" id="rotateZ-slider-input">
+				</div>
+			</section>
+
 			<section id="color-sliders" style="display: none;" >
 				<div id="red-slider-output" class="color-output">Red: </div>
 				<div class="slider-container">
@@ -182,6 +197,12 @@
 			// Start AR session button
 			const goButton = document.getElementById('go-button');
 
+			// Rotation Sliders
+			const rotateSliders = document.getElementById("rotate-sliders");
+			const rotateXSlider = document.getElementById("rotateX-slider-input");
+			const rotateYSlider = document.getElementById("rotateY-slider-input");
+			const rotateZSlider = document.getElementById("rotateZ-slider-input");
+
 			// Color Sliders
 			const colorSliders = document.getElementById('color-sliders');
 			const redSlider = document.getElementById("red-slider-input");
@@ -201,7 +222,6 @@
 			const colorButton = document.getElementById('color-button');
 			const moveButton = document.getElementById('move-button');
 
-
 			//Add Tools
 			const cubeButton = document.getElementById('cube-button');
 			const sphereButton = document.getElementById('sphere-button');
@@ -215,6 +235,10 @@
 			let scaleX = 0.1;
 			let scaleY = 0.1;
 			let scaleZ = 0.1;
+
+			let rotateX = rotateXSlider.value;
+			let rotateY = rotateYSlider.value;
+			let rotateZ = rotateZSlider.value;
 
 			let posX = posXSlider.value;
 			let posY = posYSlider.value;
@@ -249,7 +273,15 @@
 				initializeLight(engine);
 				addLeftToolbar();
 				// addTools(engine, position, scale, color, debug);	
-				editTools(redSlider, greenSlider, blueSlider,  posXSlider,  posYSlider,  posZSlider);	
+				editTools(rotateXSlider,
+				rotateYSlider,
+				rotateZSlider,
+				redSlider, 
+				greenSlider, 
+				blueSlider,  
+				posXSlider,  
+				posYSlider,  
+				posZSlider);	
 
 
 					// Add a cube
@@ -425,6 +457,7 @@
 				updateScene(currentObject, 
 				currentEditTool, 
 				editToolbar, 
+				rotateSliders,
 				colorSliders, 
 				color,
 				scaleIncrement,

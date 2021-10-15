@@ -63,7 +63,7 @@
     gap: 5px;
 }
 
-#color-sliders{
+#rotate-sliders, #color-sliders, #position-sliders{
     position: fixed;
     left: 5vw;;
     bottom: 42vh;
@@ -74,16 +74,6 @@
     grid-template-rows: 40px 40px 40px;
 }
 
-#position-sliders{
-    position: fixed;
-    left: 5vw;;
-    bottom: 42vh;
-    width: 90vw;
-    background-color: white;
-    /* display: grid; */
-    grid-template-columns: 25% 75%;
-    grid-template-rows: 40px 40px 40px;
-}
 
 .toolbar-button-container{
     display: flex;

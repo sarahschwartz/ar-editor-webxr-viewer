@@ -1,9 +1,16 @@
-function editTools(redSlider,
+function editTools(rotateXSlider,
+    rotateYSlider,
+    rotateZSlider,
+    redSlider,
     greenSlider,
     blueSlider,
     posXSlider,
     posYSlider,
     posZSlider) {
+
+    const rotateXOutput = document.getElementById("rotateX-slider-output");
+    const rotateYOutput = document.getElementById("rotateY-slider-output");
+    const rotateZOutput = document.getElementById("rotateZ-slider-output");
 
     const redOutput = document.getElementById("red-slider-output");
     const greenOutput = document.getElementById("green-slider-output");
@@ -12,6 +19,22 @@ function editTools(redSlider,
     const posXOutput = document.getElementById("posX-slider-output");
     const posYOutput = document.getElementById("posY-slider-output");
     const posZOutput = document.getElementById("posZ-slider-output");
+
+    const addRotateTools = () => {
+        rotateXOutput.innerHTML = "X: " + rotateXSlider.value;
+        rotateYOutput.innerHTML = "Y: " + rotateYSlider.value;
+        rotateZOutput.innerHTML = "Z: " + rotateZSlider.value;
+    
+        rotateXSlider.oninput = function() {
+            rotateXOutput.innerHTML = "X: " + this.value;
+        }
+        rotateYSlider.oninput = function() {
+            rotateYOutput.innerHTML = "Y: " + this.value;
+        }
+        rotateZSlider.oninput = function() {
+            rotateZOutput.innerHTML = "Z: " + this.value;
+        }
+    }
 
     
     const addColorTools = () => {
@@ -47,6 +70,7 @@ function editTools(redSlider,
         }
     }
 
+    addRotateTools();
     addColorTools();
     addMoveTools();
     

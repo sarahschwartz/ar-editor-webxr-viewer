@@ -1,6 +1,7 @@
 function updateScene(currentObject,
     currentEditTool,
     editToolbar,
+    rotateSliders,
     colorSliders,
     color,
     scaleIncrement,
@@ -13,6 +14,12 @@ function updateScene(currentObject,
     
     
     let scaleX, scaleY, scaleZ;
+
+    const removeRotateSliders = () => {
+        if (rotateSliders.style.display === "grid") {
+            rotateSliders.style.display = "none";
+        }
+    }
 
     const removeColorSliders = () => {
         if (colorSliders.style.display === "grid") {
@@ -38,11 +45,13 @@ function updateScene(currentObject,
                     scaleZ = currentObject.scale.z + scaleIncrement
                     currentObject.scale.set(scaleX, scaleY, scaleZ);
                 }
+                removeRotateSliders();
                 removeColorSliders();
                 removePosSliders();
                 break;
             case "rotate":
                 debug.innerHTML = "Rotate tool <br>";
+                rotateSliders.style.display = "grid";
                 currentObject.rotation.y = currentObject.rotation.y + 0.01;
                 removeColorSliders();
                 removePosSliders();
@@ -53,6 +62,7 @@ function updateScene(currentObject,
                     currentObject.material.color = color;
                 }
                 colorSliders.style.display = "grid";
+                removeRotateSliders();
                 removePosSliders();
                 break;
             case "move":
@@ -61,6 +71,7 @@ function updateScene(currentObject,
                 if (currentObject.position.x !== posX || currentObject.position.y !== posY || currentObject.position.z !== posZ) {
                     currentObject.position.set(posX, posY, posZ);
                 }
+                removeRotateSliders();
                 removeColorSliders();
                 break;
             default:
@@ -70,6 +81,7 @@ function updateScene(currentObject,
         debug.innerHTML += "Current edit tool: " + currentEditTool
 
     } else {
+        removeRotateSliders();
         removeColorSliders();
         removePosSliders();
         
