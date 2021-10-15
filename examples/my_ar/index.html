@@ -128,16 +128,31 @@
 
 			<section id="debug">Debug</section>
 
+			<section id="scale-sliders" style="display: none;" >
+				<div id="scaleX-slider-output" class="scale-output">X: </div>
+				<div class="slider-container">
+					<input type="range" min="0.05" max="3" step="0.05" value="0.1" class="slider" id="scaleX-slider-input">
+				</div>
+				<div id="scaleY-slider-output" class="scale-output">Y: </div>
+				<div class="slider-container">
+					<input type="range" min="0.05" max="3" step="0.05" value="0.1"" class="slider" id="scaleY-slider-input">
+				</div>
+				<div id="scaleZ-slider-output" class="scale-output">Z: </div>
+				<div class="slider-container">
+					<input type="range" min="0.05" max="3" step="0.05" value="0.1" class="slider" id="scaleZ-slider-input">
+				</div>
+			</section>
+
 			<section id="rotate-sliders" style="display: none;" >
-				<div id="rotateX-slider-output" class="color-output">X: </div>
+				<div id="rotateX-slider-output" class="rotate-output">X: </div>
 				<div class="slider-container">
 					<input type="range" min="0" max="360" step="15" value="0" class="slider" id="rotateX-slider-input">
 				</div>
-				<div id="rotateY-slider-output" class="color-output">Y: </div>
+				<div id="rotateY-slider-output" class="rotate-output">Y: </div>
 				<div class="slider-container">
 					<input type="range" min="0" max="360" step="15" value="0" class="slider" id="rotateY-slider-input">
 				</div>
-				<div id="rotateZ-slider-output" class="color-output">Z: </div>
+				<div id="rotateZ-slider-output" class="rotate-output">Z: </div>
 				<div class="slider-container">
 					<input type="range" min="0" max="360" step="15" value="0" class="slider" id="rotateZ-slider-input">
 				</div>
@@ -197,6 +212,12 @@
 			// Start AR session button
 			const goButton = document.getElementById('go-button');
 
+			// Scale Sliders
+			const scaleSliders = document.getElementById("scale-sliders");
+			const scaleXSlider = document.getElementById("scaleX-slider-input");
+			const scaleYSlider = document.getElementById("scaleY-slider-input");
+			const scaleZSlider = document.getElementById("scaleZ-slider-input");
+
 			// Rotation Sliders
 			const rotateSliders = document.getElementById("rotate-sliders");
 			const rotateXSlider = document.getElementById("rotateX-slider-input");
@@ -232,9 +253,9 @@
 			let greenVal = greenSlider.value;
 			let blueVal = blueSlider.value;
 
-			let scaleX = 0.1;
-			let scaleY = 0.1;
-			let scaleZ = 0.1;
+			let scaleX = scaleXSlider.value;
+			let scaleY = scaleYSlider.value;
+			let scaleZ = scaleZSlider.value;
 
 			let rotateX = rotateXSlider.value;
 			let rotateY = rotateYSlider.value;
@@ -253,9 +274,6 @@
 			let position = [posX, posY, posZ];
 			let scale = [scaleX, scaleY, scaleZ];
 
-			let scaleIncrement = 0.01;
-			let scaleMax = 1.5;
-
 			let posIncrement = 0.005;
    			let posMax = 1;
 
@@ -266,6 +284,7 @@
 			const workingMatrix = mat4.create();
 			const workingVec3 = vec3.create();
 
+			// used to remove sliders in render.js updateScene function
 			const removeSliders = (sliders) => {
 				if (sliders.style.display === "grid") {
 					sliders.style.display = "none";
@@ -279,7 +298,10 @@
 				initializeLight(engine);
 				addLeftToolbar();
 				// addTools(engine, position, scale, color, debug);	
-				editTools(rotateXSlider,
+				editTools(scaleXSlider,
+				scaleYSlider,
+				scaleZSlider,
+				rotateXSlider,
 				rotateYSlider,
 				rotateZSlider,
 				redSlider, 
@@ -442,6 +464,17 @@
 			const handleAnimationFrame = (t, frame) => {
 				if(!session || session.ended) return;
 
+				//update scale from slider values
+				scaleX = scaleXSlider.value;
+				scaleY = scaleYSlider.value;
+				scaleZ = scaleZSlider.value;
+
+
+				//update rotation from slider values
+				rotateX = rotateXSlider.value;
+				rotateY = rotateYSlider.value;
+				rotateZ = rotateZSlider.value;
+
 				//update colors from slider value
 				redVal = redSlider.value;
 				greenVal = greenSlider.value;
@@ -464,12 +497,17 @@
 				currentEditTool, 
 				editToolbar, 
 				removeSliders,
+				scaleSliders,
 				rotateSliders,
 				colorSliders, 
-				color,
-				scaleIncrement,
-				scaleMax,
 				posSliders,
+				scaleX,
+				scaleY,
+				scaleZ,
+				rotateX,
+				rotateY,
+				rotateZ,
+				color,
 				posX,
 				posY,
 				posZ,

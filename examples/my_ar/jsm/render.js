@@ -2,30 +2,32 @@ function updateScene(currentObject,
     currentEditTool,
     editToolbar,
     removeSliders,
+    scaleSliders,
     rotateSliders,
     colorSliders,
-    color,
-    scaleIncrement,
-    scaleMax,
     posSliders,
+    scaleX,
+    scaleY,
+    scaleZ,
+    rotateX,
+    rotateY,
+    rotateZ,
+    color,
     posX,
     posY,
     posZ,
     debug) {
     
-    let scaleX, scaleY, scaleZ;
 
     // If Edit toolbar is active
     if (editToolbar.classList.contains("active-toolbar")) {
         switch (currentEditTool) {
             case "scale":
                 debug.innerHTML = "Scale tool <br>";
-                if (currentObject.scale.x < scaleMax) {
-                    scaleX = currentObject.scale.x + scaleIncrement
-                    scaleY = currentObject.scale.y + scaleIncrement
-                    scaleZ = currentObject.scale.z + scaleIncrement
-                    currentObject.scale.set(scaleX, scaleY, scaleZ);
-                }
+                scaleSliders.style.display = "grid";
+                currentObject.scale.x = scaleX;
+                currentObject.scale.y = scaleY;
+                currentObject.scale.z = scaleZ;
                 removeSliders(rotateSliders);
                 removeSliders(colorSliders);
                 removeSliders(posSliders);
@@ -33,7 +35,15 @@ function updateScene(currentObject,
             case "rotate":
                 debug.innerHTML = "Rotate tool <br>";
                 rotateSliders.style.display = "grid";
-                currentObject.rotation.y = currentObject.rotation.y + 0.01;
+
+                currentObject.rotation.x = rotateX;
+                currentObject.rotation.y = rotateY;
+                currentObject.rotation.Z = rotateZ;
+
+                // keep spinning option somewhere?
+                // currentObject.rotation.y = currentObject.rotation.y + 0.01;
+
+                removeSliders(scaleSliders);
                 removeSliders(colorSliders);
                 removeSliders(posSliders);
                 break;
@@ -43,6 +53,7 @@ function updateScene(currentObject,
                     currentObject.material.color = color;
                 }
                 colorSliders.style.display = "grid";
+                removeSliders(scaleSliders);
                 removeSliders(rotateSliders);
                 removeSliders(posSliders);
                 break;
@@ -52,6 +63,7 @@ function updateScene(currentObject,
                 if (currentObject.position.x !== posX || currentObject.position.y !== posY || currentObject.position.z !== posZ) {
                     currentObject.position.set(posX, posY, posZ);
                 }
+                removeSliders(scaleSliders);
                 removeSliders(rotateSliders);
                 removeSliders(colorSliders);
                 break;
@@ -62,6 +74,7 @@ function updateScene(currentObject,
         debug.innerHTML += "Current edit tool: " + currentEditTool
 
     } else {
+        removeSliders(scaleSliders);
         removeSliders(rotateSliders);
         removeSliders(colorSliders);
         removeSliders(posSliders);

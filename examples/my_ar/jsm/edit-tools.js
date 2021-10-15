@@ -1,4 +1,7 @@
-function editTools(rotateXSlider,
+function editTools(scaleXSlider,
+    scaleYSlider,
+    scaleZSlider,
+    rotateXSlider,
     rotateYSlider,
     rotateZSlider,
     redSlider,
@@ -7,6 +10,10 @@ function editTools(rotateXSlider,
     posXSlider,
     posYSlider,
     posZSlider) {
+
+    const scaleXOutput = document.getElementById("scaleX-slider-output");
+    const scaleYOutput = document.getElementById("scaleY-slider-output");
+    const scaleZOutput = document.getElementById("scaleZ-slider-output");
 
     const rotateXOutput = document.getElementById("rotateX-slider-output");
     const rotateYOutput = document.getElementById("rotateY-slider-output");
@@ -19,6 +26,22 @@ function editTools(rotateXSlider,
     const posXOutput = document.getElementById("posX-slider-output");
     const posYOutput = document.getElementById("posY-slider-output");
     const posZOutput = document.getElementById("posZ-slider-output");
+
+    const addScaleTools = () => {
+        scaleXOutput.innerHTML = "X: " + scaleXSlider.value;
+        scaleYOutput.innerHTML = "Y: " + scaleYSlider.value;
+        scaleZOutput.innerHTML = "Z: " + scaleZSlider.value;
+    
+        scaleXSlider.oninput = function() {
+            scaleXOutput.innerHTML = "X: " + this.value;
+        }
+        scaleYSlider.oninput = function() {
+            scaleYOutput.innerHTML = "Y: " + this.value;
+        }
+        scaleZSlider.oninput = function() {
+            scaleZOutput.innerHTML = "Z: " + this.value;
+        }
+    }
 
     const addRotateTools = () => {
         rotateXOutput.innerHTML = "X: " + rotateXSlider.value;
@@ -73,7 +96,7 @@ function editTools(rotateXSlider,
     addRotateTools();
     addColorTools();
     addMoveTools();
-    
+    addScaleTools();
 }
 
 export { editTools };

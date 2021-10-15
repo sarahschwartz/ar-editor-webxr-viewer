@@ -63,7 +63,7 @@
     gap: 5px;
 }
 
-#rotate-sliders, #color-sliders, #position-sliders{
+#scale-sliders, #rotate-sliders, #color-sliders, #position-sliders{
     position: fixed;
     left: 5vw;;
     bottom: 42vh;
