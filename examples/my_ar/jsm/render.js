@@ -1,10 +1,16 @@
-function updateScene(engine, currentObjectIndex, currentEditTool, debug) {
+function updateScene(engine, currentObjectIndex, currentEditTool, colorSliders, debug) {
     let last = currentObjectIndex
     const editToolbar = document.getElementById('edit-toolbar');
 
     let scaleIncrement = 0.01;
     let scaleMax = 1.5;
     let scaleX, scaleY, scaleZ;
+
+    const removeColorSliders = () => {
+        if (colorSliders.style.display === "grid") {
+            colorSliders.style.display = "none";
+        }
+    }
 
 
     // If Edit toolbar is active
@@ -18,15 +24,19 @@ function updateScene(engine, currentObjectIndex, currentEditTool, debug) {
                     scaleZ = engine._root.children[last].scale.z + scaleIncrement
                     engine._root.children[last].scale.set(scaleX, scaleY, scaleZ);
                 }
+                removeColorSliders();
                 break;
             case "rotate":
                 debug.innerHTML = "Rotate tool <br>";
+                removeColorSliders();
                 break;
             case "color":
                 debug.innerHTML = "Color tool <br>";
+                colorSliders.style.display = "grid";
                 break;
             case "move":
                 debug.innerHTML = "Move tool <br>";
+                removeColorSliders();
                 break;
             default:
                 debug.innerHTML = "no tool selected"
@@ -60,6 +70,10 @@ function updateScene(engine, currentObjectIndex, currentEditTool, debug) {
         //         debug.innerHTML = "Geometry not found "
         // }
         debug.innerHTML += "Current edit tool: " + currentEditTool
+
+    } else {
+        removeColorSliders();
+        
     }
 }
 
