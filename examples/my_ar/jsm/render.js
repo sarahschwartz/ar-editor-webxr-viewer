@@ -1,13 +1,15 @@
 function updateScene(currentObject,
     currentEditTool,
     editToolbar,
-    colorSliders, 
+    colorSliders,
+    scaleIncrement,
+    scaleMax,
     debug) {
 
     
 
-    let scaleIncrement = 0.01;
-    let scaleMax = 1.5;
+    
+    
     let scaleX, scaleY, scaleZ;
 
     const removeColorSliders = () => {

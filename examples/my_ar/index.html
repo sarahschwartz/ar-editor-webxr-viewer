@@ -208,6 +208,9 @@
 			let position = [posX, posY, posZ];
 			let scale = [scaleX, scaleY, scaleZ];
 
+			let scaleIncrement = 0.01;
+			let scaleMax = 1.5;
+
 			// Debug Box
 			const debug = document.getElementById('debug');
 			
@@ -389,6 +392,8 @@
 				currentEditTool, 
 				editToolbar, 
 				colorSliders, 
+				scaleIncrement,
+				scaleMax,
 				debug);
 
 				session.requestAnimationFrame(handleAnimationFrame);
