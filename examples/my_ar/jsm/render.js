@@ -1,6 +1,7 @@
 function updateScene(currentObject,
     currentEditTool,
     editToolbar,
+    removeSliders,
     rotateSliders,
     colorSliders,
     color,
@@ -12,27 +13,7 @@ function updateScene(currentObject,
     posZ,
     debug) {
     
-    
     let scaleX, scaleY, scaleZ;
-
-    const removeRotateSliders = () => {
-        if (rotateSliders.style.display === "grid") {
-            rotateSliders.style.display = "none";
-        }
-    }
-
-    const removeColorSliders = () => {
-        if (colorSliders.style.display === "grid") {
-            colorSliders.style.display = "none";
-        }
-    }
-
-    const removePosSliders = () => {
-        if (posSliders.style.display === "grid") {
-            posSliders.style.display = "none";
-        }
-    }
-
 
     // If Edit toolbar is active
     if (editToolbar.classList.contains("active-toolbar")) {
@@ -45,16 +26,16 @@ function updateScene(currentObject,
                     scaleZ = currentObject.scale.z + scaleIncrement
                     currentObject.scale.set(scaleX, scaleY, scaleZ);
                 }
-                removeRotateSliders();
-                removeColorSliders();
-                removePosSliders();
+                removeSliders(rotateSliders);
+                removeSliders(colorSliders);
+                removeSliders(posSliders);
                 break;
             case "rotate":
                 debug.innerHTML = "Rotate tool <br>";
                 rotateSliders.style.display = "grid";
                 currentObject.rotation.y = currentObject.rotation.y + 0.01;
-                removeColorSliders();
-                removePosSliders();
+                removeSliders(colorSliders);
+                removeSliders(posSliders);
                 break;
             case "color":
                 debug.innerHTML = "Color tool <br>";
@@ -62,8 +43,8 @@ function updateScene(currentObject,
                     currentObject.material.color = color;
                 }
                 colorSliders.style.display = "grid";
-                removeRotateSliders();
-                removePosSliders();
+                removeSliders(rotateSliders);
+                removeSliders(posSliders);
                 break;
             case "move":
                 debug.innerHTML = "Move tool <br>";
@@ -71,8 +52,8 @@ function updateScene(currentObject,
                 if (currentObject.position.x !== posX || currentObject.position.y !== posY || currentObject.position.z !== posZ) {
                     currentObject.position.set(posX, posY, posZ);
                 }
-                removeRotateSliders();
-                removeColorSliders();
+                removeSliders(rotateSliders);
+                removeSliders(colorSliders);
                 break;
             default:
                 debug.innerHTML = "no tool selected"
@@ -81,9 +62,9 @@ function updateScene(currentObject,
         debug.innerHTML += "Current edit tool: " + currentEditTool
 
     } else {
-        removeRotateSliders();
-        removeColorSliders();
-        removePosSliders();
+        removeSliders(rotateSliders);
+        removeSliders(colorSliders);
+        removeSliders(posSliders);
         
     }
 }

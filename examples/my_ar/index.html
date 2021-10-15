@@ -266,6 +266,12 @@
 			const workingMatrix = mat4.create();
 			const workingVec3 = vec3.create();
 
+			const removeSliders = (sliders) => {
+				if (sliders.style.display === "grid") {
+					sliders.style.display = "none";
+				}
+			}
+
 
 			// Add light and toolbar functionality
 			const addScene = () => {
@@ -457,6 +463,7 @@
 				updateScene(currentObject, 
 				currentEditTool, 
 				editToolbar, 
+				removeSliders,
 				rotateSliders,
 				colorSliders, 
 				color,
