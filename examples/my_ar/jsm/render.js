@@ -1,6 +1,10 @@
-function updateScene(engine, currentObjectIndex, currentEditTool, colorSliders, debug) {
-    let last = currentObjectIndex
-    const editToolbar = document.getElementById('edit-toolbar');
+function updateScene(currentObject,
+    currentEditTool,
+    editToolbar,
+    colorSliders, 
+    debug) {
+
+    
 
     let scaleIncrement = 0.01;
     let scaleMax = 1.5;
@@ -18,11 +22,11 @@ function updateScene(engine, currentObjectIndex, currentEditTool, colorSliders, 
         switch (currentEditTool) {
             case "scale":
                 debug.innerHTML = "Scale tool <br>";
-                if (engine._root.children[last].scale.x < scaleMax) {
-                    scaleX = engine._root.children[last].scale.x + scaleIncrement
-                    scaleY = engine._root.children[last].scale.y + scaleIncrement
-                    scaleZ = engine._root.children[last].scale.z + scaleIncrement
-                    engine._root.children[last].scale.set(scaleX, scaleY, scaleZ);
+                if (currentObject.scale.x < scaleMax) {
+                    scaleX = currentObject.scale.x + scaleIncrement
+                    scaleY = currentObject.scale.y + scaleIncrement
+                    scaleZ = currentObject.scale.z + scaleIncrement
+                    currentObject.scale.set(scaleX, scaleY, scaleZ);
                 }
                 removeColorSliders();
                 break;

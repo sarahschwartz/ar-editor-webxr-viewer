@@ -174,6 +174,7 @@
 			const blueSlider = document.getElementById("blue-slider-input");
 
 			// Edit Tools
+			const editToolbar = document.getElementById('edit-toolbar');
 			const scaleButton = document.getElementById('scale-button');
 			const rotateButton = document.getElementById('rotate-button');
 			const colorButton = document.getElementById('color-button');
@@ -199,6 +200,7 @@
 			let posZ = -0.2;
 
 			let currentObjectIndex = 0;
+			let currentObject;
 			let currentEditTool = "scale";
   			let currentGeometry;
 
@@ -382,7 +384,12 @@
 				color = new THREE.Color(redVal, greenVal, blueVal);
 
 				currentObjectIndex = engine._root.children.length - 1;
-				updateScene(engine, currentObjectIndex, currentEditTool, colorSliders, debug);
+				currentObject = engine._root.children[currentObjectIndex];
+				updateScene(currentObject, 
+				currentEditTool, 
+				editToolbar, 
+				colorSliders, 
+				debug);
 
 				session.requestAnimationFrame(handleAnimationFrame);
 				const pose = frame.getViewerPose(localReferenceSpace);
