@@ -211,6 +211,9 @@
 			let scaleIncrement = 0.01;
 			let scaleMax = 1.5;
 
+			let posIncrement = 0.005;
+   			let posMax = 1;
+
 			// Debug Box
 			const debug = document.getElementById('debug');
 			
@@ -396,6 +399,8 @@
 				color,
 				scaleIncrement,
 				scaleMax,
+				posIncrement,
+				posMax,
 				debug);
 
 				session.requestAnimationFrame(handleAnimationFrame);
