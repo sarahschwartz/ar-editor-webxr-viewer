@@ -2,6 +2,7 @@ function updateScene(currentObject,
     currentEditTool,
     editToolbar,
     colorSliders,
+    color,
     scaleIncrement,
     scaleMax,
     debug) {
@@ -34,14 +35,17 @@ function updateScene(currentObject,
                 break;
             case "rotate":
                 debug.innerHTML = "Rotate tool <br>";
+                currentObject.rotation.y = currentObject.rotation.y + 0.01;
                 removeColorSliders();
                 break;
             case "color":
                 debug.innerHTML = "Color tool <br>";
+                currentObject.material.color = color;
                 colorSliders.style.display = "grid";
                 break;
             case "move":
                 debug.innerHTML = "Move tool <br>";
+                currentObject.position.set(0.2, 0, -0.5);
                 removeColorSliders();
                 break;
             default:

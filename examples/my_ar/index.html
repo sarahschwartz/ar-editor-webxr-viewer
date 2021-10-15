@@ -197,7 +197,7 @@
 
 			let posX = 0;
 			let posY = 0; 
-			let posZ = -0.2;
+			let posZ = -0.5;
 
 			let currentObjectIndex = 0;
 			let currentObject;
@@ -384,7 +384,8 @@
 				redVal = redSlider.value;
 				greenVal = greenSlider.value;
 				blueVal = blueSlider.value;
-				color = new THREE.Color(redVal, greenVal, blueVal);
+				"rgb(255, 0, 0)"
+				color = new THREE.Color("rgb(" + redVal + "," + greenVal + "," + blueVal + ")");
 
 				currentObjectIndex = engine._root.children.length - 1;
 				currentObject = engine._root.children[currentObjectIndex];
@@ -392,6 +393,7 @@
 				currentEditTool, 
 				editToolbar, 
 				colorSliders, 
+				color,
 				scaleIncrement,
 				scaleMax,
 				debug);
