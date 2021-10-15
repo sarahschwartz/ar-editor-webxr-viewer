@@ -6,13 +6,13 @@ function updateScene(currentObject,
     scaleIncrement,
     scaleMax,
     posSliders,
-    posIncrement,
-    posMax,
+    posX,
+    posY,
+    posZ,
     debug) {
     
     
     let scaleX, scaleY, scaleZ;
-    let posX, posY, posZ;
 
     const removeColorSliders = () => {
         if (colorSliders.style.display === "grid") {
@@ -58,16 +58,9 @@ function updateScene(currentObject,
             case "move":
                 debug.innerHTML = "Move tool <br>";
                 posSliders.style.display = "grid";
-                // if (currentObject.position.x < posMax) {
-                //     posX = currentObject.position.x + posIncrement
-                // } else {
-                //     posX = currentObject.position.x
-                // }
-                // posY = currentObject.position.y;
-                // posZ = currentObject.position.z;
-                // if (currentObject.position.x !== posX || currentObject.position.y !== posY || currentObject.position.z !== posZ) {
-                //     currentObject.position.set(posX, posY, posZ);
-                // }
+                if (currentObject.position.x !== posX || currentObject.position.y !== posY || currentObject.position.z !== posZ) {
+                    currentObject.position.set(posX, posY, posZ);
+                }
                 removeColorSliders();
                 break;
             default:
