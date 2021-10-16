@@ -23,7 +23,6 @@ function updateScene(currentObject,
     if (editToolbar.classList.contains("active-toolbar")) {
         switch (currentEditTool) {
             case "scale":
-                debug.innerHTML = "Scale tool <br>";
                 scaleSliders.style.display = "grid";
                 currentObject.scale.x = scaleX;
                 currentObject.scale.y = scaleY;
@@ -33,12 +32,11 @@ function updateScene(currentObject,
                 removeSliders(posSliders);
                 break;
             case "rotate":
-                debug.innerHTML = "Rotate tool <br>";
                 rotateSliders.style.display = "grid";
 
-                currentObject.rotation.x = rotateX;
-                currentObject.rotation.y = rotateY;
-                currentObject.rotation.Z = rotateZ;
+                currentObject.rotation.x = rotateX/360 * 2 * Math.PI;
+                currentObject.rotation.y = rotateY/360 * 2 * Math.PI;
+                currentObject.rotation.Z = rotateZ/360 * 2 * Math.PI;
 
                 // keep spinning option somewhere?
                 // currentObject.rotation.y = currentObject.rotation.y + 0.01;
@@ -48,7 +46,6 @@ function updateScene(currentObject,
                 removeSliders(posSliders);
                 break;
             case "color":
-                debug.innerHTML = "Color tool <br>";
                 if (currentObject.material.color !== color) {
                     currentObject.material.color = color;
                 }
@@ -58,7 +55,6 @@ function updateScene(currentObject,
                 removeSliders(posSliders);
                 break;
             case "move":
-                debug.innerHTML = "Move tool <br>";
                 posSliders.style.display = "grid";
                 if (currentObject.position.x !== posX || currentObject.position.y !== posY || currentObject.position.z !== posZ) {
                     currentObject.position.set(posX, posY, posZ);
@@ -68,10 +64,8 @@ function updateScene(currentObject,
                 removeSliders(colorSliders);
                 break;
             default:
-                debug.innerHTML = "no tool selected"
         }
 
-        debug.innerHTML += "Current edit tool: " + currentEditTool
 
     } else {
         removeSliders(scaleSliders);

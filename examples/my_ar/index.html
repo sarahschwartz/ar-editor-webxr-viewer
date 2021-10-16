@@ -126,20 +126,20 @@
 
 			</section>
 
-			<section id="debug">Debug</section>
+			<section id="debug" style="display: none;">Debug</section>
 
 			<section id="scale-sliders" style="display: none;" >
 				<div id="scaleX-slider-output" class="scale-output">X: </div>
 				<div class="slider-container">
-					<input type="range" min="0.05" max="3" step="0.05" value="0.1" class="slider" id="scaleX-slider-input">
+					<input type="range" min="0.05" max="3" step="0.05" value="1" class="slider" id="scaleX-slider-input">
 				</div>
 				<div id="scaleY-slider-output" class="scale-output">Y: </div>
 				<div class="slider-container">
-					<input type="range" min="0.05" max="3" step="0.05" value="0.1"" class="slider" id="scaleY-slider-input">
+					<input type="range" min="0.05" max="3" step="0.05" value="1"" class="slider" id="scaleY-slider-input">
 				</div>
 				<div id="scaleZ-slider-output" class="scale-output">Z: </div>
 				<div class="slider-container">
-					<input type="range" min="0.05" max="3" step="0.05" value="0.1" class="slider" id="scaleZ-slider-input">
+					<input type="range" min="0.05" max="3" step="0.05" value="1" class="slider" id="scaleZ-slider-input">
 				</div>
 			</section>
 
@@ -161,15 +161,15 @@
 			<section id="color-sliders" style="display: none;" >
 				<div id="red-slider-output" class="color-output">Red: </div>
 				<div class="slider-container">
-					<input type="range" min="0" max="255" value="0" class="slider" id="red-slider-input">
+					<input type="range" min="0" max="255" value="0" class="slider red-slider" id="red-slider-input">
 				</div>
 				<div id="green-slider-output" class="color-output">Green: </div>
 				<div class="slider-container">
-					<input type="range" min="0" max="255" value="0" class="slider" id="green-slider-input">
+					<input type="range" min="0" max="255" value="0" class="slider green-slider" id="green-slider-input">
 				</div>
 				<div id="blue-slider-output" class="color-output">Blue: </div>
 				<div class="slider-container">
-					<input type="range" min="0" max="255" value="255" class="slider" id="blue-slider-input">
+					<input type="range" min="0" max="255" value="255" class="slider blue-slider" id="blue-slider-input">
 				</div>
 			</section>
 
@@ -272,7 +272,7 @@
 
 			let color = new THREE.Color(redVal, greenVal, blueVal);
 			let position = [posX, posY, posZ];
-			let scale = [scaleX, scaleY, scaleZ];
+			let scale = [0.1, 0.1, 0.1];
 
 			let posIncrement = 0.005;
    			let posMax = 1;
