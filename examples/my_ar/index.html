@@ -126,8 +126,6 @@
 
 			</section>
 
-			<section id="debug" style="display: none;">Debug</section>
-
 			<section id="scale-sliders" style="display: none;" >
 				<div id="scaleX-slider-output" class="scale-output">X: </div>
 				<div class="slider-container">
@@ -188,6 +186,8 @@
 				</div>
 			</section>
 
+			<section id="debug" style="display: none;">Debug</section>
+
 		</div>
 
 		<script type=module>
@@ -202,6 +202,21 @@
 			// import { addTools } from './jsm/add-tools.js';
 			import { editTools } from './jsm/edit-tools.js';
 			import { updateScene } from './jsm/render.js';
+
+			var x = document.getElementById("debug");
+
+			function getLocation() {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(showPosition);
+				} else {
+					x.innerHTML = "Geolocation is not supported by this browser.";
+				}
+			}
+
+			function showPosition(position) {
+				x.innerHTML = "Latitude: " + position.coords.latitude +
+				"<br>Longitude: " + position.coords.longitude;
+			}
 
 
 			let session = null;
