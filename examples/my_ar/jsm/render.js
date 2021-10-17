@@ -36,7 +36,7 @@ function updateScene(currentObject,
 
                 currentObject.rotation.x = rotateX/360 * 2 * Math.PI;
                 currentObject.rotation.y = rotateY/360 * 2 * Math.PI;
-                currentObject.rotation.Z = rotateZ/360 * 2 * Math.PI;
+                currentObject.rotation.z = rotateZ/360 * 2 * Math.PI;
 
                 // keep spinning option somewhere?
                 // currentObject.rotation.y = currentObject.rotation.y + 0.01;
