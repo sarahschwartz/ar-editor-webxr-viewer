@@ -198,26 +198,8 @@
 			import XREngine from '../XREngine.js';
 
 			import { initializeLight } from './jsm/light.js';
-			// import { addLeftToolbar } from './jsm/left-toolbar.js';
-			// import { addTools } from './jsm/add-tools.js';
 			import { editTools } from './jsm/edit-tools.js';
 			import { updateScene } from './jsm/render.js';
-
-			var x = document.getElementById("debug");
-
-			function getLocation() {
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(showPosition);
-				} else {
-					x.innerHTML = "Geolocation is not supported by this browser.";
-				}
-			}
-
-			function showPosition(position) {
-				x.innerHTML = "Latitude: " + position.coords.latitude +
-				"<br>Longitude: " + position.coords.longitude;
-			}
-
 
 			let session = null;
 			let localReferenceSpace = null;
@@ -315,9 +297,6 @@
 			let position = [posX, posY, posZ];
 			let scale = [0.1, 0.1, 0.1];
 
-			let posIncrement = 0.005;
-   			let posMax = 1;
-
 			// Debug Box
 			const debug = document.getElementById('debug');
 			
@@ -344,7 +323,7 @@
 				}
 			}
 
-
+////////////////////// Start of AR Scene ///////////////////////////
 			// Add light and toolbar functionality
 			const addScene = () => {
 			
@@ -365,6 +344,7 @@
 				posYSlider,  
 				posZSlider);	
 
+	////////////////////// Add Tools///////////////////////////
 
 					// Add a cube
 				const addCube = () => {
@@ -390,6 +370,8 @@
 				sphereButton.addEventListener("click", addSphere)
 				cylinderButton.addEventListener("click", addCylinder)
 				planeButton.addEventListener("click", addPlane)
+
+	////////////////////// Edit Tools///////////////////////////
 
 				const scaleObject = () => {
 					removeSliders(currentEditTool);
@@ -435,7 +417,7 @@
 				moveButton.addEventListener("click", moveObject)
 			}
 
-
+	////////////////////// Initialize Immersive AR Session ///////////////////////////
 
 			// If AR is supported, enable Go button and attach onButtonClick. If not, show 'No WebXR support'
 			const initXR = () => {
@@ -468,7 +450,7 @@
 				}
 			};
 			
-			// After Go button is pressed, 
+			// Create engine - runs after Go button is pressed
 			const initSession = async xrSession => {
 				session = xrSession;
 				session.addEventListener('end', onSessionEnd);
@@ -522,7 +504,7 @@
 				document.getElementById("xr-overlay").style.visibility = "hidden";
 			};
 
-			// render loop			
+	////////////////////// Render Loop ///////////////////////////	
 			const handleAnimationFrame = (t, frame) => {
 				if(!session || session.ended) return;
 
@@ -588,10 +570,7 @@
 				}
 				engine.endFrame();
 			}
-
-			initXR();
-
-
+	////////////////////// Back, Add, Edit, Select/Delete ///////////////////////////
 			function addLeftToolbar() {
 
 				let isDeleting = false;
@@ -686,7 +665,7 @@
 				}
 				editButton.addEventListener("click", editObject)
 
-				// Delete button
+				// Select / Delete button
 				const deleteObject = () => {
 					removeSliders(currentEditTool);
 					let activeElement = document.querySelector(".active")
@@ -701,6 +680,9 @@
 				deleteButton.addEventListener("click", deleteObject);
 
 				}
+			initXR();
+
+
 				
 		</script>
 	</body>
