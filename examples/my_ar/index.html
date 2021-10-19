@@ -326,9 +326,21 @@
 			const workingVec3 = vec3.create();
 
 			// used to remove sliders in render.js updateScene function
-			const removeSliders = (sliders) => {
-				if (sliders.style.display === "grid") {
-					sliders.style.display = "none";
+			const removeSliders = (editTool) => {
+				switch(editTool){
+					case "scale":
+						scaleSliders.style.display = "none";
+						break;
+					case "rotate":
+						rotateSliders.style.display = "none";
+						break;
+					case "color":
+						colorSliders.style.display = "none";
+						break;
+					case "move":
+						posSliders.style.display = "none";
+						break;
+					default:
 				}
 			}
 
@@ -380,6 +392,8 @@
 				planeButton.addEventListener("click", addPlane)
 
 				const scaleObject = () => {
+					removeSliders(currentEditTool);
+					scaleSliders.style.display = "grid";
 					currentEditTool = "scale";
 					let activeTool = document.querySelector(".active-edit")
             		activeTool.classList.remove("active-edit");
@@ -387,6 +401,8 @@
 				}
 
 				const rotateObject = () => {
+					removeSliders(currentEditTool);
+					rotateSliders.style.display = "grid";
 					currentEditTool = "rotate";
 					let activeTool = document.querySelector(".active-edit")
             		activeTool.classList.remove("active-edit");
@@ -395,6 +411,8 @@
 
 
 				const colorObject = () => {
+					removeSliders(currentEditTool);
+					colorSliders.style.display = "grid";
 					currentEditTool = "color";
 					let activeTool = document.querySelector(".active-edit")
             		activeTool.classList.remove("active-edit");
@@ -402,6 +420,8 @@
 				}
 
 				const moveObject = () => {
+					removeSliders(currentEditTool);
+					posSliders.style.display = "grid";
 					currentEditTool = "move";
 					let activeTool = document.querySelector(".active-edit")
             		activeTool.classList.remove("active-edit");
@@ -521,7 +541,7 @@
 				redVal = redSlider.value;
 				greenVal = greenSlider.value;
 				blueVal = blueSlider.value;
-				"rgb(255, 0, 0)"
+
 				color = new THREE.Color("rgb(" + redVal + "," + greenVal + "," + blueVal + ")");
 
 				//update position from slider values
@@ -537,12 +557,7 @@
 				//render.js
 				updateScene(currentObject, 
 				currentEditTool, 
-				editToolbar, 
-				removeSliders,
-				scaleSliders,
-				rotateSliders,
-				colorSliders, 
-				posSliders,
+				editToolbar,
 				scaleX,
 				scaleY,
 				scaleZ,
@@ -589,6 +604,7 @@
 
 				// Add button
 				const addObject = () => {
+					removeSliders(currentEditTool);
 					if(!isDeleting)
 					{
 						let activeToolbar = document.querySelector(".active-toolbar")
@@ -608,6 +624,21 @@
 
 				// Edit button
 				const editObject = () => {
+					switch(currentEditTool){
+						case "scale":
+							scaleSliders.style.display = "grid";
+							break;
+						case "rotate":
+							rotateSliders.style.display = "grid";
+							break;
+						case "color":
+							colorSliders.style.display = "grid";
+							break;
+						case "move":
+							posSliders.style.display = "grid";
+							break;
+						default:
+					}
 
 					// update sliders to current object
 					scaleXSlider.value = currentObject.scale.x
@@ -657,6 +688,7 @@
 
 				// Delete button
 				const deleteObject = () => {
+					removeSliders(currentEditTool);
 					let activeElement = document.querySelector(".active")
 					let activeToolbar = document.querySelector(".active-toolbar")
 					activeElement.classList.remove("active");
@@ -669,6 +701,7 @@
 				deleteButton.addEventListener("click", deleteObject);
 
 				}
+				
 		</script>
 	</body>
 </html>
