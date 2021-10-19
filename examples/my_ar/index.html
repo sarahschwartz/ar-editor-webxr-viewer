@@ -198,7 +198,7 @@
 			import XREngine from '../XREngine.js';
 
 			import { initializeLight } from './jsm/light.js';
-			import { addLeftToolbar } from './jsm/left-toolbar.js';
+			// import { addLeftToolbar } from './jsm/left-toolbar.js';
 			// import { addTools } from './jsm/add-tools.js';
 			import { editTools } from './jsm/edit-tools.js';
 			import { updateScene } from './jsm/render.js';
@@ -227,6 +227,17 @@
 			// Start AR session button
 			const goButton = document.getElementById('go-button');
 
+			// Left Toolbar
+			const endButton = document.getElementById('end-session');
+			const addButton = document.getElementById('add-button');
+			const editButton = document.getElementById('edit-button');
+			const deleteButton = document.getElementById('delete-button');
+
+			// Bottom Toolbar
+			const toolbarInstructions = document.getElementById('toolbar-instructions');
+			const addToolbar = document.getElementById('add-toolbar');
+			const editToolbar = document.getElementById('edit-toolbar');
+
 			// Scale Sliders
 			const scaleSliders = document.getElementById("scale-sliders");
 			const scaleXSlider = document.getElementById("scaleX-slider-input");
@@ -252,7 +263,6 @@
 			const posZSlider = document.getElementById("posZ-slider-input");
 
 			// Edit Tools
-			const editToolbar = document.getElementById('edit-toolbar');
 			const scaleButton = document.getElementById('scale-button');
 			const rotateButton = document.getElementById('rotate-button');
 			const colorButton = document.getElementById('color-button');
@@ -263,6 +273,22 @@
 			const sphereButton = document.getElementById('sphere-button');
 			const cylinderButton = document.getElementById('cylinder-button');
 			const planeButton = document.getElementById('plane-button');
+
+			const scaleXOutput = document.getElementById("scaleX-slider-output");
+			const scaleYOutput = document.getElementById("scaleY-slider-output");
+			const scaleZOutput = document.getElementById("scaleZ-slider-output");
+
+			const rotateXOutput = document.getElementById("rotateX-slider-output");
+			const rotateYOutput = document.getElementById("rotateY-slider-output");
+			const rotateZOutput = document.getElementById("rotateZ-slider-output");
+
+			const redOutput = document.getElementById("red-slider-output");
+			const greenOutput = document.getElementById("green-slider-output");
+			const blueOutput = document.getElementById("blue-slider-output");
+
+			const posXOutput = document.getElementById("posX-slider-output");
+			const posYOutput = document.getElementById("posY-slider-output");
+			const posZOutput = document.getElementById("posZ-slider-output");
 
 			let redVal = redSlider.value;
 			let greenVal = greenSlider.value;
@@ -311,8 +337,9 @@
 			const addScene = () => {
 			
 				initializeLight(engine);
+
 				addLeftToolbar();
-				// addTools(engine, position, scale, color, debug);	
+
 				editTools(scaleXSlider,
 				scaleYSlider,
 				scaleZSlider,
@@ -548,6 +575,100 @@
 			}
 
 			initXR();
+
+
+			function addLeftToolbar() {
+
+				let isDeleting = false;
+
+				// End session
+				const endSession = () => {
+					window.history.back();
+				}
+				endButton.addEventListener("click", endSession)
+
+				// Add button
+				const addObject = () => {
+					if(!isDeleting)
+					{
+						let activeToolbar = document.querySelector(".active-toolbar")
+						activeToolbar.classList.remove("active-toolbar");
+						activeToolbar.style.display = "none";
+					} else {
+						isDeleting = false;
+					}
+					let activeElement = document.querySelector(".active")
+					activeElement.classList.remove("active");
+					addButton.classList.add("active");
+					addToolbar.classList.add("active-toolbar");
+					addToolbar.style.display = "flex";
+					toolbarInstructions.innerHTML = "Tap an object to add it to the scene";
+				}
+				addButton.addEventListener("click", addObject)
+
+				// Edit button
+				const editObject = () => {
+
+					// update sliders to current object
+					scaleXSlider.value = currentObject.scale.x
+					scaleYSlider.value = currentObject.scale.y
+					scaleZSlider.value = currentObject.scale.z
+					scaleXOutput.innerHTML = "X: " + scaleXSlider.value;
+					scaleYOutput.innerHTML = "Y: " + scaleYSlider.value;
+					scaleZOutput.innerHTML = "Z: " + scaleZSlider.value;
+
+					rotateXSlider.value = currentObject.rotation.x
+					rotateYSlider.value = currentObject.rotation.y
+					rotateZSlider.value = currentObject.rotation.z
+					rotateXOutput.innerHTML = "X: " + rotateXSlider.value;
+					rotateYOutput.innerHTML = "Y: " + rotateYSlider.value;
+					rotateZOutput.innerHTML = "Z: " + rotateZSlider.value;
+
+					redSlider.value = currentObject.material.color.r * 255
+					greenSlider.value = currentObject.material.color.g * 255
+					blueSlider.value = currentObject.material.color.b * 255
+					redOutput.innerHTML = "Red: " + redSlider.value;
+					greenOutput.innerHTML = "Green: " + greenSlider.value;
+					blueOutput.innerHTML = "Blue: " + blueSlider.value;
+
+					posXSlider.value = currentObject.position.x
+					posYSlider.value = currentObject.position.y
+					posZSlider.value = currentObject.position.z
+					posXOutput.innerHTML = "X: " + posXSlider.value;
+					posYOutput.innerHTML = "Y: " + posYSlider.value;
+					posZOutput.innerHTML = "Z: " + posZSlider.value;
+
+					if(!isDeleting)
+					{
+						let activeToolbar = document.querySelector(".active-toolbar")
+						activeToolbar.classList.remove("active-toolbar");
+						activeToolbar.style.display = "none";
+					} else {
+						isDeleting = false;
+					}
+					let activeElement = document.querySelector(".active")
+					activeElement.classList.remove("active");
+					editButton.classList.add("active");
+					editToolbar.classList.add("active-toolbar");
+					editToolbar.style.display = "flex";
+					toolbarInstructions.innerHTML = "Tap to select an edit tool";
+				}
+				editButton.addEventListener("click", editObject)
+
+				// Delete button
+				const deleteObject = () => {
+					let activeElement = document.querySelector(".active")
+					let activeToolbar = document.querySelector(".active-toolbar")
+					activeElement.classList.remove("active");
+					activeToolbar.classList.remove("active-toolbar");
+					activeToolbar.style.display = "none";
+					deleteButton.classList.add("active");
+					isDeleting = true;
+					toolbarInstructions.innerHTML = "Tap an object to delete it";
+				}
+				deleteButton.addEventListener("click", deleteObject);
+
+				}
 		</script>
 	</body>
 </html>
