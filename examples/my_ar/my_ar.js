@@ -6,6 +6,7 @@ import XREngine from '../XREngine.js';
 import { initializeLight } from './jsm/light.js';
 import { editTools } from './jsm/edit-tools.js';
 import { updateScene } from './jsm/render.js';
+import getGeometry from './jsm/get-geometry.js';
 
 let session = null;
 let localReferenceSpace = null;
@@ -25,6 +26,7 @@ const deleteButton = document.getElementById('delete-button');
 const toolbarInstructions = document.getElementById('toolbar-instructions');
 const addToolbar = document.getElementById('add-toolbar');
 const editToolbar = document.getElementById('edit-toolbar');
+const deleteToolbar = document.getElementById('delete-toolbar');
 
 // Scale Sliders
 const scaleSliders = document.getElementById("scale-sliders");
@@ -381,8 +383,6 @@ const handleAnimationFrame = (t, frame) => {
 ////////////////////// Back, Add, Edit, Select/Delete ///////////////////////////
 function addLeftToolbar() {
 
-    let isDeleting = false;
-
     // End session
     const endSession = () => {
         window.history.back();
@@ -392,14 +392,11 @@ function addLeftToolbar() {
     // Add button
     const addObject = () => {
         removeSliders(currentEditTool);
-        if(!isDeleting)
-        {
-            let activeToolbar = document.querySelector(".active-toolbar")
-            activeToolbar.classList.remove("active-toolbar");
-            activeToolbar.style.display = "none";
-        } else {
-            isDeleting = false;
-        }
+
+        let activeToolbar = document.querySelector(".active-toolbar")
+        activeToolbar.classList.remove("active-toolbar");
+        activeToolbar.style.display = "none";
+
         let activeElement = document.querySelector(".active")
         activeElement.classList.remove("active");
         addButton.classList.add("active");
@@ -456,14 +453,11 @@ function addLeftToolbar() {
         posYOutput.innerHTML = "Y: " + posYSlider.value;
         posZOutput.innerHTML = "Z: " + posZSlider.value;
 
-        if(!isDeleting)
-        {
-            let activeToolbar = document.querySelector(".active-toolbar")
-            activeToolbar.classList.remove("active-toolbar");
-            activeToolbar.style.display = "none";
-        } else {
-            isDeleting = false;
-        }
+
+        let activeToolbar = document.querySelector(".active-toolbar")
+        activeToolbar.classList.remove("active-toolbar");
+        activeToolbar.style.display = "none";
+
         let activeElement = document.querySelector(".active")
         activeElement.classList.remove("active");
         editButton.classList.add("active");
@@ -476,35 +470,26 @@ function addLeftToolbar() {
     // Select / Delete button
     const deleteObject = () => {
         removeSliders(currentEditTool);
-        let activeElement = document.querySelector(".active")
+
         let activeToolbar = document.querySelector(".active-toolbar")
-        activeElement.classList.remove("active");
         activeToolbar.classList.remove("active-toolbar");
         activeToolbar.style.display = "none";
+
+        let activeElement = document.querySelector(".active")
+        activeElement.classList.remove("active");
+
         deleteButton.classList.add("active");
-        isDeleting = true;
+        deleteToolbar.classList.add("active-toolbar");
+        deleteToolbar.style.display = "flex";
+
         toolbarInstructions.innerHTML = "Objects:"
         for (let i = 0; i < objectsList.length; i++){
-            let geometry;
-            switch (objectsList[i].geometry.type) {
-                case "SphereBufferGeometry":
-                    geometry = "Sphere";
-                    break;
-                case "BoxBufferGeometry":
-                    geometry = "Cube";
-                    break;
-                case "CylinderGeometry":
-                    geometry = "Cylinder";
-                    break;
-                case "PlaneGeometry":
-                    geometry = "Plane";
-                    break;
-                default:
-                    geometry = "none"
-            }
+            let geometry = getGeometry(objectsList[i]);
             let id = objectsList[i].id - 13
             let name = objectsList[i].name ? objectsList[i].name : `${id}. ${geometry}`;
-            toolbarInstructions.innerHTML += `<br>${name}`;
+            let div = document.createElement('div');
+            div.innerHTML = name
+            deleteToolbar.append(div);
 
         }
     }
