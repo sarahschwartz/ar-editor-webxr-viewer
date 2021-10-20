@@ -8,6 +8,7 @@ import { editTools } from './jsm/edit-tools.js';
 import { updateScene } from './jsm/render.js';
 import getGeometry from './jsm/get-geometry.js';
 import {changeLeftTool, changeEditTool} from './jsm/change-tool.js';
+import { newObjectDiv } from './jsm/object-list.js';
 
 let session = null;
 let localReferenceSpace = null;
@@ -450,11 +451,7 @@ function addLeftToolbar() {
         let objectsContainer = document.createElement('div');
         for (let i = 0; i < objectsList.length; i++){
             let geometry = getGeometry(objectsList[i]);
-            let id = objectsList[i].id - 13
-            let name = objectsList[i].name ? objectsList[i].name : `${id}. ${geometry}`;
-            let div = document.createElement('div');
-            div.id = id
-            div.innerHTML = name
+            let div = newObjectDiv(objectsList[i], geometry);
             objectsContainer.appendChild(div);
         }
         deleteToolbar.replaceChild(objectsContainer, deleteToolbar.firstChild);
