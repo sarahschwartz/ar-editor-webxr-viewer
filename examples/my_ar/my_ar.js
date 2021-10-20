@@ -7,7 +7,7 @@ import { initializeLight } from './jsm/light.js';
 import { editTools } from './jsm/edit-tools.js';
 import { updateScene } from './jsm/render.js';
 import getGeometry from './jsm/get-geometry.js';
-import changeTool from './jsm/change-tool.js';
+import {changeLeftTool, changeEditTool} from './jsm/change-tool.js';
 
 let session = null;
 let localReferenceSpace = null;
@@ -186,39 +186,27 @@ planeButton.addEventListener("click", addPlane)
 
 const scaleObject = () => {
     removeSliders(currentEditTool);
-    scaleSliders.style.display = "grid";
     currentEditTool = "scale";
-    let activeTool = document.querySelector(".active-edit")
-    activeTool.classList.remove("active-edit");
-    scaleButton.classList.add("active-edit");
+    changeEditTool(scaleButton, scaleSliders);
 }
 
 const rotateObject = () => {
     removeSliders(currentEditTool);
-    rotateSliders.style.display = "grid";
     currentEditTool = "rotate";
-    let activeTool = document.querySelector(".active-edit")
-    activeTool.classList.remove("active-edit");
-    rotateButton.classList.add("active-edit");
+    changeEditTool(rotateButton, rotateSliders);
 }          
 
 
 const colorObject = () => {
     removeSliders(currentEditTool);
-    colorSliders.style.display = "grid";
     currentEditTool = "color";
-    let activeTool = document.querySelector(".active-edit")
-    activeTool.classList.remove("active-edit");
-    colorButton.classList.add("active-edit");
+    changeEditTool(colorButton, colorSliders);
 }
 
 const moveObject = () => {
     removeSliders(currentEditTool);
-    posSliders.style.display = "grid";
     currentEditTool = "move";
-    let activeTool = document.querySelector(".active-edit")
-    activeTool.classList.remove("active-edit");
-    moveButton.classList.add("active-edit");
+    changeEditTool(moveButton, posSliders);
 }
 
 
@@ -393,7 +381,7 @@ function addLeftToolbar() {
     // Add button
     const addObject = () => {
         removeSliders(currentEditTool);
-        changeTool(addButton, addToolbar);
+        changeLeftTool(addButton, addToolbar);
 
         toolbarInstructions.innerHTML = "Tap an object to add it to the scene";
     }
@@ -446,7 +434,7 @@ function addLeftToolbar() {
         posYOutput.innerHTML = "Y: " + posYSlider.value;
         posZOutput.innerHTML = "Z: " + posZSlider.value;
 
-        changeTool(editButton, editToolbar);
+        changeLeftTool(editButton, editToolbar);
 
         toolbarInstructions.innerHTML = "Tap to select an edit tool";
     }
@@ -455,7 +443,7 @@ function addLeftToolbar() {
     // Select / Delete button
     const deleteObject = () => {
         removeSliders(currentEditTool);
-        changeTool(deleteButton, deleteToolbar);
+        changeLeftTool(deleteButton, deleteToolbar);
 
         toolbarInstructions.innerHTML = "Objects:"
         for (let i = 0; i < objectsList.length; i++){
