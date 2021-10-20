@@ -157,25 +157,36 @@ const addScene = () => {
     posZSlider);	
 
 ////////////////////// Add Tools///////////////////////////
+    
+const setLastObject = () => {
+    // get latest object
+    currentObjectIndex = engine._root.children.length - 1;
+    // set to current object
+    currentObject = engine._root.children[currentObjectIndex];
+}
 
 // Add a cube
 const addCube = () => {
     objectsList.push(engine.addBox(position, scale, color));
+    setLastObject();
 }
 
 // Add a sphere
 const addSphere = () => {
     objectsList.push(engine.addSphere(position, scale, color));
+    setLastObject();
 }
 
 // Add a cylinder
 const addCylinder = () => {
     objectsList.push(engine.addCylinder(position, scale, color));
+    setLastObject();
 }
 
 // Add a plane
 const addPlane = () => {
     objectsList.push(engine.addPlane(position, scale, color));
+    setLastObject();
 }
 
 cubeButton.addEventListener("click", addCube)
@@ -331,10 +342,11 @@ const handleAnimationFrame = (t, frame) => {
     posY = posYSlider.value;
     posZ = posZSlider.value;
 
-    // get latest object (for now)
-    currentObjectIndex = engine._root.children.length - 1;
-    // set to current object
-    currentObject = engine._root.children[currentObjectIndex];
+    if (objectsList.length > 0) {
+        currentObject = engine._root.children[currentObjectIndex];
+        debug.innerHTML = `Id: ${currentObject.id}, Geometry: ${currentObject.geometry.type}, Index: ${currentObjectIndex}`
+        
+    }
 
     //render.js
     updateScene(currentObject, 
@@ -441,6 +453,14 @@ function addLeftToolbar() {
     }
     editButton.addEventListener("click", editObject)
 
+    const selectObject = (ev) => {
+        // debug.innerHTML = "Index:" + engine._root.children.length;
+        toolbarInstructions.innerHTML = "Selected Object:" + ev.target.id;
+        // // 5, 1
+        // currentObjectIndex = ev.target.id + 4
+        
+    }
+
     // Select / Delete button
     const deleteObject = () => {
         removeSliders(currentEditTool);
@@ -453,6 +473,7 @@ function addLeftToolbar() {
         for (let i = 0; i < objectsList.length; i++){
             let geometry = getGeometry(objectsList[i]);
             let div = newObjectDiv(objectsList[i], geometry);
+            div.addEventListener('click', selectObject)
             objectsContainer.appendChild(div);
         }
         deleteToolbar.replaceChild(objectsContainer, deleteToolbar.firstChild);
