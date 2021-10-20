@@ -449,6 +449,7 @@ function addLeftToolbar() {
         toolbarInstructions.innerHTML = "Objects:"
 
         let objectsContainer = document.createElement('div');
+        objectsContainer.classList.add('objects-container');
         for (let i = 0; i < objectsList.length; i++){
             let geometry = getGeometry(objectsList[i]);
             let div = newObjectDiv(objectsList[i], geometry);

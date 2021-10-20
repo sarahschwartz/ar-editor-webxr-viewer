@@ -10,15 +10,6 @@
     border: 3px solid blue;
 }
 
-#touch-space{
-    /* background-color: blue; */
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    left: 0px;
-    top: 0px;
-}
-
 #left-toolbar{
     position: fixed;
     left: 0px;
@@ -142,4 +133,19 @@
     border: none;
   }
 
+.objects-container{
+    width: 70vw;
+    height: 5rem;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 5px;
+}
 
+.object-button{
+    border: 2px solid blue;
+    width: 95%;
+    font-size: 1.2rem;
+    padding: 5px 2px;
+}
