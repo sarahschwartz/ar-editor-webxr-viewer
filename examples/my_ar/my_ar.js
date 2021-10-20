@@ -393,11 +393,8 @@ function addLeftToolbar() {
     // Add button
     const addObject = () => {
         removeSliders(currentEditTool);
-        changeTool();
+        changeTool(addButton, addToolbar);
 
-        addButton.classList.add("active");
-        addToolbar.classList.add("active-toolbar");
-        addToolbar.style.display = "flex";
         toolbarInstructions.innerHTML = "Tap an object to add it to the scene";
     }
     addButton.addEventListener("click", addObject)
@@ -449,11 +446,8 @@ function addLeftToolbar() {
         posYOutput.innerHTML = "Y: " + posYSlider.value;
         posZOutput.innerHTML = "Z: " + posZSlider.value;
 
-        changeTool();
+        changeTool(editButton, editToolbar);
 
-        editButton.classList.add("active");
-        editToolbar.classList.add("active-toolbar");
-        editToolbar.style.display = "flex";
         toolbarInstructions.innerHTML = "Tap to select an edit tool";
     }
     editButton.addEventListener("click", editObject)
@@ -461,11 +455,7 @@ function addLeftToolbar() {
     // Select / Delete button
     const deleteObject = () => {
         removeSliders(currentEditTool);
-        changeTool();
-
-        deleteButton.classList.add("active");
-        deleteToolbar.classList.add("active-toolbar");
-        deleteToolbar.style.display = "flex";
+        changeTool(deleteButton, deleteToolbar);
 
         toolbarInstructions.innerHTML = "Objects:"
         for (let i = 0; i < objectsList.length; i++){
