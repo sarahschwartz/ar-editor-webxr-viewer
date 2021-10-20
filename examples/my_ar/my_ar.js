@@ -7,6 +7,7 @@ import { initializeLight } from './jsm/light.js';
 import { editTools } from './jsm/edit-tools.js';
 import { updateScene } from './jsm/render.js';
 import getGeometry from './jsm/get-geometry.js';
+import changeTool from './jsm/change-tool.js';
 
 let session = null;
 let localReferenceSpace = null;
@@ -392,13 +393,8 @@ function addLeftToolbar() {
     // Add button
     const addObject = () => {
         removeSliders(currentEditTool);
+        changeTool();
 
-        let activeToolbar = document.querySelector(".active-toolbar")
-        activeToolbar.classList.remove("active-toolbar");
-        activeToolbar.style.display = "none";
-
-        let activeElement = document.querySelector(".active")
-        activeElement.classList.remove("active");
         addButton.classList.add("active");
         addToolbar.classList.add("active-toolbar");
         addToolbar.style.display = "flex";
@@ -453,13 +449,8 @@ function addLeftToolbar() {
         posYOutput.innerHTML = "Y: " + posYSlider.value;
         posZOutput.innerHTML = "Z: " + posZSlider.value;
 
+        changeTool();
 
-        let activeToolbar = document.querySelector(".active-toolbar")
-        activeToolbar.classList.remove("active-toolbar");
-        activeToolbar.style.display = "none";
-
-        let activeElement = document.querySelector(".active")
-        activeElement.classList.remove("active");
         editButton.classList.add("active");
         editToolbar.classList.add("active-toolbar");
         editToolbar.style.display = "flex";
@@ -470,13 +461,7 @@ function addLeftToolbar() {
     // Select / Delete button
     const deleteObject = () => {
         removeSliders(currentEditTool);
-
-        let activeToolbar = document.querySelector(".active-toolbar")
-        activeToolbar.classList.remove("active-toolbar");
-        activeToolbar.style.display = "none";
-
-        let activeElement = document.querySelector(".active")
-        activeElement.classList.remove("active");
+        changeTool();
 
         deleteButton.classList.add("active");
         deleteToolbar.classList.add("active-toolbar");
