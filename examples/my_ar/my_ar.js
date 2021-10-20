@@ -446,15 +446,18 @@ function addLeftToolbar() {
         changeLeftTool(deleteButton, deleteToolbar);
 
         toolbarInstructions.innerHTML = "Objects:"
+
+        let objectsContainer = document.createElement('div');
         for (let i = 0; i < objectsList.length; i++){
             let geometry = getGeometry(objectsList[i]);
             let id = objectsList[i].id - 13
             let name = objectsList[i].name ? objectsList[i].name : `${id}. ${geometry}`;
             let div = document.createElement('div');
+            div.id = id
             div.innerHTML = name
-            deleteToolbar.append(div);
-
+            objectsContainer.appendChild(div);
         }
+        deleteToolbar.replaceChild(objectsContainer, deleteToolbar.firstChild);
     }
     deleteButton.addEventListener("click", deleteObject);
 
