@@ -159,10 +159,7 @@ const addScene = () => {
 ////////////////////// Add Tools///////////////////////////
     
 const setLastObject = () => {
-    // get latest object
     currentObjectIndex = engine._root.children.length - 1;
-    // set to current object
-    currentObject = engine._root.children[currentObjectIndex];
 }
 
 // Add a cube
@@ -455,7 +452,14 @@ function addLeftToolbar() {
 
     const selectObject = (ev) => {
         // debug.innerHTML = "Index:" + engine._root.children.length;
-        toolbarInstructions.innerHTML = "Selected Object:" + ev.target.id;
+        // currentObjectIndex = ev.target.id + 3
+        let index = parseInt(ev.target.id)+3
+        toolbarInstructions.innerHTML = "Selected Object:" + index;
+        // toolbarInstructions.innerHTML += "<br>Old Object Index:" + currentObjectIndex
+        
+        currentObjectIndex = index;
+        // toolbarInstructions.innerHTML += "<br>New Object Index:" + currentObjectIndex
+        
         // // 5, 1
         // currentObjectIndex = ev.target.id + 4
         
