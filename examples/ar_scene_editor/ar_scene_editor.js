@@ -22,13 +22,13 @@ const goButton = document.getElementById('go-button');
 const endButton = document.getElementById('end-session');
 const addButton = document.getElementById('add-button');
 const editButton = document.getElementById('edit-button');
-const deleteButton = document.getElementById('delete-button');
+const selectButton = document.getElementById('select-button');
 
 // Bottom Toolbar
 const toolbarInstructions = document.getElementById('toolbar-instructions');
 const addToolbar = document.getElementById('add-toolbar');
 const editToolbar = document.getElementById('edit-toolbar');
-const deleteToolbar = document.getElementById('delete-toolbar');
+const selectToolbar = document.getElementById('select-toolbar');
 
 // Scale Sliders
 const scaleSliders = document.getElementById("scale-sliders");
@@ -457,10 +457,24 @@ function addLeftToolbar() {
         
     }
 
+        // const removeObject = (ev) => {
+    //     // get index of object
+    //     let index = parseInt(ev.target.id) + 3
+
+    //     // remove from objectList
+    //     objectsList.splice(parseInt(ev.target.id), 1);
+    //     // remove from engine root
+    //     engine._root.children.splice(index, 1);
+    //     //set current object to last added
+    //     setLastObject();
+    //     toolbarInstructions.innerHTML = "Selected Object:" + (currentObjectIndex - 3);
+        
+    // }
+
     // Select / Delete button
     const deleteObject = () => {
         removeSliders(currentEditTool);
-        changeLeftTool(deleteButton, deleteToolbar);
+        changeLeftTool(selectButton, selectToolbar);
 
         toolbarInstructions.innerHTML = "Selected Object:" + (currentObjectIndex - 3);
 
@@ -472,9 +486,9 @@ function addLeftToolbar() {
             div.addEventListener('click', selectObject)
             objectsContainer.appendChild(div);
         }
-        deleteToolbar.replaceChild(objectsContainer, deleteToolbar.firstChild);
+        selectToolbar.replaceChild(objectsContainer, selectToolbar.firstChild);
     }
-    deleteButton.addEventListener("click", deleteObject);
+    selectButton.addEventListener("click", deleteObject);
 
     }
 initXR();
