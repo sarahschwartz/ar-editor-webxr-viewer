@@ -451,17 +451,9 @@ function addLeftToolbar() {
     editButton.addEventListener("click", editObject)
 
     const selectObject = (ev) => {
-        // debug.innerHTML = "Index:" + engine._root.children.length;
-        // currentObjectIndex = ev.target.id + 3
         let index = parseInt(ev.target.id)+3
-        toolbarInstructions.innerHTML = "Selected Object:" + index;
-        // toolbarInstructions.innerHTML += "<br>Old Object Index:" + currentObjectIndex
-        
         currentObjectIndex = index;
-        // toolbarInstructions.innerHTML += "<br>New Object Index:" + currentObjectIndex
-        
-        // // 5, 1
-        // currentObjectIndex = ev.target.id + 4
+        toolbarInstructions.innerHTML = "Selected Object:" + (currentObjectIndex - 3);
         
     }
 
@@ -470,7 +462,7 @@ function addLeftToolbar() {
         removeSliders(currentEditTool);
         changeLeftTool(deleteButton, deleteToolbar);
 
-        toolbarInstructions.innerHTML = "Objects:"
+        toolbarInstructions.innerHTML = "Selected Object:" + (currentObjectIndex - 3);
 
         let objectsContainer = document.createElement('div');
         objectsContainer.classList.add('objects-container');
