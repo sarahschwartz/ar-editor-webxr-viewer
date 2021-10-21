@@ -6,8 +6,16 @@
     border-radius: 30px;
 }
 
+#toolbar-instructions{
+    background-color: lightblue;
+}
+
 .active, .active-edit{
     border: 3px solid blue;
+}
+
+.active-toolbar{
+    /* background-color: pink; */
 }
 
 #left-toolbar{
@@ -144,9 +152,10 @@
 }
 
 .object-container{
-    background-color: green;
+    /* background-color: green; */
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .object-button{
@@ -154,10 +163,22 @@
     width: 60%;
     font-size: 1.2rem;
     padding: 5px 2px;
+    height: 1.4rem;
+    
 }
 
 .delete-button{
     width: 20%;
+    height: 2rem;
     border: 2px solid blue;
     border-radius: 15px;
+}
+
+.edit-tool-output{
+    background-color: white;
+    color: black;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    height: 90%;
 }

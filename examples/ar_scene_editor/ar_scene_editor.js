@@ -399,6 +399,41 @@ function addLeftToolbar() {
 
     // Edit button
     const editObject = () => {
+        if (objectsList.length > 0) {
+            // update sliders to current object
+            scaleXSlider.value = currentObject.scale.x
+            scaleYSlider.value = currentObject.scale.y
+            scaleZSlider.value = currentObject.scale.z
+            scaleXOutput.innerHTML = "X: " + scaleXSlider.value;
+            scaleYOutput.innerHTML = "Y: " + scaleYSlider.value;
+            scaleZOutput.innerHTML = "Z: " + scaleZSlider.value;
+    
+            rotateXSlider.value = currentObject.rotation.x
+            rotateYSlider.value = currentObject.rotation.y
+            rotateZSlider.value = currentObject.rotation.z
+            rotateXOutput.innerHTML = "X: " + rotateXSlider.value;
+            rotateYOutput.innerHTML = "Y: " + rotateYSlider.value;
+            rotateZOutput.innerHTML = "Z: " + rotateZSlider.value;
+    
+            redSlider.value = currentObject.material.color.r * 255
+            greenSlider.value = currentObject.material.color.g * 255
+            blueSlider.value = currentObject.material.color.b * 255
+            redOutput.innerHTML = "Red: " + redSlider.value;
+            greenOutput.innerHTML = "Green: " + greenSlider.value;
+            blueOutput.innerHTML = "Blue: " + blueSlider.value;
+    
+            posXSlider.value = currentObject.position.x
+            posYSlider.value = currentObject.position.y
+            posZSlider.value = currentObject.position.z
+            posXOutput.innerHTML = "X: " + posXSlider.value;
+            posYOutput.innerHTML = "Y: " + posYSlider.value;
+            posZOutput.innerHTML = "Z: " + posZSlider.value;
+            
+            toolbarInstructions.innerHTML = "Tap to select an edit tool";
+        } else {
+            toolbarInstructions.innerHTML = "(No objects in scene)";
+        }
+        changeLeftTool(editButton, editToolbar);
         switch(currentEditTool){
             case "scale":
                 scaleSliders.style.display = "grid";
@@ -415,38 +450,7 @@ function addLeftToolbar() {
             default:
         }
 
-        // update sliders to current object
-        scaleXSlider.value = currentObject.scale.x
-        scaleYSlider.value = currentObject.scale.y
-        scaleZSlider.value = currentObject.scale.z
-        scaleXOutput.innerHTML = "X: " + scaleXSlider.value;
-        scaleYOutput.innerHTML = "Y: " + scaleYSlider.value;
-        scaleZOutput.innerHTML = "Z: " + scaleZSlider.value;
 
-        rotateXSlider.value = currentObject.rotation.x
-        rotateYSlider.value = currentObject.rotation.y
-        rotateZSlider.value = currentObject.rotation.z
-        rotateXOutput.innerHTML = "X: " + rotateXSlider.value;
-        rotateYOutput.innerHTML = "Y: " + rotateYSlider.value;
-        rotateZOutput.innerHTML = "Z: " + rotateZSlider.value;
-
-        redSlider.value = currentObject.material.color.r * 255
-        greenSlider.value = currentObject.material.color.g * 255
-        blueSlider.value = currentObject.material.color.b * 255
-        redOutput.innerHTML = "Red: " + redSlider.value;
-        greenOutput.innerHTML = "Green: " + greenSlider.value;
-        blueOutput.innerHTML = "Blue: " + blueSlider.value;
-
-        posXSlider.value = currentObject.position.x
-        posYSlider.value = currentObject.position.y
-        posZSlider.value = currentObject.position.z
-        posXOutput.innerHTML = "X: " + posXSlider.value;
-        posYOutput.innerHTML = "Y: " + posYSlider.value;
-        posZOutput.innerHTML = "Z: " + posZSlider.value;
-
-        changeLeftTool(editButton, editToolbar);
-
-        toolbarInstructions.innerHTML = "Tap to select an edit tool";
     }
     editButton.addEventListener("click", editObject)
 
@@ -457,44 +461,56 @@ function addLeftToolbar() {
         
     }
 
-        // const removeObject = (ev) => {
+    // const deleteObject = (ev) => {
     //     // get index of object
     //     let index = parseInt(ev.target.id) + 3
+    //     let object = engine._root.children[index];
+    //     engine._root.children.remove(object);
+    //     object.geometry.dispose();
+    //     object.material.dispose();
+    //     // object.texture.dispose();
 
     //     // remove from objectList
-    //     objectsList.splice(parseInt(ev.target.id), 1);
-    //     // remove from engine root
-    //     engine._root.children.splice(index, 1);
-    //     //set current object to last added
+    //     // objectsList.splice(parseInt(ev.target.id), 1);
+
+
     //     setLastObject();
-    //     toolbarInstructions.innerHTML = "Selected Object:" + (currentObjectIndex - 3);
         
     // }
+
+
+    const updateObjectsList = () => {
+        if (objectsList.length > 0) {
+            toolbarInstructions.innerHTML = "Selected Object:" + (currentObjectIndex - 3);
+    
+            let objectsContainer = document.createElement('div');
+            objectsContainer.classList.add('objects-container');
+            for (let i = 0; i < objectsList.length; i++){
+                let objectContainer = document.createElement('div');
+                objectContainer.classList.add('object-container');
+                let geometry = getGeometry(objectsList[i]);
+                let div = newObjectDiv(objectsList[i], geometry);
+                div.addEventListener('click', selectObject)
+    
+                let button = document.createElement('button')
+                button.classList.add('delete-button')
+                button.innerText = "X"
+                // button.addEventListener('click', deleteObject);
+                objectContainer.appendChild(div);
+                objectContainer.appendChild(button);
+                objectsContainer.appendChild(objectContainer)
+            }
+            selectToolbar.replaceChild(objectsContainer, selectToolbar.firstChild);
+        } else {
+            toolbarInstructions.innerHTML = "(No objects in scene)";
+        }
+    }
 
     // Select / Delete button
     const selectOrDeleteObject = () => {
         removeSliders(currentEditTool);
         changeLeftTool(selectButton, selectToolbar);
-
-        toolbarInstructions.innerHTML = "Selected Object:" + (currentObjectIndex - 3);
-
-        let objectsContainer = document.createElement('div');
-        objectsContainer.classList.add('objects-container');
-        for (let i = 0; i < objectsList.length; i++){
-            let objectContainer = document.createElement('div');
-            objectContainer.classList.add('object-container');
-            let geometry = getGeometry(objectsList[i]);
-            let div = newObjectDiv(objectsList[i], geometry);
-            div.addEventListener('click', selectObject)
-
-            let button = document.createElement('button')
-            button.classList.add('delete-button')
-            button.innerText = "X"
-            objectContainer.appendChild(div);
-            objectContainer.appendChild(button);
-            objectsContainer.appendChild(objectContainer)
-        }
-        selectToolbar.replaceChild(objectsContainer, selectToolbar.firstChild);
+        updateObjectsList();
     }
     selectButton.addEventListener("click", selectOrDeleteObject);
 
