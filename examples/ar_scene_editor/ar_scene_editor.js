@@ -472,7 +472,7 @@ function addLeftToolbar() {
     // }
 
     // Select / Delete button
-    const deleteObject = () => {
+    const selectOrDeleteObject = () => {
         removeSliders(currentEditTool);
         changeLeftTool(selectButton, selectToolbar);
 
@@ -481,14 +481,22 @@ function addLeftToolbar() {
         let objectsContainer = document.createElement('div');
         objectsContainer.classList.add('objects-container');
         for (let i = 0; i < objectsList.length; i++){
+            let objectContainer = document.createElement('div');
+            objectContainer.classList.add('object-container');
             let geometry = getGeometry(objectsList[i]);
             let div = newObjectDiv(objectsList[i], geometry);
             div.addEventListener('click', selectObject)
-            objectsContainer.appendChild(div);
+
+            let button = document.createElement('button')
+            button.classList.add('delete-button')
+            button.innerText = "X"
+            objectContainer.appendChild(div);
+            objectContainer.appendChild(button);
+            objectsContainer.appendChild(objectContainer)
         }
         selectToolbar.replaceChild(objectsContainer, selectToolbar.firstChild);
     }
-    selectButton.addEventListener("click", deleteObject);
+    selectButton.addEventListener("click", selectOrDeleteObject);
 
     }
 initXR();

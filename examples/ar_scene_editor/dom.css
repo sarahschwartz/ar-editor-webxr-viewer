@@ -134,18 +134,30 @@
   }
 
 .objects-container{
-    width: 70vw;
+    width: 80vw;
     height: 5rem;
     overflow: scroll;
-    display: flex;
+    display: grid;
     flex-direction: column;
     gap: 5px;
     margin-bottom: 5px;
 }
 
+.object-container{
+    background-color: green;
+    display: flex;
+    justify-content: space-around;
+}
+
 .object-button{
     border: 2px solid blue;
-    width: 95%;
+    width: 60%;
     font-size: 1.2rem;
     padding: 5px 2px;
+}
+
+.delete-button{
+    width: 20%;
+    border: 2px solid blue;
+    border-radius: 15px;
 }
