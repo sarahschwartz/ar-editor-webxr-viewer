@@ -6,6 +6,7 @@
 		<script src="../libs/three/three.min.js"></script>
 		<link rel="stylesheet" href="../common.css"/>
 		<link rel="stylesheet" href="./dom.css"/>
+		<script src="https://kit.fontawesome.com/97b3f6f004.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<div id="description">
@@ -21,28 +22,36 @@
 			<section id="left-toolbar">
 
 				<div class="toolbar-button-container">
-					<button class="toolbar-button" id="end-session">X</button>
+					<button class="toolbar-button" id="end-session">
+						<i class="far fa-arrow-alt-circle-left"></i>
+					</button>
 					<div class="button-description">
 						Back
 					</div>
 				</div>
 
 				<div class="toolbar-button-container">
-					<button class="toolbar-button active" id="add-button">+</button>
+					<button class="toolbar-button active" id="add-button">
+						<i class="fas fa-plus"></i>
+					</button>
 					<div class="button-description">
 						Add
 					</div>
 				</div>
 
 				<div class="toolbar-button-container">
-					<button class="toolbar-button" id="edit-button">X</button>
+					<button class="toolbar-button" id="edit-button">
+						<i class="fas fa-pen"></i>
+					</button>
 					<div class="button-description">
 						Edit
 					</div>
 				</div>
 
 				<div class="toolbar-button-container">
-					<button class="toolbar-button" id="select-button">X</button>
+					<button class="toolbar-button" id="select-button">
+						<i class="fas fa-mouse-pointer"></i>
+					</button>
 					<div class="button-description">
 						Select
 					</div>
@@ -57,14 +66,24 @@
 				<section class="active-toolbar" id="add-toolbar">
 
 					<div class="toolbar-button-container">
-						<button class="toolbar-button" id="cube-button">X</button>
+						<button class="toolbar-button" id="menu-back-button">
+							X
+						</button>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="cube-button">
+							<i class="fas fa-cube"></i>
+						</button>
 						<div class="button-description">
 							Cube
 						</div>
 					</div>
 
 					<div class="toolbar-button-container">
-						<button class="toolbar-button" id="sphere-button">X</button>
+						<button class="toolbar-button" id="sphere-button">
+							<i class="far fa-circle"></i>
+						</button>
 						<div class="button-description">
 							Sphere
 						</div>
@@ -78,9 +97,45 @@
 					</div>
 
 					<div class="toolbar-button-container">
-						<button class="toolbar-button" id="plane-button">X</button>
+						<button class="toolbar-button" id="plane-button">
+							<i class="far fa-square"></i>
+						</button>
 						<div class="button-description">
 							Plane
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="cone-button">
+							<i class="fas fa-cube"></i>
+						</button>
+						<div class="button-description">
+							Cone
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="torus-button">
+							<i class="far fa-circle"></i>
+						</button>
+						<div class="button-description">
+							Torus
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="ring-button">X</button>
+						<div class="button-description">
+							Ring
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="heart-button">
+							<i class="far fa-square"></i>
+						</button>
+						<div class="button-description">
+							Heart
 						</div>
 					</div>
 
@@ -89,28 +144,36 @@
 				<section style="display: none;" id="edit-toolbar">
 
 					<div class="toolbar-button-container">
-						<button class="toolbar-button active-edit" id="scale-button">X</button>
+						<button class="toolbar-button active-edit" id="scale-button">
+							<i class="fas fa-expand-alt"></i>
+						</button>
 						<div class="button-description">
 							Scale
 						</div>
 					</div>
 
 					<div class="toolbar-button-container">
-						<button class="toolbar-button" id="rotate-button">X</button>
+						<button class="toolbar-button" id="rotate-button">
+							<i class="fas fa-sync-alt"></i>
+						</button>
 						<div class="button-description">
 							Rotate
 						</div>
 					</div>
 
 					<div class="toolbar-button-container">
-						<button class="toolbar-button" id="color-button">X</button>
+						<button class="toolbar-button" id="color-button">
+							<i class="fas fa-palette"></i>
+						</button>
 						<div class="button-description">
 							Color
 						</div>
 					</div>
 
 					<div class="toolbar-button-container">
-						<button class="toolbar-button" id="move-button">X</button>
+						<button class="toolbar-button" id="move-button">
+							<i class="fas fa-arrows-alt"></i>
+						</button>
 						<div class="button-description">
 							Move
 						</div>
