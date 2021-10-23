@@ -343,23 +343,23 @@ const handleAnimationFrame = (t, frame) => {
         currentObject = engine._root.children[currentObjectIndex];
         debug.innerHTML = `Id: ${currentObject.id}, Geometry: ${currentObject.geometry.type}, Index: ${currentObjectIndex}`
         
+        //render.js
+        updateScene(currentObject, 
+        currentEditTool, 
+        editToolbar,
+        scaleX,
+        scaleY,
+        scaleZ,
+        rotateX,
+        rotateY,
+        rotateZ,
+        color,
+        posX,
+        posY,
+        posZ,
+        debug);
     }
 
-    //render.js
-    updateScene(currentObject, 
-    currentEditTool, 
-    editToolbar,
-    scaleX,
-    scaleY,
-    scaleZ,
-    rotateX,
-    rotateY,
-    rotateZ,
-    color,
-    posX,
-    posY,
-    posZ,
-    debug);
 
     session.requestAnimationFrame(handleAnimationFrame);
     const pose = frame.getViewerPose(localReferenceSpace);
