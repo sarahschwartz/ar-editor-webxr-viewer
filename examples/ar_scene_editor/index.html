@@ -18,19 +18,16 @@
 
 		<div style="visibility: hidden;" id="xr-overlay">
 
-			<!--- Left Toolbar --->
-			<section id="left-toolbar">
+			<!-- - Left Toolbar -
+			<section id="left-toolbar"> -->
 
 				<div class="toolbar-button-container">
 					<button class="toolbar-button" id="end-session">
-						<i class="far fa-arrow-alt-circle-left"></i>
+						X
 					</button>
-					<div class="button-description">
-						Back
-					</div>
 				</div>
 
-				<div class="toolbar-button-container">
+				<!-- <div class="toolbar-button-container">
 					<button class="toolbar-button active" id="add-button">
 						<i class="fas fa-plus"></i>
 					</button>
@@ -55,25 +52,57 @@
 					<div class="button-description">
 						Select
 					</div>
-				</div>
+				</div> -->
 
-			</section>
+			<!-- </section> -->
 
 			<!--- Bottom Toolbar --->
 			<section id="bottom-toolbar">
 				<p id="toolbar-instructions">Tap an object to add it to the scene</p>
-				<!--- Add Toolbar --->
-				<section class="active-toolbar" id="add-toolbar">
+
+				<!--- Main Toolbar --->
+				<section class="active-toolbar" id="main-toolbar">
 
 					<div class="toolbar-button-container">
-						<button class="toolbar-button" id="menu-back-button">
-							X
+						<button class="toolbar-button" id="add-button">
+							<i class="fas fa-plus"></i>
+						</button>
+						<div class="button-description">
+							Add
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="edit-button">
+							<i class="fas fa-pen"></i>
+						</button>
+						<div class="button-description">
+							Edit
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="select-button">
+							<i class="fas fa-mouse-pointer"></i>
+						</button>
+						<div class="button-description">
+							Select
+						</div>
+					</div>
+				</section>
+
+				<!--- Add Toolbar --->
+				<section id="add-toolbar" style="display: none;">
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button menu-back-button">
+							<i class="far fa-arrow-alt-circle-left fa-lg" id="menu-back-button"></i>
 						</button>
 					</div>
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="cube-button">
-							<i class="fas fa-cube"></i>
+							<i class="fas fa-cube fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Cube
@@ -82,7 +111,7 @@
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="sphere-button">
-							<i class="far fa-circle"></i>
+							<i class="far fa-circle fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Sphere
@@ -98,7 +127,7 @@
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="plane-button">
-							<i class="far fa-square"></i>
+							<i class="far fa-square fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Plane
@@ -144,6 +173,12 @@
 				<section style="display: none;" id="edit-toolbar">
 
 					<div class="toolbar-button-container">
+						<button class="toolbar-button menu-back-button">
+							<i class="far fa-arrow-alt-circle-left fa-lg" id="menu-back-button"></i>
+						</button>
+					</div>
+
+					<div class="toolbar-button-container">
 						<button class="toolbar-button active-edit" id="scale-button">
 							<i class="fas fa-expand-alt"></i>
 						</button>
@@ -181,7 +216,12 @@
 
 				</section>
 
-				<section id="select-toolbar">
+				<section id="select-toolbar" style="display: none;">
+					<div class="toolbar-button-container">
+						<button class="toolbar-button menu-back-button">
+							<i class="far fa-arrow-alt-circle-left fa-lg" id="menu-back-button"></i>
+						</button>
+					</div>
 					<div id="objects-container"></div>
 				</section>	
 	

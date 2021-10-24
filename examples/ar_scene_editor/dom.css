@@ -1,5 +1,5 @@
 .toolbar-button {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5);
     color: black;
     height: 60px;
     width: 60px;
@@ -7,7 +7,9 @@
 }
 
 #toolbar-instructions{
-    background-color: lightblue;
+    /* background-color: lightblue; */
+    display: none;
+
 }
 
 .active, .active-edit{
@@ -36,11 +38,13 @@
     left: 0px;
     bottom: 0px;
     width: 100vw;
-    height: 22vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: grey;
+    height: 16vh;
+    padding-top: 10px;
+    display: grid;
+    place-items: center start;
+    overflow: scroll;
+    background-color: black;
+    color: white;
 
 }
 
@@ -56,10 +60,20 @@
     overflow: scroll;
 }
 
-#add-toolbar, #edit-toolbar{
+#add-toolbar, #edit-toolbar, #main-toolbar{
     display: flex;
     justify-content: center;
     gap: 5px;
+}
+
+.menu-back-button{
+    color: blue;
+}
+
+#end-session{
+    position: fixed;
+    top: 1vh;
+    left: 2vw;
 }
 
 #scale-sliders, #rotate-sliders, #color-sliders, #position-sliders{

@@ -25,7 +25,9 @@ const editButton = document.getElementById('edit-button');
 const selectButton = document.getElementById('select-button');
 
 // Bottom Toolbar
+const menuBackButtons = document.querySelectorAll('.menu-back-button')
 const toolbarInstructions = document.getElementById('toolbar-instructions');
+const mainToolbar = document.getElementById('main-toolbar');
 const addToolbar = document.getElementById('add-toolbar');
 const editToolbar = document.getElementById('edit-toolbar');
 const selectToolbar = document.getElementById('select-toolbar');
@@ -382,6 +384,18 @@ const handleAnimationFrame = (t, frame) => {
 ////////////////////// Back, Add, Edit, Select/Delete ///////////////////////////
 function addLeftToolbar() {
 
+    // Menu back buttons
+    const menuBack = () => {
+        removeSliders(currentEditTool);
+        // hide the active toolbar, show main toolbar
+        changeLeftTool("none", mainToolbar);
+
+    }
+
+    menuBackButtons.forEach((el) => {
+        el.addEventListener('click', menuBack)
+    });
+
     // End session
     const endSession = () => {
         window.history.back();
@@ -393,7 +407,7 @@ function addLeftToolbar() {
         removeSliders(currentEditTool);
         changeLeftTool(addButton, addToolbar);
 
-        toolbarInstructions.innerHTML = "Tap an object to add it to the scene";
+        // toolbarInstructions.innerHTML = "Tap an object to add it to the scene";
     }
     addButton.addEventListener("click", addObject)
 
