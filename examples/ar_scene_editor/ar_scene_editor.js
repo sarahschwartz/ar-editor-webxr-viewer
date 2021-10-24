@@ -170,7 +170,7 @@ const addCube = () => {
 
 // Add a sphere
 const addSphere = () => {
-    objectsList.push(engine.addSphere(position, scale, color));
+    objectsList.push(engine.addSphere(position, scale[0], color));
     setLastObject();
 }
 

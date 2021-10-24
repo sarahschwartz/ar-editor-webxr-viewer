@@ -105,14 +105,17 @@ export default class XREngine {
 		return light
 	}
 
-	addSphere(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+	addSphere(position=[0,0,0], radius=0.1, color=0x00FF00){
 		const sphere = new THREE.Mesh(
-			new THREE.SphereBufferGeometry(...size),
+			new THREE.SphereBufferGeometry(radius, 32, 16),
 			new THREE.MeshLambertMaterial({
 				color: color,
 				side: THREE.DoubleSide
 			})
 		)
+		// const geometry = new THREE.SphereGeometry( 15, 32, 16 );
+		// const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+		// const sphere = new THREE.Mesh( geometry, material );
 		sphere.position.set(...position)
 		this._root.add(sphere)
 		return sphere
@@ -136,6 +139,18 @@ export default class XREngine {
 				color: color,
 				side: THREE.DoubleSide
 			})
+		)
+		box.position.set(...position)
+		this._root.add(box)
+		return box
+	}
+
+	addTexturedBox(position=[0,0,0], size=[0.1, 0.1, 0.1], texture){
+		const box = new THREE.Mesh(
+			new THREE.BoxBufferGeometry(...size),
+			new MeshStandardMaterial({
+				map: texture,
+			  })
 		)
 		box.position.set(...position)
 		this._root.add(box)
