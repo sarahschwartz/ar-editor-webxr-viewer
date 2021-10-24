@@ -387,9 +387,7 @@ function addLeftToolbar() {
     // Menu back buttons
     const menuBack = () => {
         removeSliders(currentEditTool);
-        // hide the active toolbar, show main toolbar
         changeLeftTool("none", mainToolbar);
-
     }
 
     menuBackButtons.forEach((el) => {
@@ -406,7 +404,6 @@ function addLeftToolbar() {
     const addObject = () => {
         removeSliders(currentEditTool);
         changeLeftTool(addButton, addToolbar);
-
         // toolbarInstructions.innerHTML = "Tap an object to add it to the scene";
     }
     addButton.addEventListener("click", addObject)
@@ -514,7 +511,7 @@ function addLeftToolbar() {
                 objectContainer.appendChild(button);
                 objectsContainer.appendChild(objectContainer)
             }
-            selectToolbar.replaceChild(objectsContainer, selectToolbar.firstChild);
+            selectToolbar.replaceChild(objectsContainer, document.querySelector('.objects-container'));
         } else {
             toolbarInstructions.innerHTML = "(No objects in scene)";
         }
