@@ -343,7 +343,7 @@ const handleAnimationFrame = (t, frame) => {
 
     if (objectsList.length > 0) {
         currentObject = engine._root.children[currentObjectIndex];
-        debug.innerHTML = `Id: ${currentObject.id}, Geometry: ${currentObject.geometry.type}, Index: ${currentObjectIndex}`
+        // debug.innerHTML = `Id: ${currentObject.id}, Geometry: ${currentObject.geometry.type}, Index: ${currentObjectIndex}`
         
         //render.js
         updateScene(currentObject, 
@@ -469,6 +469,9 @@ function addLeftToolbar() {
         let index = parseInt(ev.target.id)+3
         currentObjectIndex = index;
         toolbarInstructions.innerHTML = "Selected Object:" + (currentObjectIndex - 3);
+
+        document.querySelector('.active-object').classList.remove('active-object');
+        ev.target.classList.add('active-object')
         
     }
 
@@ -502,7 +505,12 @@ function addLeftToolbar() {
                 let geometry = getGeometry(objectsList[i]);
                 let div = newObjectDiv(objectsList[i], geometry);
                 div.addEventListener('click', selectObject)
-    
+
+                if (currentObject.id === (i + 14)) {
+                    div.classList.add('active-object')
+                }
+
+
                 let button = document.createElement('button')
                 button.classList.add('delete-button')
                 button.innerText = "X"
