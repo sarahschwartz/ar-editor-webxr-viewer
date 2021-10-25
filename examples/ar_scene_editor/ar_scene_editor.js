@@ -480,9 +480,9 @@ function addLeftToolbar() {
         let index = parseInt(ev.target.id) - 1
         // get the object
         let uuid = objectsList[index].uuid
-        let object = engine._scene.getObjectByProperty( 'uuid', uuid );
+        let object = engine._root.getObjectByProperty( 'uuid', uuid );
         // remove object from the scene
-        engine._scene.remove(object);
+        engine._root.remove(object);
         // engine.removeSceneObject(uuid)
         // dispose of object information in memory
         // object.geometry.dispose();
