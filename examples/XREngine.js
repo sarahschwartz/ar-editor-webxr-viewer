@@ -117,7 +117,7 @@ export default class XREngine {
 		// const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
 		// const sphere = new THREE.Mesh( geometry, material );
 		sphere.position.set(...position)
-		this._root.add(sphere)
+		this._scene.add(sphere)
 		return sphere
 	}
 
@@ -128,7 +128,7 @@ export default class XREngine {
 			side: THREE.DoubleSide })
 		const mesh = new THREE.Mesh(geometry, material)
 		mesh.position.set(...position)
-		this._root.add(mesh)
+		this._scene.add(mesh)
 		return mesh
 	}
 
@@ -141,7 +141,7 @@ export default class XREngine {
 			})
 		)
 		box.position.set(...position)
-		this._root.add(box)
+		this._scene.add(box)
 		return box
 	}
 
@@ -153,7 +153,7 @@ export default class XREngine {
 			  })
 		)
 		box.position.set(...position)
-		this._root.add(box)
+		this._scene.add(box)
 		return box
 	}
 
@@ -165,7 +165,7 @@ export default class XREngine {
 		});
 		const cylinder = new THREE.Mesh( geometry, material );
 		cylinder.position.set(...position)
-		this._root.add(cylinder)
+		this._scene.add(cylinder)
 		return cylinder
 	}
 
@@ -177,7 +177,7 @@ export default class XREngine {
 		});
 		const plane = new THREE.Mesh( geometry, material );
 		plane.position.set(...position)
-		this._root.add(plane)
+		this._scene.add(plane)
 		return plane
 	}
 	

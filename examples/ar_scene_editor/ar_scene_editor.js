@@ -475,22 +475,39 @@ function addLeftToolbar() {
         
     }
 
-    // const deleteObject = (ev) => {
-    //     // get index of object
-    //     let index = parseInt(ev.target.id) + 3
-    //     let object = engine._root.children[index];
-    //     engine._root.children.remove(object);
-    //     object.geometry.dispose();
-    //     object.material.dispose();
-    //     // object.texture.dispose();
+    const deleteObject = (ev) => {
+        // get index of object
+        let index = parseInt(ev.target.id) - 1
+        // get the object
+        let uuid = objectsList[index].uuid
+        let object = engine._scene.getObjectByProperty( 'uuid', uuid );
+        // remove object from the scene
+        engine._scene.remove(object);
+        // engine.removeSceneObject(uuid)
+        // dispose of object information in memory
+        // object.geometry.dispose();
+        // object.material.dispose();
+        // object.texture.dispose();
 
-    //     // remove from objectList
-    //     // objectsList.splice(parseInt(ev.target.id), 1);
+        debug.innerHTML = `ID: ${index}`
+        debug.innerHTML += `<br>UUID: ${uuid}`
+        debug.innerHTML += `<br>Object: ${object}`
 
+        // remove from objectList
+        // objectsList.splice(index, 1);
 
-    //     setLastObject();
+        // remove from the scene
+
+        // change div id and delete button id to 1 less if they come after the deleted object in the list
+
+        // update to show the new list
+        updateObjectsList();
+
+        // if the selected object is deleted, change the active object to the last
+
+        // setLastObject();
         
-    // }
+    }
 
 
     const updateObjectsList = () => {
@@ -514,7 +531,8 @@ function addLeftToolbar() {
                 let button = document.createElement('button')
                 button.classList.add('delete-button')
                 button.innerText = "X"
-                // button.addEventListener('click', deleteObject);
+                button.id = div.id
+                button.addEventListener('click', deleteObject);
                 objectContainer.appendChild(div);
                 objectContainer.appendChild(button);
                 objectsContainer.appendChild(objectContainer)
