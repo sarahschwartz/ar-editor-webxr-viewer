@@ -8,7 +8,7 @@ import { editTools } from './jsm/edit-tools.js';
 import { updateScene } from './jsm/render.js';
 import getGeometry from './jsm/get-geometry.js';
 import {changeLeftTool, changeEditTool} from './jsm/change-tool.js';
-import { newObjectDiv } from './jsm/object-list.js';
+import { newDeleteButton, newObjectDiv } from './jsm/object-list.js';
 
 let session = null;
 let localReferenceSpace = null;
@@ -343,7 +343,7 @@ const handleAnimationFrame = (t, frame) => {
 
     if (objectsList.length > 0) {
         currentObject = engine._root.children[currentObjectIndex];
-        // debug.innerHTML = `Id: ${currentObject.id}, Geometry: ${currentObject.geometry.type}, Index: ${currentObjectIndex}`
+        // debug.innerHTML = `Id: ${currentObject.id}, Geometry: ${currentObject.geometry.type}, COIndex: ${currentObjectIndex}`
         
         //render.js
         updateScene(currentObject, 
@@ -481,35 +481,36 @@ function addLeftToolbar() {
         // get the object
         let uuid = objectsList[index].uuid
         let object = engine._root.getObjectByProperty('uuid', uuid);
-        let isActiveObject = false;
-        
-        if (currentObject.uuid === object.uuid) {
-            isActiveObject = true;
-        }
 
+        let isActiveObject = false;
+        let activeObject = document.querySelector('.active-object')
+
+          if (ev.target.id === activeObject.id) {
+              isActiveObject = true;
+          }
+        
+        // remove from objectList
+        objectsList.splice(index, 1);
+        
         // remove object from the scene
         engine._root.remove(object);
-        // engine.removeSceneObject(uuid)
+        
         // dispose of object information in memory
         object.geometry.dispose();
         object.material.dispose();
         // object.texture.dispose();
 
-        debug.innerHTML = `ID: ${ev.target.id}`
-        // debug.innerHTML += `<br>UUID: ${uuid}`
-        debug.innerHTML += `<br>Object ID: ${object.id}`
-
-        // remove from objectList
-        objectsList.splice(index, 1);
-
+        // if current object is deleted, set current object to last in list
+        if (isActiveObject) {
+            currentObjectIndex = engine._root.children.length - 1;
+            currentObject = engine._root.children[currentObjectIndex];
+        }
+        
         // update to show the new list
         updateObjectsList();
-        
-        // if the selected object is deleted, change the active object to the last
-        // if (isActiveObject) {
-        //     setLastObject();
-        // }
-        debug.innerHTML += `<br>Length of root children: ${engine._root.children.length}`
+
+        // debug.innerHTML = `Current Object Index: ${currentObjectIndex}`
+        // debug.innerHTML += `<br>Length of root children: ${engine._root.children.length}`
 
         
     }
@@ -520,7 +521,6 @@ function addLeftToolbar() {
         objectsContainer.classList.add('objects-container');
 
         if (objectsList.length > 0) {
-            // toolbarInstructions.innerHTML = "Selected Object:" + (currentObjectIndex - 3);
     
             let count = 1;
 
@@ -536,13 +536,9 @@ function addLeftToolbar() {
                 if (currentObject.uuid === objectsList[i].uuid) {
                     div.classList.add('active-object')
                 }
-                
-                debug.innerHTML += `<br> ${objectsList[i].id}`
 
-                let button = document.createElement('button')
-                button.classList.add('delete-button')
-                button.innerText = "X"
-                button.id = div.id
+
+                let button = newDeleteButton(div.id);
                 button.addEventListener('click', deleteObject);
                 objectContainer.appendChild(div);
                 objectContainer.appendChild(button);
