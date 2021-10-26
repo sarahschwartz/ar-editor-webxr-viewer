@@ -105,9 +105,9 @@ export default class XREngine {
 		return light
 	}
 
-	addSphere(position=[0,0,0], radius=0.1, color=0x00FF00){
+	addSphere(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
 		const sphere = new THREE.Mesh(
-			new THREE.SphereBufferGeometry(radius, 32, 16),
+			new THREE.SphereBufferGeometry(size[0], 32, 16),
 			new THREE.MeshLambertMaterial({
 				color: color,
 				side: THREE.DoubleSide
@@ -179,6 +179,18 @@ export default class XREngine {
 		plane.position.set(...position)
 		this._root.add(plane)
 		return plane
+	}
+
+	addCone(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+		const geometry = new THREE.ConeGeometry(size[0]/2, size[0], 20);
+		const material = new THREE.MeshLambertMaterial({
+			color: color,
+			side: THREE.DoubleSide
+		});
+		const cone = new THREE.Mesh( geometry, material );
+		cone.position.set(...position)
+		this._root.add(cone)
+		return cone
 	}
 	
 	addAxesHelper( position=[0,0,0], size=[1,1,1] ) {

@@ -67,6 +67,10 @@ const cubeButton = document.getElementById('cube-button');
 const sphereButton = document.getElementById('sphere-button');
 const cylinderButton = document.getElementById('cylinder-button');
 const planeButton = document.getElementById('plane-button');
+const coneButton = document.getElementById('cone-button');
+const torusButton = document.getElementById('torus-button');
+const ringButton = document.getElementById('ring-button');
+const heartButton = document.getElementById('heart-button');
 
 const scaleXOutput = document.getElementById("scaleX-slider-output");
 const scaleYOutput = document.getElementById("scaleY-slider-output");
@@ -163,35 +167,63 @@ const addScene = () => {
 const setLastObject = () => {
     currentObjectIndex = engine._root.children.length - 1;
 }
-
-// Add a cube
-const addCube = () => {
-    objectsList.push(engine.addBox(position, scale, color));
+    
+const addNewObject = (geometry) => {
+    switch (geometry) {
+        case "cube":
+            objectsList.push(engine.addBox(position, scale, color));
+            break;
+        case "sphere":
+            objectsList.push(engine.addSphere(position, scale, color));
+            break;
+        case "cylinder":
+            objectsList.push(engine.addCylinder(position, scale, color));
+            break;
+        case "plane":
+            objectsList.push(engine.addPlane(position, scale, color));
+            break;
+        case "cone":
+            objectsList.push(engine.addCone(position, scale, color));
+            break;
+        case "torus":
+            // objectsList.push(engine.addBox(position, scale, color));
+            break;
+        case "ring":
+            // objectsList.push(engine.addBox(position, scale, color));
+            break;
+        case "heart":
+            // objectsList.push(engine.addBox(position, scale, color));
+            break;
+        default:
+    }
     setLastObject();
 }
 
-// Add a sphere
-const addSphere = () => {
-    objectsList.push(engine.addSphere(position, scale[0], color));
-    setLastObject();
-}
-
-// Add a cylinder
-const addCylinder = () => {
-    objectsList.push(engine.addCylinder(position, scale, color));
-    setLastObject();
-}
-
-// Add a plane
-const addPlane = () => {
-    objectsList.push(engine.addPlane(position, scale, color));
-    setLastObject();
-}
-
-cubeButton.addEventListener("click", addCube)
-sphereButton.addEventListener("click", addSphere)
-cylinderButton.addEventListener("click", addCylinder)
-planeButton.addEventListener("click", addPlane)
+cubeButton.addEventListener("click", function () {
+    addNewObject("cube");
+})
+sphereButton.addEventListener("click", function () {
+    addNewObject("sphere");
+})
+cylinderButton.addEventListener("click", function () {
+    addNewObject("cylinder");
+})
+planeButton.addEventListener("click", function () {
+    addNewObject("plane");
+})
+coneButton.addEventListener("click", function () {
+    addNewObject("cone");
+})
+torusButton.addEventListener("click", function () {
+    addNewObject("torus");
+})
+ringButton.addEventListener("click", function () {
+    addNewObject("ring");
+})
+heartButton.addEventListener("click", function () {
+    addNewObject("heart");
+})
+    
 
 ////////////////////// Edit Tools///////////////////////////
 
