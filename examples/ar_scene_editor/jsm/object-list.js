@@ -6,3 +6,11 @@ export function newObjectDiv(object, geometry, id) {
     div.innerHTML = name;
     return div;
 }
+
+export function newDeleteButton(id) {
+    let button = document.createElement('button')
+    button.classList.add('delete-button')
+    button.innerText = "X"
+    button.id = id
+    return button
+}
