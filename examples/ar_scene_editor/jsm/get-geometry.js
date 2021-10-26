@@ -13,6 +13,15 @@ export default function getGeometry(object){
         case "PlaneGeometry":
             geometry = "Plane";
             break;
+        case "ConeGeometry":
+            geometry = "Cone";
+            break;
+        case "TorusGeometry":
+            geometry = "Torus";
+            break;
+        case "RingGeometry":
+            geometry = "Ring";
+            break;
         default:
             geometry = "none"
     }

@@ -186,10 +186,10 @@ const addNewObject = (geometry) => {
             objectsList.push(engine.addCone(position, scale, color));
             break;
         case "torus":
-            // objectsList.push(engine.addBox(position, scale, color));
+            objectsList.push(engine.addTorus(position, scale, color));
             break;
         case "ring":
-            // objectsList.push(engine.addBox(position, scale, color));
+            objectsList.push(engine.addRing(position, scale, color));
             break;
         case "heart":
             // objectsList.push(engine.addBox(position, scale, color));

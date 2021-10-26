@@ -192,6 +192,30 @@ export default class XREngine {
 		this._root.add(cone)
 		return cone
 	}
+
+	addTorus(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+		const geometry = new THREE.TorusGeometry(size[0]/2, (size[0]/2)/3, 16, 100);
+		const material = new THREE.MeshLambertMaterial({
+			color: color,
+			side: THREE.DoubleSide
+		});
+		const torus = new THREE.Mesh( geometry, material );
+		torus.position.set(...position)
+		this._root.add(torus)
+		return torus
+	}
+
+	addRing(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+		const geometry = new THREE.RingGeometry(size[0]/2, size[0]/4, 32);
+		const material = new THREE.MeshLambertMaterial({
+			color: color,
+			side: THREE.DoubleSide
+		});
+		const ring = new THREE.Mesh( geometry, material );
+		ring.position.set(...position)
+		this._root.add(ring)
+		return ring
+	}
 	
 	addAxesHelper( position=[0,0,0], size=[1,1,1] ) {
 		let helper = this.createAxesHelper(size)
