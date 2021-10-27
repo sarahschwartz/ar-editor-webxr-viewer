@@ -70,7 +70,7 @@ const planeButton = document.getElementById('plane-button');
 const coneButton = document.getElementById('cone-button');
 const torusButton = document.getElementById('torus-button');
 const ringButton = document.getElementById('ring-button');
-const heartButton = document.getElementById('heart-button');
+// const heartButton = document.getElementById('heart-button');
 
 const scaleXOutput = document.getElementById("scaleX-slider-output");
 const scaleYOutput = document.getElementById("scaleY-slider-output");
@@ -207,9 +207,9 @@ const addScene = () => {
             case "ring":
                 objectsList.push(engine.addRing(position, scale, color));
                 break;
-            case "heart":
-                // objectsList.push(engine.addBox(position, scale, color));
-                break;
+            // case "heart":
+            //     objectsList.push(engine.addHeart(position, scale, color));
+            //     break;
             default:
         }
         setLastObject();
@@ -236,9 +236,9 @@ const addScene = () => {
     ringButton.addEventListener("click", function () {
         addNewObject("ring");
     })
-    heartButton.addEventListener("click", function () {
-        addNewObject("heart");
-    })
+    // heartButton.addEventListener("click", function () {
+    //     addNewObject("heart");
+    // })
         
 
     ////////////////////// Edit Tools///////////////////////////
