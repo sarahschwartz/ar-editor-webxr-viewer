@@ -6,16 +6,31 @@ function addScaleSliderOutput(scaleXSlider,
     scaleZOutput) {
     
     scaleXSlider.oninput = function() {
-        let xVal = this.value * 10
-        scaleXOutput.innerHTML = `X: ${xVal}cm`;
+        let xVal = parseInt(this.value * 10);
+        let units = "cm";
+        if (xVal > 99) {
+            xVal = xVal / 100;
+            units = "m"
+        }
+        scaleXOutput.innerHTML = `X: ${xVal}${units}`;
     }
     scaleYSlider.oninput = function() {
         let yVal = this.value * 10
-        scaleYOutput.innerHTML = `Y: ${yVal}cm`;
+        let units = "cm";
+        if (yVal > 99) {
+            yVal = yVal / 100;
+            units = "m"
+        }
+        scaleYOutput.innerHTML = `Y: ${yVal}${units}`;
     }
-    scaleZSlider.oninput = function() {
+    scaleZSlider.oninput = function () {
         let zVal = this.value * 10
-        scaleZOutput.innerHTML = `Z: ${zVal}cm`;
+        let units = "cm";
+        if (zVal > 99) {
+            zVal = zVal / 100;
+            units = "m"
+        }
+        scaleZOutput.innerHTML = `Z: ${zVal}${units}`;
     } 
   
 }
@@ -69,15 +84,30 @@ function addPosSliderOutput(posXSlider,
     
     posXSlider.oninput = function() {
         let xVal = parseInt(this.value * 100);
-        posXOutput.innerHTML = `X: ${xVal}cm`;
+        let units = "cm"
+        if (Math.abs(xVal) > 99) {
+            xVal = xVal / 100;
+            units = "m"
+        }
+        posXOutput.innerHTML = `X: ${xVal}${units}`;
     }
     posYSlider.oninput = function () {
         let yVal = parseInt(this.value * 100);
-        posYOutput.innerHTML = `Y: ${yVal}cm`;
+        let units = "cm"
+        if (Math.abs(yVal) > 99) {
+            yVal = yVal / 100;
+            units = "m"
+        }
+        posYOutput.innerHTML = `Y: ${yVal}${units}`;
     }
     posZSlider.oninput = function () {
         let zVal = parseInt(this.value * 100);
-        posZOutput.innerHTML = `Z: ${zVal}cm`;
+        let units = "cm"
+        if (Math.abs(zVal) > 99) {
+            zVal = zVal / 100;
+            units = "m"
+        }
+        posZOutput.innerHTML = `Z: ${zVal}${units}`;
     }
 }
 

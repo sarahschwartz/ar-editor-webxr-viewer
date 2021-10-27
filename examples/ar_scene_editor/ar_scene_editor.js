@@ -459,13 +459,35 @@ function addLeftToolbar() {
     // Edit button
     const editObject = () => {
         if (objectsList.length > 0) {
+            let units = "cm";
             // update sliders to current object
             scaleXSlider.value = currentObject.scale.x
             scaleYSlider.value = currentObject.scale.y
             scaleZSlider.value = currentObject.scale.z
-            scaleXOutput.innerHTML = `X: ${scaleXSlider.value * 10}cm`;
-            scaleYOutput.innerHTML = `Y: ${scaleYSlider.value * 10}cm`;
-            scaleZOutput.innerHTML = `Z: ${scaleZSlider.value * 10}cm`;
+            let scaleXVal = scaleXSlider.value * 10
+            let scaleYVal = scaleYSlider.value * 10
+            let scaleZVal = scaleZSlider.value * 10
+            if (Math.abs(scaleXVal) > 99) {
+                scaleXVal = scaleXVal / 100;
+                units = "m";
+            }
+            scaleXOutput.innerHTML = `X: ${scaleXVal}${units}`;
+
+            if (Math.abs(scaleYVal) > 99) {
+                scaleYVal = scaleYVal / 100;
+                units = "m";
+            } else {
+                units = "cm";
+            }
+            scaleYOutput.innerHTML = `Y: ${scaleYVal}${units}`;
+
+            if (Math.abs(scaleZVal) > 99) {
+                scaleZVal = scaleZVal / 100;
+                units = "m";
+            } else {
+                units = "cm";
+            }
+            scaleZOutput.innerHTML = `Z: ${scaleZVal}${units}`;
     
             rotateXSlider.value = currentObject.rotation.x
             rotateYSlider.value = currentObject.rotation.y
@@ -484,14 +506,39 @@ function addLeftToolbar() {
             posXSlider.value = currentObject.position.x
             posYSlider.value = currentObject.position.y
             posZSlider.value = currentObject.position.z
-            posXOutput.innerHTML = `X: ${parseInt(posXSlider.value * 100)}cm`
-            posYOutput.innerHTML = `Y: ${parseInt(posYSlider.value * 100)}cm`
-            posZOutput.innerHTML = `Z: ${parseInt(posZSlider.value * 100)}cm`
+            let posXVal = parseInt(posXSlider.value * 100);
+            let posYVal = parseInt(posYSlider.value * 100);
+            let posZVal = parseInt(posZSlider.value * 100);
+
+            if (Math.abs(posXVal) > 99) { 
+                posXVal = posXVal / 100;
+                units = "m"
+            } else {
+                units = "cm"
+            }
+            posXOutput.innerHTML = `X: ${posXVal}${units}`
+
+            if (Math.abs(posYVal) > 99) {
+                posYVal = posYVal / 100;
+                units = "m"
+            } else {
+                units = "cm"
+            }
+            posYOutput.innerHTML = `Y: ${posYVal}${units}`
+
+            if (Math.abs(posZVal) > 99) {
+                posZVal = posZVal / 100;
+                units = "m"
+            } else {
+                units = "cm"
+            }
+            posZOutput.innerHTML = `Z: ${posZVal}${units}`
             
-            toolbarInstructions.innerHTML = "Tap to select an edit tool";
-        } else {
-            toolbarInstructions.innerHTML = "(No objects in scene)";
+            // toolbarInstructions.innerHTML = "Tap to select an edit tool";
         }
+        // else {
+        //     toolbarInstructions.innerHTML = "(No objects in scene)";
+        // }
         changeLeftTool(editButton, editToolbar);
         switch(currentEditTool){
             case "scale":
