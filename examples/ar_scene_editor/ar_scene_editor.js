@@ -4,7 +4,7 @@ import * as vec3 from '../libs/gl-matrix/vec3.js';
 import XREngine from '../XREngine.js';
 
 import { initializeLight } from './jsm/light.js';
-import { editTools } from './jsm/edit-tools.js';
+import { addScaleSliderOutput, addRotateSliderOutput, addColorSliderOutput, addPosSliderOutput } from './jsm/edit-tools.js';
 import { updateScene } from './jsm/render.js';
 import getGeometry from './jsm/get-geometry.js';
 import {changeLeftTool, changeEditTool} from './jsm/change-tool.js';
@@ -149,114 +149,130 @@ const addScene = () => {
 
     addLeftToolbar();
 
-    editTools(scaleXSlider,
-    scaleYSlider,
-    scaleZSlider,
-    rotateXSlider,
-    rotateYSlider,
-    rotateZSlider,
-    redSlider, 
-    greenSlider, 
-    blueSlider,  
-    posXSlider,  
-    posYSlider,  
-    posZSlider);	
+    addScaleSliderOutput(scaleXSlider,
+        scaleYSlider,
+        scaleZSlider,
+        scaleXOutput,
+        scaleYOutput,
+        scaleZOutput);
 
-////////////////////// Add Tools///////////////////////////
+    addRotateSliderOutput(rotateXSlider,
+        rotateYSlider,
+        rotateZSlider,
+        rotateXOutput,
+        rotateYOutput,
+        rotateZOutput);
     
-const setLastObject = () => {
-    currentObjectIndex = engine._root.children.length - 1;
-}
+    addColorSliderOutput(redSlider,
+        greenSlider,
+        blueSlider,
+        redOutput,
+        greenOutput,
+        blueOutput);
     
-const addNewObject = (geometry) => {
-    switch (geometry) {
-        case "cube":
-            objectsList.push(engine.addBox(position, scale, color));
-            break;
-        case "sphere":
-            objectsList.push(engine.addSphere(position, scale, color));
-            break;
-        case "cylinder":
-            objectsList.push(engine.addCylinder(position, scale, color));
-            break;
-        case "plane":
-            objectsList.push(engine.addPlane(position, scale, color));
-            break;
-        case "cone":
-            objectsList.push(engine.addCone(position, scale, color));
-            break;
-        case "torus":
-            objectsList.push(engine.addTorus(position, scale, color));
-            break;
-        case "ring":
-            objectsList.push(engine.addRing(position, scale, color));
-            break;
-        case "heart":
-            // objectsList.push(engine.addBox(position, scale, color));
-            break;
-        default:
+    addPosSliderOutput(posXSlider,
+        posYSlider,
+        posZSlider,
+        posXOutput,
+        posYOutput,
+        posZOutput);
+
+
+    ////////////////////// Add Tools///////////////////////////
+        
+    const setLastObject = () => {
+        currentObjectIndex = engine._root.children.length - 1;
     }
-    setLastObject();
-}
+        
+    const addNewObject = (geometry) => {
+        switch (geometry) {
+            case "cube":
+                objectsList.push(engine.addBox(position, scale, color));
+                break;
+            case "sphere":
+                objectsList.push(engine.addSphere(position, scale, color));
+                break;
+            case "cylinder":
+                objectsList.push(engine.addCylinder(position, scale, color));
+                break;
+            case "plane":
+                objectsList.push(engine.addPlane(position, scale, color));
+                break;
+            case "cone":
+                objectsList.push(engine.addCone(position, scale, color));
+                break;
+            case "torus":
+                objectsList.push(engine.addTorus(position, scale, color));
+                break;
+            case "ring":
+                objectsList.push(engine.addRing(position, scale, color));
+                break;
+            case "heart":
+                // objectsList.push(engine.addBox(position, scale, color));
+                break;
+            default:
+        }
+        setLastObject();
+    }
 
-cubeButton.addEventListener("click", function () {
-    addNewObject("cube");
-})
-sphereButton.addEventListener("click", function () {
-    addNewObject("sphere");
-})
-cylinderButton.addEventListener("click", function () {
-    addNewObject("cylinder");
-})
-planeButton.addEventListener("click", function () {
-    addNewObject("plane");
-})
-coneButton.addEventListener("click", function () {
-    addNewObject("cone");
-})
-torusButton.addEventListener("click", function () {
-    addNewObject("torus");
-})
-ringButton.addEventListener("click", function () {
-    addNewObject("ring");
-})
-heartButton.addEventListener("click", function () {
-    addNewObject("heart");
-})
-    
+    cubeButton.addEventListener("click", function () {
+        addNewObject("cube");
+    })
+    sphereButton.addEventListener("click", function () {
+        addNewObject("sphere");
+    })
+    cylinderButton.addEventListener("click", function () {
+        addNewObject("cylinder");
+    })
+    planeButton.addEventListener("click", function () {
+        addNewObject("plane");
+    })
+    coneButton.addEventListener("click", function () {
+        addNewObject("cone");
+    })
+    torusButton.addEventListener("click", function () {
+        addNewObject("torus");
+    })
+    ringButton.addEventListener("click", function () {
+        addNewObject("ring");
+    })
+    heartButton.addEventListener("click", function () {
+        addNewObject("heart");
+    })
+        
 
-////////////////////// Edit Tools///////////////////////////
+    ////////////////////// Edit Tools///////////////////////////
 
-const scaleObject = () => {
-    removeSliders(currentEditTool);
-    currentEditTool = "scale";
-    changeEditTool(scaleButton, scaleSliders);
-}
+    const scaleObject = () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "scale";
+        changeEditTool(scaleButton, scaleSliders);
+    }
 
-const rotateObject = () => {
-    removeSliders(currentEditTool);
-    currentEditTool = "rotate";
-    changeEditTool(rotateButton, rotateSliders);
-}          
-
-
-const colorObject = () => {
-    removeSliders(currentEditTool);
-    currentEditTool = "color";
-    changeEditTool(colorButton, colorSliders);
-}
-
-const moveObject = () => {
-    removeSliders(currentEditTool);
-    currentEditTool = "move";
-    changeEditTool(moveButton, posSliders);
-}
+    const rotateObject = () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "rotate";
+        changeEditTool(rotateButton, rotateSliders);
+    }          
 
 
-scaleButton.addEventListener("click", scaleObject)
-rotateButton.addEventListener("click", rotateObject)
-colorButton.addEventListener("click", colorObject)
-moveButton.addEventListener("click", moveObject)
+    const colorObject = () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "color";
+        changeEditTool(colorButton, colorSliders);
+    }
+
+    const moveObject = () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "move";
+        changeEditTool(moveButton, posSliders);
+    }
+
+
+    scaleButton.addEventListener("click", scaleObject)
+    rotateButton.addEventListener("click", rotateObject)
+    colorButton.addEventListener("click", colorObject)
+    moveButton.addEventListener("click", moveObject)
 }
 
 ////////////////////// Initialize Immersive AR Session ///////////////////////////
@@ -447,16 +463,16 @@ function addLeftToolbar() {
             scaleXSlider.value = currentObject.scale.x
             scaleYSlider.value = currentObject.scale.y
             scaleZSlider.value = currentObject.scale.z
-            scaleXOutput.innerHTML = "X: " + scaleXSlider.value;
-            scaleYOutput.innerHTML = "Y: " + scaleYSlider.value;
-            scaleZOutput.innerHTML = "Z: " + scaleZSlider.value;
+            scaleXOutput.innerHTML = `X: ${scaleXSlider.value * 10}cm`;
+            scaleYOutput.innerHTML = `Y: ${scaleYSlider.value * 10}cm`;
+            scaleZOutput.innerHTML = `Z: ${scaleZSlider.value * 10}cm`;
     
             rotateXSlider.value = currentObject.rotation.x
             rotateYSlider.value = currentObject.rotation.y
             rotateZSlider.value = currentObject.rotation.z
-            rotateXOutput.innerHTML = "X: " + rotateXSlider.value;
-            rotateYOutput.innerHTML = "Y: " + rotateYSlider.value;
-            rotateZOutput.innerHTML = "Z: " + rotateZSlider.value;
+            rotateXOutput.innerHTML = `X: ${rotateXSlider.value}°`;
+            rotateYOutput.innerHTML = `Y: ${rotateYSlider.value}°`;
+            rotateZOutput.innerHTML = `Z: ${rotateZSlider.value}°`;
     
             redSlider.value = currentObject.material.color.r * 255
             greenSlider.value = currentObject.material.color.g * 255
@@ -468,9 +484,9 @@ function addLeftToolbar() {
             posXSlider.value = currentObject.position.x
             posYSlider.value = currentObject.position.y
             posZSlider.value = currentObject.position.z
-            posXOutput.innerHTML = "X: " + posXSlider.value;
-            posYOutput.innerHTML = "Y: " + posYSlider.value;
-            posZOutput.innerHTML = "Z: " + posZSlider.value;
+            posXOutput.innerHTML = `X: ${parseInt(posXSlider.value * 100)}cm`
+            posYOutput.innerHTML = `Y: ${parseInt(posYSlider.value * 100)}cm`
+            posZOutput.innerHTML = `Z: ${parseInt(posZSlider.value * 100)}cm`
             
             toolbarInstructions.innerHTML = "Tap to select an edit tool";
         } else {
