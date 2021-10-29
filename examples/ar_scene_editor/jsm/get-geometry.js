@@ -1,10 +1,10 @@
 export default function getGeometry(object){
     let geometry;
     switch (object.geometry.type) {
-        case "SphereBufferGeometry":
+        case "SphereGeometry":
             geometry = "Sphere";
             break;
-        case "BoxBufferGeometry":
+        case "BoxGeometry":
             geometry = "Cube";
             break;
         case "CylinderGeometry":
@@ -23,7 +23,7 @@ export default function getGeometry(object){
             geometry = "Ring";
             break;
         default:
-            geometry = "none"
+            geometry = object.geometry.type
     }
 
     return geometry;
