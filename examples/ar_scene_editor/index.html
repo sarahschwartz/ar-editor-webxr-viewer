@@ -60,7 +60,7 @@
 				</section>
 
 				<!--- Add Toolbar --->
-				<section id="add-toolbar" style="display: none;">
+				<!-- <section id="add-toolbar" style="display: none;">
 					<div class="toolbar-button-container">
 						<button class="menu-back-button">
 							<i class="far fa-arrow-alt-circle-left fa-2x" id="menu-back-button"></i>
@@ -76,8 +76,9 @@
 						</div>
 					</div>
 
-				</section>
+				</section> -->
 
+				<!--- Add Shapes Toolbar --->
 				<section id="add-shape-toolbar" style="display: none;">
 
 					<div class="toolbar-button-container">
@@ -156,6 +157,7 @@
 
 				</section>
 
+				<!--- Edit Toolbar --->
 				<section style="display: none;" id="edit-toolbar">
 
 					<div class="toolbar-button-container">
@@ -170,6 +172,15 @@
 						</button>
 						<div class="button-description">
 							Scale
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="move-button">
+							<i class="fas fa-arrows-alt"></i>
+						</button>
+						<div class="button-description">
+							Move
 						</div>
 					</div>
 
@@ -192,16 +203,17 @@
 					</div>
 
 					<div class="toolbar-button-container">
-						<button class="toolbar-button" id="move-button">
-							<i class="fas fa-arrows-alt"></i>
+						<button class="toolbar-button" id="texture-button">
+							<i class="fas fa-palette"></i>
 						</button>
 						<div class="button-description">
-							Move
+							Texture
 						</div>
 					</div>
 
 				</section>
 
+				<!--- Select/Delete Toolbar --->
 				<section id="select-toolbar" style="display: none;">
 					<div class="toolbar-button-container">
 						<button class="menu-back-button">
@@ -210,10 +222,34 @@
 					</div>
 					<div class="objects-container"></div>
 				</section>	
+
+					<!--- Texture Toolbar --->
+			<section id="texture-toolbar" style="display: none;">
+				<div class="toolbar-button-container">
+					<button class="menu-back-button">
+						<i class="far fa-arrow-alt-circle-left fa-2x" id="menu-back-button"></i>
+					</button>
+				</div>
+
+				<div class="toolbar-button-container">
+					<button class="toolbar-button" id="remove-texture-button"></button>
+					<div class="button-description">
+						None
+					</div>
+				</div>
+				
+				<div class="toolbar-button-container">
+					<button class="toolbar-button" id="texture1-button"></button>
+					<div class="button-description">
+						Texture1
+					</div>
+				</div>
+				
+			</section>	
 	
 
 			</section>
-
+			<!--- Sliders for Edit Toolbar --->
 			<section id="scale-sliders" style="display: none;" >
 				<div id="scaleX-slider-output" class="edit-tool-output">X: </div>
 				<div class="slider-container">
@@ -274,6 +310,9 @@
 				</div>
 			</section>
 
+		
+
+			<!--- Debug Window --->
 			<section id="debug" style="display: none;">Debug</section>
 			<!-- <section id="debug">Debug</section> -->
 

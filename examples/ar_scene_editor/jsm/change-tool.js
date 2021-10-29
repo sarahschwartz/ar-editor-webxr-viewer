@@ -20,7 +20,9 @@ function changeEditTool(button, sliders) {
     let activeTool = document.querySelector(".active-edit")
     activeTool.classList.remove("active-edit");
     button.classList.add("active-edit");
-    sliders.style.display = "grid";
+    if (sliders !== "none") {
+        sliders.style.display = "grid";
+    }
 }
 
 export { changeLeftTool, changeEditTool }

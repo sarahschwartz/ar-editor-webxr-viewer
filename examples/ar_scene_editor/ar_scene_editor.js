@@ -26,11 +26,13 @@ const selectButton = document.getElementById('select-button');
 
 // Bottom Toolbar
 const menuBackButtons = document.querySelectorAll('.menu-back-button')
-const toolbarInstructions = document.getElementById('toolbar-instructions');
 const mainToolbar = document.getElementById('main-toolbar');
 const addShapeToolbar = document.getElementById('add-shape-toolbar');
 const editToolbar = document.getElementById('edit-toolbar');
 const selectToolbar = document.getElementById('select-toolbar');
+const textureToolbar = document.getElementById('texture-toolbar');
+// this is hidden but haven't taken it out yet
+const toolbarInstructions = document.getElementById('toolbar-instructions');
 
 // Scale Sliders
 const scaleSliders = document.getElementById("scale-sliders");
@@ -61,8 +63,9 @@ const scaleButton = document.getElementById('scale-button');
 const rotateButton = document.getElementById('rotate-button');
 const colorButton = document.getElementById('color-button');
 const moveButton = document.getElementById('move-button');
+const textureButton = document.getElementById('texture-button');
 
-//Add Tools
+// Add Shape Tools
 const cubeButton = document.getElementById('cube-button');
 const sphereButton = document.getElementById('sphere-button');
 const cylinderButton = document.getElementById('cylinder-button');
@@ -110,7 +113,11 @@ let currentEditTool = "scale";
     
 let objectsList = [];
 
-let texture;
+// texture buttons
+const removeTextureButton = document.getElementById('remove-texture-button');
+const texture1Button = document.getElementById('texture1-button');
+
+let texture = null;
 
 let color = new THREE.Color(redVal, greenVal, blueVal);
 let position = [posX, posY, posZ];
@@ -271,11 +278,46 @@ const addScene = () => {
         changeEditTool(moveButton, posSliders);
     }
 
+    const textureObject = () => {
+        removeSliders(currentEditTool);
+        // currentEditTool = "texture";
+        // changeEditTool(textureButton, "none");
+        changeLeftTool("none", textureToolbar);
+        if (currentObject.material.map === null) {
+            debug.innerHTML = `No texture`
+            
+        } else {
+            // debug.innerHTML = `Current Object Material Map: ${JSON.stringify(currentObject.material.map)}`
+            debug.innerHTML = `Current Object Material Map: ${currentObject.material.map.name}`
+            
+        }
+    }
+
 
     scaleButton.addEventListener("click", scaleObject)
     rotateButton.addEventListener("click", rotateObject)
     colorButton.addEventListener("click", colorObject)
     moveButton.addEventListener("click", moveObject)
+    textureButton.addEventListener("click", textureObject)
+
+    const removeTexutre = () => {
+        let material = new THREE.MeshLambertMaterial({
+            color: color,
+            side: THREE.DoubleSide
+        })
+        currentObject.material = material;
+    }
+    removeTextureButton.addEventListener("click", removeTexutre)
+
+
+    const addTexture_1 = () => {
+        let material = engine.getTextureMaterial()
+        currentObject.material = material;
+    }
+    texture1Button.addEventListener("click", addTexture_1)
+
+
+    
 }
 
 ////////////////////// Initialize Immersive AR Session ///////////////////////////

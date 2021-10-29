@@ -131,20 +131,12 @@ export default class XREngine {
 		this._root.add(mesh)
 		return mesh
 	}
-
+																// add texture arg here
 	addBox(position = [0, 0, 0], size = [0.1, 0.1, 0.1], color = 0x00FF00) {
-		
-		// const texture = new THREE.TextureLoader().load('/textures/Park2/posx.jpg')
-		const texture = new THREE.TextureLoader().load('../assets/textures/random-texture.jpg')
-	  
-		// const material = new THREE.MeshPhongMaterial({ map: texture });
 
 		const box = new THREE.Mesh(
 			new THREE.BoxBufferGeometry(...size),
-			new THREE.MeshPhongMaterial({
-				map: texture,
-				side: THREE.DoubleSide
-			})
+			this.getTextureMaterial()
 		)
 		// const box = new THREE.Mesh(
 		// 	new THREE.BoxBufferGeometry(...size),
@@ -158,18 +150,18 @@ export default class XREngine {
 		return box
 	}
 
-	addTexturedBox(position = [0, 0, 0], size = [0.1, 0.1, 0.1]) {
-		const texture = new THREE.TextureLoader().load('./assets/textures/random-texture.jpg')
-		const box = new THREE.Mesh(
-			new THREE.BoxBufferGeometry(...size),
-			new MeshStandardMaterial({
-				map: texture,
-			  })
-		)
-		box.position.set(...position)
-		this._root.add(box)
-		return box
-	}
+	// addTexturedBox(position = [0, 0, 0], size = [0.1, 0.1, 0.1]) {
+	// 	const texture = new THREE.TextureLoader().load('./assets/textures/random-texture.jpg')
+	// 	const box = new THREE.Mesh(
+	// 		new THREE.BoxBufferGeometry(...size),
+	// 		new MeshStandardMaterial({
+	// 			map: texture,
+	// 		  })
+	// 	)
+	// 	box.position.set(...position)
+	// 	this._root.add(box)
+	// 	return box
+	// }
 
 	addCylinder(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
 		const geometry = new THREE.CylinderGeometry(size[0], size[2], size[1], 20 );
@@ -233,9 +225,14 @@ export default class XREngine {
 
 	getTextureMaterial() {
 
-		const texture = new THREE.TextureLoader().load('/assets/textures/random-texture.jpg')
+		const texture = new THREE.TextureLoader().load('../assets/textures/random-texture.jpg')
 	  
-		const material = new THREE.MeshPhongMaterial({ map: texture });
+		const material = new THREE.MeshPhongMaterial({
+			map: texture,
+			side: THREE.DoubleSide
+		})
+
+		material.map.name = "Texture1"
 	  
 		return material;
 	  }
