@@ -28,7 +28,7 @@ const selectButton = document.getElementById('select-button');
 const menuBackButtons = document.querySelectorAll('.menu-back-button')
 const toolbarInstructions = document.getElementById('toolbar-instructions');
 const mainToolbar = document.getElementById('main-toolbar');
-const addToolbar = document.getElementById('add-toolbar');
+const addShapeToolbar = document.getElementById('add-shape-toolbar');
 const editToolbar = document.getElementById('edit-toolbar');
 const selectToolbar = document.getElementById('select-toolbar');
 
@@ -110,6 +110,7 @@ let currentEditTool = "scale";
     
 let objectsList = [];
 
+let texture;
 
 let color = new THREE.Color(redVal, greenVal, blueVal);
 let position = [posX, posY, posZ];
@@ -144,8 +145,10 @@ const removeSliders = (editTool) => {
 ////////////////////// Start of AR Scene ///////////////////////////
 // Add light and toolbar functionality
 const addScene = () => {
+    // texture = engine.getTextureMaterial()
 
     initializeLight(engine);
+    // engine.addTexturedBox(position, scale)
 
     addLeftToolbar();
 
@@ -391,6 +394,8 @@ const handleAnimationFrame = (t, frame) => {
 
     if (objectsList.length > 0) {
         currentObject = engine._root.children[currentObjectIndex];
+
+        // currentObject.material = engine.getTextureMaterial()
         // debug.innerHTML = `Id: ${currentObject.id}, Geometry: ${currentObject.geometry.type}, COIndex: ${currentObjectIndex}`
         
         //render.js
@@ -451,7 +456,7 @@ function addLeftToolbar() {
     // Add button
     const addObject = () => {
         removeSliders(currentEditTool);
-        changeLeftTool(addButton, addToolbar);
+        changeLeftTool(addButton, addShapeToolbar);
         // toolbarInstructions.innerHTML = "Tap an object to add it to the scene";
     }
     addButton.addEventListener("click", addObject)

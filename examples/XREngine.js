@@ -132,20 +132,34 @@ export default class XREngine {
 		return mesh
 	}
 
-	addBox(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+	addBox(position = [0, 0, 0], size = [0.1, 0.1, 0.1], color = 0x00FF00) {
+		
+		// const texture = new THREE.TextureLoader().load('/textures/Park2/posx.jpg')
+		const texture = new THREE.TextureLoader().load('../assets/textures/random-texture.jpg')
+	  
+		// const material = new THREE.MeshPhongMaterial({ map: texture });
+
 		const box = new THREE.Mesh(
 			new THREE.BoxBufferGeometry(...size),
-			new THREE.MeshLambertMaterial({
-				color: color,
+			new THREE.MeshPhongMaterial({
+				map: texture,
 				side: THREE.DoubleSide
 			})
 		)
+		// const box = new THREE.Mesh(
+		// 	new THREE.BoxBufferGeometry(...size),
+		// 	new THREE.MeshLambertMaterial({
+		// 		color: color,
+		// 		side: THREE.DoubleSide
+		// 	})
+		// )
 		box.position.set(...position)
 		this._root.add(box)
 		return box
 	}
 
-	addTexturedBox(position=[0,0,0], size=[0.1, 0.1, 0.1], texture){
+	addTexturedBox(position = [0, 0, 0], size = [0.1, 0.1, 0.1]) {
+		const texture = new THREE.TextureLoader().load('./assets/textures/random-texture.jpg')
 		const box = new THREE.Mesh(
 			new THREE.BoxBufferGeometry(...size),
 			new MeshStandardMaterial({
@@ -217,27 +231,14 @@ export default class XREngine {
 		return ring
 	}
 
-	addHeart(position = [0, 0, 0], color = 0x00FF00) {
-		const x = 0, y = 0;
-		const heartShape = new THREE.Shape();
-		heartShape.moveTo( x + 5, y + 5 );
-		heartShape.bezierCurveTo( x + 5, y + 5, x + 4, y, x, y );
-		heartShape.bezierCurveTo( x - 6, y, x - 6, y + 7,x - 6, y + 7 );
-		heartShape.bezierCurveTo( x - 6, y + 11, x - 3, y + 15.4, x + 5, y + 19 );
-		heartShape.bezierCurveTo( x + 12, y + 15.4, x + 16, y + 11, x + 16, y + 7 );
-		heartShape.bezierCurveTo( x + 16, y + 7, x + 16, y, x + 10, y );
-		heartShape.bezierCurveTo( x + 7, y, x + 5, y + 5, x + 5, y + 5 );
+	getTextureMaterial() {
 
-		const geometry = new THREE.ShapeGeometry( heartShape );
-		const material = new THREE.MeshLambertMaterial({
-			color: color,
-			side: THREE.DoubleSide
-		});
-		const heart = new THREE.Mesh( geometry, material );
-		heart.position.set(...position)
-		this._root.add(heart)
-		return heart
-	}
+		const texture = new THREE.TextureLoader().load('/assets/textures/random-texture.jpg')
+	  
+		const material = new THREE.MeshPhongMaterial({ map: texture });
+	  
+		return material;
+	  }
 	
 	addAxesHelper( position=[0,0,0], size=[1,1,1] ) {
 		let helper = this.createAxesHelper(size)

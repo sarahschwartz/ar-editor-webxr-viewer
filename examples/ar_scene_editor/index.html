@@ -3,7 +3,7 @@
 		<title>Simple AR example</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<script src="../libs/three/three.min.js"></script>
+		<script src="../libs/three-2021/build/three.min.js"></script>
 		<link rel="stylesheet" href="../common.css"/>
 		<link rel="stylesheet" href="./dom.css"/>
 		<script src="https://kit.fontawesome.com/97b3f6f004.js" crossorigin="anonymous"></script>
@@ -61,6 +61,24 @@
 
 				<!--- Add Toolbar --->
 				<section id="add-toolbar" style="display: none;">
+					<div class="toolbar-button-container">
+						<button class="menu-back-button">
+							<i class="far fa-arrow-alt-circle-left fa-2x" id="menu-back-button"></i>
+						</button>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="shapes-button">
+							<i class="fas fa-cube fa-lg"></i>
+						</button>
+						<div class="button-description">
+							Shapes
+						</div>
+					</div>
+
+				</section>
+
+				<section id="add-shape-toolbar" style="display: none;">
 
 					<div class="toolbar-button-container">
 						<button class="menu-back-button">
