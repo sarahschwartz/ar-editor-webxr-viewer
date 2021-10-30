@@ -9,6 +9,7 @@ import { updateScene } from './jsm/render.js';
 import getGeometry from './jsm/get-geometry.js';
 import {changeLeftTool, changeEditTool} from './jsm/change-tool.js';
 import { newDeleteButton, newObjectDiv } from './jsm/object-list.js';
+import { getTexture_1, getWhiteMarbleTexture } from './jsm/textures.js';
 
 let session = null;
 let localReferenceSpace = null;
@@ -116,8 +117,7 @@ let objectsList = [];
 // texture buttons
 const removeTextureButton = document.getElementById('remove-texture-button');
 const texture1Button = document.getElementById('texture1-button');
-
-let texture = null;
+const whiteMarbleTextureButton = document.getElementById('white-marble-texture-button');
 
 let color = new THREE.Color(redVal, greenVal, blueVal);
 let position = [posX, posY, posZ];
@@ -152,7 +152,6 @@ const removeSliders = (editTool) => {
 ////////////////////// Start of AR Scene ///////////////////////////
 // Add light and toolbar functionality
 const addScene = () => {
-    // texture = engine.getTextureMaterial()
 
     initializeLight(engine);
     // engine.addTexturedBox(position, scale)
@@ -311,10 +310,17 @@ const addScene = () => {
 
 
     const addTexture_1 = () => {
-        let material = engine.getTextureMaterial()
+        let material = getTexture_1()
         currentObject.material = material;
     }
     texture1Button.addEventListener("click", addTexture_1)
+
+
+    const addWhiteMarbleTexture = () => {
+        let material = getWhiteMarbleTexture()
+        currentObject.material = material;
+    }
+    whiteMarbleTextureButton.addEventListener("click", addWhiteMarbleTexture)
 
 
     

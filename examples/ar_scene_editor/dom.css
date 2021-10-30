@@ -206,3 +206,7 @@
 #texture1-button{
     background-image: url('../assets/textures/random-texture.jpg');
 }
+
+#white-marble-texture-button{
+    background-image: url('../assets/textures/white-marble-texture/baseColor.jpg');
+}

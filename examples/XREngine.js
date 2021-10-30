@@ -141,20 +141,7 @@ export default class XREngine {
 		this._root.add(box)
 		return box
 	}
-
-	// addTexturedBox(position = [0, 0, 0], size = [0.1, 0.1, 0.1]) {
-	// 	const texture = new THREE.TextureLoader().load('./assets/textures/random-texture.jpg')
-	// 	const box = new THREE.Mesh(
-	// 		new THREE.BoxBufferGeometry(...size),
-	// 		new MeshStandardMaterial({
-	// 			map: texture,
-	// 		  })
-	// 	)
-	// 	box.position.set(...position)
-	// 	this._root.add(box)
-	// 	return box
-	// }
-
+	
 	addCylinder(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
 		const geometry = new THREE.CylinderGeometry(size[0], size[2], size[1], 20 );
 		const material = new THREE.MeshLambertMaterial({
@@ -214,20 +201,6 @@ export default class XREngine {
 		this._root.add(ring)
 		return ring
 	}
-
-	getTextureMaterial() {
-
-		const texture = new THREE.TextureLoader().load('../assets/textures/random-texture.jpg')
-	  
-		const material = new THREE.MeshPhongMaterial({
-			map: texture,
-			side: THREE.DoubleSide
-		})
-
-		material.map.name = "Texture1"
-	  
-		return material;
-	  }
 	
 	addAxesHelper( position=[0,0,0], size=[1,1,1] ) {
 		let helper = this.createAxesHelper(size)
