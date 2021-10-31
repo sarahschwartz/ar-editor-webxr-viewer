@@ -126,6 +126,7 @@ const patternTextureButton = document.getElementById('pattern-texture-button');
 
 // material texture buttons
 const whiteMarbleTextureButton = document.getElementById('white-marble-texture-button');
+const barkTextureButton = document.getElementById('bark-texture-button');
 // pattern texture buttons
 const texture1Button = document.getElementById('texture1-button');
 const texture2Button = document.getElementById('texture2-button');
@@ -368,6 +369,13 @@ const addScene = () => {
         currentObject.material = material;
     }
     whiteMarbleTextureButton.addEventListener("click", addWhiteMarbleTexture)
+
+
+    const addBarkTexture = () => {
+        let material =  materialTextures.getBarkTexture()
+        currentObject.material = material;
+    }
+    barkTextureButton.addEventListener("click", addBarkTexture)
 
 
     
