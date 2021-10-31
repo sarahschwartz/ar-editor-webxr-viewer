@@ -203,10 +203,42 @@
     height: 90%;
 }
 
-#texture1-button{
-    background-image: url('../assets/textures/random-texture.jpg');
+#white-marble-texture-button{
+    background-image: url('../assets/textures/material-textures/white-marble-texture/baseColor.jpg');
+    background-size: 200%;
 }
 
-#white-marble-texture-button{
-    background-image: url('../assets/textures/white-marble-texture/baseColor.jpg');
+#bark-texture-button{
+    background-image: url('../assets/textures/material-textures/bark/bark_brown_02_diff_4k.jpg');
+    background-size: 200%;
+}
+
+#texture1-button{
+    background-image: url('../assets/textures/color-textures/Texture_1.jpg');
+    background-size: 200%;
+}
+
+#texture2-button{
+    background-image: url('../assets/textures/color-textures/Texture_2.jpg');
+    background-size: 200%;
+}
+
+#texture3-button{
+    background-image: url('../assets/textures/color-textures/Texture_3.jpg');
+    background-size: 200%;
+}
+
+#texture4-button{
+    background-image: url('../assets/textures/color-textures/Texture_4.jpg');
+    background-size: 200%;
+}
+
+#texture5-button{
+    background-image: url('../assets/textures/color-textures/Texture_5.jpg');
+    background-size: 200%;
+}
+
+#texture6-button{
+    background-image: url('../assets/textures/color-textures/Texture_6.jpg');
+    background-size: 200%;
 }
