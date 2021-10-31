@@ -128,6 +128,11 @@ const patternTextureButton = document.getElementById('pattern-texture-button');
 const whiteMarbleTextureButton = document.getElementById('white-marble-texture-button');
 // pattern texture buttons
 const texture1Button = document.getElementById('texture1-button');
+const texture2Button = document.getElementById('texture2-button');
+const texture3Button = document.getElementById('texture3-button');
+const texture4Button = document.getElementById('texture4-button');
+const texture5Button = document.getElementById('texture5-button');
+const texture6Button = document.getElementById('texture6-button');
 
 let color = new THREE.Color(redVal, greenVal, blueVal);
 let position = [posX, posY, posZ];
@@ -289,17 +294,7 @@ const addScene = () => {
 
     const textureObject = () => {
         removeSliders(currentEditTool);
-        // currentEditTool = "texture";
-        // changeEditTool(textureButton, "none");
         changeLeftTool("none", textureToolbar);
-        // if (currentObject.material.map === null) {
-        //     debug.innerHTML = `No texture`
-            
-        // } else {
-        //     // debug.innerHTML = `Current Object Material Map: ${JSON.stringify(currentObject.material.map)}`
-        //     debug.innerHTML = `Current Object Material Map: ${currentObject.material.map.name}`
-            
-        // }
     }
 
     const showMaterials = () => {
@@ -336,6 +331,36 @@ const addScene = () => {
         currentObject.material = material;
     }
     texture1Button.addEventListener("click", addTexture_1)
+
+    const addTexture_2 = () => {
+        let material = patternTextures.getTexture_2()
+        currentObject.material = material;
+    }
+    texture2Button.addEventListener("click", addTexture_2)
+
+    const addTexture_3 = () => {
+        let material = patternTextures.getTexture_3()
+        currentObject.material = material;
+    }
+    texture3Button.addEventListener("click", addTexture_3)
+
+    const addTexture_4 = () => {
+        let material = patternTextures.getTexture_4()
+        currentObject.material = material;
+    }
+    texture4Button.addEventListener("click", addTexture_4)
+
+    const addTexture_5 = () => {
+        let material = patternTextures.getTexture_5()
+        currentObject.material = material;
+    }
+    texture5Button.addEventListener("click", addTexture_5)
+
+    const addTexture_6 = () => {
+        let material = patternTextures.getTexture_6()
+        currentObject.material = material;
+    }
+    texture6Button.addEventListener("click", addTexture_6)
 
 
     const addWhiteMarbleTexture = () => {
