@@ -9,7 +9,8 @@ import { updateScene } from './jsm/render.js';
 import getGeometry from './jsm/get-geometry.js';
 import {changeLeftTool, changeEditTool} from './jsm/change-tool.js';
 import { newDeleteButton, newObjectDiv } from './jsm/object-list.js';
-import { getTexture_1, getWhiteMarbleTexture } from './jsm/textures.js';
+import { patternTextures } from './jsm/pattern-textures.js';
+import { materialTextures } from './jsm/materials.js';
 
 let session = null;
 let localReferenceSpace = null;
@@ -32,6 +33,10 @@ const addShapeToolbar = document.getElementById('add-shape-toolbar');
 const editToolbar = document.getElementById('edit-toolbar');
 const selectToolbar = document.getElementById('select-toolbar');
 const textureToolbar = document.getElementById('texture-toolbar');
+const materialsToolbar = document.getElementById('materials-toolbar');
+const patternTexturesToolbar = document.getElementById('pattern-textures-toolbar');
+
+
 // this is hidden but haven't taken it out yet
 const toolbarInstructions = document.getElementById('toolbar-instructions');
 
@@ -116,8 +121,13 @@ let objectsList = [];
 
 // texture buttons
 const removeTextureButton = document.getElementById('remove-texture-button');
-const texture1Button = document.getElementById('texture1-button');
+const materialsButton = document.getElementById('materials-button');
+const patternTextureButton = document.getElementById('pattern-texture-button');
+
+// material texture buttons
 const whiteMarbleTextureButton = document.getElementById('white-marble-texture-button');
+// pattern texture buttons
+const texture1Button = document.getElementById('texture1-button');
 
 let color = new THREE.Color(redVal, greenVal, blueVal);
 let position = [posX, posY, posZ];
@@ -282,14 +292,24 @@ const addScene = () => {
         // currentEditTool = "texture";
         // changeEditTool(textureButton, "none");
         changeLeftTool("none", textureToolbar);
-        if (currentObject.material.map === null) {
-            debug.innerHTML = `No texture`
+        // if (currentObject.material.map === null) {
+        //     debug.innerHTML = `No texture`
             
-        } else {
-            // debug.innerHTML = `Current Object Material Map: ${JSON.stringify(currentObject.material.map)}`
-            debug.innerHTML = `Current Object Material Map: ${currentObject.material.map.name}`
+        // } else {
+        //     // debug.innerHTML = `Current Object Material Map: ${JSON.stringify(currentObject.material.map)}`
+        //     debug.innerHTML = `Current Object Material Map: ${currentObject.material.map.name}`
             
-        }
+        // }
+    }
+
+    const showMaterials = () => {
+        removeSliders(currentEditTool);
+        changeLeftTool("none", materialsToolbar)
+    }
+
+    const showPatternTextures = () => {
+        removeSliders(currentEditTool);
+        changeLeftTool("none", patternTexturesToolbar)
     }
 
 
@@ -298,9 +318,11 @@ const addScene = () => {
     colorButton.addEventListener("click", colorObject)
     moveButton.addEventListener("click", moveObject)
     textureButton.addEventListener("click", textureObject)
+    materialsButton.addEventListener("click", showMaterials)
+    patternTextureButton.addEventListener("click", showPatternTextures)
 
     const removeTexutre = () => {
-        let material = new THREE.MeshLambertMaterial({
+        let material = new THREE.MeshStandardMaterial({
             color: color,
             side: THREE.DoubleSide
         })
@@ -310,14 +332,14 @@ const addScene = () => {
 
 
     const addTexture_1 = () => {
-        let material = getTexture_1()
+        let material = patternTextures.getTexture_1()
         currentObject.material = material;
     }
     texture1Button.addEventListener("click", addTexture_1)
 
 
     const addWhiteMarbleTexture = () => {
-        let material = getWhiteMarbleTexture()
+        let material =  materialTextures.getWhiteMarbleTexture()
         currentObject.material = material;
     }
     whiteMarbleTextureButton.addEventListener("click", addWhiteMarbleTexture)

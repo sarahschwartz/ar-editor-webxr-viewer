@@ -108,7 +108,7 @@ export default class XREngine {
 	addSphere(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
 		const sphere = new THREE.Mesh(
 			new THREE.SphereBufferGeometry(size[0], 32, 16),
-			new THREE.MeshLambertMaterial({
+			new THREE.MeshStandardMaterial({
 				color: color,
 				side: THREE.DoubleSide
 			})
@@ -120,7 +120,7 @@ export default class XREngine {
 
 	addTeapot(position=[0,0,0], size=0.1, color=0x00FF00){
 		const geometry = new THREE.TeapotBufferGeometry(0.1)
-		const material = new THREE.MeshLambertMaterial({ 
+		const material = new THREE.MeshStandardMaterial({ 
 			color: color,
 			side: THREE.DoubleSide })
 		const mesh = new THREE.Mesh(geometry, material)
@@ -132,7 +132,7 @@ export default class XREngine {
 	addBox(position = [0, 0, 0], size = [0.1, 0.1, 0.1], color = 0x00FF00) {
 		const box = new THREE.Mesh(
 			new THREE.BoxBufferGeometry(...size),
-			new THREE.MeshLambertMaterial({
+			new THREE.MeshStandardMaterial({
 				color: color,
 				side: THREE.DoubleSide
 			})
@@ -144,7 +144,7 @@ export default class XREngine {
 	
 	addCylinder(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
 		const geometry = new THREE.CylinderGeometry(size[0], size[2], size[1], 20 );
-		const material = new THREE.MeshLambertMaterial({
+		const material = new THREE.MeshStandardMaterial({
 			color: color,
 			side: THREE.DoubleSide
 		});
@@ -156,7 +156,7 @@ export default class XREngine {
 
 	addPlane(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
 		const geometry = new THREE.PlaneGeometry(size[0], size[2]);
-		const material = new THREE.MeshLambertMaterial({
+		const material = new THREE.MeshStandardMaterial({
 			color: color,
 			side: THREE.DoubleSide
 		});
@@ -168,7 +168,7 @@ export default class XREngine {
 
 	addCone(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
 		const geometry = new THREE.ConeGeometry(size[0]/2, size[0], 20);
-		const material = new THREE.MeshLambertMaterial({
+		const material = new THREE.MeshStandardMaterial({
 			color: color,
 			side: THREE.DoubleSide
 		});
@@ -180,7 +180,7 @@ export default class XREngine {
 
 	addTorus(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
 		const geometry = new THREE.TorusGeometry(size[0]/2, (size[0]/2)/3, 16, 100);
-		const material = new THREE.MeshLambertMaterial({
+		const material = new THREE.MeshStandardMaterial({
 			color: color,
 			side: THREE.DoubleSide
 		});
