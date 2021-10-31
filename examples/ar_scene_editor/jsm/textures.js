@@ -17,7 +17,6 @@ function getTexture_1() {
 function getWhiteMarbleTexture() {
     const baseTexture = loader.load('../assets/textures/white-marble-texture/baseColor.jpg')
     const glossTexture = loader.load('../assets/textures/white-marble-texture/glossiness.jpg')
-    const heightTexture = loader.load('../assets/textures/white-marble-texture/height.jpg')
     const normalTexture = loader.load('../assets/textures/white-marble-texture/normal.jpg')
     const roughTexture = loader.load('../assets/textures/white-marble-texture/roughness.jpg')
     const specularTexture = loader.load('../assets/textures/white-marble-texture/specular.jpg')
