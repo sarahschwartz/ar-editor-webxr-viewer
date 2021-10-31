@@ -1,4 +1,4 @@
-function changeLeftTool(button, toolbar) {
+function changeMainTool(button, toolbar) {
     if (document.querySelector(".active-toolbar")) {
         let activeToolbar = document.querySelector(".active-toolbar")
         activeToolbar.classList.remove("active-toolbar");
@@ -25,4 +25,4 @@ function changeEditTool(button, sliders) {
     }
 }
 
-export { changeLeftTool, changeEditTool }
+export { changeMainTool, changeEditTool }

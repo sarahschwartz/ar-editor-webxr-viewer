@@ -7,7 +7,7 @@ import { initializeLight } from './jsm/light.js';
 import { addScaleSliderOutput, addRotateSliderOutput, addColorSliderOutput, addPosSliderOutput } from './jsm/edit-tools.js';
 import { updateScene } from './jsm/render.js';
 import getGeometry from './jsm/get-geometry.js';
-import {changeLeftTool, changeEditTool} from './jsm/change-tool.js';
+import { changeMainTool, changeEditTool } from './jsm/change-tool.js';
 import { newDeleteButton, newObjectDiv } from './jsm/object-list.js';
 import { patternTextures } from './jsm/pattern-textures.js';
 import { materialTextures } from './jsm/materials.js';
@@ -20,7 +20,7 @@ let engine = null;
 // Start AR session button
 const goButton = document.getElementById('go-button');
 
-// Left Toolbar
+// Main Toolbar
 const endButton = document.getElementById('end-session');
 const addButton = document.getElementById('add-button');
 const editButton = document.getElementById('edit-button');
@@ -170,10 +170,7 @@ const removeSliders = (editTool) => {
 const addScene = () => {
 
     initializeLight(engine);
-    // engine.addTexturedBox(position, scale)
-
     addLeftToolbar();
-
     addScaleSliderOutput(scaleXSlider,
         scaleYSlider,
         scaleZSlider,
@@ -295,17 +292,17 @@ const addScene = () => {
 
     const textureObject = () => {
         removeSliders(currentEditTool);
-        changeLeftTool("none", textureToolbar);
+        changeMainTool("none", textureToolbar);
     }
 
     const showMaterials = () => {
         removeSliders(currentEditTool);
-        changeLeftTool("none", materialsToolbar)
+        changeMainTool("none", materialsToolbar)
     }
 
     const showPatternTextures = () => {
         removeSliders(currentEditTool);
-        changeLeftTool("none", patternTexturesToolbar)
+        changeMainTool("none", patternTexturesToolbar)
     }
 
 
@@ -543,7 +540,7 @@ function addLeftToolbar() {
     // Menu back buttons
     const menuBack = () => {
         removeSliders(currentEditTool);
-        changeLeftTool("none", mainToolbar);
+        changeMainTool("none", mainToolbar);
     }
 
     menuBackButtons.forEach((el) => {
@@ -559,7 +556,7 @@ function addLeftToolbar() {
     // Add button
     const addObject = () => {
         removeSliders(currentEditTool);
-        changeLeftTool(addButton, addShapeToolbar);
+        changeMainTool(addButton, addShapeToolbar);
         // toolbarInstructions.innerHTML = "Tap an object to add it to the scene";
     }
     addButton.addEventListener("click", addObject)
@@ -647,7 +644,7 @@ function addLeftToolbar() {
         // else {
         //     toolbarInstructions.innerHTML = "(No objects in scene)";
         // }
-        changeLeftTool(editButton, editToolbar);
+        changeMainTool(editButton, editToolbar);
         switch(currentEditTool){
             case "scale":
                 scaleSliders.style.display = "grid";
@@ -761,7 +758,7 @@ function addLeftToolbar() {
     // Select / Delete button
     const selectOrDeleteObject = () => {
         removeSliders(currentEditTool);
-        changeLeftTool(selectButton, selectToolbar);
+        changeMainTool(selectButton, selectToolbar);
         updateObjectsList();
     }
     selectButton.addEventListener("click", selectOrDeleteObject);
