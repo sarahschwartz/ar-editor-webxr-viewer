@@ -114,7 +114,7 @@ export default class XREngine {
 			})
 		)
 		sphere.position.set(...position)
-		this._root.add(sphere)
+		this._scene.add(sphere)
 		return sphere
 	}
 
@@ -125,7 +125,7 @@ export default class XREngine {
 			side: THREE.DoubleSide })
 		const mesh = new THREE.Mesh(geometry, material)
 		mesh.position.set(...position)
-		this._root.add(mesh)
+		this._scene.add(mesh)
 		return mesh
 	}
 																// add texture arg here
@@ -138,7 +138,7 @@ export default class XREngine {
 			})
 		)
 		box.position.set(...position)
-		this._root.add(box)
+		this._scene.add(box)
 		return box
 	}
 	
@@ -150,7 +150,7 @@ export default class XREngine {
 		});
 		const cylinder = new THREE.Mesh( geometry, material );
 		cylinder.position.set(...position)
-		this._root.add(cylinder)
+		this._scene.add(cylinder)
 		return cylinder
 	}
 
@@ -162,7 +162,7 @@ export default class XREngine {
 		});
 		const plane = new THREE.Mesh( geometry, material );
 		plane.position.set(...position)
-		this._root.add(plane)
+		this._scene.add(plane)
 		return plane
 	}
 
@@ -174,7 +174,7 @@ export default class XREngine {
 		});
 		const cone = new THREE.Mesh( geometry, material );
 		cone.position.set(...position)
-		this._root.add(cone)
+		this._scene.add(cone)
 		return cone
 	}
 
@@ -186,7 +186,7 @@ export default class XREngine {
 		});
 		const torus = new THREE.Mesh( geometry, material );
 		torus.position.set(...position)
-		this._root.add(torus)
+		this._scene.add(torus)
 		return torus
 	}
 
@@ -198,7 +198,7 @@ export default class XREngine {
 		});
 		const ring = new THREE.Mesh( geometry, material );
 		ring.position.set(...position)
-		this._root.add(ring)
+		this._scene.add(ring)
 		return ring
 	}
 	

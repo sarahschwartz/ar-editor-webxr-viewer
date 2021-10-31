@@ -190,7 +190,7 @@ const addScene = () => {
     ////////////////////// Add Tools///////////////////////////
         
     const setLastObject = () => {
-        currentObjectIndex = engine._root.children.length - 1;
+        currentObjectIndex = engine._scene.children.length - 1;
     }
         
     const addNewObject = (geometry) => {
@@ -441,7 +441,7 @@ const handleAnimationFrame = (t, frame) => {
     posZ = posZSlider.value;
 
     if (objectsList.length > 0) {
-        currentObject = engine._root.children[currentObjectIndex];
+        currentObject = engine._scene.children[currentObjectIndex];
 
         // currentObject.material = engine.getTextureMaterial()
         // debug.innerHTML = `Id: ${currentObject.id}, Geometry: ${currentObject.geometry.type}, COIndex: ${currentObjectIndex}`
@@ -614,12 +614,14 @@ function addLeftToolbar() {
     editButton.addEventListener("click", editObject)
 
     const selectObject = (ev) => {
-        let index = parseInt(ev.target.id)+3
+        let index = parseInt(ev.target.id) + 1
         currentObjectIndex = index;
         toolbarInstructions.innerHTML = "Selected Object:" + (currentObjectIndex - 3);
 
         document.querySelector('.active-object').classList.remove('active-object');
         ev.target.classList.add('active-object')
+        // debug.innerHTML = `Target ID: ${ev.target.id}`
+        // debug.innerHTML += `currentObjectIndex: ${currentObjectIndex}`
         
     }
 
@@ -628,7 +630,7 @@ function addLeftToolbar() {
         let index = parseInt(ev.target.id) - 1
         // get the object
         let uuid = objectsList[index].uuid
-        let object = engine._root.getObjectByProperty('uuid', uuid);
+        let object = engine._scene.getObjectByProperty('uuid', uuid);
 
         let isActiveObject = false;
         let activeObject = document.querySelector('.active-object')
@@ -641,7 +643,7 @@ function addLeftToolbar() {
         objectsList.splice(index, 1);
         
         // remove object from the scene
-        engine._root.remove(object);
+        engine._scene.remove(object);
         
         // dispose of object information in memory
         object.geometry.dispose();
@@ -650,8 +652,8 @@ function addLeftToolbar() {
 
         // if current object is deleted, set current object to last in list
         if (isActiveObject) {
-            currentObjectIndex = engine._root.children.length - 1;
-            currentObject = engine._root.children[currentObjectIndex];
+            currentObjectIndex = engine._scene.children.length - 1;
+            currentObject = engine._scene.children[currentObjectIndex];
         }
         
         // update to show the new list
@@ -659,6 +661,7 @@ function addLeftToolbar() {
 
         // debug.innerHTML = `Current Object Index: ${currentObjectIndex}`
         // debug.innerHTML += `<br>Length of root children: ${engine._root.children.length}`
+        // debug.innerHTML += `<br>Length of scene children: ${engine._scene.children.length}`
 
         
     }
