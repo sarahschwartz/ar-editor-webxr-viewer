@@ -36,10 +36,6 @@ const textureToolbar = document.getElementById('texture-toolbar');
 const materialsToolbar = document.getElementById('materials-toolbar');
 const patternTexturesToolbar = document.getElementById('pattern-textures-toolbar');
 
-
-// this is hidden but haven't taken it out yet
-const toolbarInstructions = document.getElementById('toolbar-instructions');
-
 // Scale Sliders
 const scaleSliders = document.getElementById("scale-sliders");
 const scaleXSlider = document.getElementById("scaleX-slider-input");
@@ -229,9 +225,6 @@ const addScene = () => {
             case "ring":
                 objectsList.push(engine.addRing(position, scale, color));
                 break;
-            // case "heart":
-            //     objectsList.push(engine.addHeart(position, scale, color));
-            //     break;
             default:
         }
         setLastObject();
@@ -258,10 +251,6 @@ const addScene = () => {
     ringButton.addEventListener("click", function () {
         addNewObject("ring");
     })
-    // heartButton.addEventListener("click", function () {
-    //     addNewObject("heart");
-    // })
-        
 
     ////////////////////// Edit Tools///////////////////////////
 
@@ -276,7 +265,6 @@ const addScene = () => {
         currentEditTool = "rotate";
         changeEditTool(rotateButton, rotateSliders);
     }          
-
 
     const colorObject = () => {
         removeSliders(currentEditTool);
@@ -474,7 +462,6 @@ const handleAnimationFrame = (t, frame) => {
     scaleY = scaleYSlider.value;
     scaleZ = scaleZSlider.value;
 
-
     //update rotation from slider values
     rotateX = rotateXSlider.value;
     rotateY = rotateYSlider.value;
@@ -484,7 +471,6 @@ const handleAnimationFrame = (t, frame) => {
     redVal = redSlider.value;
     greenVal = greenSlider.value;
     blueVal = blueSlider.value;
-
     color = new THREE.Color("rgb(" + redVal + "," + greenVal + "," + blueVal + ")");
 
     //update position from slider values
@@ -494,10 +480,6 @@ const handleAnimationFrame = (t, frame) => {
 
     if (objectsList.length > 0) {
         currentObject = engine._scene.children[currentObjectIndex];
-
-        // currentObject.material = engine.getTextureMaterial()
-        // debug.innerHTML = `Id: ${currentObject.id}, Geometry: ${currentObject.geometry.type}, COIndex: ${currentObjectIndex}`
-        
         //render.js
         updateScene(currentObject, 
         currentEditTool, 
@@ -557,7 +539,6 @@ function addLeftToolbar() {
     const addObject = () => {
         removeSliders(currentEditTool);
         changeMainTool(addButton, addShapeToolbar);
-        // toolbarInstructions.innerHTML = "Tap an object to add it to the scene";
     }
     addButton.addEventListener("click", addObject)
 
@@ -638,12 +619,8 @@ function addLeftToolbar() {
                 units = "cm"
             }
             posZOutput.innerHTML = `Z: ${posZVal}${units}`
-            
-            // toolbarInstructions.innerHTML = "Tap to select an edit tool";
         }
-        // else {
-        //     toolbarInstructions.innerHTML = "(No objects in scene)";
-        // }
+
         changeMainTool(editButton, editToolbar);
         switch(currentEditTool){
             case "scale":
@@ -668,54 +645,36 @@ function addLeftToolbar() {
     const selectObject = (ev) => {
         let index = parseInt(ev.target.id) + 1
         currentObjectIndex = index;
-        toolbarInstructions.innerHTML = "Selected Object:" + (currentObjectIndex - 3);
-
         document.querySelector('.active-object').classList.remove('active-object');
         ev.target.classList.add('active-object')
-        // debug.innerHTML = `Target ID: ${ev.target.id}`
-        // debug.innerHTML += `currentObjectIndex: ${currentObjectIndex}`
-        
     }
 
     const deleteObject = (ev) => {
         // get index of object
         let index = parseInt(ev.target.id) - 1
-        // get the object
+        // get the object with the uuid and active status
         let uuid = objectsList[index].uuid
         let object = engine._scene.getObjectByProperty('uuid', uuid);
-
         let isActiveObject = false;
         let activeObject = document.querySelector('.active-object')
 
           if (ev.target.id === activeObject.id) {
               isActiveObject = true;
           }
-        
         // remove from objectList
         objectsList.splice(index, 1);
-        
         // remove object from the scene
         engine._scene.remove(object);
-        
         // dispose of object information in memory
         object.geometry.dispose();
         object.material.dispose();
-        // object.texture.dispose();
-
         // if current object is deleted, set current object to last in list
         if (isActiveObject) {
             currentObjectIndex = engine._scene.children.length - 1;
             currentObject = engine._scene.children[currentObjectIndex];
         }
-        
         // update to show the new list
-        updateObjectsList();
-
-        // debug.innerHTML = `Current Object Index: ${currentObjectIndex}`
-        // debug.innerHTML += `<br>Length of root children: ${engine._root.children.length}`
-        // debug.innerHTML += `<br>Length of scene children: ${engine._scene.children.length}`
-
-        
+        updateObjectsList();        
     }
 
 
@@ -749,9 +708,7 @@ function addLeftToolbar() {
 
             }
         }
-        // else {
-        //     toolbarInstructions.innerHTML = "(No objects in scene)";
-        // }
+
         selectToolbar.replaceChild(objectsContainer, document.querySelector('.objects-container'));
     }
 
