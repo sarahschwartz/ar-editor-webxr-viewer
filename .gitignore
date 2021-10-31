@@ -1,1 +1,5 @@
 node_modules
+.DS_Store
+examples/.DS_Store
+examples/assets/.DS_Store
+examples/assets/textures/.DS_Store
