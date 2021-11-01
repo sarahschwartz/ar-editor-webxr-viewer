@@ -4,7 +4,7 @@ import * as vec3 from '../libs/gl-matrix/vec3.js';
 import XREngine from '../XREngine.js';
 
 import { initializeLight } from './jsm/light.js';
-import { addScaleSliderOutput, addRotateSliderOutput, addColorSliderOutput, addPosSliderOutput } from './jsm/edit-tools.js';
+import { editToolsOutput } from './jsm/edit-tools.js';
 import { updateScene } from './jsm/render.js';
 import getGeometry from './jsm/get-geometry.js';
 import { changeMainTool, changeEditTool } from './jsm/change-tool.js';
@@ -178,28 +178,28 @@ const addScene = () => {
 
     initializeLight(engine);
     addMainToolbar();
-    addScaleSliderOutput(scaleXSlider,
+    editToolsOutput.scaleSlider(scaleXSlider,
         scaleYSlider,
         scaleZSlider,
         scaleXOutput,
         scaleYOutput,
         scaleZOutput);
 
-    addRotateSliderOutput(rotateXSlider,
+    editToolsOutput.rotateSlider(rotateXSlider,
         rotateYSlider,
         rotateZSlider,
         rotateXOutput,
         rotateYOutput,
         rotateZOutput);
     
-    addColorSliderOutput(redSlider,
+    editToolsOutput.colorSlider(redSlider,
         greenSlider,
         blueSlider,
         redOutput,
         greenOutput,
         blueOutput);
     
-    addPosSliderOutput(posXSlider,
+    editToolsOutput.posSlider(posXSlider,
         posYSlider,
         posZSlider,
         posXOutput,
