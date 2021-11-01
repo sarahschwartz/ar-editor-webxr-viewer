@@ -77,7 +77,10 @@ const planeButton = document.getElementById('plane-button');
 const coneButton = document.getElementById('cone-button');
 const torusButton = document.getElementById('torus-button');
 const ringButton = document.getElementById('ring-button');
-// const heartButton = document.getElementById('heart-button');
+const tetrahedronButton = document.getElementById('tetrahedron-button');
+const octahedronButton = document.getElementById('octahedron-button');
+const icosahedronButton = document.getElementById('icosahedron-button');
+const dodecahedronButton = document.getElementById('dodecahedron-button');
 
 const scaleXOutput = document.getElementById("scaleX-slider-output");
 const scaleYOutput = document.getElementById("scaleY-slider-output");
@@ -233,6 +236,18 @@ const addScene = () => {
             case "ring":
                 objectsList.push(engine.addRing(position, scale, color));
                 break;
+            case "tetrahedron":
+                objectsList.push(engine.addTetrahedron(position, scale, color));
+                break;
+            case "octahedron":
+                objectsList.push(engine.addOctahedron(position, scale, color));
+                break;
+            case "icosahedron":
+                objectsList.push(engine.addIcosahedron(position, scale, color));
+                break;
+            case "dodecahedron":
+                objectsList.push(engine.addDodecahedron(position, scale, color));
+                break;
             default:
         }
         setLastObject();
@@ -258,6 +273,18 @@ const addScene = () => {
     })
     ringButton.addEventListener("click", function () {
         addNewObject("ring");
+    })
+    tetrahedronButton.addEventListener("click", function () {
+        addNewObject("tetrahedron");
+    })
+    octahedronButton.addEventListener("click", function () {
+        addNewObject("octahedron");
+    })
+    icosahedronButton.addEventListener("click", function () {
+        addNewObject("icosahedron");
+    })
+    dodecahedronButton.addEventListener("click", function () {
+        addNewObject("dodecahedron");
     })
 
     ////////////////////// Edit Tools///////////////////////////
