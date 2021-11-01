@@ -61,7 +61,7 @@
     gap: 5px;
 }
 
-.menu-back-button{
+.menu-back-button, .edit-menu-back-button, .texture-menu-back-button{
     color: #7A77FF;
     height: 60px;
     width: 60px;
@@ -203,7 +203,7 @@
     height: 90%;
 }
 
-#white-marble-texture-button{
+#white-marble-texture-button, #materials-button{
     background-image: url('../assets/textures/material-textures/white-marble-texture/baseColor.jpg');
     background-size: 200%;
 }
@@ -213,7 +213,7 @@
     background-size: 200%;
 }
 
-#texture1-button{
+#texture1-button, #pattern-texture-button{
     background-image: url('../assets/textures/color-textures/Texture_1.jpg');
     background-size: 200%;
 }

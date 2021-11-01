@@ -28,6 +28,8 @@ const selectButton = document.getElementById('select-button');
 
 // Bottom Toolbar
 const menuBackButtons = document.querySelectorAll('.menu-back-button')
+const editMenuBackButtons = document.querySelectorAll('.edit-menu-back-button')
+const textureMenuBackButtons = document.querySelectorAll('.texture-menu-back-button')
 const mainToolbar = document.getElementById('main-toolbar');
 const addShapeToolbar = document.getElementById('add-shape-toolbar');
 const editToolbar = document.getElementById('edit-toolbar');
@@ -166,7 +168,7 @@ const removeSliders = (editTool) => {
 const addScene = () => {
 
     initializeLight(engine);
-    addLeftToolbar();
+    addMainToolbar();
     addScaleSliderOutput(scaleXSlider,
         scaleYSlider,
         scaleZSlider,
@@ -517,9 +519,9 @@ const handleAnimationFrame = (t, frame) => {
     engine.endFrame();
 }
 ////////////////////// Back, Add, Edit, Select/Delete ///////////////////////////
-function addLeftToolbar() {
+function addMainToolbar() {
 
-    // Menu back buttons
+    // Menu Back Buttons
     const menuBack = () => {
         removeSliders(currentEditTool);
         changeMainTool("none", mainToolbar);
@@ -527,6 +529,15 @@ function addLeftToolbar() {
 
     menuBackButtons.forEach((el) => {
         el.addEventListener('click', menuBack)
+    });
+    
+    // Texture Menu Back Buttons
+    const textureMenuBack = () => {
+        changeMainTool("none", textureToolbar);
+    }
+
+    textureMenuBackButtons.forEach((el) => {
+        el.addEventListener('click', textureMenuBack)
     });
 
     // End session
@@ -641,6 +652,10 @@ function addLeftToolbar() {
 
     }
     editButton.addEventListener("click", editObject)
+
+    editMenuBackButtons.forEach((el) => {
+        el.addEventListener('click', editObject)
+    });
 
     const selectObject = (ev) => {
         let index = parseInt(ev.target.id) + 1
