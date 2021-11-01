@@ -22,6 +22,18 @@ export default function getGeometry(object){
         case "RingGeometry":
             geometry = "Ring";
             break;
+        case "TetrahedronGeometry":
+            geometry = "Pyramid";
+            break;
+        case "OctahedronGeometry":
+            geometry = "Octahedron";
+            break;
+        case "IcosahedronGeometry":
+            geometry = "Icosahedron";
+            break;
+        case "DodecahedronGeometry":
+            geometry = "Dodecahedron";
+            break;
         default:
             geometry = object.geometry.type
     }
