@@ -1,0 +1,6 @@
+********************* BUGS TO FIX **********************
+
+**
+add two objects, delete the first one, click the edit button
+    ----> unable to press edit button
+work around: have to reselect object on select tab, then can press edit button
