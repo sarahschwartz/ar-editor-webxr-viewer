@@ -585,10 +585,10 @@ function addMainToolbar() {
                 units = "cm";
             }
             scaleZOutput.innerHTML = `Z: ${scaleZVal}${units}`;
-    
-            rotateXSlider.value = currentObject.rotation.x
-            rotateYSlider.value = currentObject.rotation.y
-            rotateZSlider.value = currentObject.rotation.z
+
+            rotateXSlider.value = currentObject.rotation.x * 180 / Math.PI;
+            rotateYSlider.value = currentObject.rotation.y * 180 / Math.PI;
+            rotateZSlider.value = currentObject.rotation.z * 180 / Math.PI;
             rotateXOutput.innerHTML = `X: ${rotateXSlider.value}°`;
             rotateYOutput.innerHTML = `Y: ${rotateYSlider.value}°`;
             rotateZOutput.innerHTML = `Z: ${rotateZSlider.value}°`;
