@@ -213,6 +213,31 @@
     background-size: 200%;
 }
 
+#wood-texture-button{
+    background-image: url('../assets/textures/material-textures/wood/wood_table_001_diff_4k.jpg');
+    background-size: 200%;
+}
+
+#rocks-texture-button{
+    background-image: url('../assets/textures/material-textures/rocks/rocks_ground_01_diff_4k.jpg');
+    background-size: 200%;
+}
+
+#pebbles-texture-button{
+    background-image: url('../assets/textures/material-textures/pebbles/PebblesSurface_1Albedo.jpg');
+    background-size: 200%;
+}
+
+#ice-texture-button{
+    background-image: url('../assets/textures/material-textures/ice/Ice_basecolor.jpg');
+    background-size: 200%;
+}
+
+#asphalt-texture-button{
+    background-image: url('../assets/textures/material-textures/asphalt/asphalt_02_diff_4k.jpg');
+    background-size: 200%;
+}
+
 #texture1-button, #pattern-texture-button{
     background-image: url('../assets/textures/color-textures/Texture_1.jpg');
     background-size: 200%;
