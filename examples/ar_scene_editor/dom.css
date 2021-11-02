@@ -29,11 +29,10 @@
     padding-top: 10px;
     display: grid;
     place-items: center;
-    /* place-items: center start; */
-    /* overflow: scroll; */
     background-color: black;
     color: white;
-    overflow: scroll;
+    overflow-x: scroll;
+    overflow-y: hidden;
 
 }
 
@@ -166,7 +165,7 @@
 .objects-container{
     width: 80vw;
     height: 5rem;
-    overflow: scroll;
+    overflow-y: scroll;
     display: grid;
     flex-direction: column;
     gap: 5px;
