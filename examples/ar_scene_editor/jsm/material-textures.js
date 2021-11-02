@@ -109,7 +109,38 @@ const materialTextures = {
     
         return material;
     },
-  }
+}
 
 
-export { materialTextures }
+///// Material Texture Button Event Listeners
+
+const addMaterialButtons = () => {
+    whiteMarbleTextureButton.addEventListener("click", () => {
+        currentObject.material = materialTextures.getWhiteMarbleTexture()
+    })
+    
+    barkTextureButton.addEventListener("click", () => {
+        currentObject.material = materialTextures.getBarkTexture()
+    })
+    
+    woodTextureButton.addEventListener("click", () => {
+        currentObject.material = materialTextures.getWoodTexture()
+    })
+    
+    rocksTextureButton.addEventListener("click", () => {
+        currentObject.material = materialTextures.getRocksTexture()
+    })
+    
+    pebblesTextureButton.addEventListener("click", () => {
+        currentObject.material = materialTextures.getPebblesTexture()
+    })
+    
+    asphaltTextureButton.addEventListener("click", () => {
+        currentObject.material = materialTextures.getAsphaltTexture()
+    })
+
+}
+    
+
+
+export { addMaterialButtons }
