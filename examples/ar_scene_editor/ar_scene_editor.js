@@ -46,12 +46,18 @@ const moveButton = document.getElementById('move-button');
 const opacityButton = document.getElementById('opacity-button');
 const transmissionButton = document.getElementById('transmission-button');
 const sheenButton = document.getElementById('sheen-button');
+const sheenColorButton = document.getElementById('sheen-color-button');
+const sheenRoughnessButton = document.getElementById('sheen-roughness-button');
 const roughnessButton = document.getElementById('roughness-button');
 const metalnessButton = document.getElementById('metalness-button');
 const reflectionButton = document.getElementById('reflection-button');
 const clearcoatButton = document.getElementById('clearcoat-button');
+const clearcoatRoughnessButton = document.getElementById('clearcoat-roughness-button');
+const thicknessButton = document.getElementById('thickness-button');
+const emissiveIntensityButton = document.getElementById('emissive-intensity-button');
 const emissiveColorButton = document.getElementById('emissive-color-button');
 const wireframeButton = document.getElementById('wireframe-button');
+const wireframeThicknessButton = document.getElementById('wireframe-thickness-button');
 const textureButton = document.getElementById('texture-button');
 
 // Scale Sliders
@@ -105,6 +111,20 @@ const sheenSlider = document.getElementById('sheen-slider')
 const sheenSliderInput = document.getElementById('sheen-slider-input')
 const sheenSliderOutput = document.getElementById('sheen-slider-output')
 
+// Sheen Color Sliders
+const sheenColorSliders = document.getElementById('sheen-color-sliders');
+const sheenRedSlider = document.getElementById("sheen-red-slider-input");
+const sheenGreenSlider = document.getElementById("sheen-green-slider-input");
+const sheenBlueSlider = document.getElementById("sheen-blue-slider-input");
+const sheenRedOutput = document.getElementById("sheen-red-slider-output");
+const sheenGreenOutput = document.getElementById("sheen-green-slider-output");
+const sheenBlueOutput = document.getElementById("sheen-blue-slider-output");
+
+// Sheen Roughness Slider
+const sheenRoughnessSlider = document.getElementById('sheen-roughness-slider')
+const sheenRoughnessSliderInput = document.getElementById('sheen-roughness-slider-input')
+const sheenRoughnessSliderOutput = document.getElementById('sheen-roughness-slider-output')
+
 // Roughness Slider
 const roughnessSlider = document.getElementById('roughness-slider')
 const roughnessSliderInput = document.getElementById('roughness-slider-input')
@@ -125,6 +145,21 @@ const clearcoatSlider = document.getElementById('clearcoat-slider')
 const clearcoatSliderInput = document.getElementById('clearcoat-slider-input')
 const clearcoatSliderOutput = document.getElementById('clearcoat-slider-output')
 
+// Clearcoat Roughness Slider
+const clearcoatRoughnessSlider = document.getElementById('clearcoat-roughness-slider')
+const clearcoatRoughnessSliderInput = document.getElementById('clearcoat-roughness-slider-input')
+const clearcoatRoughnessSliderOutput = document.getElementById('clearcoat-roughness-slider-output')
+
+// Thickness Slider
+const thicknessSlider = document.getElementById('thickness-slider')
+const thicknessSliderInput = document.getElementById('thickness-slider-input')
+const thicknessSliderOutput = document.getElementById('thickness-slider-output')
+
+// Emissive Intensity Slider
+const emissiveIntensitySlider = document.getElementById('emissive-intensity-slider')
+const emissiveIntensitySliderInput = document.getElementById('emissive-intensity-slider-input')
+const emissiveIntensitySliderOutput = document.getElementById('emissive-intensity-slider-output')
+
 // Emissive Color Sliders
 const emissiveColorSliders = document.getElementById('emissive-color-sliders');
 const ecRedSlider = document.getElementById("ec-red-slider-input");
@@ -133,6 +168,11 @@ const ecBlueSlider = document.getElementById("ec-blue-slider-input");
 const ecRedOutput = document.getElementById("ec-red-slider-output");
 const ecGreenOutput = document.getElementById("ec-green-slider-output");
 const ecBlueOutput = document.getElementById("ec-blue-slider-output");
+
+// Wireframe Thickness Slider
+const wireframeThicknessSlider = document.getElementById('wireframe-thickness-slider')
+const wireframeThicknessSliderInput = document.getElementById('wireframe-thickness-slider-input')
+const wireframeThicknessSliderOutput = document.getElementById('wireframe-thickness-slider-output')
 
 
 // Add Shape Tools
@@ -167,10 +207,18 @@ let posZ = posZSlider.value;
 let opacity = opacitySliderInput.value
 let transmission = transmissionSliderInput.value
 let sheen = sheenSliderInput.value
+let sheenRoughness = sheenRoughnessSliderInput.value
+let sheenRedVal = sheenRedSlider.value;
+let sheenGreenVal = sheenGreenSlider.value;
+let sheenBlueVal = sheenBlueSlider.value;
 let roughness = roughnessSliderInput.value
 let metalness = metalnessSliderInput.value
 let reflection = reflectionSliderInput.value
 let clearcoat = clearcoatSliderInput.value
+let clearcoatRoughness = clearcoatRoughnessSliderInput.value
+let thickness = thicknessSliderInput.value
+let emissiveIntensity = emissiveIntensitySliderInput.value
+let wireframeThickness = wireframeThicknessSliderInput.value
 
 let ecRedVal = ecRedSlider.value;
 let ecGreenVal = ecGreenSlider.value;
@@ -205,6 +253,7 @@ const texture6Button = document.getElementById('texture6-button');
 
 let color = new THREE.Color(redVal, greenVal, blueVal);
 let ecColor = new THREE.Color(ecRedVal, ecGreenVal, ecBlueVal);
+let sheenColor = new THREE.Color(sheenRedVal, sheenGreenVal, sheenBlueVal);
 let position = [posX, posY, posZ];
 let scale = [0.1, 0.1, 0.1];
 
@@ -239,6 +288,12 @@ const removeSliders = (editTool) => {
         case "sheen":
             sheenSlider.style.display = "none";
             break;
+        case "sheen-color":
+            sheenColorSliders.style.display = "none";
+            break;
+        case "sheen-roughness":
+            sheenRoughnessSlider.style.display = "none";
+            break;
         case "roughness":
             roughnessSlider.style.display = "none";
             break;
@@ -251,8 +306,20 @@ const removeSliders = (editTool) => {
         case "clearcoat":
             clearcoatSlider.style.display = "none";
             break;
+        case "clearcoat-roughness":
+            clearcoatRoughnessSlider.style.display = "none";
+            break;
+        case "thickness":
+            thicknessSlider.style.display = "none";
+            break;
+        case "emissive-intensity":
+            emissiveIntensitySlider.style.display = "none";
+            break;
         case "emissive-color":
             emissiveColorSliders.style.display = "none";
+            break;
+        case "wireframe-thickness":
+            wireframeThicknessSlider.style.display = "none";
             break;
         default:
     }
@@ -296,10 +363,22 @@ const addScene = () => {
     editToolsOutput.singleSlider(opacitySliderInput, opacitySliderOutput);
     editToolsOutput.singleSlider(transmissionSliderInput, transmissionSliderOutput);
     editToolsOutput.singleSlider(sheenSliderInput, sheenSliderOutput);
+    editToolsOutput.singleSlider(sheenRoughnessSliderInput, sheenRoughnessSliderOutput);
     editToolsOutput.singleSlider(roughnessSliderInput, roughnessSliderOutput);
     editToolsOutput.singleSlider(metalnessSliderInput, metalnessSliderOutput);
     editToolsOutput.singleSlider(reflectionSliderInput, reflectionSliderOutput);
     editToolsOutput.singleSlider(clearcoatSliderInput, clearcoatSliderOutput);
+    editToolsOutput.singleSlider(clearcoatRoughnessSliderInput, clearcoatRoughnessSliderOutput);
+    editToolsOutput.singleSlider(thicknessSliderInput, thicknessSliderOutput);
+    editToolsOutput.singleSlider(wireframeThicknessSliderInput, wireframeThicknessSliderOutput);
+    editToolsOutput.singleSlider(emissiveIntensitySliderInput, emissiveIntensitySliderOutput);
+    
+    editToolsOutput.colorSlider(sheenRedSlider,
+        sheenGreenSlider,
+        sheenBlueSlider,
+        sheenRedOutput,
+        sheenGreenOutput,
+        sheenBlueOutput);
     
     editToolsOutput.colorSlider(ecRedSlider,
         ecGreenSlider,
@@ -432,6 +511,18 @@ const addScene = () => {
         changeEditTool(sheenButton, sheenSlider);
     })
 
+    sheenColorButton.addEventListener("click", () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "sheen-color";
+        changeEditTool(sheenColorButton, sheenColorSliders);
+    })
+
+    sheenRoughnessButton.addEventListener("click", () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "sheen-roughness";
+        changeEditTool(sheenRoughnessButton, sheenRoughnessSlider);
+    })
+
     roughnessButton.addEventListener("click", () => {
         removeSliders(currentEditTool);
         currentEditTool = "roughness";
@@ -456,6 +547,24 @@ const addScene = () => {
         changeEditTool(clearcoatButton, clearcoatSlider);
     })
 
+    clearcoatRoughnessButton.addEventListener("click", () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "clearcoat-roughness";
+        changeEditTool(clearcoatRoughnessButton, clearcoatRoughnessSlider);
+    })
+
+    thicknessButton.addEventListener("click", () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "thickness";
+        changeEditTool(thicknessButton, thicknessSlider);
+    })
+
+    emissiveIntensityButton.addEventListener("click", () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "emissive-intensity";
+        changeEditTool(emissiveIntensityButton, emissiveIntensitySlider);
+    })
+
     emissiveColorButton.addEventListener("click", () => {
         removeSliders(currentEditTool);
         currentEditTool = "emissive-color";
@@ -464,6 +573,12 @@ const addScene = () => {
 
     wireframeButton.addEventListener("click", () => {
         currentObject.material.wireframe = !currentObject.material.wireframe;
+    })
+
+    wireframeThicknessButton.addEventListener("click", () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "wireframe-thickness";
+        changeEditTool(wireframeThicknessButton, wireframeThicknessSlider);
     })
 
     textureButton.addEventListener("click", () => {
@@ -660,10 +775,20 @@ const handleAnimationFrame = (t, frame) => {
     opacity = opacitySliderInput.value
     transmission = transmissionSliderInput.value
     sheen = sheenSliderInput.value
+    sheenRoughness = sheenRoughnessSliderInput.value
+    sheenRedVal = sheenRedSlider.value
+    sheenGreenVal = sheenGreenSlider.value
+    sheenBlueVal = sheenBlueSlider.value
+    sheenColor = new THREE.Color("rgb(" + sheenRedVal + "," + sheenGreenVal + "," + sheenBlueVal + ")");
+
     roughness = roughnessSliderInput.value
     metalness = metalnessSliderInput.value
     reflection = reflectionSliderInput.value
     clearcoat = clearcoatSliderInput.value
+    clearcoatRoughness = clearcoatRoughnessSliderInput.value
+    thickness = thicknessSliderInput.value
+    wireframeThickness = wireframeThicknessSliderInput.value
+    emissiveIntensity = emissiveIntensitySliderInput.value
 
     ecRedVal = ecRedSlider.value;
     ecGreenVal = ecGreenSlider.value;
@@ -689,11 +814,17 @@ const handleAnimationFrame = (t, frame) => {
             opacity,
             transmission,
             sheen,
+            sheenColor,
+            sheenRoughness,
             roughness,
             metalness,
             reflection,
             clearcoat,
-            ecColor
+            clearcoatRoughness,
+            thickness,
+            emissiveIntensity,
+            ecColor,
+            wireframeThickness
         );
     }
 
@@ -755,7 +886,10 @@ function addMainToolbar() {
     const editObject = () => {
         if (objectsList.length > 0) {
             let units = "cm";
+
             // update sliders to current object
+
+            // Scale
             scaleXSlider.value = currentObject.scale.x
             scaleYSlider.value = currentObject.scale.y
             scaleZSlider.value = currentObject.scale.z
@@ -783,21 +917,21 @@ function addMainToolbar() {
                 units = "cm";
             }
             scaleZOutput.innerHTML = `Z: ${scaleZVal}${units}`;
-
+           // Rotation
             rotateXSlider.value = currentObject.rotation.x * 180 / Math.PI;
             rotateYSlider.value = currentObject.rotation.y * 180 / Math.PI;
             rotateZSlider.value = currentObject.rotation.z * 180 / Math.PI;
             rotateXOutput.innerHTML = `X: ${rotateXSlider.value}°`;
             rotateYOutput.innerHTML = `Y: ${rotateYSlider.value}°`;
             rotateZOutput.innerHTML = `Z: ${rotateZSlider.value}°`;
-    
+            // Color
             redSlider.value = currentObject.material.color.r * 255
             greenSlider.value = currentObject.material.color.g * 255
             blueSlider.value = currentObject.material.color.b * 255
             redOutput.innerHTML = "Red: " + redSlider.value;
             greenOutput.innerHTML = "Green: " + greenSlider.value;
             blueOutput.innerHTML = "Blue: " + blueSlider.value;
-    
+            //Position
             posXSlider.value = currentObject.position.x
             posYSlider.value = currentObject.position.y
             posZSlider.value = currentObject.position.z
@@ -829,27 +963,63 @@ function addMainToolbar() {
             }
             posZOutput.innerHTML = `Z: ${posZVal}${units}`
 
+            //Opacity
             opacitySliderInput.value = currentObject.material.opacity;
             opacitySliderOutput.innerHTML = `${opacitySliderInput.value}`;
 
+            // Transmission
             transmissionSliderInput.value = currentObject.material.transmission;
             transmissionSliderOutput.innerHTML = `${transmissionSliderInput.value}`;
 
+            // Sheen
             sheenSliderInput.value = currentObject.material.sheen;
             sheenSliderOutput.innerHTML = `${sheenSliderInput.value}`;
 
+            //Sheen Roughness
+            sheenRoughnessSliderInput.value = currentObject.material.sheenRoughness;
+            sheenRoughnessSliderOutput.innerHTML = `${sheenRoughnessSliderInput.value}`;
+
+            // Sheen Colors
+            sheenRedSlider.value = currentObject.material.sheenColor.r * 255;
+            sheenGreenSlider.value = currentObject.material.sheenColor.g * 255;
+            sheenBlueSlider.value = currentObject.material.sheenColor.b * 255;
+            sheenRedOutput.innerHTML = "Red: " + sheenRedSlider.value;
+            sheenGreenOutput.innerHTML = "Green: " + sheenGreenSlider.value;
+            sheenBlueOutput.innerHTML = "Blue: " + sheenBlueSlider.value;
+
+            //Roughness
             roughnessSliderInput.value = currentObject.material.roughness;
             roughnessSliderOutput.innerHTML = `${roughnessSliderInput.value}`;
 
+            //Metalness
             metalnessSliderInput.value = currentObject.material.metalness;
             metalnessSliderOutput.innerHTML = `${metalnessSliderInput.value}`;
 
+            // Reflection
             reflectionSliderInput.value = currentObject.material.reflectivity;
             reflectionSliderOutput.innerHTML = `${reflectionSliderInput.value}`;
 
+            // Clearcoat
             clearcoatSliderInput.value = currentObject.material.clearcoat;
             clearcoatSliderOutput.innerHTML = `${clearcoatSliderInput.value}`;
 
+            // Clearcoat Roughness
+            clearcoatRoughnessSliderInput.value = currentObject.material.clearcoatRoughness;
+            clearcoatRoughnessSliderOutput.innerHTML = `${clearcoatRoughnessSliderInput.value}`;
+
+            // Thickness
+            thicknessSliderInput.value = currentObject.material.thickness;
+            thicknessSliderOutput.innerHTML = `${thicknessSliderInput.value}`;
+
+            // Wireframe Thickness
+            wireframeThicknessSliderInput.value = currentObject.material.wireframeThickness;
+            wireframeThicknessSliderOutput.innerHTML = `${wireframeThicknessSliderInput.value}`;
+
+            // Emissive Intensity
+            emissiveIntensitySliderInput.value = currentObject.material.emissiveIntensity ;
+            emissiveIntensitySliderOutput.innerHTML = `${emissiveIntensitySliderInput.value}`;
+
+            // Emissive Colors
             ecRedSlider.value = currentObject.material.emissive.r * 255
             ecGreenSlider.value = currentObject.material.emissive.g * 255
             ecBlueSlider.value = currentObject.material.emissive.b * 255
@@ -881,6 +1051,12 @@ function addMainToolbar() {
             case "sheen":
                 sheenSlider.style.display = "grid";
                 break;
+            case "sheen-roughness":
+                sheenRoughnessSlider.style.display = "grid";
+                break;
+            case "sheen-color":
+                sheenColorSliders.style.display = "grid";
+                break;
             case "roughness":
                 roughnessSlider.style.display = "grid";
                 break;
@@ -892,6 +1068,18 @@ function addMainToolbar() {
                 break;
             case "clearcoat":
                 clearcoatSlider.style.display = "grid";
+                break;
+            case "clearcoat-roughness":
+                clearcoatRoughnessSlider.style.display = "grid";
+                break;
+            case "thickness":
+                thicknessSlider.style.display = "grid";
+                break;
+            case "wireframe-thickness":
+                wireframeThicknessSlider.style.display = "grid";
+                break;
+            case "emissive-intensity":
+                emissiveIntensitySlider.style.display = "grid";
                 break;
             case "emissive-color":
                 emissiveColorSliders.style.display = "grid";

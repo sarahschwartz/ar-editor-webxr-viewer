@@ -1,5 +1,5 @@
 function updateScene(currentObject,
-    currentEditTool,
+    currentEditTool, 
     editToolbar,
     scaleX,
     scaleY,
@@ -14,11 +14,17 @@ function updateScene(currentObject,
     opacity,
     transmission,
     sheen,
+    sheenColor,
+    sheenRoughness,
     roughness,
     metalness,
     reflection,
     clearcoat,
-    ecColor
+    clearcoatRoughness,
+    thickness,
+    emissiveIntensity,
+    ecColor,
+    wireframeThickness
 ) {
     
 
@@ -62,6 +68,7 @@ function updateScene(currentObject,
                 if (currentObject.material.opacity !== opacity) {
                     currentObject.material.opacity = opacity;
                 }
+                break;
             case "transmission":
                 if (currentObject.material.transmission !== transmission) {
                     currentObject.material.transmission = transmission;
@@ -70,6 +77,16 @@ function updateScene(currentObject,
             case "sheen":
                 if (currentObject.material.sheen !== sheen) {
                     currentObject.material.sheen = sheen;
+                }
+                break;
+            case "sheen-roughness":
+                if (currentObject.material.sheenRoughness !== sheenRoughness) {
+                    currentObject.material.sheenRoughness = sheenRoughness;
+                }
+                break;
+            case "sheen-color":
+                if (currentObject.material.sheenColor !== sheenColor) {
+                    currentObject.material.sheenColor = sheenColor;
                 }
                 break;
             case "roughness":
@@ -92,9 +109,29 @@ function updateScene(currentObject,
                     currentObject.material.clearcoat = clearcoat;
                 }
                 break;
+            case "clearcoat-roughness":
+                if (currentObject.material.clearcoatRoughness !== clearcoatRoughness) {
+                    currentObject.material.clearcoatRoughness = clearcoatRoughness;
+                }
+                break;
+            case "thickness":
+                if (currentObject.material.thickness !== thickness) {
+                    currentObject.material.thickness = thickness;
+                }
+                break;
+            case "wireframe-thickness":
+                if (currentObject.material.wireframeThickness !== wireframeThickness) {
+                    currentObject.material.wireframeThickness = wireframeThickness;
+                }
+                break;
             case "emissive-color":
                 if (currentObject.material.emissive !== ecColor) {
                     currentObject.material.emissive = ecColor;
+                }
+                break;
+            case "emissive-intensity":
+                if (currentObject.material.emissiveIntensity !== emissiveIntensity) {
+                    currentObject.material.emissiveIntensity = emissiveIntensity;
                 }
                 break;
             default:

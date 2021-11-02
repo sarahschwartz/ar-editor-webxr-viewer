@@ -249,6 +249,24 @@
 					</div>
 
 					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="sheen-color-button">
+							<i class="fas fa-adjust"></i>
+						</button>
+						<div class="button-description">
+							Sheen Color
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="sheen-roughness-button">
+							<i class="fas fa-adjust"></i>
+						</button>
+						<div class="button-description">
+							Sheen Roughness
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="roughness-button">
 							<i class="fas fa-certificate"></i>
 						</button>
@@ -285,6 +303,33 @@
 					</div>
 
 					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="clearcoat-roughness-button">
+							<i class="fas fa-burn"></i>
+						</button>
+						<div class="button-description">
+							Clearcoat Roughness
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="thickness-button">
+							<i class="fas fa-burn"></i>
+						</button>
+						<div class="button-description">
+							Thickness
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="emissive-intensity-button">
+							<i class="fas fa-sun"></i>
+						</button>
+						<div class="button-description">
+							Emissive Intensity
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="emissive-color-button">
 							<i class="fas fa-sun"></i>
 						</button>
@@ -299,6 +344,15 @@
 						</button>
 						<div class="button-description">
 							Wireframe
+						</div>
+					</div>
+
+					<div class="toolbar-button-container">
+						<button class="toolbar-button" id="wireframe-thickness-button">
+							<i class="fas fa-border-all"></i>
+						</button>
+						<div class="button-description">
+							Wireframe Thickness
 						</div>
 					</div>
 
@@ -539,6 +593,30 @@
 				</div>
 			</section>
 
+
+			<section id="sheen-color-sliders" class="slider-section" style="display: none;" >
+				<div id="sheen-red-slider-output" class="edit-tool-output">Red: </div>
+				<div class="slider-container">
+					<input type="range" min="0" max="255" value="255" class="slider red-slider" id="sheen-red-slider-input">
+				</div>
+				<div id="sheen-green-slider-output" class="edit-tool-output">Green: </div>
+				<div class="slider-container">
+					<input type="range" min="0" max="255" value="255" class="slider green-slider" id="sheen-green-slider-input">
+				</div>
+				<div id="sheen-blue-slider-output" class="edit-tool-output">Blue: </div>
+				<div class="slider-container">
+					<input type="range" min="0" max="255" value="255" class="slider blue-slider" id="sheen-blue-slider-input">
+				</div>
+			</section>
+
+			<section id="sheen-roughness-slider" class="single-slider-section" style="display: none;" >
+				<div id="sheen-roughness-slider-output" class="edit-tool-output">1</div>
+				<div class="slider-container">
+					<input type="range" min="0" max="1" step="0.01" value="0" class="slider" id="sheen-roughness-slider-input">
+				</div>
+			</section>
+
+
 			<section id="roughness-slider" class="single-slider-section" style="display: none;" >
 				<div id="roughness-slider-output" class="edit-tool-output">1</div>
 				<div class="slider-container">
@@ -567,6 +645,27 @@
 				</div>
 			</section>
 
+			<section id="clearcoat-roughness-slider" class="single-slider-section" style="display: none;" >
+				<div id="clearcoat-roughness-slider-output" class="edit-tool-output">0</div>
+				<div class="slider-container">
+					<input type="range" min="0" max="1" step="0.01" value="0" class="slider" id="clearcoat-roughness-slider-input">
+				</div>
+			</section>
+
+			<section id="thickness-slider" class="single-slider-section" style="display: none;" >
+				<div id="thickness-slider-output" class="edit-tool-output">0</div>
+				<div class="slider-container">
+					<input type="range" min="0" max="1" step="0.01" value="0" class="slider" id="thickness-slider-input">
+				</div>
+			</section>
+
+			<section id="emissive-intensity-slider" class="single-slider-section" style="display: none;" >
+				<div id="emissive-intensity-slider-output" class="edit-tool-output">0</div>
+				<div class="slider-container">
+					<input type="range" min="0" max="1" step="0.01" value="0" class="slider" id="emissive-intensity-slider-input">
+				</div>
+			</section>
+
 			<section id="emissive-color-sliders" class="slider-section" style="display: none;" >
 				<div id="ec-red-slider-output" class="edit-tool-output">Red: </div>
 				<div class="slider-container">
@@ -581,6 +680,14 @@
 					<input type="range" min="0" max="255" value="0" class="slider blue-slider" id="ec-blue-slider-input">
 				</div>
 			</section>
+
+			<section id="wireframe-thickness-slider" class="single-slider-section" style="display: none;" >
+				<div id="wireframe-thickness-slider-output" class="edit-tool-output">0</div>
+				<div class="slider-container">
+					<input type="range" min="0" max="1" step="0.01" value="0" class="slider" id="wireframe-thickness-slider-input">
+				</div>
+			</section>
+
 
 
 		
