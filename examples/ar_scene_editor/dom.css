@@ -77,15 +77,22 @@
     left: 2vw;
 }
 
-#scale-sliders, #rotate-sliders, #color-sliders, #position-sliders{
+.slider-section{
     position: fixed;
     left: 5vw;;
-    bottom: 22vh;
+    bottom: 20vh;
     width: 90vw;
-    /* background-color: white; */
-    /* display: grid; */
     grid-template-columns: 22% 78%;
     grid-template-rows: 40px 40px 40px;
+}
+
+.single-slider-section{
+    position: fixed;
+    left: 5vw;;
+    bottom: 20vh;
+    width: 90vw;
+    grid-template-columns: 22% 78%;
+    grid-template-rows: 40px;
 }
 
 

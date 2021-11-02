@@ -26,10 +26,7 @@ const addButton = document.getElementById('add-button');
 const editButton = document.getElementById('edit-button');
 const selectButton = document.getElementById('select-button');
 
-// Bottom Toolbar
-const menuBackButtons = document.querySelectorAll('.menu-back-button')
-const editMenuBackButtons = document.querySelectorAll('.edit-menu-back-button')
-const textureMenuBackButtons = document.querySelectorAll('.texture-menu-back-button')
+// Sub Toolbars
 const mainToolbar = document.getElementById('main-toolbar');
 const addShapeToolbar = document.getElementById('add-shape-toolbar');
 const editToolbar = document.getElementById('edit-toolbar');
@@ -37,37 +34,89 @@ const selectToolbar = document.getElementById('select-toolbar');
 const textureToolbar = document.getElementById('texture-toolbar');
 const materialsToolbar = document.getElementById('materials-toolbar');
 const patternTexturesToolbar = document.getElementById('pattern-textures-toolbar');
-
-// Scale Sliders
-const scaleSliders = document.getElementById("scale-sliders");
-const scaleXSlider = document.getElementById("scaleX-slider-input");
-const scaleYSlider = document.getElementById("scaleY-slider-input");
-const scaleZSlider = document.getElementById("scaleZ-slider-input");
-
-// Rotation Sliders
-const rotateSliders = document.getElementById("rotate-sliders");
-const rotateXSlider = document.getElementById("rotateX-slider-input");
-const rotateYSlider = document.getElementById("rotateY-slider-input");
-const rotateZSlider = document.getElementById("rotateZ-slider-input");
-
-// Color Sliders
-const colorSliders = document.getElementById('color-sliders');
-const redSlider = document.getElementById("red-slider-input");
-const greenSlider = document.getElementById("green-slider-input");
-const blueSlider = document.getElementById("blue-slider-input");
-
-// Position Sliders
-const posSliders = document.getElementById('position-sliders');
-const posXSlider = document.getElementById("posX-slider-input");
-const posYSlider = document.getElementById("posY-slider-input");
-const posZSlider = document.getElementById("posZ-slider-input");
+const menuBackButtons = document.querySelectorAll('.menu-back-button')
+const editMenuBackButtons = document.querySelectorAll('.edit-menu-back-button')
+const textureMenuBackButtons = document.querySelectorAll('.texture-menu-back-button')
 
 // Edit Tools
 const scaleButton = document.getElementById('scale-button');
 const rotateButton = document.getElementById('rotate-button');
 const colorButton = document.getElementById('color-button');
 const moveButton = document.getElementById('move-button');
+const roughnessButton = document.getElementById('roughness-button');
+const metalnessButton = document.getElementById('metalness-button');
+const reflectionButton = document.getElementById('reflection-button');
+const clearcoatButton = document.getElementById('clearcoat-button');
+const emissiveColorButton = document.getElementById('emissive-color-button');
+const vertexColorsButton = document.getElementById('vertex-colors-button');
+const wireframeButton = document.getElementById('wireframe-button');
 const textureButton = document.getElementById('texture-button');
+
+// Scale Sliders
+const scaleSliders = document.getElementById("scale-sliders");
+const scaleXSlider = document.getElementById("scaleX-slider-input");
+const scaleYSlider = document.getElementById("scaleY-slider-input");
+const scaleZSlider = document.getElementById("scaleZ-slider-input");
+const scaleXOutput = document.getElementById("scaleX-slider-output");
+const scaleYOutput = document.getElementById("scaleY-slider-output");
+const scaleZOutput = document.getElementById("scaleZ-slider-output");
+
+// Rotation Sliders
+const rotateSliders = document.getElementById("rotate-sliders");
+const rotateXSlider = document.getElementById("rotateX-slider-input");
+const rotateYSlider = document.getElementById("rotateY-slider-input");
+const rotateZSlider = document.getElementById("rotateZ-slider-input");
+const rotateXOutput = document.getElementById("rotateX-slider-output");
+const rotateYOutput = document.getElementById("rotateY-slider-output");
+const rotateZOutput = document.getElementById("rotateZ-slider-output");
+
+// Color Sliders
+const colorSliders = document.getElementById('color-sliders');
+const redSlider = document.getElementById("red-slider-input");
+const greenSlider = document.getElementById("green-slider-input");
+const blueSlider = document.getElementById("blue-slider-input");
+const redOutput = document.getElementById("red-slider-output");
+const greenOutput = document.getElementById("green-slider-output");
+const blueOutput = document.getElementById("blue-slider-output");
+
+// Position Sliders
+const posSliders = document.getElementById('position-sliders');
+const posXSlider = document.getElementById("posX-slider-input");
+const posYSlider = document.getElementById("posY-slider-input");
+const posZSlider = document.getElementById("posZ-slider-input");
+const posXOutput = document.getElementById("posX-slider-output");
+const posYOutput = document.getElementById("posY-slider-output");
+const posZOutput = document.getElementById("posZ-slider-output");
+
+// Roughness Slider
+const roughnessSlider = document.getElementById('roughness-slider')
+const roughnessSliderInput = document.getElementById('roughness-slider-input')
+const roughnessSliderOutput = document.getElementById('roughness-slider-output')
+
+// Metalness Slider
+const metalnessSlider = document.getElementById('metalness-slider')
+const metalnessSliderInput = document.getElementById('metalness-slider-input')
+const metalnessSliderOutput = document.getElementById('metalness-slider-output')
+
+// Reflection Slider
+const reflectionSlider = document.getElementById('reflection-slider')
+const reflectionSliderInput = document.getElementById('reflection-slider-input')
+const reflectionSliderOutput = document.getElementById('reflection-slider-output')
+
+// Clearcoat Slider
+const clearcoatSlider = document.getElementById('clearcoat-slider')
+const clearcoatSliderInput = document.getElementById('clearcoat-slider-input')
+const clearcoatSliderOutput = document.getElementById('clearcoat-slider-output')
+
+// Emissive Color Sliders
+const emissiveColorSliders = document.getElementById('emissive-color-sliders');
+const ecRedSlider = document.getElementById("ec-red-slider-input");
+const ecGreenSlider = document.getElementById("ec-green-slider-input");
+const ecBlueSlider = document.getElementById("ec-blue-slider-input");
+const ecRedOutput = document.getElementById("ec-red-slider-output");
+const ecGreenOutput = document.getElementById("ec-green-slider-output");
+const ecBlueOutput = document.getElementById("ec-blue-slider-output");
+
 
 // Add Shape Tools
 const cubeButton = document.getElementById('cube-button');
@@ -81,22 +130,6 @@ const tetrahedronButton = document.getElementById('tetrahedron-button');
 const octahedronButton = document.getElementById('octahedron-button');
 const icosahedronButton = document.getElementById('icosahedron-button');
 const dodecahedronButton = document.getElementById('dodecahedron-button');
-
-const scaleXOutput = document.getElementById("scaleX-slider-output");
-const scaleYOutput = document.getElementById("scaleY-slider-output");
-const scaleZOutput = document.getElementById("scaleZ-slider-output");
-
-const rotateXOutput = document.getElementById("rotateX-slider-output");
-const rotateYOutput = document.getElementById("rotateY-slider-output");
-const rotateZOutput = document.getElementById("rotateZ-slider-output");
-
-const redOutput = document.getElementById("red-slider-output");
-const greenOutput = document.getElementById("green-slider-output");
-const blueOutput = document.getElementById("blue-slider-output");
-
-const posXOutput = document.getElementById("posX-slider-output");
-const posYOutput = document.getElementById("posY-slider-output");
-const posZOutput = document.getElementById("posZ-slider-output");
 
 let redVal = redSlider.value;
 let greenVal = greenSlider.value;
@@ -113,6 +146,15 @@ let rotateZ = rotateZSlider.value;
 let posX = posXSlider.value;
 let posY = posYSlider.value;
 let posZ = posZSlider.value;
+
+let roughness = roughnessSliderInput.value
+let metalness = metalnessSliderInput.value
+let reflection = reflectionSliderInput.value
+let clearcoat = clearcoatSliderInput.value
+
+let ecRedVal = ecRedSlider.value;
+let ecGreenVal = ecGreenSlider.value;
+let ecBlueVal = ecBlueSlider.value;
 
 let currentObjectIndex = 0;
 let currentObject;
@@ -143,6 +185,7 @@ const texture5Button = document.getElementById('texture5-button');
 const texture6Button = document.getElementById('texture6-button');
 
 let color = new THREE.Color(redVal, greenVal, blueVal);
+let ecColor = new THREE.Color(ecRedVal, ecGreenVal, ecBlueVal);
 let position = [posX, posY, posZ];
 let scale = [0.1, 0.1, 0.1];
 
@@ -167,6 +210,21 @@ const removeSliders = (editTool) => {
             break;
         case "move":
             posSliders.style.display = "none";
+            break;
+        case "roughness":
+            roughnessSlider.style.display = "none";
+            break;
+        case "metalness":
+            metalnessSlider.style.display = "none";
+            break;
+        case "reflection":
+            reflectionSlider.style.display = "none";
+            break;
+        case "clearcoat":
+            clearcoatSlider.style.display = "none";
+            break;
+        case "emissive-color":
+            emissiveColorSliders.style.display = "none";
             break;
         default:
     }
@@ -198,7 +256,7 @@ const addScene = () => {
         redOutput,
         greenOutput,
         blueOutput);
-    
+        
     editToolsOutput.posSlider(posXSlider,
         posYSlider,
         posZSlider,
@@ -206,6 +264,18 @@ const addScene = () => {
         posYOutput,
         posZOutput);
 
+
+    editToolsOutput.singleSlider(roughnessSliderInput, roughnessSliderOutput);
+    editToolsOutput.singleSlider(metalnessSliderInput, metalnessSliderOutput);
+    editToolsOutput.singleSlider(reflectionSliderInput, reflectionSliderOutput);
+    editToolsOutput.singleSlider(clearcoatSliderInput, clearcoatSliderOutput);
+    
+    editToolsOutput.colorSlider(ecRedSlider,
+        ecGreenSlider,
+        ecBlueSlider,
+        ecRedOutput,
+        ecGreenOutput,
+        ecBlueOutput);
 
     ////////////////////// Add Tools///////////////////////////
         
@@ -289,53 +359,74 @@ const addScene = () => {
 
     ////////////////////// Edit Tools///////////////////////////
 
-    const scaleObject = () => {
+    scaleButton.addEventListener("click", () => {
         removeSliders(currentEditTool);
         currentEditTool = "scale";
         changeEditTool(scaleButton, scaleSliders);
-    }
+    })
 
-    const rotateObject = () => {
+    rotateButton.addEventListener("click", () => {
         removeSliders(currentEditTool);
         currentEditTool = "rotate";
         changeEditTool(rotateButton, rotateSliders);
-    }          
+    })
 
-    const colorObject = () => {
+    colorButton.addEventListener("click", () => {
         removeSliders(currentEditTool);
         currentEditTool = "color";
         changeEditTool(colorButton, colorSliders);
-    }
+    })
 
-    const moveObject = () => {
+    moveButton.addEventListener("click", () => {
         removeSliders(currentEditTool);
         currentEditTool = "move";
         changeEditTool(moveButton, posSliders);
-    }
+    })
 
-    const textureObject = () => {
+    roughnessButton.addEventListener("click", () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "roughness";
+        changeEditTool(roughnessButton, roughnessSlider);
+    })
+
+    metalnessButton.addEventListener("click", () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "metalness";
+        changeEditTool(metalnessButton, metalnessSlider);
+    })
+
+    reflectionButton.addEventListener("click", () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "reflection";
+        changeEditTool(reflectionButton, reflectionSlider);
+    })
+
+    clearcoatButton.addEventListener("click", () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "clearcoat";
+        changeEditTool(clearcoatButton, clearcoatSlider);
+    })
+
+    emissiveColorButton.addEventListener("click", () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "emissive-color";
+        changeEditTool(emissiveColorButton, emissiveColorSliders);
+    })
+
+    textureButton.addEventListener("click", () => {
         removeSliders(currentEditTool);
         changeMainTool("none", textureToolbar);
-    }
+    })
 
-    const showMaterials = () => {
+    materialsButton.addEventListener("click", () => {
         removeSliders(currentEditTool);
         changeMainTool("none", materialsToolbar)
-    }
+    })
 
-    const showPatternTextures = () => {
+    patternTextureButton.addEventListener("click", () => {
         removeSliders(currentEditTool);
         changeMainTool("none", patternTexturesToolbar)
-    }
-
-
-    scaleButton.addEventListener("click", scaleObject)
-    rotateButton.addEventListener("click", rotateObject)
-    colorButton.addEventListener("click", colorObject)
-    moveButton.addEventListener("click", moveObject)
-    textureButton.addEventListener("click", textureObject)
-    materialsButton.addEventListener("click", showMaterials)
-    patternTextureButton.addEventListener("click", showPatternTextures)
+    })
 
     removeTextureButton.addEventListener("click", () => {
         let material = new THREE.MeshStandardMaterial({
@@ -498,44 +589,57 @@ const onSessionEnd = event => {
 const handleAnimationFrame = (t, frame) => {
     if(!session || session.ended) return;
 
-    //update scale from slider values
+    //update edit tool slider values
+
     scaleX = scaleXSlider.value;
     scaleY = scaleYSlider.value;
     scaleZ = scaleZSlider.value;
 
-    //update rotation from slider values
     rotateX = rotateXSlider.value;
     rotateY = rotateYSlider.value;
     rotateZ = rotateZSlider.value;
 
-    //update colors from slider value
     redVal = redSlider.value;
     greenVal = greenSlider.value;
     blueVal = blueSlider.value;
     color = new THREE.Color("rgb(" + redVal + "," + greenVal + "," + blueVal + ")");
 
-    //update position from slider values
     posX = posXSlider.value;
     posY = posYSlider.value;
     posZ = posZSlider.value;
+
+    roughness = roughnessSliderInput.value
+    metalness = metalnessSliderInput.value
+    reflection = reflectionSliderInput.value
+    clearcoat = clearcoatSliderInput.value
+
+    ecRedVal = ecRedSlider.value;
+    ecGreenVal = ecGreenSlider.value;
+    ecBlueVal = ecBlueSlider.value;
+    ecColor = new THREE.Color("rgb(" + ecRedVal + "," + ecGreenVal + "," + ecBlueVal + ")");
 
     if (objectsList.length > 0) {
         currentObject = engine._scene.children[currentObjectIndex];
         //render.js
         updateScene(currentObject, 
-        currentEditTool, 
-        editToolbar,
-        scaleX,
-        scaleY,
-        scaleZ,
-        rotateX,
-        rotateY,
-        rotateZ,
-        color,
-        posX,
-        posY,
-        posZ,
-        debug);
+            currentEditTool, 
+            editToolbar,
+            scaleX,
+            scaleY,
+            scaleZ,
+            rotateX,
+            rotateY,
+            rotateZ,
+            color,
+            posX,
+            posY,
+            posZ,
+            roughness,
+            metalness,
+            reflection,
+            clearcoat,
+            ecColor
+        );
     }
 
 
@@ -669,6 +773,25 @@ function addMainToolbar() {
                 units = "cm"
             }
             posZOutput.innerHTML = `Z: ${posZVal}${units}`
+
+            roughnessSliderInput.value = currentObject.material.roughness;
+            roughnessSliderOutput.innerHTML = `${roughnessSliderInput.value}`;
+
+            metalnessSliderInput.value = currentObject.material.metalness;
+            metalnessSliderOutput.innerHTML = `${metalnessSliderInput.value}`;
+
+            reflectionSliderInput.value = currentObject.material.reflectivity;
+            reflectionSliderOutput.innerHTML = `${reflectionSliderInput.value}`;
+
+            clearcoatSliderInput.value = currentObject.material.clearcoat;
+            clearcoatSliderOutput.innerHTML = `${clearcoatSliderInput.value}`;
+
+            ecRedSlider.value = currentObject.material.emissive.r * 255
+            ecGreenSlider.value = currentObject.material.emissive.g * 255
+            ecBlueSlider.value = currentObject.material.emissive.b * 255
+            ecRedOutput.innerHTML = "Red: " + ecRedSlider.value;
+            ecGreenOutput.innerHTML = "Green: " + ecGreenSlider.value;
+            ecBlueOutput.innerHTML = "Blue: " + ecBlueSlider.value;
         }
 
         changeMainTool(editButton, editToolbar);
@@ -684,6 +807,21 @@ function addMainToolbar() {
                 break;
             case "move":
                 posSliders.style.display = "grid";
+                break;
+            case "roughness":
+                roughnessSlider.style.display = "grid";
+                break;
+            case "metalness":
+                metalnessSlider.style.display = "grid";
+                break;
+            case "reflection":
+                reflectionSlider.style.display = "grid";
+                break;
+            case "clearcoat":
+                clearcoatSlider.style.display = "grid";
+                break;
+            case "emissive-color":
+                emissiveColorSliders.style.display = "grid";
                 break;
             default:
         }

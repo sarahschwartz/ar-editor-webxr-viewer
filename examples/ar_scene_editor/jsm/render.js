@@ -11,7 +11,12 @@ function updateScene(currentObject,
     posX,
     posY,
     posZ,
-    debug) {
+    roughness,
+    metalness,
+    reflection,
+    clearcoat,
+    ecColor
+) {
     
 
     // If Edit toolbar is active
@@ -45,6 +50,31 @@ function updateScene(currentObject,
             case "move":
                 if (currentObject.position.x !== posX || currentObject.position.y !== posY || currentObject.position.z !== posZ) {
                     currentObject.position.set(posX, posY, posZ);
+                }
+                break;
+            case "roughness":
+                if (currentObject.material.roughness !== roughness) {
+                    currentObject.material.roughness = roughness;
+                }
+                break;
+            case "metalness":
+                if (currentObject.material.metalness !== metalness) {
+                    currentObject.material.metalness = metalness;
+                }
+                break;
+            case "reflection":
+                if (currentObject.material.reflectivity !== reflection) {
+                    currentObject.material.reflectivity = reflection;
+                }
+                break;
+            case "clearcoat":
+                if (currentObject.material.clearcoat !== clearcoat) {
+                    currentObject.material.clearcoat = clearcoat;
+                }
+                break;
+            case "emissive-color":
+                if (currentObject.material.emissive !== ecColor) {
+                    currentObject.material.emissive = ecColor;
                 }
                 break;
             default:

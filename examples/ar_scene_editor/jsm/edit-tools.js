@@ -103,6 +103,13 @@ const editToolsOutput = {
             }
             posZOutput.innerHTML = `Z: ${zVal}${units}`;
         }
-    }
+    },
+    singleSlider: function(slider, output) {
+        
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+    },
+    
 }
 export { editToolsOutput };
