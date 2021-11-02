@@ -57,5 +57,33 @@ const patternTextures = {
 
   }
 
+const addPatternButtons = () => {
+      ///// Pattern Texture Button Event Listeners
+    
+    texture1Button.addEventListener("click", () => {
+        currentObject.material = patternTextures.getTexture_1()
+    })
 
-export { patternTextures }
+    texture2Button.addEventListener("click", () => {
+        currentObject.material = patternTextures.getTexture_2()
+    })
+
+    texture3Button.addEventListener("click", () => {
+        currentObject.material = patternTextures.getTexture_3()
+    })
+
+    texture4Button.addEventListener("click", () => {
+        currentObject.material = patternTextures.getTexture_4()
+    })
+
+    texture5Button.addEventListener("click", () => {
+        currentObject.material = patternTextures.getTexture_5()
+    })
+
+    texture6Button.addEventListener("click", () => {
+        currentObject.material = patternTextures.getTexture_6()
+    })
+
+  }
+
+export { addPatternButtons }
