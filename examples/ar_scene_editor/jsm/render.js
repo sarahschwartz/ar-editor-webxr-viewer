@@ -12,6 +12,8 @@ function updateScene(currentObject,
     posY,
     posZ,
     opacity,
+    transmission,
+    sheen,
     roughness,
     metalness,
     reflection,
@@ -60,6 +62,16 @@ function updateScene(currentObject,
                 if (currentObject.material.opacity !== opacity) {
                     currentObject.material.opacity = opacity;
                 }
+            case "transmission":
+                if (currentObject.material.transmission !== transmission) {
+                    currentObject.material.transmission = transmission;
+                }
+                break;
+            case "sheen":
+                if (currentObject.material.sheen !== sheen) {
+                    currentObject.material.sheen = sheen;
+                }
+                break;
             case "roughness":
                 if (currentObject.material.roughness !== roughness) {
                     currentObject.material.roughness = roughness;

@@ -44,6 +44,8 @@ const rotateButton = document.getElementById('rotate-button');
 const colorButton = document.getElementById('color-button');
 const moveButton = document.getElementById('move-button');
 const opacityButton = document.getElementById('opacity-button');
+const transmissionButton = document.getElementById('transmission-button');
+const sheenButton = document.getElementById('sheen-button');
 const roughnessButton = document.getElementById('roughness-button');
 const metalnessButton = document.getElementById('metalness-button');
 const reflectionButton = document.getElementById('reflection-button');
@@ -92,6 +94,16 @@ const posZOutput = document.getElementById("posZ-slider-output");
 const opacitySlider = document.getElementById('opacity-slider')
 const opacitySliderInput = document.getElementById('opacity-slider-input')
 const opacitySliderOutput = document.getElementById('opacity-slider-output')
+
+// Transmission Slider
+const transmissionSlider = document.getElementById('transmission-slider')
+const transmissionSliderInput = document.getElementById('transmission-slider-input')
+const transmissionSliderOutput = document.getElementById('transmission-slider-output')
+
+// Sheen Slider
+const sheenSlider = document.getElementById('sheen-slider')
+const sheenSliderInput = document.getElementById('sheen-slider-input')
+const sheenSliderOutput = document.getElementById('sheen-slider-output')
 
 // Roughness Slider
 const roughnessSlider = document.getElementById('roughness-slider')
@@ -153,6 +165,8 @@ let posY = posYSlider.value;
 let posZ = posZSlider.value;
 
 let opacity = opacitySliderInput.value
+let transmission = transmissionSliderInput.value
+let sheen = sheenSliderInput.value
 let roughness = roughnessSliderInput.value
 let metalness = metalnessSliderInput.value
 let reflection = reflectionSliderInput.value
@@ -219,6 +233,12 @@ const removeSliders = (editTool) => {
         case "opacity":
             opacitySlider.style.display = "none";
             break;
+        case "transmission":
+            transmissionSlider.style.display = "none";
+            break;
+        case "sheen":
+            sheenSlider.style.display = "none";
+            break;
         case "roughness":
             roughnessSlider.style.display = "none";
             break;
@@ -274,6 +294,8 @@ const addScene = () => {
 
 
     editToolsOutput.singleSlider(opacitySliderInput, opacitySliderOutput);
+    editToolsOutput.singleSlider(transmissionSliderInput, transmissionSliderOutput);
+    editToolsOutput.singleSlider(sheenSliderInput, sheenSliderOutput);
     editToolsOutput.singleSlider(roughnessSliderInput, roughnessSliderOutput);
     editToolsOutput.singleSlider(metalnessSliderInput, metalnessSliderOutput);
     editToolsOutput.singleSlider(reflectionSliderInput, reflectionSliderOutput);
@@ -396,6 +418,18 @@ const addScene = () => {
         removeSliders(currentEditTool);
         currentEditTool = "opacity";
         changeEditTool(opacityButton, opacitySlider);
+    })
+
+    transmissionButton.addEventListener("click", () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "transmission";
+        changeEditTool(transmissionButton, transmissionSlider);
+    })
+
+    sheenButton.addEventListener("click", () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "sheen";
+        changeEditTool(sheenButton, sheenSlider);
     })
 
     roughnessButton.addEventListener("click", () => {
@@ -624,6 +658,8 @@ const handleAnimationFrame = (t, frame) => {
     posZ = posZSlider.value;
 
     opacity = opacitySliderInput.value
+    transmission = transmissionSliderInput.value
+    sheen = sheenSliderInput.value
     roughness = roughnessSliderInput.value
     metalness = metalnessSliderInput.value
     reflection = reflectionSliderInput.value
@@ -651,6 +687,8 @@ const handleAnimationFrame = (t, frame) => {
             posY,
             posZ,
             opacity,
+            transmission,
+            sheen,
             roughness,
             metalness,
             reflection,
@@ -794,6 +832,12 @@ function addMainToolbar() {
             opacitySliderInput.value = currentObject.material.opacity;
             opacitySliderOutput.innerHTML = `${opacitySliderInput.value}`;
 
+            transmissionSliderInput.value = currentObject.material.transmission;
+            transmissionSliderOutput.innerHTML = `${transmissionSliderInput.value}`;
+
+            sheenSliderInput.value = currentObject.material.sheen;
+            sheenSliderOutput.innerHTML = `${sheenSliderInput.value}`;
+
             roughnessSliderInput.value = currentObject.material.roughness;
             roughnessSliderOutput.innerHTML = `${roughnessSliderInput.value}`;
 
@@ -827,6 +871,15 @@ function addMainToolbar() {
                 break;
             case "move":
                 posSliders.style.display = "grid";
+                break;
+            case "opacity":
+                opacitySlider.style.display = "grid";
+                break;
+            case "transmission":
+                transmissionSlider.style.display = "grid";
+                break;
+            case "sheen":
+                sheenSlider.style.display = "grid";
                 break;
             case "roughness":
                 roughnessSlider.style.display = "grid";
