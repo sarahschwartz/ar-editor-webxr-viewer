@@ -4,3 +4,10 @@
 add two objects, delete the first one, click the edit button
     ----> unable to press edit button
 work around: have to reselect object on select tab, then can press edit button
+
+
+**
+no option to re-enter full-screen if taken out
+
+**
+styling needed for screen sizes / not full screen
