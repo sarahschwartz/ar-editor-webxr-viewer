@@ -11,6 +11,7 @@ function updateScene(currentObject,
     posX,
     posY,
     posZ,
+    opacity,
     roughness,
     metalness,
     reflection,
@@ -52,6 +53,13 @@ function updateScene(currentObject,
                     currentObject.position.set(posX, posY, posZ);
                 }
                 break;
+            case "opacity":
+                if (opacity < 1 && !currentObject.transparent) {
+                    currentObject.transparent = true
+                }
+                if (currentObject.material.opacity !== opacity) {
+                    currentObject.material.opacity = opacity;
+                }
             case "roughness":
                 if (currentObject.material.roughness !== roughness) {
                     currentObject.material.roughness = roughness;

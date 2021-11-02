@@ -43,6 +43,7 @@ const scaleButton = document.getElementById('scale-button');
 const rotateButton = document.getElementById('rotate-button');
 const colorButton = document.getElementById('color-button');
 const moveButton = document.getElementById('move-button');
+const opacityButton = document.getElementById('opacity-button');
 const roughnessButton = document.getElementById('roughness-button');
 const metalnessButton = document.getElementById('metalness-button');
 const reflectionButton = document.getElementById('reflection-button');
@@ -86,6 +87,11 @@ const posZSlider = document.getElementById("posZ-slider-input");
 const posXOutput = document.getElementById("posX-slider-output");
 const posYOutput = document.getElementById("posY-slider-output");
 const posZOutput = document.getElementById("posZ-slider-output");
+
+// Opacity Slider
+const opacitySlider = document.getElementById('opacity-slider')
+const opacitySliderInput = document.getElementById('opacity-slider-input')
+const opacitySliderOutput = document.getElementById('opacity-slider-output')
 
 // Roughness Slider
 const roughnessSlider = document.getElementById('roughness-slider')
@@ -146,6 +152,7 @@ let posX = posXSlider.value;
 let posY = posYSlider.value;
 let posZ = posZSlider.value;
 
+let opacity = opacitySliderInput.value
 let roughness = roughnessSliderInput.value
 let metalness = metalnessSliderInput.value
 let reflection = reflectionSliderInput.value
@@ -209,6 +216,9 @@ const removeSliders = (editTool) => {
         case "move":
             posSliders.style.display = "none";
             break;
+        case "opacity":
+            opacitySlider.style.display = "none";
+            break;
         case "roughness":
             roughnessSlider.style.display = "none";
             break;
@@ -263,6 +273,7 @@ const addScene = () => {
         posZOutput);
 
 
+    editToolsOutput.singleSlider(opacitySliderInput, opacitySliderOutput);
     editToolsOutput.singleSlider(roughnessSliderInput, roughnessSliderOutput);
     editToolsOutput.singleSlider(metalnessSliderInput, metalnessSliderOutput);
     editToolsOutput.singleSlider(reflectionSliderInput, reflectionSliderOutput);
@@ -379,6 +390,12 @@ const addScene = () => {
         removeSliders(currentEditTool);
         currentEditTool = "move";
         changeEditTool(moveButton, posSliders);
+    })
+
+    opacityButton.addEventListener("click", () => {
+        removeSliders(currentEditTool);
+        currentEditTool = "opacity";
+        changeEditTool(opacityButton, opacitySlider);
     })
 
     roughnessButton.addEventListener("click", () => {
@@ -606,6 +623,7 @@ const handleAnimationFrame = (t, frame) => {
     posY = posYSlider.value;
     posZ = posZSlider.value;
 
+    opacity = opacitySliderInput.value
     roughness = roughnessSliderInput.value
     metalness = metalnessSliderInput.value
     reflection = reflectionSliderInput.value
@@ -632,6 +650,7 @@ const handleAnimationFrame = (t, frame) => {
             posX,
             posY,
             posZ,
+            opacity,
             roughness,
             metalness,
             reflection,
@@ -771,6 +790,9 @@ function addMainToolbar() {
                 units = "cm"
             }
             posZOutput.innerHTML = `Z: ${posZVal}${units}`
+
+            opacitySliderInput.value = currentObject.material.opacity;
+            opacitySliderOutput.innerHTML = `${opacitySliderInput.value}`;
 
             roughnessSliderInput.value = currentObject.material.roughness;
             roughnessSliderOutput.innerHTML = `${roughnessSliderInput.value}`;
