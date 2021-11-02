@@ -48,7 +48,6 @@ const metalnessButton = document.getElementById('metalness-button');
 const reflectionButton = document.getElementById('reflection-button');
 const clearcoatButton = document.getElementById('clearcoat-button');
 const emissiveColorButton = document.getElementById('emissive-color-button');
-const vertexColorsButton = document.getElementById('vertex-colors-button');
 const wireframeButton = document.getElementById('wireframe-button');
 const textureButton = document.getElementById('texture-button');
 
@@ -411,6 +410,10 @@ const addScene = () => {
         removeSliders(currentEditTool);
         currentEditTool = "emissive-color";
         changeEditTool(emissiveColorButton, emissiveColorSliders);
+    })
+
+    wireframeButton.addEventListener("click", () => {
+        currentObject.material.wireframe = !currentObject.material.wireframe;
     })
 
     textureButton.addEventListener("click", () => {
