@@ -109,16 +109,6 @@ const materialTextures = {
     
         return material;
     },
-    getRoughGlassMaterial: function () {
-        const material = new THREE.MeshPhysicalMaterial();
-        material.roughness = 0.3;
-        material.transmission = 0.2;
-        material.thickness = 1;
-        material.reflectivity = 1;
-        material.clearcoat = 1;
-        
-        return material
-    }
   }
 
 

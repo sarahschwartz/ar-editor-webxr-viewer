@@ -173,7 +173,6 @@ const asphaltTextureButton = document.getElementById('asphalt-texture-button');
 const woodTextureButton = document.getElementById('wood-texture-button');
 const rocksTextureButton = document.getElementById('rocks-texture-button');
 const pebblesTextureButton = document.getElementById('pebbles-texture-button');
-const iceTextureButton = document.getElementById('ice-texture-button');
 
 // pattern texture buttons
 const texture1Button = document.getElementById('texture1-button');
@@ -447,10 +446,6 @@ const addScene = () => {
 
     barkTextureButton.addEventListener("click", () => {
         currentObject.material = materialTextures.getBarkTexture()
-    })
-
-    iceTextureButton.addEventListener("click", () => {
-        currentObject.material = materialTextures.getRoughGlassMaterial()
     })
 
     woodTextureButton.addEventListener("click", () => {
