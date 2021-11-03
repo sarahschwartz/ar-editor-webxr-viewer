@@ -112,4 +112,59 @@ const editToolsOutput = {
     },
     
 }
-export { editToolsOutput };
+    
+editToolsOutput.scaleSlider(scaleXSlider,
+    scaleYSlider,
+    scaleZSlider,
+    scaleXOutput,
+    scaleYOutput,
+    scaleZOutput);
+
+    editToolsOutput.rotateSlider(rotateXSlider,
+        rotateYSlider,
+        rotateZSlider,
+        rotateXOutput,
+        rotateYOutput,
+        rotateZOutput);
+    
+    editToolsOutput.colorSlider(redSlider,
+        greenSlider,
+        blueSlider,
+        redOutput,
+        greenOutput,
+        blueOutput);
+        
+    editToolsOutput.posSlider(posXSlider,
+        posYSlider,
+        posZSlider,
+        posXOutput,
+        posYOutput,
+        posZOutput);
+
+
+    editToolsOutput.singleSlider(opacitySliderInput, opacitySliderOutput);
+    editToolsOutput.singleSlider(transmissionSliderInput, transmissionSliderOutput);
+    editToolsOutput.singleSlider(sheenSliderInput, sheenSliderOutput);
+    editToolsOutput.singleSlider(sheenRoughnessSliderInput, sheenRoughnessSliderOutput);
+    editToolsOutput.singleSlider(roughnessSliderInput, roughnessSliderOutput);
+    editToolsOutput.singleSlider(metalnessSliderInput, metalnessSliderOutput);
+    editToolsOutput.singleSlider(reflectionSliderInput, reflectionSliderOutput);
+    editToolsOutput.singleSlider(clearcoatSliderInput, clearcoatSliderOutput);
+    editToolsOutput.singleSlider(clearcoatRoughnessSliderInput, clearcoatRoughnessSliderOutput);
+    editToolsOutput.singleSlider(thicknessSliderInput, thicknessSliderOutput);
+    editToolsOutput.singleSlider(wireframeThicknessSliderInput, wireframeThicknessSliderOutput);
+    editToolsOutput.singleSlider(emissiveIntensitySliderInput, emissiveIntensitySliderOutput);
+    
+    editToolsOutput.colorSlider(sheenRedSlider,
+        sheenGreenSlider,
+        sheenBlueSlider,
+        sheenRedOutput,
+        sheenGreenOutput,
+        sheenBlueOutput);
+    
+    editToolsOutput.colorSlider(ecRedSlider,
+        ecGreenSlider,
+        ecBlueSlider,
+        ecRedOutput,
+        ecGreenOutput,
+        ecBlueOutput);

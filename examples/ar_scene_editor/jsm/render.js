@@ -1,31 +1,4 @@
-function updateScene(currentObject,
-    currentEditTool, 
-    editToolbar,
-    scaleX,
-    scaleY,
-    scaleZ,
-    rotateX,
-    rotateY,
-    rotateZ,
-    color,
-    posX,
-    posY,
-    posZ,
-    opacity,
-    transmission,
-    sheen,
-    sheenColor,
-    sheenRoughness,
-    roughness,
-    metalness,
-    reflection,
-    clearcoat,
-    clearcoatRoughness,
-    thickness,
-    emissiveIntensity,
-    ecColor,
-    wireframeThickness
-) {
+function updateScene() {
     
 
     // If Edit toolbar is active

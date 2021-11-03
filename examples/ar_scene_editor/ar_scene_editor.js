@@ -4,10 +4,12 @@ import * as vec3 from '../libs/gl-matrix/vec3.js';
 import XREngine from '../XREngine.js';
 
 import { initializeLight } from './jsm/light.js';
-import { editToolsOutput } from './jsm/edit-tools.js';
 import { updateScene } from './jsm/render.js';
 import getGeometry from './jsm/get-geometry.js';
-import { changeMainTool, changeEditTool } from './jsm/change-tool.js';
+import showSliders from './jsm/show-sliders.js';
+import updateState from './jsm/update-state.js';
+import updateSliders from './jsm/update-sliders.js';
+import { changeMainTool } from './jsm/change-tool.js';
 import { newDeleteButton, newObjectDiv } from './jsm/object-list.js';
 import { addPatternButtons } from './jsm/pattern-textures.js';
 import { addMaterialButtons } from './jsm/material-textures.js';
@@ -22,62 +24,6 @@ const addScene = () => {
 
     initializeLight(engine);
     addMainToolbar();
-    editToolsOutput.scaleSlider(scaleXSlider,
-        scaleYSlider,
-        scaleZSlider,
-        scaleXOutput,
-        scaleYOutput,
-        scaleZOutput);
-
-    editToolsOutput.rotateSlider(rotateXSlider,
-        rotateYSlider,
-        rotateZSlider,
-        rotateXOutput,
-        rotateYOutput,
-        rotateZOutput);
-    
-    editToolsOutput.colorSlider(redSlider,
-        greenSlider,
-        blueSlider,
-        redOutput,
-        greenOutput,
-        blueOutput);
-        
-    editToolsOutput.posSlider(posXSlider,
-        posYSlider,
-        posZSlider,
-        posXOutput,
-        posYOutput,
-        posZOutput);
-
-
-    editToolsOutput.singleSlider(opacitySliderInput, opacitySliderOutput);
-    editToolsOutput.singleSlider(transmissionSliderInput, transmissionSliderOutput);
-    editToolsOutput.singleSlider(sheenSliderInput, sheenSliderOutput);
-    editToolsOutput.singleSlider(sheenRoughnessSliderInput, sheenRoughnessSliderOutput);
-    editToolsOutput.singleSlider(roughnessSliderInput, roughnessSliderOutput);
-    editToolsOutput.singleSlider(metalnessSliderInput, metalnessSliderOutput);
-    editToolsOutput.singleSlider(reflectionSliderInput, reflectionSliderOutput);
-    editToolsOutput.singleSlider(clearcoatSliderInput, clearcoatSliderOutput);
-    editToolsOutput.singleSlider(clearcoatRoughnessSliderInput, clearcoatRoughnessSliderOutput);
-    editToolsOutput.singleSlider(thicknessSliderInput, thicknessSliderOutput);
-    editToolsOutput.singleSlider(wireframeThicknessSliderInput, wireframeThicknessSliderOutput);
-    editToolsOutput.singleSlider(emissiveIntensitySliderInput, emissiveIntensitySliderOutput);
-    
-    editToolsOutput.colorSlider(sheenRedSlider,
-        sheenGreenSlider,
-        sheenBlueSlider,
-        sheenRedOutput,
-        sheenGreenOutput,
-        sheenBlueOutput);
-    
-    editToolsOutput.colorSlider(ecRedSlider,
-        ecGreenSlider,
-        ecBlueSlider,
-        ecRedOutput,
-        ecGreenOutput,
-        ecBlueOutput);
-
 
     removeTextureButton.addEventListener("click", () => {
         let material = new THREE.MeshStandardMaterial({
@@ -183,80 +129,13 @@ const handleAnimationFrame = (t, frame) => {
     if(!session || session.ended) return;
 
     //update edit tool slider values
-
-    scaleX = scaleXSlider.value;
-    scaleY = scaleYSlider.value;
-    scaleZ = scaleZSlider.value;
-
-    rotateX = rotateXSlider.value;
-    rotateY = rotateYSlider.value;
-    rotateZ = rotateZSlider.value;
-
-    redVal = redSlider.value;
-    greenVal = greenSlider.value;
-    blueVal = blueSlider.value;
-    color = new THREE.Color("rgb(" + redVal + "," + greenVal + "," + blueVal + ")");
-
-    posX = posXSlider.value;
-    posY = posYSlider.value;
-    posZ = posZSlider.value;
-
-    opacity = opacitySliderInput.value
-    transmission = transmissionSliderInput.value
-    sheen = sheenSliderInput.value
-    sheenRoughness = sheenRoughnessSliderInput.value
-    sheenRedVal = sheenRedSlider.value
-    sheenGreenVal = sheenGreenSlider.value
-    sheenBlueVal = sheenBlueSlider.value
-    sheenColor = new THREE.Color("rgb(" + sheenRedVal + "," + sheenGreenVal + "," + sheenBlueVal + ")");
-
-    roughness = roughnessSliderInput.value
-    metalness = metalnessSliderInput.value
-    reflection = reflectionSliderInput.value
-    clearcoat = clearcoatSliderInput.value
-    clearcoatRoughness = clearcoatRoughnessSliderInput.value
-    thickness = thicknessSliderInput.value
-    wireframeThickness = wireframeThicknessSliderInput.value
-    emissiveIntensity = emissiveIntensitySliderInput.value
-
-    ecRedVal = ecRedSlider.value;
-    ecGreenVal = ecGreenSlider.value;
-    ecBlueVal = ecBlueSlider.value;
-    ecColor = new THREE.Color("rgb(" + ecRedVal + "," + ecGreenVal + "," + ecBlueVal + ")");
+    updateState();
 
     if (objectsList.length > 0) {
         currentObject = engine._scene.children[currentObjectIndex];
         //render.js
-        updateScene(currentObject, 
-            currentEditTool, 
-            editToolbar,
-            scaleX,
-            scaleY,
-            scaleZ,
-            rotateX,
-            rotateY,
-            rotateZ,
-            color,
-            posX,
-            posY,
-            posZ,
-            opacity,
-            transmission,
-            sheen,
-            sheenColor,
-            sheenRoughness,
-            roughness,
-            metalness,
-            reflection,
-            clearcoat,
-            clearcoatRoughness,
-            thickness,
-            emissiveIntensity,
-            ecColor,
-            wireframeThickness
-        );
+        updateScene();
     }
-
 
     session.requestAnimationFrame(handleAnimationFrame);
     const pose = frame.getViewerPose(localReferenceSpace);
@@ -314,209 +193,10 @@ function addMainToolbar() {
     // Edit button
     const editObject = () => {
         if (objectsList.length > 0) {
-            let units = "cm";
-
-            // update sliders to current object
-
-            // Scale
-            scaleXSlider.value = currentObject.scale.x
-            scaleYSlider.value = currentObject.scale.y
-            scaleZSlider.value = currentObject.scale.z
-            let scaleXVal = scaleXSlider.value * 10
-            let scaleYVal = scaleYSlider.value * 10
-            let scaleZVal = scaleZSlider.value * 10
-            if (Math.abs(scaleXVal) > 99) {
-                scaleXVal = scaleXVal / 100;
-                units = "m";
-            }
-            scaleXOutput.innerHTML = `X: ${scaleXVal}${units}`;
-
-            if (Math.abs(scaleYVal) > 99) {
-                scaleYVal = scaleYVal / 100;
-                units = "m";
-            } else {
-                units = "cm";
-            }
-            scaleYOutput.innerHTML = `Y: ${scaleYVal}${units}`;
-
-            if (Math.abs(scaleZVal) > 99) {
-                scaleZVal = scaleZVal / 100;
-                units = "m";
-            } else {
-                units = "cm";
-            }
-            scaleZOutput.innerHTML = `Z: ${scaleZVal}${units}`;
-           // Rotation
-            rotateXSlider.value = currentObject.rotation.x * 180 / Math.PI;
-            rotateYSlider.value = currentObject.rotation.y * 180 / Math.PI;
-            rotateZSlider.value = currentObject.rotation.z * 180 / Math.PI;
-            rotateXOutput.innerHTML = `X: ${rotateXSlider.value}°`;
-            rotateYOutput.innerHTML = `Y: ${rotateYSlider.value}°`;
-            rotateZOutput.innerHTML = `Z: ${rotateZSlider.value}°`;
-            // Color
-            redSlider.value = currentObject.material.color.r * 255
-            greenSlider.value = currentObject.material.color.g * 255
-            blueSlider.value = currentObject.material.color.b * 255
-            redOutput.innerHTML = "Red: " + redSlider.value;
-            greenOutput.innerHTML = "Green: " + greenSlider.value;
-            blueOutput.innerHTML = "Blue: " + blueSlider.value;
-            //Position
-            posXSlider.value = currentObject.position.x
-            posYSlider.value = currentObject.position.y
-            posZSlider.value = currentObject.position.z
-            let posXVal = parseInt(posXSlider.value * 100);
-            let posYVal = parseInt(posYSlider.value * 100);
-            let posZVal = parseInt(posZSlider.value * 100);
-
-            if (Math.abs(posXVal) > 99) { 
-                posXVal = posXVal / 100;
-                units = "m"
-            } else {
-                units = "cm"
-            }
-            posXOutput.innerHTML = `X: ${posXVal}${units}`
-
-            if (Math.abs(posYVal) > 99) {
-                posYVal = posYVal / 100;
-                units = "m"
-            } else {
-                units = "cm"
-            }
-            posYOutput.innerHTML = `Y: ${posYVal}${units}`
-
-            if (Math.abs(posZVal) > 99) {
-                posZVal = posZVal / 100;
-                units = "m"
-            } else {
-                units = "cm"
-            }
-            posZOutput.innerHTML = `Z: ${posZVal}${units}`
-
-            //Opacity
-            opacitySliderInput.value = currentObject.material.opacity;
-            opacitySliderOutput.innerHTML = `${opacitySliderInput.value}`;
-
-            // Transmission
-            transmissionSliderInput.value = currentObject.material.transmission;
-            transmissionSliderOutput.innerHTML = `${transmissionSliderInput.value}`;
-
-            // Sheen
-            sheenSliderInput.value = currentObject.material.sheen;
-            sheenSliderOutput.innerHTML = `${sheenSliderInput.value}`;
-
-            //Sheen Roughness
-            sheenRoughnessSliderInput.value = currentObject.material.sheenRoughness;
-            sheenRoughnessSliderOutput.innerHTML = `${sheenRoughnessSliderInput.value}`;
-
-            // Sheen Colors
-            sheenRedSlider.value = currentObject.material.sheenColor.r * 255;
-            sheenGreenSlider.value = currentObject.material.sheenColor.g * 255;
-            sheenBlueSlider.value = currentObject.material.sheenColor.b * 255;
-            sheenRedOutput.innerHTML = "Red: " + sheenRedSlider.value;
-            sheenGreenOutput.innerHTML = "Green: " + sheenGreenSlider.value;
-            sheenBlueOutput.innerHTML = "Blue: " + sheenBlueSlider.value;
-
-            //Roughness
-            roughnessSliderInput.value = currentObject.material.roughness;
-            roughnessSliderOutput.innerHTML = `${roughnessSliderInput.value}`;
-
-            //Metalness
-            metalnessSliderInput.value = currentObject.material.metalness;
-            metalnessSliderOutput.innerHTML = `${metalnessSliderInput.value}`;
-
-            // Reflection
-            reflectionSliderInput.value = currentObject.material.reflectivity;
-            reflectionSliderOutput.innerHTML = `${reflectionSliderInput.value}`;
-
-            // Clearcoat
-            clearcoatSliderInput.value = currentObject.material.clearcoat;
-            clearcoatSliderOutput.innerHTML = `${clearcoatSliderInput.value}`;
-
-            // Clearcoat Roughness
-            clearcoatRoughnessSliderInput.value = currentObject.material.clearcoatRoughness;
-            clearcoatRoughnessSliderOutput.innerHTML = `${clearcoatRoughnessSliderInput.value}`;
-
-            // Thickness
-            thicknessSliderInput.value = currentObject.material.thickness;
-            thicknessSliderOutput.innerHTML = `${thicknessSliderInput.value}`;
-
-            // Wireframe Thickness
-            wireframeThicknessSliderInput.value = currentObject.material.wireframeThickness;
-            wireframeThicknessSliderOutput.innerHTML = `${wireframeThicknessSliderInput.value}`;
-
-            // Emissive Intensity
-            emissiveIntensitySliderInput.value = currentObject.material.emissiveIntensity ;
-            emissiveIntensitySliderOutput.innerHTML = `${emissiveIntensitySliderInput.value}`;
-
-            // Emissive Colors
-            ecRedSlider.value = currentObject.material.emissive.r * 255
-            ecGreenSlider.value = currentObject.material.emissive.g * 255
-            ecBlueSlider.value = currentObject.material.emissive.b * 255
-            ecRedOutput.innerHTML = "Red: " + ecRedSlider.value;
-            ecGreenOutput.innerHTML = "Green: " + ecGreenSlider.value;
-            ecBlueOutput.innerHTML = "Blue: " + ecBlueSlider.value;
+            updateSliders();
         }
-
         changeMainTool(editButton, editToolbar);
-        switch(currentEditTool){
-            case "scale":
-                scaleSliders.style.display = "grid";
-                break;
-            case "rotate":
-                rotateSliders.style.display = "grid";
-                break;
-            case "color":
-                colorSliders.style.display = "grid";
-                break;
-            case "move":
-                posSliders.style.display = "grid";
-                break;
-            case "opacity":
-                opacitySlider.style.display = "grid";
-                break;
-            case "transmission":
-                transmissionSlider.style.display = "grid";
-                break;
-            case "sheen":
-                sheenSlider.style.display = "grid";
-                break;
-            case "sheen-roughness":
-                sheenRoughnessSlider.style.display = "grid";
-                break;
-            case "sheen-color":
-                sheenColorSliders.style.display = "grid";
-                break;
-            case "roughness":
-                roughnessSlider.style.display = "grid";
-                break;
-            case "metalness":
-                metalnessSlider.style.display = "grid";
-                break;
-            case "reflection":
-                reflectionSlider.style.display = "grid";
-                break;
-            case "clearcoat":
-                clearcoatSlider.style.display = "grid";
-                break;
-            case "clearcoat-roughness":
-                clearcoatRoughnessSlider.style.display = "grid";
-                break;
-            case "thickness":
-                thicknessSlider.style.display = "grid";
-                break;
-            case "wireframe-thickness":
-                wireframeThicknessSlider.style.display = "grid";
-                break;
-            case "emissive-intensity":
-                emissiveIntensitySlider.style.display = "grid";
-                break;
-            case "emissive-color":
-                emissiveColorSliders.style.display = "grid";
-                break;
-            default:
-        }
-
-
+        showSliders();
     }
     editButton.addEventListener("click", editObject)
 
