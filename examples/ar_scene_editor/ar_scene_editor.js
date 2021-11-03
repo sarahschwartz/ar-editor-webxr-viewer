@@ -3,16 +3,16 @@ import * as mat4 from '../libs/gl-matrix/mat4.js';
 import * as vec3 from '../libs/gl-matrix/vec3.js';
 import XREngine from '../XREngine.js';
 
-import { initializeLight } from './jsm/light.js';
-import { updateScene } from './jsm/render.js';
+import initializeLight from './jsm/light.js';
+import updateScene from './jsm/render.js';
 import getGeometry from './jsm/get-geometry.js';
 import showSliders from './jsm/show-sliders.js';
 import updateState from './jsm/update-state.js';
 import updateSliders from './jsm/update-sliders.js';
-import { changeMainTool } from './jsm/change-tool.js';
+import changeMainTool from './jsm/change-tool.js';
+import addPatternButtons from './jsm/pattern-textures.js';
+import addMaterialButtons from './jsm/material-textures.js';
 import { newDeleteButton, newObjectDiv } from './jsm/object-list.js';
-import { addPatternButtons } from './jsm/pattern-textures.js';
-import { addMaterialButtons } from './jsm/material-textures.js';
 
 // temporary working variables
 const workingMatrix = mat4.create();

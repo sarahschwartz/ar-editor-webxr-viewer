@@ -112,9 +112,7 @@ const materialTextures = {
 }
 
 
-///// Material Texture Button Event Listeners
-
-const addMaterialButtons = () => {
+export default function addMaterialButtons() {
     whiteMarbleTextureButton.addEventListener("click", () => {
         currentObject.material = materialTextures.getWhiteMarbleTexture()
     })
@@ -141,6 +139,3 @@ const addMaterialButtons = () => {
 
 }
     
-
-
-export { addMaterialButtons }

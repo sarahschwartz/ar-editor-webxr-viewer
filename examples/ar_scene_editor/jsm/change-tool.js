@@ -1,4 +1,4 @@
-function changeMainTool(button, toolbar) {
+export default function changeMainTool(button, toolbar) {
     if (document.querySelector(".active-toolbar")) {
         let activeToolbar = document.querySelector(".active-toolbar")
         activeToolbar.classList.remove("active-toolbar");
@@ -16,13 +16,13 @@ function changeMainTool(button, toolbar) {
     toolbar.style.display = "flex";
 }
 
-function changeEditTool(button, sliders) {
-    let activeTool = document.querySelector(".active-edit")
-    activeTool.classList.remove("active-edit");
-    button.classList.add("active-edit");
-    if (sliders !== "none") {
-        sliders.style.display = "grid";
-    }
-}
+// function changeEditTool(button, sliders) {
+//     let activeTool = document.querySelector(".active-edit")
+//     activeTool.classList.remove("active-edit");
+//     button.classList.add("active-edit");
+//     if (sliders !== "none") {
+//         sliders.style.display = "grid";
+//     }
+// }
 
-export { changeMainTool, changeEditTool }
+// export { changeMainTool, changeEditTool }

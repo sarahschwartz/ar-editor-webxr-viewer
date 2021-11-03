@@ -57,8 +57,7 @@ const patternTextures = {
 
   }
 
-const addPatternButtons = () => {
-      ///// Pattern Texture Button Event Listeners
+export default function addPatternButtons() {
     
     texture1Button.addEventListener("click", () => {
         currentObject.material = patternTextures.getTexture_1()
@@ -85,5 +84,3 @@ const addPatternButtons = () => {
     })
 
   }
-
-export { addPatternButtons }

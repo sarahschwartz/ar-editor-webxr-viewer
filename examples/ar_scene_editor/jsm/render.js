@@ -1,4 +1,4 @@
-function updateScene() {
+export default function updateScene() {
     
 
     // If Edit toolbar is active
@@ -114,6 +114,5 @@ function updateScene() {
     }
 }
 
-export { updateScene }
 
 
