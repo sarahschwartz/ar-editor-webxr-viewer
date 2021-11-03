@@ -5,7 +5,7 @@ import XREngine from '../XREngine.js';
 
 import initializeLight from './jsm/light.js';
 import { GLTFLoader } from '../libs/new-three/examples/jsm/loaders/GLTFLoader.js'
-// import addGLTFModel from './js/add-models.js';
+import addGLTFModel from './jsm/load-models.js';
 import updateScene from './jsm/render.js';
 import getGeometry from './jsm/get-geometry.js';
 import showSliders from './jsm/show-sliders.js';
@@ -113,34 +113,10 @@ const initSession = async xrSession => {
 
     // show DOM
     document.getElementById("xr-overlay").style.visibility = "visible";
-
-
+    
     addScene();
-
-    const loader = new GLTFLoader().setPath('../assets/models/');
-    
-    function addGLTFModel(path) {
-        loader.load( path, function ( gltf ) {
-            gltf.scene.position.set(...position)
-
-            gltf.scene.scale.x = 0.1
-            gltf.scene.scale.y = 0.1
-            gltf.scene.scale.z = 0.1
-
-
-            engine._scene.add(gltf.scene);
-            engine.render()
-        } );
-       
-    }
-
+    loader = new GLTFLoader().setPath('../assets/models/');
     addGLTFModel('susan.glb')
-
-
-
-    // addSusan();
-    
-    
 };
 
 

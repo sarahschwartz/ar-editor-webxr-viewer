@@ -3,6 +3,7 @@ let session = null;
 let localReferenceSpace = null;
 let viewerReferenceSpace = null;
 let engine = null;
+let loader;
 
 // Start AR session button
 const goButton = document.getElementById('go-button');
