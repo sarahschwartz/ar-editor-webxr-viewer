@@ -4,6 +4,8 @@ import * as vec3 from '../libs/gl-matrix/vec3.js';
 import XREngine from '../XREngine.js';
 
 import initializeLight from './jsm/light.js';
+import { GLTFLoader } from '../libs/new-three/examples/jsm/loaders/GLTFLoader.js'
+// import addGLTFModel from './js/add-models.js';
 import updateScene from './jsm/render.js';
 import getGeometry from './jsm/get-geometry.js';
 import showSliders from './jsm/show-sliders.js';
@@ -34,7 +36,9 @@ const addScene = () => {
     })
 
     addMaterialButtons();
-    addPatternButtons();    
+    addPatternButtons();
+    
+    
 }
 
 ////////////////////// Initialize Immersive AR Session ///////////////////////////
@@ -107,10 +111,35 @@ const initSession = async xrSession => {
         session.requestAnimationFrame(handleAnimationFrame);
     });
 
-    // turn DOM from hidden to visible
+    // show DOM
     document.getElementById("xr-overlay").style.visibility = "visible";
 
+
     addScene();
+
+    const loader = new GLTFLoader().setPath('../assets/models/');
+    
+    function addGLTFModel(path) {
+        loader.load( path, function ( gltf ) {
+            gltf.scene.position.set(...position)
+
+            gltf.scene.scale.x = 0.1
+            gltf.scene.scale.y = 0.1
+            gltf.scene.scale.z = 0.1
+
+
+            engine._scene.add(gltf.scene);
+            engine.render()
+        } );
+       
+    }
+
+    addGLTFModel('susan.glb')
+
+
+
+    // addSusan();
+    
     
 };
 
@@ -157,6 +186,7 @@ const handleAnimationFrame = (t, frame) => {
 }
 ////////////////////// Back, Add, Edit, Select/Delete ///////////////////////////
 function addMainToolbar() {
+    
 
     // Menu Back Buttons
     const menuBack = () => {
