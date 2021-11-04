@@ -11,7 +11,6 @@ import getGeometry from './jsm/get-geometry.js';
 import showSliders from './jsm/show-sliders.js';
 import updateState from './jsm/update-state.js';
 import updateSliders from './jsm/update-sliders.js';
-import changeMainTool from './jsm/change-tool.js';
 import addPatternButtons from './jsm/pattern-textures.js';
 import addMaterialButtons from './jsm/material-textures.js';
 import { newDeleteButton, newObjectDiv } from './jsm/object-list.js';
@@ -20,46 +19,7 @@ import { newDeleteButton, newObjectDiv } from './jsm/object-list.js';
 const workingMatrix = mat4.create();
 const workingVec3 = vec3.create();
 
-function disableMaterialButtons() {
-    currentEditTool = "scale"
-    colorButton.style.display = "none";
-    opacityButton.style.display = "none";
-    transmissionButton.style.display = "none";
-    sheenButton.style.display = "none";
-    sheenColorButton.style.display = "none";
-    sheenRoughnessButton.style.display = "none";
-    roughnessButton.style.display = "none";
-    metalnessButton.style.display = "none";
-    reflectionButton.style.display = "none";
-    clearcoatButton.style.display = "none";
-    clearcoatRoughnessButton.style.display = "none";
-    thicknessButton.style.display = "none";
-    emissiveIntensityButton.style.display = "none";
-    emissiveColorButton.style.display = "none";
-    wireframeButton.style.display = "none";
-    wireframeThicknessButton.style.display = "none";
-    textureButton.style.display = "none";
-}
 
-function enableMaterialButtons() {
-    colorButton.style.display = "flex";
-    opacityButton.style.display = "flex";
-    transmissionButton.style.display = "flex";
-    sheenButton.style.display = "flex";
-    sheenColorButton.style.display = "flex";
-    sheenRoughnessButton.style.display = "flex";
-    roughnessButton.style.display = "flex";
-    metalnessButton.style.display = "flex";
-    reflectionButton.style.display = "flex";
-    clearcoatButton.style.display = "flex";
-    clearcoatRoughnessButton.style.display = "flex";
-    thicknessButton.style.display = "flex";
-    emissiveIntensityButton.style.display = "flex";
-    emissiveColorButton.style.display = "flex";
-    wireframeButton.style.display = "flex";
-    wireframeThicknessButton.style.display = "flex";
-    textureButton.style.display = "flex";
-}
 
 ////////////////////// Start of AR Scene ///////////////////////////
 // Add light and toolbar functionality
