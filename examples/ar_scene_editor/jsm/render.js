@@ -1,110 +1,115 @@
 export default function updateScene() {
-    
+    let object = currentObject
+
+    if (currentObject.type === "Group") {
+        object = currentObject.children[0]
+    }
+
 
     // If Edit toolbar is active
-    if (editToolbar.classList.contains("active-toolbar") && currentObject.type !== "Group") {
+    if (editToolbar.classList.contains("active-toolbar")) {
         switch (currentEditTool) {
             case "scale":
-                if (currentObject.scale.x !== scaleX) {
-                    currentObject.scale.x = scaleX;
+                if (object.scale.x !== scaleX) {
+                    object.scale.x = scaleX;
                 }
-                if (currentObject.scale.y !== scaleY) {
-                    currentObject.scale.y = scaleY;
+                if (object.scale.y !== scaleY) {
+                    object.scale.y = scaleY;
                 }
-                if (currentObject.scale.z !== scaleZ) {
-                    currentObject.scale.z = scaleZ;
+                if (object.scale.z !== scaleZ) {
+                    object.scale.z = scaleZ;
                 }
                 break;
             case "rotate":
-                currentObject.rotation.x = rotateX/360 * 2 * Math.PI;
-                currentObject.rotation.y = rotateY/360 * 2 * Math.PI;
-                currentObject.rotation.z = rotateZ/360 * 2 * Math.PI;
+                object.rotation.x = rotateX/360 * 2 * Math.PI;
+                object.rotation.y = rotateY/360 * 2 * Math.PI;
+                object.rotation.z = rotateZ/360 * 2 * Math.PI;
 
                 // keep spinning option somewhere?
-                // currentObject.rotation.y = currentObject.rotation.y + 0.01;
+                // object.rotation.y = object.rotation.y + 0.01;
 
                 break;
             case "color":
-                if (currentObject.material.color !== color) {
-                    currentObject.material.color = color;
+                if (object.material.color !== color) {
+                    object.material.color = color;
                 }
                 break;
             case "move":
-                if (currentObject.position.x !== posX || currentObject.position.y !== posY || currentObject.position.z !== posZ) {
-                    currentObject.position.set(posX, posY, posZ);
+                if (object.position.x !== posX || object.position.y !== posY || object.position.z !== posZ) {
+                    object.position.set(posX, posY, posZ);
                 }
                 break;
             case "opacity":
-                if (opacity < 1 && !currentObject.transparent) {
-                    currentObject.transparent = true
+                if (opacity < 1 && !object.transparent) {
+                    object.transparent = true
                 }
-                if (currentObject.material.opacity !== opacity) {
-                    currentObject.material.opacity = opacity;
+                if (object.material.opacity !== opacity) {
+                    object.material.opacity = opacity;
                 }
                 break;
             case "transmission":
-                if (currentObject.material.transmission !== transmission) {
-                    currentObject.material.transmission = transmission;
+                if (object.material.transmission !== transmission) {
+                    object.material.transmission = transmission;
                 }
                 break;
             case "sheen":
-                if (currentObject.material.sheen !== sheen) {
-                    currentObject.material.sheen = sheen;
+                if (object.material.sheen !== sheen) {
+                    object.material.sheen = sheen;
                 }
                 break;
             case "sheen-roughness":
-                if (currentObject.material.sheenRoughness !== sheenRoughness) {
-                    currentObject.material.sheenRoughness = sheenRoughness;
+                if (object.material.sheenRoughness !== sheenRoughness) {
+                    object.material.sheenRoughness = sheenRoughness;
                 }
                 break;
             case "sheen-color":
-                if (currentObject.material.sheenColor !== sheenColor) {
-                    currentObject.material.sheenColor = sheenColor;
+                if (object.material.sheenColor !== sheenColor) {
+                    object.material.sheenColor = sheenColor;
                 }
                 break;
             case "roughness":
-                if (currentObject.material.roughness !== roughness) {
-                    currentObject.material.roughness = roughness;
+                if (object.material.roughness !== roughness) {
+                    object.material.roughness = roughness;
                 }
                 break;
             case "metalness":
-                if (currentObject.material.metalness !== metalness) {
-                    currentObject.material.metalness = metalness;
+                if (object.material.metalness !== metalness) {
+                    object.material.metalness = metalness;
                 }
                 break;
             case "reflection":
-                if (currentObject.material.reflectivity !== reflection) {
-                    currentObject.material.reflectivity = reflection;
+                if (object.material.reflectivity !== reflection) {
+                    object.material.reflectivity = reflection;
                 }
                 break;
             case "clearcoat":
-                if (currentObject.material.clearcoat !== clearcoat) {
-                    currentObject.material.clearcoat = clearcoat;
+                if (object.material.clearcoat !== clearcoat) {
+                    object.material.clearcoat = clearcoat;
                 }
                 break;
             case "clearcoat-roughness":
-                if (currentObject.material.clearcoatRoughness !== clearcoatRoughness) {
-                    currentObject.material.clearcoatRoughness = clearcoatRoughness;
+                if (object.material.clearcoatRoughness !== clearcoatRoughness) {
+                    object.material.clearcoatRoughness = clearcoatRoughness;
                 }
                 break;
             case "thickness":
-                if (currentObject.material.thickness !== thickness) {
-                    currentObject.material.thickness = thickness;
+                if (object.material.thickness !== thickness) {
+                    object.material.thickness = thickness;
                 }
                 break;
             case "wireframe-thickness":
-                if (currentObject.material.wireframeThickness !== wireframeThickness) {
-                    currentObject.material.wireframeThickness = wireframeThickness;
+                if (object.material.wireframeThickness !== wireframeThickness) {
+                    object.material.wireframeThickness = wireframeThickness;
                 }
                 break;
             case "emissive-color":
-                if (currentObject.material.emissive !== ecColor) {
-                    currentObject.material.emissive = ecColor;
+                if (object.material.emissive !== ecColor) {
+                    object.material.emissive = ecColor;
                 }
                 break;
             case "emissive-intensity":
-                if (currentObject.material.emissiveIntensity !== emissiveIntensity) {
-                    currentObject.material.emissiveIntensity = emissiveIntensity;
+                if (object.material.emissiveIntensity !== emissiveIntensity) {
+                    object.material.emissiveIntensity = emissiveIntensity;
                 }
                 break;
             default:

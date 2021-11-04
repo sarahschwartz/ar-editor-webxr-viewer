@@ -6,6 +6,7 @@ export default function addGLTFModel(path) {
         gltf.scene.scale.z = 0.2
         objectsList.push(gltf.scene)
         engine._scene.add(gltf.scene);
+        currentObjectIndex = engine._scene.children.length - 1;
         engine.render()
     } );
    
