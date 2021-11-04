@@ -2,7 +2,7 @@ export default function updateScene() {
     
 
     // If Edit toolbar is active
-    if (editToolbar.classList.contains("active-toolbar")) {
+    if (editToolbar.classList.contains("active-toolbar") && currentObject.type !== "Group") {
         switch (currentEditTool) {
             case "scale":
                 if (currentObject.scale.x !== scaleX) {

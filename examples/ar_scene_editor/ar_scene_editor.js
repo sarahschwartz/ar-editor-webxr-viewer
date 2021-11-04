@@ -28,7 +28,7 @@ const addScene = () => {
     addMainToolbar();
 
     removeTextureButton.addEventListener("click", () => {
-        let material = new THREE.MeshStandardMaterial({
+        let material = new THREE.MeshPhysicalMaterial({
             color: color,
             side: THREE.DoubleSide
         })
@@ -37,6 +37,13 @@ const addScene = () => {
 
     addMaterialButtons();
     addPatternButtons();
+
+    loader = new GLTFLoader().setPath('../assets/models/');
+    susanButton.addEventListener("click", function () {
+        addGLTFModel('susan.glb')
+        setLastObject();
+    })
+    // addGLTFModel('susan.glb')
     
     
 }
@@ -113,10 +120,9 @@ const initSession = async xrSession => {
 
     // show DOM
     document.getElementById("xr-overlay").style.visibility = "visible";
-    
+
     addScene();
-    loader = new GLTFLoader().setPath('../assets/models/');
-    addGLTFModel('susan.glb')
+    
 };
 
 
@@ -138,6 +144,7 @@ const handleAnimationFrame = (t, frame) => {
 
     if (objectsList.length > 0) {
         currentObject = engine._scene.children[currentObjectIndex];
+        // debug.innerHTML = objectsList[objectsList.length - 1].material.type
         //render.js
         updateScene();
     }
@@ -234,8 +241,8 @@ function addMainToolbar() {
         // remove object from the scene
         engine._scene.remove(object);
         // dispose of object information in memory
-        object.geometry.dispose();
-        object.material.dispose();
+        object.geometry?.dispose()
+        object.material?.dispose();
         // if current object is deleted, set current object to last in list
         if (isActiveObject) {
             currentObjectIndex = engine._scene.children.length - 1;
@@ -258,7 +265,7 @@ function addMainToolbar() {
                 let objectContainer = document.createElement('div');
                 objectContainer.classList.add('object-container');
                 let geometry = getGeometry(objectsList[i]);
-                let div = newObjectDiv(objectsList[i], geometry, count);
+                let div = newObjectDiv(geometry, count);
                 count++;
                 div.addEventListener('click', selectObject)
 

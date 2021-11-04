@@ -162,6 +162,7 @@ const wireframeThicknessSlider = document.getElementById('wireframe-thickness-sl
 const wireframeThicknessSliderInput = document.getElementById('wireframe-thickness-slider-input')
 const wireframeThicknessSliderOutput = document.getElementById('wireframe-thickness-slider-output')
 
+const susanButton = document.getElementById('susan-button');
 
 // Add Shape Tools
 const cubeButton = document.getElementById('cube-button');
