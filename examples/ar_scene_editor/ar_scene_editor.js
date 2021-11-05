@@ -174,23 +174,6 @@ const clearHitTestSource = () => {
     hitTestSource = null;
 };
 
-// Create offset ray for hit test from the relative transform
-// between pose and inputPose. There may be a room to optimize.
-const createOffsetRay = (pose, inputPose) => {
-    const offsetMatrix = mat4.multiply(mat4.create(), pose.transform.matrix, inputPose.transform.matrix);
-    const direction = vec3.fromValues(0.0, 0.0, -0.2);
-    vec3.transformMat4(direction, direction, offsetMatrix);
-    vec3.normalize(direction, direction);
-    const offsetDirection = {
-        x: direction[0],
-        y: direction[1],
-        z: direction[2],
-        w: 0.0
-    };
-    const offsetOrigin = {x: 0, y: 0, z: 0, w: 1.0};
-    return new XRRay(offsetOrigin, offsetDirection);
-};
-
 ////////////////////// Render Loop ///////////////////////////	
 const handleAnimationFrame = (t, frame) => {
     if(!session || session.ended) return;
