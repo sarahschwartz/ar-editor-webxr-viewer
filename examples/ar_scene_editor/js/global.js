@@ -5,8 +5,6 @@ let viewerReferenceSpace = null;
 let engine = null;
 
 let hitTestSource = null;
-let inputSource = null;
-let isSelecting = false;
 
 let isAdding = false;
 

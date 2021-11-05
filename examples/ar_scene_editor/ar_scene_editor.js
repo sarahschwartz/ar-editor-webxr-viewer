@@ -110,8 +110,7 @@ const onButtonClick = event => {
 const initSession = async xrSession => {
     session = xrSession;
     session.addEventListener('end', onSessionEnd);
-    session.addEventListener('select', onSelect);
-	session.addEventListener('inputsourceschange', onInputSourcesChange);
+	// session.addEventListener('inputsourceschange', onInputSourcesChange);
 
     localReferenceSpace = await session.requestReferenceSpace('local');
     viewerReferenceSpace = await session.requestReferenceSpace('viewer');
@@ -161,25 +160,11 @@ const initSession = async xrSession => {
 const onSessionEnd = event => {
     clearHitTestSource();
     session = null;
-    inputSource = null;
     viewerReferenceSpace = null;
     localReferenceSpace = null;
     reticleParent.visible = false;   // it starts invisible
     goButton.innerText = 'Go';
     document.getElementById("xr-overlay").style.visibility = "hidden";
-};
-
-const onInputSourcesChange = event => {
-    if (inputSource && event.removed.includes(inputSource)) {
-        inputSource = null;
-    }
-    if (!inputSource && event.added.length > 0) {
-        inputSource = event.added[0];
-    }
-};
-
-const onSelect = event => {
-    isSelecting = true;
 };
 
 const clearHitTestSource = () => {
