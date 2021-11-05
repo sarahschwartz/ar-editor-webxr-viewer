@@ -10,6 +10,11 @@ addShapeButton.addEventListener("click", () => {
     changeMainTool(addShapeButton, addShapeToolbar);
 })
 
+ // Add Seating Button
+ addSeatingButton.addEventListener("click", () => {
+    changeMainTool(addSeatingButton, addSeatingToolbar);
+})
+
  // Add Models 1 Button
  addModels1Button.addEventListener("click", () => {
     changeMainTool(addModels1Button, addModels1Toolbar);

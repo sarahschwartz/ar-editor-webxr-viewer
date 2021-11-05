@@ -40,8 +40,15 @@ const addScene = () => {
     addPatternButtons();
 
     loader = new GLTFLoader().setPath('../assets/models/');
+
+    // Add Seating
+    bench1Button.addEventListener("click", function () {
+        addGLTFModel('bench1.glb')
+    })
+
+    // Add Models 1
     susanButton.addEventListener("click", function () {
-        addGLTFModel('susan.glb')
+        addGLTFModel('susan.glb', [0.2,0.2,0.2])
     })
     
     

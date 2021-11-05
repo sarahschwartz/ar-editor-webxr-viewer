@@ -17,8 +17,9 @@ const selectButton = document.getElementById('select-button');
 // Sub Toolbars
 const mainToolbar = document.getElementById('main-toolbar');
 const addToolbar = document.getElementById('add-toolbar');
-const addModels1Toolbar = document.getElementById('add-models-1-toolbar');
 const addShapeToolbar = document.getElementById('add-shape-toolbar');
+const addModels1Toolbar = document.getElementById('add-models-1-toolbar');
+const addSeatingToolbar = document.getElementById('add-seating-toolbar');
 const editToolbar = document.getElementById('edit-toolbar');
 const selectToolbar = document.getElementById('select-toolbar');
 const textureToolbar = document.getElementById('texture-toolbar');
@@ -27,6 +28,32 @@ const patternTexturesToolbar = document.getElementById('pattern-textures-toolbar
 const menuBackButtons = document.querySelectorAll('.menu-back-button')
 const editMenuBackButtons = document.querySelectorAll('.edit-menu-back-button')
 const textureMenuBackButtons = document.querySelectorAll('.texture-menu-back-button')
+
+// Add Shape Tools
+const addShapeButton = document.getElementById('shapes-button');
+const cubeButton = document.getElementById('cube-button');
+const sphereButton = document.getElementById('sphere-button');
+const cylinderButton = document.getElementById('cylinder-button');
+const planeButton = document.getElementById('plane-button');
+const coneButton = document.getElementById('cone-button');
+const torusButton = document.getElementById('torus-button');
+const ringButton = document.getElementById('ring-button');
+const tetrahedronButton = document.getElementById('tetrahedron-button');
+const octahedronButton = document.getElementById('octahedron-button');
+const icosahedronButton = document.getElementById('icosahedron-button');
+const dodecahedronButton = document.getElementById('dodecahedron-button');
+
+// Add Seating
+const addSeatingButton = document.getElementById('seating-button');
+const bench1Button = document.getElementById('bench-1-button');
+const bench2Button = document.getElementById('bench-2-button');
+const bench3Button = document.getElementById('bench-3-button');
+const bench4Button = document.getElementById('bench-4-button');
+const bench5Button = document.getElementById('bench-5-button');
+
+// Add Models 1
+const addModels1Button = document.getElementById('models-1-button');
+const susanButton = document.getElementById('susan-button');
 
 // Edit Tools
 const scaleButton = document.getElementById('scale-button');
@@ -163,23 +190,6 @@ const ecBlueOutput = document.getElementById("ec-blue-slider-output");
 const wireframeThicknessSlider = document.getElementById('wireframe-thickness-slider')
 const wireframeThicknessSliderInput = document.getElementById('wireframe-thickness-slider-input')
 const wireframeThicknessSliderOutput = document.getElementById('wireframe-thickness-slider-output')
-
-const addModels1Button = document.getElementById('models-1-button');
-const susanButton = document.getElementById('susan-button');
-
-// Add Shape Tools
-const addShapeButton = document.getElementById('shapes-button');
-const cubeButton = document.getElementById('cube-button');
-const sphereButton = document.getElementById('sphere-button');
-const cylinderButton = document.getElementById('cylinder-button');
-const planeButton = document.getElementById('plane-button');
-const coneButton = document.getElementById('cone-button');
-const torusButton = document.getElementById('torus-button');
-const ringButton = document.getElementById('ring-button');
-const tetrahedronButton = document.getElementById('tetrahedron-button');
-const octahedronButton = document.getElementById('octahedron-button');
-const icosahedronButton = document.getElementById('icosahedron-button');
-const dodecahedronButton = document.getElementById('dodecahedron-button');
 
 let redVal = redSlider.value;
 let greenVal = greenSlider.value;
