@@ -36,11 +36,11 @@ export default function getGeometry(object){
                 geometry = "Dodecahedron";
                 break;
             default:
-                geometry = "Model1"
+                geometry = object.geometry.type
         }
         
     } else {
-        geometry = "Model2"
+        geometry = object.children[0].name
     }
 
     return geometry;
