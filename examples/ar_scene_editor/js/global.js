@@ -3,6 +3,14 @@ let session = null;
 let localReferenceSpace = null;
 let viewerReferenceSpace = null;
 let engine = null;
+
+let hitTestSource = null;
+let inputSource = null;
+let isSelecting = false;
+
+
+
+
 let loader;
 
 // Start AR session button
@@ -308,3 +316,4 @@ function enableMaterialButtons() {
     wireframeThicknessButton.style.display = "flex";
     textureButton.style.display = "flex";
 }
+

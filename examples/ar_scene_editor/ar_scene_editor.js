@@ -19,13 +19,31 @@ import { newDeleteButton, newObjectDiv } from './jsm/object-list.js';
 const workingMatrix = mat4.create();
 const workingVec3 = vec3.create();
 
+const reticleParent = new THREE.Object3D();
+let reticle = null;
 
+const reticleTrackedColor = new THREE.Color(0xDDFFDD);
+const reticleNotTrackedColor = new THREE.Color(0xFF6666);
+const reticleMaterial = new THREE.MeshBasicMaterial({color: reticleTrackedColor});
 
 ////////////////////// Start of AR Scene ///////////////////////////
 // Add light and toolbar functionality
 const addScene = () => {
 
     initializeLight(engine);
+
+    reticle = new THREE.Mesh(
+        new THREE.RingGeometry(0.04, 0.05, 36, 64),
+        reticleMaterial
+    );
+
+    reticle.geometry.applyMatrix(new THREE.Matrix4().makeRotationX(THREE.Math.degToRad(-90)));
+    reticleParent.add(reticle);
+
+    reticleParent.matrixAutoUpdate = false;
+    reticleParent.visible = false;
+    engine.scene.add(reticleParent);
+
     addMainToolbar();
 
     removeTextureButton.addEventListener("click", () => {
@@ -76,7 +94,7 @@ const initXR = () => {
 // When Go button is pressed, start Immersive AR session if there isn't already a session. If there is a session, end it.
 const onButtonClick = event => {
     if (!session) {
-        navigator.xr.requestSession('immersive-ar',{ optionalFeatures: ["dom-overlay"], domOverlay: { root: document.getElementById("xr-overlay")}})
+        navigator.xr.requestSession('immersive-ar',{ requiredFeatures: ['hit-test'], optionalFeatures: ["dom-overlay"], domOverlay: { root: document.getElementById("xr-overlay")}})
         .then(xrSession => {
             initSession(xrSession);
             goButton.innerText = 'End';
@@ -92,6 +110,8 @@ const onButtonClick = event => {
 const initSession = async xrSession => {
     session = xrSession;
     session.addEventListener('end', onSessionEnd);
+    session.addEventListener('select', onSelect);
+	session.addEventListener('inputsourceschange', onInputSourcesChange);
 
     localReferenceSpace = await session.requestReferenceSpace('local');
     viewerReferenceSpace = await session.requestReferenceSpace('viewer');
@@ -125,6 +145,11 @@ const initSession = async xrSession => {
         session.requestAnimationFrame(handleAnimationFrame);
     });
 
+    // initialize hit test source at center
+    session.requestHitTestSource({space: viewerReferenceSpace}).then(xrHitTestSource => {
+        hitTestSource = xrHitTestSource;
+    });
+
     // show DOM
     document.getElementById("xr-overlay").style.visibility = "visible";
 
@@ -134,12 +159,51 @@ const initSession = async xrSession => {
 
 
 const onSessionEnd = event => {
+    clearHitTestSource();
     session = null;
+    inputSource = null;
     viewerReferenceSpace = null;
     localReferenceSpace = null;
+    reticleParent.visible = false;   // it starts invisible
     goButton.innerText = 'Go';
-    // hide DOM
     document.getElementById("xr-overlay").style.visibility = "hidden";
+};
+
+const onInputSourcesChange = event => {
+    if (inputSource && event.removed.includes(inputSource)) {
+        inputSource = null;
+    }
+    if (!inputSource && event.added.length > 0) {
+        inputSource = event.added[0];
+    }
+};
+
+const onSelect = event => {
+    isSelecting = true;
+};
+
+const clearHitTestSource = () => {
+    if (hitTestSource) {
+        hitTestSource.cancel();
+    }
+    hitTestSource = null;
+};
+
+// Create offset ray for hit test from the relative transform
+// between pose and inputPose. There may be a room to optimize.
+const createOffsetRay = (pose, inputPose) => {
+    const offsetMatrix = mat4.multiply(mat4.create(), pose.transform.matrix, inputPose.transform.matrix);
+    const direction = vec3.fromValues(0.0, 0.0, -0.2);
+    vec3.transformMat4(direction, direction, offsetMatrix);
+    vec3.normalize(direction, direction);
+    const offsetDirection = {
+        x: direction[0],
+        y: direction[1],
+        z: direction[2],
+        w: 0.0
+    };
+    const offsetOrigin = {x: 0, y: 0, z: 0, w: 1.0};
+    return new XRRay(offsetOrigin, offsetDirection);
 };
 
 ////////////////////// Render Loop ///////////////////////////	
@@ -161,6 +225,34 @@ const handleAnimationFrame = (t, frame) => {
     if (!pose) {
         console.log('No pose');
         return;
+    }
+
+    // Create HitTest Source. Calculating offset ray from the relative transform
+    // between pose and inputPose so we need to do in animation frame.
+    if (isSelecting && inputSource) {
+        const inputPose = frame.getPose(inputSource.targetRaySpace, localReferenceSpace);
+        const offsetRay = createOffsetRay(pose, inputPose);
+        clearHitTestSource();
+        session.requestHitTestSource({space: viewerReferenceSpace, offsetRay: offsetRay}).then(xrHitTestSource => {
+            hitTestSource = xrHitTestSource;
+        });
+        isSelecting = false;
+    }
+
+    if (hitTestSource) {
+        const results = frame.getHitTestResults(hitTestSource);
+        if (results.length > 0) {
+            const result = results[0];
+            const pose = result.getPose(localReferenceSpace);
+            if (pose) {
+                reticleParent.matrix.fromArray(pose.transform.matrix);
+                reticleParent.visible = true;   // it starts invisible
+                reticle.material.color = reticleTrackedColor;
+                reticleParent.updateMatrixWorld(true);
+            }
+        } else {
+            reticle.material.color = reticleNotTrackedColor;
+        }
     }
 
     engine.startFrame();
