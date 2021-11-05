@@ -25,7 +25,7 @@ function changeMainTool(button, toolbar) {
     toolbar.style.display = "flex";
 }
 
-////////////////////// Edit Tools///////////////////////////
+////////////////////// Edit Tool Buttons ///////////////////////////
 
 scaleButton.addEventListener("click", () => {
     removeSliders(currentEditTool);

@@ -43,7 +43,7 @@ const addScene = () => {
     susanButton.addEventListener("click", function () {
         addGLTFModel('susan.glb')
     })
-    // addGLTFModel('susan.glb')
+    
     
     
 }

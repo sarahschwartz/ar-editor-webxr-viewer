@@ -251,7 +251,11 @@ const debug = document.getElementById('debug');
 
 
 function disableMaterialButtons() {
-    currentEditTool = "scale"
+    removeSliders(currentEditTool);
+    currentEditTool = "scale";
+    changeEditTool(scaleButton, scaleSliders);
+    
+    scaleButton.firstElementChild.classList.add("active-edit");
     colorButton.style.display = "none";
     opacityButton.style.display = "none";
     transmissionButton.style.display = "none";
