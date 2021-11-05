@@ -5,18 +5,21 @@ addButton.addEventListener("click", () => {
     changeMainTool(addButton, addToolbar);
 })
 
- // Add Shapes Button
+// Add Shapes Button
 addShapeButton.addEventListener("click", () => {
+    isAdding = true;
     changeMainTool(addShapeButton, addShapeToolbar);
 })
 
- // Add Seating Button
- addSeatingButton.addEventListener("click", () => {
+// Add Seating Button
+addSeatingButton.addEventListener("click", () => {
+    isAdding = true;
     changeMainTool(addSeatingButton, addSeatingToolbar);
 })
 
- // Add Models 1 Button
- addModels1Button.addEventListener("click", () => {
+// Add Models 1 Button
+addModels1Button.addEventListener("click", () => {
+     isAdding = true;
     changeMainTool(addModels1Button, addModels1Toolbar);
 })
         

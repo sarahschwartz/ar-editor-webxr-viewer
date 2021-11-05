@@ -227,19 +227,8 @@ const handleAnimationFrame = (t, frame) => {
         return;
     }
 
-    // Create HitTest Source. Calculating offset ray from the relative transform
-    // between pose and inputPose so we need to do in animation frame.
-    if (isSelecting && inputSource) {
-        const inputPose = frame.getPose(inputSource.targetRaySpace, localReferenceSpace);
-        const offsetRay = createOffsetRay(pose, inputPose);
-        clearHitTestSource();
-        session.requestHitTestSource({space: viewerReferenceSpace, offsetRay: offsetRay}).then(xrHitTestSource => {
-            hitTestSource = xrHitTestSource;
-        });
-        isSelecting = false;
-    }
 
-    if (hitTestSource) {
+    if (hitTestSource && isAdding) {
         const results = frame.getHitTestResults(hitTestSource);
         if (results.length > 0) {
             const result = results[0];
@@ -253,6 +242,8 @@ const handleAnimationFrame = (t, frame) => {
         } else {
             reticle.material.color = reticleNotTrackedColor;
         }
+    } else {
+        reticleParent.visible = false;
     }
 
     engine.startFrame();
@@ -278,6 +269,15 @@ function addMainToolbar() {
         el.addEventListener('click', menuBack)
     });
     
+    // Add Menu Back Buttons
+    const addMenuBack = () => {
+        isAdding = false;
+        changeMainTool("none", addToolbar);
+    }
+
+    addMenuBackButtons.forEach((el) => {
+        el.addEventListener('click', addMenuBack)
+    });
     // Texture Menu Back Buttons
     const textureMenuBack = () => {
         changeMainTool("none", textureToolbar);

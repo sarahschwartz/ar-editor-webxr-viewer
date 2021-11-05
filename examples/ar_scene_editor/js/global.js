@@ -8,7 +8,7 @@ let hitTestSource = null;
 let inputSource = null;
 let isSelecting = false;
 
-
+let isAdding = false;
 
 
 let loader;
@@ -34,6 +34,7 @@ const textureToolbar = document.getElementById('texture-toolbar');
 const materialsToolbar = document.getElementById('materials-toolbar');
 const patternTexturesToolbar = document.getElementById('pattern-textures-toolbar');
 const menuBackButtons = document.querySelectorAll('.menu-back-button')
+const addMenuBackButtons = document.querySelectorAll('.add-menu-back-button')
 const editMenuBackButtons = document.querySelectorAll('.edit-menu-back-button')
 const textureMenuBackButtons = document.querySelectorAll('.texture-menu-back-button')
 

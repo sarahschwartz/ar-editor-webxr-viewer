@@ -60,7 +60,7 @@
     gap: 5px;
 }
 
-.menu-back-button, .edit-menu-back-button, .texture-menu-back-button{
+.menu-back-button, .add-menu-back-button, .edit-menu-back-button, .texture-menu-back-button{
     color: #7A77FF;
     height: 60px;
     width: 60px;
