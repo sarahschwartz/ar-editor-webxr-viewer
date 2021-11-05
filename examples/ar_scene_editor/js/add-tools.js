@@ -1,4 +1,19 @@
 ////////////////////// Add Tools///////////////////////////
+
+ // Add Button
+addButton.addEventListener("click", () => {
+    changeMainTool(addButton, addToolbar);
+})
+
+ // Add Shapes Button
+addShapeButton.addEventListener("click", () => {
+    changeMainTool(addShapeButton, addShapeToolbar);
+})
+
+ // Add Models 1 Button
+ addModels1Button.addEventListener("click", () => {
+    changeMainTool(addModels1Button, addModels1Toolbar);
+})
         
 const setLastObject = () => {
     currentObjectIndex = engine._scene.children.length - 1;

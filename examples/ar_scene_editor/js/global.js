@@ -16,6 +16,8 @@ const selectButton = document.getElementById('select-button');
 
 // Sub Toolbars
 const mainToolbar = document.getElementById('main-toolbar');
+const addToolbar = document.getElementById('add-toolbar');
+const addModels1Toolbar = document.getElementById('add-models-1-toolbar');
 const addShapeToolbar = document.getElementById('add-shape-toolbar');
 const editToolbar = document.getElementById('edit-toolbar');
 const selectToolbar = document.getElementById('select-toolbar');
@@ -162,9 +164,11 @@ const wireframeThicknessSlider = document.getElementById('wireframe-thickness-sl
 const wireframeThicknessSliderInput = document.getElementById('wireframe-thickness-slider-input')
 const wireframeThicknessSliderOutput = document.getElementById('wireframe-thickness-slider-output')
 
+const addModels1Button = document.getElementById('models-1-button');
 const susanButton = document.getElementById('susan-button');
 
 // Add Shape Tools
+const addShapeButton = document.getElementById('shapes-button');
 const cubeButton = document.getElementById('cube-button');
 const sphereButton = document.getElementById('sphere-button');
 const cylinderButton = document.getElementById('cylinder-button');
@@ -254,7 +258,7 @@ function disableMaterialButtons() {
     removeSliders(currentEditTool);
     currentEditTool = "scale";
     changeEditTool(scaleButton, scaleSliders);
-    
+
     scaleButton.firstElementChild.classList.add("active-edit");
     colorButton.style.display = "none";
     opacityButton.style.display = "none";

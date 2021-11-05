@@ -169,8 +169,6 @@ const handleAnimationFrame = (t, frame) => {
 }
 ////////////////////// Back, Add, Edit, Select/Delete ///////////////////////////
 function addMainToolbar() {
-    
-
     // Menu Back Buttons
     const menuBack = () => {
         removeSliders(currentEditTool);
@@ -195,13 +193,6 @@ function addMainToolbar() {
         window.history.back();
     }
     endButton.addEventListener("click", endSession)
-
-    // Add button
-    const addObject = () => {
-        removeSliders(currentEditTool);
-        changeMainTool(addButton, addShapeToolbar);
-    }
-    addButton.addEventListener("click", addObject)
 
     // Edit button
     const editObject = () => {
@@ -248,6 +239,10 @@ function addMainToolbar() {
         // dispose of object information in memory
         object.geometry?.dispose()
         object.material?.dispose();
+        if (object.children) {
+            object.children[0].geometry?.dispose();
+            object.children[0].material?.dispose();
+        }
         // if current object is deleted, set current object to last in list
         if (isActiveObject) {
             currentObjectIndex = engine._scene.children.length - 1;
