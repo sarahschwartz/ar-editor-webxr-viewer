@@ -6,18 +6,8 @@
     border-radius: 30px;
 }
 
-#toolbar-instructions{
-    /* background-color: lightblue; */
-    display: none;
-
-}
-
 .active, .active-edit{
     border: 3px solid #7A77FF;
-}
-
-.active-toolbar{
-    /* background-color: pink; */
 }
 
 #bottom-toolbar{
@@ -74,6 +64,18 @@
     position: fixed;
     top: 1vh;
     left: 2vw;
+}
+
+#toolbar-instructions{
+    position: fixed;
+    color: black;
+    background-color: rgba(200,200,200,0.5);
+    border-radius: 15px;
+    bottom: 20vh;
+    left: 20vw;
+    text-align: center;
+    width: 60%;
+    padding: 10px;
 }
 
 .slider-section{

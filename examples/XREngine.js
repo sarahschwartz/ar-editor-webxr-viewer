@@ -129,7 +129,7 @@ export default class XREngine {
 		return mesh
 	}
 																// add texture arg here
-	addBox(position = [0, 0, 0], size = [0.1, 0.1, 0.1], color = 0x00FF00) {
+	addBox(color = 0x00FF00, size = [0.1, 0.1, 0.1]) {
 		const box = new THREE.Mesh(
 			new THREE.BoxBufferGeometry(...size),
 			new THREE.MeshPhysicalMaterial({
@@ -137,8 +137,7 @@ export default class XREngine {
 				side: THREE.DoubleSide
 			})
 		)
-		box.position.set(...position)
-		this._scene.add(box)
+
 		return box
 	}
 	

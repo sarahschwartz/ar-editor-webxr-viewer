@@ -26,6 +26,29 @@ const reticleTrackedColor = new THREE.Color(0xDDFFDD);
 const reticleNotTrackedColor = new THREE.Color(0xFF6666);
 const reticleMaterial = new THREE.MeshBasicMaterial({color: reticleTrackedColor});
 
+const createObjectInstance = () => {
+    const group = new THREE.Group();
+    // const geometry = new THREE.BoxBufferGeometry(0.1, 0.1, 0.1);
+    // const color = new THREE.Color(0xffffff);
+    // color.setHex(Math.random() * 0xffffff);
+    // const material = new THREE.MeshPhongMaterial({color: color});
+    // const mesh = new THREE.Mesh(geometry, material);
+    // const outlineMaterial = new THREE.MeshBasicMaterial({color: 0x00ff00, side: THREE.BackSide});
+    // const outlineMesh = new THREE.Mesh(geometry, outlineMaterial);
+
+    // outlineMesh.position.set(0, 0.05, 0);
+    // outlineMesh.scale.multiplyScalar(1.05);
+    
+    // group.add(outlineMesh);
+    
+    let mesh = engine.addBox(color, scale)
+    mesh.position.set(0, (scale[1]/2), 0);
+    
+    group.add(mesh);
+    
+    return group;
+};
+
 ////////////////////// Start of AR Scene ///////////////////////////
 // Add light and toolbar functionality
 const addScene = () => {
@@ -195,22 +218,38 @@ const handleAnimationFrame = (t, frame) => {
         return;
     }
 
-
-    if (hitTestSource && isAdding) {
-        const results = frame.getHitTestResults(hitTestSource);
-        if (results.length > 0) {
-            const result = results[0];
-            const pose = result.getPose(localReferenceSpace);
-            if (pose) {
-                reticleParent.matrix.fromArray(pose.transform.matrix);
-                reticleParent.visible = true;   // it starts invisible
-                reticle.material.color = reticleTrackedColor;
-                reticleParent.updateMatrixWorld(true);
+// show the retice if adding a new object and hitting surface
+    if (isAdding) {
+        if (hitTestSource) {
+            toolbarInstructions.style.display = "none";
+            const results = frame.getHitTestResults(hitTestSource);
+            if (results.length > 0) {
+                const result = results[0];
+                const pose = result.getPose(localReferenceSpace);
+                if (pose) {
+                    reticleParent.matrix.fromArray(pose.transform.matrix);
+                    reticleParent.visible = true;   // it starts invisible
+                    reticle.material.color = reticleTrackedColor;
+                    reticleParent.updateMatrixWorld(true);
+                    if (placeObject) {
+                        let group = createObjectInstance()
+                        objectsList.push(group)
+                        frame.addAnchor(pose.transform.matrix, localReferenceSpace).then(anchor => {
+                            engine.addAnchoredNode(anchor, group);
+                        }).catch(err => {
+                            console.error('Error adding anchor', err);
+                        });
+                        placeObject = false;
+                    }
+                }
+            } else {
+                reticle.material.color = reticleNotTrackedColor;
             }
         } else {
-            reticle.material.color = reticleNotTrackedColor;
+            toolbarInstructions.style.display = "grid";
         }
     } else {
+        toolbarInstructions.style.display = "none";
         reticleParent.visible = false;
     }
 

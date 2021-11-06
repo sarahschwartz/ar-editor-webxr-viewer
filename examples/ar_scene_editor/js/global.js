@@ -1,4 +1,3 @@
-
 let session = null;
 let localReferenceSpace = null;
 let viewerReferenceSpace = null;
@@ -7,12 +6,15 @@ let engine = null;
 let hitTestSource = null;
 
 let isAdding = false;
-
+let placeObject = false;
+let objectToPlace;
 
 let loader;
 
 // Start AR session button
 const goButton = document.getElementById('go-button');
+
+const toolbarInstructions = document.getElementById('toolbar-instructions')
 
 // Main Toolbar
 const endButton = document.getElementById('end-session');

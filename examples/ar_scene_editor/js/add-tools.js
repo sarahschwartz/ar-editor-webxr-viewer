@@ -30,7 +30,9 @@ const setLastObject = () => {
 const addNewObject = (geometry) => {
     switch (geometry) {
         case "cube":
-            objectsList.push(engine.addBox(position, scale, color));
+            // objectsList.push(engine.addBox(position, scale, color));
+            objectToPlace = "cube"
+            placeObject = true;
             break;
         case "sphere":
             objectsList.push(engine.addSphere(position, scale, color));
