@@ -140,111 +140,105 @@ export default class XREngine {
 		return box
 	}
 	
-	addCylinder(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+	addCylinder(color=0x00FF00, size=[0.1,0.1,0.1]){
 		const geometry = new THREE.CylinderGeometry(size[0], size[2], size[1], 20 );
 		const material = new THREE.MeshPhysicalMaterial({
 			color: color,
 			side: THREE.DoubleSide
 		});
 		const cylinder = new THREE.Mesh( geometry, material );
-		cylinder.position.set(...position)
-		this._scene.add(cylinder)
+		cylinder.name = "Cylinder"
 		return cylinder
 	}
 
-	addPlane(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+	addPlane(color=0x00FF00, size=[0.1,0.1,0.1]){
 		const geometry = new THREE.PlaneGeometry(size[0], size[2]);
 		const material = new THREE.MeshPhysicalMaterial({
 			color: color,
 			side: THREE.DoubleSide
 		});
 		const plane = new THREE.Mesh( geometry, material );
-		plane.position.set(...position)
-		this._scene.add(plane)
+		plane.name = "Plane"
+		// plane.rotation.x = Math.PI/2
 		return plane
 	}
 
-	addCone(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+	addCone(color=0x00FF00, size=[0.1,0.1,0.1]){
 		const geometry = new THREE.ConeGeometry(size[0]/2, size[0], 20);
 		const material = new THREE.MeshPhysicalMaterial({
 			color: color,
 			side: THREE.DoubleSide
 		});
 		const cone = new THREE.Mesh( geometry, material );
-		cone.position.set(...position)
-		this._scene.add(cone)
+		cone.name = "Cone"
 		return cone
 	}
 
-	addTorus(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+	addTorus(color=0x00FF00, size=[0.1,0.1,0.1]){
 		const geometry = new THREE.TorusGeometry(size[0]/2, (size[0]/2)/3, 16, 100);
 		const material = new THREE.MeshPhysicalMaterial({
 			color: color,
 			side: THREE.DoubleSide
 		});
 		const torus = new THREE.Mesh( geometry, material );
-		torus.position.set(...position)
-		this._scene.add(torus)
+		torus.name = "Torus"
+		// torus.rotation.x = Math.PI/2
 		return torus
 	}
 
-	addRing(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+	addRing(color=0x00FF00, size=[0.1,0.1,0.1]){
 		const geometry = new THREE.RingGeometry(size[0]/2, size[0]/4, 32);
 		const material = new THREE.MeshPhysicalMaterial({
 			color: color,
 			side: THREE.DoubleSide
 		});
 		const ring = new THREE.Mesh( geometry, material );
-		ring.position.set(...position)
-		this._scene.add(ring)
+		ring.name = "Ring"
+		// ring.rotation.x = Math.PI/2
 		return ring
 	}
 
-	addTetrahedron(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+	addTetrahedron(color=0x00FF00, size=[0.1,0.1,0.1]){
 		const geometry = new THREE.TetrahedronGeometry(size[0]/2);
 		const material = new THREE.MeshPhysicalMaterial({
 			color: color,
 			side: THREE.DoubleSide
 		});
 		const tetrahedron = new THREE.Mesh( geometry, material );
-		tetrahedron.position.set(...position)
-		this._scene.add(tetrahedron)
+		tetrahedron.name = "Tetrahedron"
 		return tetrahedron
 	}
 
-	addOctahedron(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+	addOctahedron(color=0x00FF00, size=[0.1,0.1,0.1]){
 		const geometry = new THREE.OctahedronGeometry(size[0]/2);
 		const material = new THREE.MeshPhysicalMaterial({
 			color: color,
 			side: THREE.DoubleSide
 		});
 		const octahedron = new THREE.Mesh( geometry, material );
-		octahedron.position.set(...position)
-		this._scene.add(octahedron)
+		octahedron.name = "Octahedron"
 		return octahedron
 	}
 
-	addIcosahedron(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+	addIcosahedron(color=0x00FF00, size=[0.1,0.1,0.1]){
 		const geometry = new THREE.IcosahedronGeometry(size[0]/2);
 		const material = new THREE.MeshPhysicalMaterial({
 			color: color,
 			side: THREE.DoubleSide
 		});
 		const icosahedron = new THREE.Mesh( geometry, material );
-		icosahedron.position.set(...position)
-		this._scene.add(icosahedron)
+		icosahedron.name = "Icosahedron"
 		return icosahedron
 	}
 
-	addDodecahedron(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+	addDodecahedron(color=0x00FF00, size=[0.1,0.1,0.1]){
 		const geometry = new THREE.DodecahedronGeometry(size[0]/2);
 		const material = new THREE.MeshPhysicalMaterial({
 			color: color,
 			side: THREE.DoubleSide
 		});
 		const dodecahedron = new THREE.Mesh( geometry, material );
-		dodecahedron.position.set(...position)
-		this._scene.add(dodecahedron)
+		dodecahedron.name = "Dodecahedron"
 		return dodecahedron
 	}
 	

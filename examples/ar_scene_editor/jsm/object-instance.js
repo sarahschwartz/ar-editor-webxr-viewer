@@ -7,28 +7,31 @@ function addFunction(color, scale) {
             return engine.addSphere(color,scale)
             break;
         case "cylinder":
-            return engine.addBox(color,scale)
+            return engine.addCylinder(color,scale)
             break;
         case "plane":
-            return engine.addBox(color,scale)
+            return engine.addPlane(color,scale)
+            break;
+        case "cone":
+            return engine.addCone(color,scale)
             break;
         case "torus":
-            return engine.addBox(color,scale)
+            return engine.addTorus(color,scale)
             break;
         case "ring":
-            return engine.addBox(color,scale)
+            return engine.addRing(color,scale)
             break;
         case "tetrahedron":
-            return engine.addBox(color,scale)
+            return engine.addTetrahedron(color,scale)
             break;
         case "octahedron":
-            return engine.addBox(color,scale)
+            return engine.addOctahedron(color,scale)
             break;
         case "icosahedron":
-            return engine.addBox(color,scale)
+            return engine.addIcosahedron(color,scale)
             break;
         case "dodecahedron":
-            return engine.addBox(color,scale)
+            return engine.addDodecahedron(color,scale)
             break;
         default:
             return engine.addBox(color,scale)

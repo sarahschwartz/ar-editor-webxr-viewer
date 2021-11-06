@@ -213,6 +213,8 @@ const handleAnimationFrame = (t, frame) => {
                     reticleParent.updateMatrixWorld(true);
                     if (placeObject) {
                         let group = createObjectInstance()
+                        group.matrix.fromArray(pose.transform.matrix);
+                        group.updateMatrixWorld(true);
                         objectsList.push(group)
                         frame.addAnchor(pose.transform.matrix, localReferenceSpace).then(anchor => {
                             engine.addAnchoredNode(anchor, group);
@@ -285,7 +287,7 @@ function addMainToolbar() {
     const editObject = () => {
         if (objectsList.length > 0) {
             updateSliders();
-            // only show all edit tools if editing a shape
+            // only show all edit tools if editing a basic shape
             // if (currentObject.type === "Group") {
             //     disableMaterialButtons();
             // } else {
@@ -302,7 +304,8 @@ function addMainToolbar() {
     });
 
     const selectObject = (ev) => {
-        let index = parseInt(ev.target.id) + 1
+        let index = parseInt(ev.target.id) + 2
+        debug.innerHTML = `Target ID: ${ev.target.id}`
         currentObjectIndex = index;
         document.querySelector('.active-object').classList.remove('active-object');
         ev.target.classList.add('active-object')
