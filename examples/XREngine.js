@@ -105,16 +105,15 @@ export default class XREngine {
 		return light
 	}
 
-	addSphere(position=[0,0,0], size=[0.1, 0.1, 0.1], color=0x00FF00){
+	addSphere(color=0x00FF00, size=[0.1,0.1,0.1]){
 		const sphere = new THREE.Mesh(
-			new THREE.SphereBufferGeometry(size[0], 32, 16),
+			new THREE.SphereBufferGeometry(size[0]/2, 32, 16),
 			new THREE.MeshPhysicalMaterial({
 				color: color,
 				side: THREE.DoubleSide
 			})
 		)
-		sphere.position.set(...position)
-		this._scene.add(sphere)
+		sphere.name  = "Sphere"
 		return sphere
 	}
 
@@ -128,8 +127,8 @@ export default class XREngine {
 		this._scene.add(mesh)
 		return mesh
 	}
-																// add texture arg here
-	addBox(color = 0x00FF00, size = [0.1, 0.1, 0.1]) {
+
+	addBox(color=0x00FF00, size=[0.1,0.1,0.1]) {
 		const box = new THREE.Mesh(
 			new THREE.BoxBufferGeometry(...size),
 			new THREE.MeshPhysicalMaterial({
@@ -137,7 +136,7 @@ export default class XREngine {
 				side: THREE.DoubleSide
 			})
 		)
-
+		box.name = "Cube"
 		return box
 	}
 	

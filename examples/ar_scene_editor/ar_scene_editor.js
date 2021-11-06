@@ -27,13 +27,6 @@ const reticleTrackedColor = new THREE.Color(0xDDFFDD);
 const reticleNotTrackedColor = new THREE.Color(0xFF6666);
 const reticleMaterial = new THREE.MeshBasicMaterial({color: reticleTrackedColor});
 
-// const createObjectInstance = () => {
-//     const group = new THREE.Group();    
-//     let mesh = engine.addBox(color, scale)
-//     mesh.position.set(0, (scale[1]/2), 0);
-//     group.add(mesh);
-//     return group;
-// };
 
 ////////////////////// Start of AR Scene ///////////////////////////
 // Add light and toolbar functionality
