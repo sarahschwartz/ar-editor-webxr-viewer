@@ -204,9 +204,10 @@ const handleAnimationFrame = (t, frame) => {
     //update edit tool slider values
     updateState();
 
+
     if (objectsList.length > 0) {
         currentObject = engine._scene.children[currentObjectIndex];
-        // debug.innerHTML = objectsList[objectsList.length - 1].material.type
+        
         //render.js
         updateScene();
     }
@@ -240,6 +241,7 @@ const handleAnimationFrame = (t, frame) => {
                             console.error('Error adding anchor', err);
                         });
                         placeObject = false;
+                        currentObjectIndex = engine._scene.children.length;
                     }
                 }
             } else {
@@ -304,11 +306,12 @@ function addMainToolbar() {
     const editObject = () => {
         if (objectsList.length > 0) {
             updateSliders();
-            if (currentObject.type === "Group") {
-                disableMaterialButtons();
-            } else {
-                enableMaterialButtons();
-            }
+            // only show all edit tools if editing a shape
+            // if (currentObject.type === "Group") {
+            //     disableMaterialButtons();
+            // } else {
+            //     enableMaterialButtons();
+            // }
         }
         changeMainTool(editButton, editToolbar);
         showSliders();
@@ -367,7 +370,9 @@ function addMainToolbar() {
     
             let count = 1;
 
-            // debug.innerHTML = `Current Object UUID ${currentObject.uuid}`
+            debug.innerHTML = `Cube Group UUID ${objectsList[0].uuid}`
+            // debug.innerHTML += `<br>Cube Mesh UUID ${objectsList[0].children[0].uuid}`
+            debug.innerHTML += `<br>Current Object UUID ${currentObject.uuid}`
 
             for (let i = 0; i < objectsList.length; i++){
                 let objectContainer = document.createElement('div');
@@ -377,7 +382,7 @@ function addMainToolbar() {
                 count++;
                 div.addEventListener('click', selectObject)
 
-                // debug.innerHTML += `<br>objectList[i] UUID ${objectsList[i].uuid}`
+                debug.innerHTML += `<br>objectList[i] UUID ${objectsList[i].uuid}`
                 
                 if (currentObject.uuid === objectsList[i].uuid) {
                     div.classList.add('active-object')
