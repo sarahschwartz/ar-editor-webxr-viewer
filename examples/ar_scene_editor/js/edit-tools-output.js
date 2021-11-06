@@ -152,7 +152,6 @@ editToolsOutput.scaleSlider(scaleXSlider,
     editToolsOutput.singleSlider(clearcoatSliderInput, clearcoatSliderOutput);
     editToolsOutput.singleSlider(clearcoatRoughnessSliderInput, clearcoatRoughnessSliderOutput);
     editToolsOutput.singleSlider(thicknessSliderInput, thicknessSliderOutput);
-    editToolsOutput.singleSlider(wireframeThicknessSliderInput, wireframeThicknessSliderOutput);
     editToolsOutput.singleSlider(emissiveIntensitySliderInput, emissiveIntensitySliderOutput);
     
     editToolsOutput.colorSlider(sheenRedSlider,

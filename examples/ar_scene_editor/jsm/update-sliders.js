@@ -131,10 +131,6 @@ export default function updateSliders() {
         thicknessSliderInput.value = object.material.thickness;
         thicknessSliderOutput.innerHTML = `${thicknessSliderInput.value}`;
     
-        // Wireframe Thickness
-        wireframeThicknessSliderInput.value = object.material.wireframeThickness;
-        wireframeThicknessSliderOutput.innerHTML = `${wireframeThicknessSliderInput.value}`;
-    
         // Emissive Intensity
         emissiveIntensitySliderInput.value = object.material.emissiveIntensity ;
         emissiveIntensitySliderOutput.innerHTML = `${emissiveIntensitySliderInput.value}`;

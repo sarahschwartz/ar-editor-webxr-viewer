@@ -114,27 +114,27 @@ const materialTextures = {
 
 export default function addMaterialButtons() {
     whiteMarbleTextureButton.addEventListener("click", () => {
-        currentObject.material = materialTextures.getWhiteMarbleTexture()
+        currentObject.children[0].material = materialTextures.getWhiteMarbleTexture()
     })
     
     barkTextureButton.addEventListener("click", () => {
-        currentObject.material = materialTextures.getBarkTexture()
+        currentObject.children[0].material = materialTextures.getBarkTexture()
     })
     
     woodTextureButton.addEventListener("click", () => {
-        currentObject.material = materialTextures.getWoodTexture()
+        currentObject.children[0].material = materialTextures.getWoodTexture()
     })
     
     rocksTextureButton.addEventListener("click", () => {
-        currentObject.material = materialTextures.getRocksTexture()
+        currentObject.children[0].material = materialTextures.getRocksTexture()
     })
     
     pebblesTextureButton.addEventListener("click", () => {
-        currentObject.material = materialTextures.getPebblesTexture()
+        currentObject.children[0].material = materialTextures.getPebblesTexture()
     })
     
     asphaltTextureButton.addEventListener("click", () => {
-        currentObject.material = materialTextures.getAsphaltTexture()
+        currentObject.children[0].material = materialTextures.getAsphaltTexture()
     })
 
 }

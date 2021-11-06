@@ -51,9 +51,6 @@ const removeSliders = (editTool) => {
         case "emissive-color":
             emissiveColorSliders.style.display = "none";
             break;
-        case "wireframe-thickness":
-            wireframeThicknessSlider.style.display = "none";
-            break;
         default:
     }
 }

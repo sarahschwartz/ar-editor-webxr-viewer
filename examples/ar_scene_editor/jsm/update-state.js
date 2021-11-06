@@ -31,7 +31,6 @@ export default function updateState() {
     clearcoat = clearcoatSliderInput.value
     clearcoatRoughness = clearcoatRoughnessSliderInput.value
     thickness = thicknessSliderInput.value
-    wireframeThickness = wireframeThicknessSliderInput.value
     emissiveIntensity = emissiveIntensitySliderInput.value
     
     ecRedVal = ecRedSlider.value;

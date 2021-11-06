@@ -141,7 +141,7 @@ export default class XREngine {
 	}
 	
 	addCylinder(color=0x00FF00, size=[0.1,0.1,0.1]){
-		const geometry = new THREE.CylinderGeometry(size[0], size[2], size[1], 20 );
+		const geometry = new THREE.CylinderGeometry(size[0]/2, size[1]/2, size[2], 20 );
 		const material = new THREE.MeshPhysicalMaterial({
 			color: color,
 			side: THREE.DoubleSide

@@ -83,7 +83,6 @@ const thicknessButton = document.getElementById('thickness-button');
 const emissiveIntensityButton = document.getElementById('emissive-intensity-button');
 const emissiveColorButton = document.getElementById('emissive-color-button');
 const wireframeButton = document.getElementById('wireframe-button');
-const wireframeThicknessButton = document.getElementById('wireframe-thickness-button');
 const textureButton = document.getElementById('texture-button');
 
 // Scale Sliders
@@ -195,11 +194,6 @@ const ecRedOutput = document.getElementById("ec-red-slider-output");
 const ecGreenOutput = document.getElementById("ec-green-slider-output");
 const ecBlueOutput = document.getElementById("ec-blue-slider-output");
 
-// Wireframe Thickness Slider
-const wireframeThicknessSlider = document.getElementById('wireframe-thickness-slider')
-const wireframeThicknessSliderInput = document.getElementById('wireframe-thickness-slider-input')
-const wireframeThicknessSliderOutput = document.getElementById('wireframe-thickness-slider-output')
-
 let redVal = redSlider.value;
 let greenVal = greenSlider.value;
 let blueVal = blueSlider.value;
@@ -230,7 +224,6 @@ let clearcoat = clearcoatSliderInput.value
 let clearcoatRoughness = clearcoatRoughnessSliderInput.value
 let thickness = thicknessSliderInput.value
 let emissiveIntensity = emissiveIntensitySliderInput.value
-let wireframeThickness = wireframeThicknessSliderInput.value
 
 let ecRedVal = ecRedSlider.value;
 let ecGreenVal = ecGreenSlider.value;
@@ -294,7 +287,6 @@ function disableMaterialButtons() {
     emissiveIntensityButton.style.display = "none";
     emissiveColorButton.style.display = "none";
     wireframeButton.style.display = "none";
-    wireframeThicknessButton.style.display = "none";
     textureButton.style.display = "none";
 }
 
@@ -314,7 +306,6 @@ function enableMaterialButtons() {
     emissiveIntensityButton.style.display = "flex";
     emissiveColorButton.style.display = "flex";
     wireframeButton.style.display = "flex";
-    wireframeThicknessButton.style.display = "flex";
     textureButton.style.display = "flex";
 }
 

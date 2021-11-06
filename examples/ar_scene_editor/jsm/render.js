@@ -97,11 +97,6 @@ export default function updateScene() {
                     object.material.thickness = thickness;
                 }
                 break;
-            case "wireframe-thickness":
-                if (object.material.wireframeThickness !== wireframeThickness) {
-                    object.material.wireframeThickness = wireframeThickness;
-                }
-                break;
             case "emissive-color":
                 if (object.material.emissive !== ecColor) {
                     object.material.emissive = ecColor;

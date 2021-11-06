@@ -45,9 +45,6 @@ export default function showSliders() {
         case "thickness":
             thicknessSlider.style.display = "grid";
             break;
-        case "wireframe-thickness":
-            wireframeThicknessSlider.style.display = "grid";
-            break;
         case "emissive-intensity":
             emissiveIntensitySlider.style.display = "grid";
             break;

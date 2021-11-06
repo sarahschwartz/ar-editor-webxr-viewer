@@ -130,13 +130,7 @@ emissiveColorButton.addEventListener("click", () => {
 })
 
 wireframeButton.addEventListener("click", () => {
-    currentObject.material.wireframe = !currentObject.material.wireframe;
-})
-
-wireframeThicknessButton.addEventListener("click", () => {
-    removeSliders(currentEditTool);
-    currentEditTool = "wireframe-thickness";
-    changeEditTool(wireframeThicknessButton, wireframeThicknessSlider);
+    currentObject.children[0].material.wireframe = !currentObject.children[0].material.wireframe;
 })
 
 textureButton.addEventListener("click", () => {
