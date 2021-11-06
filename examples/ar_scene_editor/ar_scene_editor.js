@@ -13,6 +13,7 @@ import updateState from './jsm/update-state.js';
 import updateSliders from './jsm/update-sliders.js';
 import addPatternButtons from './jsm/pattern-textures.js';
 import addMaterialButtons from './jsm/material-textures.js';
+import createObjectInstance from './jsm/object-instance.js';
 import { newDeleteButton, newObjectDiv } from './jsm/object-list.js';
 
 // temporary working variables
@@ -26,28 +27,13 @@ const reticleTrackedColor = new THREE.Color(0xDDFFDD);
 const reticleNotTrackedColor = new THREE.Color(0xFF6666);
 const reticleMaterial = new THREE.MeshBasicMaterial({color: reticleTrackedColor});
 
-const createObjectInstance = () => {
-    const group = new THREE.Group();
-    // const geometry = new THREE.BoxBufferGeometry(0.1, 0.1, 0.1);
-    // const color = new THREE.Color(0xffffff);
-    // color.setHex(Math.random() * 0xffffff);
-    // const material = new THREE.MeshPhongMaterial({color: color});
-    // const mesh = new THREE.Mesh(geometry, material);
-    // const outlineMaterial = new THREE.MeshBasicMaterial({color: 0x00ff00, side: THREE.BackSide});
-    // const outlineMesh = new THREE.Mesh(geometry, outlineMaterial);
-
-    // outlineMesh.position.set(0, 0.05, 0);
-    // outlineMesh.scale.multiplyScalar(1.05);
-    
-    // group.add(outlineMesh);
-    
-    let mesh = engine.addBox(color, scale)
-    mesh.position.set(0, (scale[1]/2), 0);
-    
-    group.add(mesh);
-    
-    return group;
-};
+// const createObjectInstance = () => {
+//     const group = new THREE.Group();    
+//     let mesh = engine.addBox(color, scale)
+//     mesh.position.set(0, (scale[1]/2), 0);
+//     group.add(mesh);
+//     return group;
+// };
 
 ////////////////////// Start of AR Scene ///////////////////////////
 // Add light and toolbar functionality
