@@ -1,13 +1,20 @@
-export default function addGLTFModel(path, scale=[1,1,1]) {
-    loader.load( path, function ( gltf ) {
-        gltf.scene.position.set(...position)
-        gltf.scene.scale.x = scale[0]
-        gltf.scene.scale.y = scale[1]
-        gltf.scene.scale.z = scale[2]
-        objectsList.push(gltf.scene)
-        engine._scene.add(gltf.scene);
+export default function addGLTFModel(path, anchor, scale=[1,1,1]) {
+    loader.load(path, function (gltf) {
+        let model = gltf.scene.children[0]
+        model.scale.x = scale[0]
+        model.scale.y = scale[1]
+        model.scale.z = scale[2]
+
+        model.name = "Monkey"
+        
+        const group = new THREE.Group();    
+        model.position.set(0, (scale[1]/2), 0);
+        group.add(model);
+        objectsList.push(group)
+        engine.addAnchoredNode(anchor, group);
         currentObjectIndex = engine._scene.children.length - 1;
-        engine.render()
+        return group;
+        
     } );
    
 }

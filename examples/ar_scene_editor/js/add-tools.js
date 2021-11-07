@@ -30,7 +30,7 @@ const setLastObject = () => {
 cubeButton.addEventListener("click", function () {
     objectToPlace = "cube"
     placeObject = true;
-    setLastObject();
+    // setLastObject();
 })
 sphereButton.addEventListener("click", function () {
     objectToPlace = "sphere"

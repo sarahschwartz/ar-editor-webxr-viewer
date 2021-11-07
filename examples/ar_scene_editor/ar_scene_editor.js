@@ -68,7 +68,9 @@ const addScene = () => {
 
     // Add Models 1
     susanButton.addEventListener("click", function () {
-        addGLTFModel('susan.glb', [0.2,0.2,0.2])
+        // let model = addGLTFModel('susan.glb', [0.2,0.2,0.2])
+        objectToPlace = "model"
+        placeObject = true;
     })
     
     
@@ -212,17 +214,25 @@ const handleAnimationFrame = (t, frame) => {
                     reticle.material.color = reticleTrackedColor;
                     reticleParent.updateMatrixWorld(true);
                     if (placeObject) {
-                        let group = createObjectInstance()
-                        group.matrix.fromArray(pose.transform.matrix);
-                        group.updateMatrixWorld(true);
-                        objectsList.push(group)
-                        frame.addAnchor(pose.transform.matrix, localReferenceSpace).then(anchor => {
-                            engine.addAnchoredNode(anchor, group);
-                        }).catch(err => {
-                            console.error('Error adding anchor', err);
-                        });
+                        if (objectToPlace !== "model") {
+                            let group = createObjectInstance()
+                            group.matrix.fromArray(pose.transform.matrix);
+                            group.updateMatrixWorld(true);
+                            objectsList.push(group)
+                            frame.addAnchor(pose.transform.matrix, localReferenceSpace).then(anchor => {
+                                engine.addAnchoredNode(anchor, group);
+                            }).catch(err => {
+                                console.error('Error adding anchor', err);
+                            });
+                            currentObjectIndex = engine._scene.children.length;
+                        } else {
+                            frame.addAnchor(pose.transform.matrix, localReferenceSpace).then(anchor => {
+                                addGLTFModel('susan.glb',anchor,[0.2,0.2,0.2])
+                            }).catch(err => {
+                                console.error('Error adding anchor', err);
+                            });
+                        }
                         placeObject = false;
-                        currentObjectIndex = engine._scene.children.length;
                     }
                 }
             } else {

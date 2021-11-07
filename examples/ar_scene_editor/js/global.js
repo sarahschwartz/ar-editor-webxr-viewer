@@ -7,6 +7,7 @@ let hitTestSource = null;
 
 let isAdding = false;
 let placeObject = false;
+let placeModel = false;
 let objectToPlace;
 
 let loader;

@@ -1,3 +1,10 @@
+function addGLTFModel(path) {
+    loader.load( path, function ( gltf ) {
+        return gltf.scene.children[0]
+    } );
+   
+}
+
 function addFunction(color, scale) {
     switch (objectToPlace) {
         case "cube":
