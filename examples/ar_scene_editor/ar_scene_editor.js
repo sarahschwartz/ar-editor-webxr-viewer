@@ -53,7 +53,7 @@ const addScene = () => {
             color: color,
             side: THREE.DoubleSide
         })
-        currentObject.material = material;
+        currentObject.children[0].material = material;
     })
 
     addMaterialButtons();
