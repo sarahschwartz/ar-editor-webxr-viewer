@@ -35,50 +35,40 @@ cubeButton.addEventListener("click", function () {
 sphereButton.addEventListener("click", function () {
     objectToPlace = "sphere"
     placeObject = true;
-    setLastObject();
 })
 cylinderButton.addEventListener("click", function () {
     objectToPlace = "cylinder"
     placeObject = true;
-    setLastObject();
 })
 planeButton.addEventListener("click", function () {
     objectToPlace = "plane"
     placeObject = true;
-    setLastObject();
 })
 coneButton.addEventListener("click", function () {
     objectToPlace = "cone"
     placeObject = true;
-    setLastObject();
 })
 torusButton.addEventListener("click", function () {
     objectToPlace = "torus"
     placeObject = true;
-    setLastObject();
 })
 ringButton.addEventListener("click", function () {
     objectToPlace = "ring"
     placeObject = true;
-    setLastObject();
 })
 tetrahedronButton.addEventListener("click", function () {
     objectToPlace = "tetrahedron"
     placeObject = true;
-    setLastObject();
 })
 octahedronButton.addEventListener("click", function () {
     objectToPlace = "octahedron"
     placeObject = true;
-    setLastObject();
 })
 icosahedronButton.addEventListener("click", function () {
     objectToPlace = "icosahedron"
     placeObject = true;
-    setLastObject();
 })
 dodecahedronButton.addEventListener("click", function () {
     objectToPlace = "dodecahedron"
     placeObject = true;
-    setLastObject();
 })

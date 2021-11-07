@@ -75,7 +75,7 @@ export default function updateSliders() {
     }
     posZOutput.innerHTML = `Z: ${posZVal}${units}`
 
-    if (currentObject.name !== "Scene") {
+    if (object.material.type === "MeshPhsyicalMaterial") {
         // Color
         redSlider.value = object.material.color.r * 255
         greenSlider.value = object.material.color.g * 255

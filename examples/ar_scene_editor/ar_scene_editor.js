@@ -68,10 +68,10 @@ const addScene = () => {
 
     // Add Models 1
     susanButton.addEventListener("click", function () {
-        // let model = addGLTFModel('susan.glb', [0.2,0.2,0.2])
         objectToPlace = "model"
         placeObject = true;
     })
+
     
     
     
@@ -298,11 +298,11 @@ function addMainToolbar() {
         if (objectsList.length > 0) {
             updateSliders();
             // only show all edit tools if editing a basic shape
-            // if (currentObject.type === "Group") {
-            //     disableMaterialButtons();
-            // } else {
-            //     enableMaterialButtons();
-            // }
+            if (currentObject.children[0].material.type !== "MeshPhysicalMaterial") {
+                disableMaterialButtons();
+            } else {
+                enableMaterialButtons();
+            }
         }
         changeMainTool(editButton, editToolbar);
         showSliders();
