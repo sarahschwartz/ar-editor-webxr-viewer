@@ -75,30 +75,38 @@ export default function updateSliders() {
     }
     posZOutput.innerHTML = `Z: ${posZVal}${units}`
 
-    if (object.material.type === "MeshPhsyicalMaterial") {
+    if (object.material.color) {
         // Color
-        redSlider.value = object.material.color.r * 255
-        greenSlider.value = object.material.color.g * 255
-        blueSlider.value = object.material.color.b * 255
+        redSlider.value = object.material?.color.r * 255
+        greenSlider.value = object.material?.color?.g * 255
+        blueSlider.value = object.material?.color.b * 255
         redOutput.innerHTML = "Red: " + redSlider.value;
         greenOutput.innerHTML = "Green: " + greenSlider.value;
         blueOutput.innerHTML = "Blue: " + blueSlider.value;
+        
+    }
+
+    if (object.material.opacity) {
         //Opacity
         opacitySliderInput.value = object.material.opacity;
         opacitySliderOutput.innerHTML = `${opacitySliderInput.value}`;
-        
+    }
+    if (object.material.transmission) {
         // Transmission
         transmissionSliderInput.value = object.material.transmission;
         transmissionSliderOutput.innerHTML = `${transmissionSliderInput.value}`;
-    
+    }
+    if (object.material.sheen) {
         // Sheen
         sheenSliderInput.value = object.material.sheen;
         sheenSliderOutput.innerHTML = `${sheenSliderInput.value}`;
-    
+    }
+    if (object.material.sheenRoughness) {
         //Sheen Roughness
         sheenRoughnessSliderInput.value = object.material.sheenRoughness;
         sheenRoughnessSliderOutput.innerHTML = `${sheenRoughnessSliderInput.value}`;
-    
+    }
+    if (object.material.sheenColor) {
         // Sheen Colors
         sheenRedSlider.value = object.material.sheenColor.r * 255;
         sheenGreenSlider.value = object.material.sheenColor.g * 255;
@@ -106,35 +114,43 @@ export default function updateSliders() {
         sheenRedOutput.innerHTML = "Red: " + sheenRedSlider.value;
         sheenGreenOutput.innerHTML = "Green: " + sheenGreenSlider.value;
         sheenBlueOutput.innerHTML = "Blue: " + sheenBlueSlider.value;
-    
+    }
+    if (object.material.roughness) {
         //Roughness
         roughnessSliderInput.value = object.material.roughness;
         roughnessSliderOutput.innerHTML = `${roughnessSliderInput.value}`;
-    
+    }
+    if (object.material.metalness) {
         //Metalness
         metalnessSliderInput.value = object.material.metalness;
         metalnessSliderOutput.innerHTML = `${metalnessSliderInput.value}`;
-    
+    }
+    if (object.material.reflectivity) {
         // Reflection
         reflectionSliderInput.value = object.material.reflectivity;
         reflectionSliderOutput.innerHTML = `${reflectionSliderInput.value}`;
-    
+    }
+    if (object.material.clearcoat) {
         // Clearcoat
         clearcoatSliderInput.value = object.material.clearcoat;
         clearcoatSliderOutput.innerHTML = `${clearcoatSliderInput.value}`;
-    
+    }
+    if (object.material.clearcoatRoughness) {
         // Clearcoat Roughness
         clearcoatRoughnessSliderInput.value = object.material.clearcoatRoughness;
         clearcoatRoughnessSliderOutput.innerHTML = `${clearcoatRoughnessSliderInput.value}`;
-    
+    }
+    if (object.material.thickness) {
         // Thickness
         thicknessSliderInput.value = object.material.thickness;
         thicknessSliderOutput.innerHTML = `${thicknessSliderInput.value}`;
-    
+    }
+    if (object.material.emissiveIntensity) {
         // Emissive Intensity
         emissiveIntensitySliderInput.value = object.material.emissiveIntensity ;
         emissiveIntensitySliderOutput.innerHTML = `${emissiveIntensitySliderInput.value}`;
-    
+    }
+    if (object.material.emissive) {
         // Emissive Colors
         ecRedSlider.value = object.material.emissive.r * 255
         ecGreenSlider.value = object.material.emissive.g * 255
