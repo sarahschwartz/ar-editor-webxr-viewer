@@ -288,7 +288,7 @@ function disableMaterialButtons() {
     emissiveIntensityButton.style.display = "none";
     emissiveColorButton.style.display = "none";
     wireframeButton.style.display = "none";
-    textureButton.style.display = "none";
+    // textureButton.style.display = "none";
 }
 
 function enableMaterialButtons() {
@@ -307,6 +307,6 @@ function enableMaterialButtons() {
     emissiveIntensityButton.style.display = "flex";
     emissiveColorButton.style.display = "flex";
     wireframeButton.style.display = "flex";
-    textureButton.style.display = "flex";
+    // textureButton.style.display = "flex";
 }
 
