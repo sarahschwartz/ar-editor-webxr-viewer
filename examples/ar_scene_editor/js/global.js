@@ -10,6 +10,7 @@ let placeObject = false;
 let placeModel = false;
 let modelPath;
 let modelScale;
+let modelName;
 let objectToPlace;
 
 let loader;

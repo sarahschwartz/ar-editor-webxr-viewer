@@ -13,6 +13,7 @@ import updateState from './jsm/update-state.js';
 import updateSliders from './jsm/update-sliders.js';
 import addPatternButtons from './jsm/pattern-textures.js';
 import addMaterialButtons from './jsm/material-textures.js';
+import addModelButtons from './jsm/model-buttons.js';
 import createObjectInstance from './jsm/object-instance.js';
 import { newDeleteButton, newObjectDiv } from './jsm/object-list.js';
 
@@ -61,19 +62,7 @@ const addScene = () => {
 
     loader = new GLTFLoader().setPath('../assets/models/');
 
-    // Add Seating
-    bench1Button.addEventListener("click", function () {
-        addGLTFModel('bench1.glb')
-    })
-
-    // Add Models 1
-    susanButton.addEventListener("click", function () {
-        objectToPlace = "model"
-        modelPath = 'susan.glb'
-        modelScale = [0.2, 0.2, 0.2]
-        placeObject = true;
-    })
-
+    addModelButtons()
     
     
     

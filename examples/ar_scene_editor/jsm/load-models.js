@@ -5,7 +5,7 @@ export default function addGLTFModel(path, anchor, scale=[1,1,1]) {
         model.scale.y = scale[1]
         model.scale.z = scale[2]
 
-        model.name = "Monkey"
+        model.name = modelName
         
         const group = new THREE.Group();    
         model.position.set(0, (scale[1]/2), 0);

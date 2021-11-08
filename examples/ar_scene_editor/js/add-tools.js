@@ -22,16 +22,15 @@ addModels1Button.addEventListener("click", () => {
      isAdding = true;
     changeMainTool(addModels1Button, addModels1Toolbar);
 })
-        
-const setLastObject = () => {
-    currentObjectIndex = engine._scene.children.length - 1;
-}
+
+
+////////////////////// Add Shapes Buttons ///////////////////////////
 
 cubeButton.addEventListener("click", function () {
     objectToPlace = "cube"
     placeObject = true;
-    // setLastObject();
 })
+
 sphereButton.addEventListener("click", function () {
     objectToPlace = "sphere"
     placeObject = true;
