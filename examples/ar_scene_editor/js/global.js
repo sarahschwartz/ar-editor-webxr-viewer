@@ -8,6 +8,8 @@ let hitTestSource = null;
 let isAdding = false;
 let placeObject = false;
 let placeModel = false;
+let modelPath;
+let modelScale;
 let objectToPlace;
 
 let loader;

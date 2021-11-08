@@ -69,6 +69,8 @@ const addScene = () => {
     // Add Models 1
     susanButton.addEventListener("click", function () {
         objectToPlace = "model"
+        modelPath = 'susan.glb'
+        modelScale = [0.2, 0.2, 0.2]
         placeObject = true;
     })
 
@@ -227,7 +229,7 @@ const handleAnimationFrame = (t, frame) => {
                             currentObjectIndex = engine._scene.children.length;
                         } else {
                             frame.addAnchor(pose.transform.matrix, localReferenceSpace).then(anchor => {
-                                addGLTFModel('susan.glb',anchor,[0.2,0.2,0.2])
+                                addGLTFModel(modelPath, anchor, modelScale)
                             }).catch(err => {
                                 console.error('Error adding anchor', err);
                             });
