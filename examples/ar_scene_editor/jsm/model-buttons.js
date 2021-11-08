@@ -15,7 +15,7 @@ export default function addModelButtons() {
         objectToPlace = "model"
         modelPath = 'bench1.glb'
         modelName = "Bench1"
-        modelScale = [0.2, 0.2, 0.2]
+        modelScale = [0.3, 0.3, 0.3]
         placeObject = true;
      })
     

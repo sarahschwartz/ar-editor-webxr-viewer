@@ -33,9 +33,11 @@ function init() {
     scene.add( light );
 
     const loader = new GLTFLoader().setPath('../assets/models/');
-    loader.load('susan.glb', function (gltf) {
-        console.log(gltf.scene)
-        scene.add(gltf.scene.children[0])
+    loader.load('bench1.glb', function (gltf) {
+        let model = gltf.scene.children[0]
+        console.log(model)
+        model.rotation.y = 0
+        scene.add(model)
 
      })
     
