@@ -327,29 +327,18 @@ function addMainToolbar() {
         // get the object with the uuid and active status
         let uuid = objectsList[index].uuid
         let object = engine._scene.getObjectByProperty('uuid', uuid);
-        let isActiveObject = false;
-        let activeObject = document.querySelector('.active-object')
 
-          if (ev.target.id === activeObject.id) {
-              isActiveObject = true;
-          }
         // remove from objectList
         objectsList.splice(index, 1);
         // remove object from the scene
         engine._scene.remove(object);
         // dispose of object information in memory
-        object.geometry?.dispose()
-        object.material?.dispose();
-        if (object.children) {
-            object.children[0].geometry?.dispose();
-            object.children[0].material?.dispose();
-        }
-        // if current object is deleted, set current object to last in list
-        if (isActiveObject) {
-            currentObjectIndex = engine._scene.children.length - 1;
-            currentObject = engine._scene.children[currentObjectIndex];
-        }
+        object.children[0].geometry?.dispose();
+        object.children[0].material?.dispose();
+
         // update to show the new list
+        currentObjectIndex = engine._scene.children.length - 1;
+        currentObject = engine._scene.children[currentObjectIndex];
         updateObjectsList();        
     }
 
