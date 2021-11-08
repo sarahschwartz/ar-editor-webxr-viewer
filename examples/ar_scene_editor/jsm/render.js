@@ -1,9 +1,6 @@
 export default function updateScene() {
     let objects = currentObject.children
 
-
-
-
     // If Edit toolbar is active
     if (editToolbar.classList.contains("active-toolbar")) {
         objects.forEach(object => {

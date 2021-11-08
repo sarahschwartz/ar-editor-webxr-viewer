@@ -8,30 +8,30 @@ const editToolsOutput = {
         
         scaleXSlider.oninput = function () {
             let xVal = parseInt(this.value * 10);
-            let units = "cm";
-            if (xVal > 99) {
-                xVal = xVal / 100;
-                units = "m"
-            }
-            scaleXOutput.innerHTML = `X: ${xVal}${units}`;
+            // let units = "cm";
+            // if (xVal > 99) {
+            //     xVal = xVal / 100;
+            //     units = "m"
+            // }
+            scaleXOutput.innerHTML = `X: ${xVal}%`;
         }
         scaleYSlider.oninput = function () {
-            let yVal = this.value * 10
-            let units = "cm";
-            if (yVal > 99) {
-                yVal = yVal / 100;
-                units = "m"
-            }
-            scaleYOutput.innerHTML = `Y: ${yVal}${units}`;
+            let yVal = parseInt(this.value * 10);
+            // let units = "cm";
+            // if (yVal > 99) {
+            //     yVal = yVal / 100;
+            //     units = "m"
+            // }
+            scaleYOutput.innerHTML = `Y: ${yVal}%`;
         }
         scaleZSlider.oninput = function () {
-            let zVal = this.value * 10
-            let units = "cm";
-            if (zVal > 99) {
-                zVal = zVal / 100;
-                units = "m"
-            }
-            scaleZOutput.innerHTML = `Z: ${zVal}${units}`;
+            let zVal = parseInt(this.value * 10);
+            // let units = "cm";
+            // if (zVal > 99) {
+            //     zVal = zVal / 100;
+            //     units = "m"
+            // }
+            scaleZOutput.innerHTML = `Z: ${zVal}%`;
         }
     },
     rotateSlider: function(rotateXSlider,

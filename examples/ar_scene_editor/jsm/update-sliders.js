@@ -14,27 +14,32 @@ export default function updateSliders() {
     let scaleXVal = scaleXSlider.value * 10
     let scaleYVal = scaleYSlider.value * 10
     let scaleZVal = scaleZSlider.value * 10
-    if (Math.abs(scaleXVal) > 99) {
-        scaleXVal = scaleXVal / 100;
-        units = "m";
-    }
-    scaleXOutput.innerHTML = `X: ${scaleXVal}${units}`;
 
-    if (Math.abs(scaleYVal) > 99) {
-        scaleYVal = scaleYVal / 100;
-        units = "m";
-    } else {
-        units = "cm";
-    }
-    scaleYOutput.innerHTML = `Y: ${scaleYVal}${units}`;
+    // if (Math.abs(scaleXVal) > 99) {
+    //     scaleXVal = scaleXVal / 100;
+    //     units = "m";
+    // }
+    // scaleXOutput.innerHTML = `X: ${scaleXVal}${units}`;
+    scaleXOutput.innerHTML = `X: ${scaleXVal}%`;
 
-    if (Math.abs(scaleZVal) > 99) {
-        scaleZVal = scaleZVal / 100;
-        units = "m";
-    } else {
-        units = "cm";
-    }
-    scaleZOutput.innerHTML = `Z: ${scaleZVal}${units}`;
+    // if (Math.abs(scaleYVal) > 99) {
+    //     scaleYVal = scaleYVal / 100;
+    //     units = "m";
+    // } else {
+    //     units = "cm";
+    // }
+    // scaleYOutput.innerHTML = `Y: ${scaleYVal}${units}`;
+    scaleYOutput.innerHTML = `Y: ${scaleYVal}%`;
+
+    // if (Math.abs(scaleZVal) > 99) {
+    //     scaleZVal = scaleZVal / 100;
+    //     units = "m";
+    // } else {
+    //     units = "cm";
+    // }
+    // scaleZOutput.innerHTML = `Z: ${scaleZVal}${units}`;
+    scaleZOutput.innerHTML = `Z: ${scaleZVal}%`;
+
     // Rotation
     rotateXSlider.value = object.rotation.x * 180 / Math.PI;
     rotateYSlider.value = object.rotation.y * 180 / Math.PI;
