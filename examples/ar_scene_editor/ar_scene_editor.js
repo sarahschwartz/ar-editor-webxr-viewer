@@ -100,9 +100,26 @@ const initSession = async xrSession => {
     session = xrSession;
     session.addEventListener('end', onSessionEnd);
 	// session.addEventListener('inputsourceschange', onInputSourcesChange);
-
+    goBack = false;
     localReferenceSpace = await session.requestReferenceSpace('local');
     viewerReferenceSpace = await session.requestReferenceSpace('viewer');
+
+    // lower frame rate if not visible
+    session.onvisibilitychange = (event) => {
+        switch(event.session.visibilityState) {
+          case "hidden":
+            myFrameRate = 10;
+            break;
+          case "blurred-visible":
+            myFrameRate = 30;
+            break;
+          case "visible":
+          default:
+            myFrameRate = 60;
+            break;
+        }
+      };
+      
 
     // Create the context where we will render our 3D scene
     const canvas = document.createElement('canvas');
@@ -266,10 +283,11 @@ function addMainToolbar() {
     });
 
     // End session
-    const endSession = () => {
+    endButton.addEventListener("click", function () {
+        goBack = true;
+        session.end()
         window.history.back();
-    }
-    endButton.addEventListener("click", endSession)
+    })
 
     // Edit button
     const editObject = () => {
