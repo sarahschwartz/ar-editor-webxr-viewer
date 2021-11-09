@@ -94,22 +94,22 @@ export default function updateSliders() {
     if (object.material.opacity) {
         //Opacity
         opacitySliderInput.value = object.material.opacity;
-        opacitySliderOutput.innerHTML = `${opacitySliderInput.value}`;
+        opacitySliderOutput.innerHTML = `${opacitySliderInput.value * 100}%`;
     }
     if (object.material.transmission) {
         // Transmission
         transmissionSliderInput.value = object.material.transmission;
-        transmissionSliderOutput.innerHTML = `${transmissionSliderInput.value}`;
+        transmissionSliderOutput.innerHTML = `${transmissionSliderInput.value * 100}%`;
     }
     if (object.material.sheen) {
         // Sheen
         sheenSliderInput.value = object.material.sheen;
-        sheenSliderOutput.innerHTML = `${sheenSliderInput.value}`;
+        sheenSliderOutput.innerHTML = `${sheenSliderInput.value * 100}%`;
     }
     if (object.material.sheenRoughness) {
         //Sheen Roughness
         sheenRoughnessSliderInput.value = object.material.sheenRoughness;
-        sheenRoughnessSliderOutput.innerHTML = `${sheenRoughnessSliderInput.value}`;
+        sheenRoughnessSliderOutput.innerHTML = `${sheenRoughnessSliderInput.value * 100}%`;
     }
     if (object.material.sheenColor) {
         // Sheen Colors
@@ -123,37 +123,37 @@ export default function updateSliders() {
     if (object.material.roughness) {
         //Roughness
         roughnessSliderInput.value = object.material.roughness;
-        roughnessSliderOutput.innerHTML = `${roughnessSliderInput.value}`;
+        roughnessSliderOutput.innerHTML = `${roughnessSliderInput.value * 100}%`;
     }
     if (object.material.metalness) {
         //Metalness
         metalnessSliderInput.value = object.material.metalness;
-        metalnessSliderOutput.innerHTML = `${metalnessSliderInput.value}`;
+        metalnessSliderOutput.innerHTML = `${metalnessSliderInput.value * 100}%`;
     }
     if (object.material.reflectivity) {
         // Reflection
         reflectionSliderInput.value = object.material.reflectivity;
-        reflectionSliderOutput.innerHTML = `${reflectionSliderInput.value}`;
+        reflectionSliderOutput.innerHTML = `${reflectionSliderInput.value * 100}%`;
     }
     if (object.material.clearcoat) {
         // Clearcoat
         clearcoatSliderInput.value = object.material.clearcoat;
-        clearcoatSliderOutput.innerHTML = `${clearcoatSliderInput.value}`;
+        clearcoatSliderOutput.innerHTML = `${clearcoatSliderInput.value * 100}%`;
     }
     if (object.material.clearcoatRoughness) {
         // Clearcoat Roughness
         clearcoatRoughnessSliderInput.value = object.material.clearcoatRoughness;
         clearcoatRoughnessSliderOutput.innerHTML = `${clearcoatRoughnessSliderInput.value}`;
     }
-    if (object.material.thickness) {
-        // Thickness
-        thicknessSliderInput.value = object.material.thickness;
-        thicknessSliderOutput.innerHTML = `${thicknessSliderInput.value}`;
-    }
+    // if (object.material.thickness) {
+    //     // Thickness
+    //     thicknessSliderInput.value = object.material.thickness;
+    //     thicknessSliderOutput.innerHTML = `${thicknessSliderInput.value}`;
+    // }
     if (object.material.emissiveIntensity) {
         // Emissive Intensity
         emissiveIntensitySliderInput.value = object.material.emissiveIntensity ;
-        emissiveIntensitySliderOutput.innerHTML = `${emissiveIntensitySliderInput.value}`;
+        emissiveIntensitySliderOutput.innerHTML = `${emissiveIntensitySliderInput.value * 100}%`;
     }
     if (object.material.emissive) {
         // Emissive Colors

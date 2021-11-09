@@ -107,7 +107,7 @@ const editToolsOutput = {
     singleSlider: function(slider, output) {
         
         slider.oninput = function() {
-            output.innerHTML = this.value;
+            output.innerHTML = `${parseInt(this.value * 100)}%`;
         }
     },
     

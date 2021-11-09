@@ -36,14 +36,11 @@ const addScene = () => {
         new THREE.RingGeometry(0.04, 0.05, 36, 64),
         reticleMaterial
     );
-
     reticle.geometry.applyMatrix(new THREE.Matrix4().makeRotationX(THREE.Math.degToRad(-90)));
     reticleParent.add(reticle);
-
     reticleParent.matrixAutoUpdate = false;
     reticleParent.visible = false;
     engine.scene.add(reticleParent);
-
     addMainToolbar();
 
     removeTextureButton.addEventListener("click", () => {
@@ -169,14 +166,11 @@ const clearHitTestSource = () => {
 ////////////////////// Render Loop ///////////////////////////	
 const handleAnimationFrame = (t, frame) => {
     if(!session || session.ended) return;
-
     //update edit tool slider values
     updateState();
 
-
     if (objectsList.length > 0) {
         currentObject = engine._scene.children[currentObjectIndex];
-        
         //render.js
         updateScene();
     }
