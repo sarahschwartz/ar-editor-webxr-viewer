@@ -42,6 +42,9 @@ export default function showSliders() {
         case "clearcoat-roughness":
             clearcoatRoughnessSlider.style.display = "grid";
             break;
+        case "ior":
+            iorSlider.style.display = "grid";
+            break;
         case "thickness":
             thicknessSlider.style.display = "grid";
             break;

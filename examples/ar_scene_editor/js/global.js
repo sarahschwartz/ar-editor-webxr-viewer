@@ -72,6 +72,7 @@ const metalnessButton = document.getElementById('metalness-button');
 const reflectionButton = document.getElementById('reflection-button');
 const clearcoatButton = document.getElementById('clearcoat-button');
 const clearcoatRoughnessButton = document.getElementById('clearcoat-roughness-button');
+const iorButton = document.getElementById('ior-button');
 const thicknessButton = document.getElementById('thickness-button');
 const emissiveIntensityButton = document.getElementById('emissive-intensity-button');
 const emissiveColorButton = document.getElementById('emissive-color-button');
@@ -168,6 +169,11 @@ const clearcoatRoughnessSlider = document.getElementById('clearcoat-roughness-sl
 const clearcoatRoughnessSliderInput = document.getElementById('clearcoat-roughness-slider-input')
 const clearcoatRoughnessSliderOutput = document.getElementById('clearcoat-roughness-slider-output')
 
+// Ior Slider
+const iorSlider = document.getElementById('ior-slider')
+const iorSliderInput = document.getElementById('ior-slider-input')
+const iorSliderOutput = document.getElementById('ior-slider-output')
+
 // Thickness Slider
 const thicknessSlider = document.getElementById('thickness-slider')
 const thicknessSliderInput = document.getElementById('thickness-slider-input')
@@ -215,6 +221,7 @@ let metalness = metalnessSliderInput.value
 let reflection = reflectionSliderInput.value
 let clearcoat = clearcoatSliderInput.value
 let clearcoatRoughness = clearcoatRoughnessSliderInput.value
+let ior = iorSliderInput.value
 let thickness = thicknessSliderInput.value
 let emissiveIntensity = emissiveIntensitySliderInput.value
 
@@ -276,6 +283,7 @@ function disableMaterialButtons() {
     reflectionButton.style.display = "none";
     clearcoatButton.style.display = "none";
     clearcoatRoughnessButton.style.display = "none";
+    iorButton.style.display = "none";
     thicknessButton.style.display = "none";
     emissiveIntensityButton.style.display = "none";
     emissiveColorButton.style.display = "none";
@@ -295,6 +303,7 @@ function enableMaterialButtons() {
     reflectionButton.style.display = "flex";
     clearcoatButton.style.display = "flex";
     clearcoatRoughnessButton.style.display = "flex";
+    iorButton.style.display = "flex";
     thicknessButton.style.display = "flex";
     emissiveIntensityButton.style.display = "flex";
     emissiveColorButton.style.display = "flex";

@@ -104,12 +104,18 @@ const editToolsOutput = {
             posZOutput.innerHTML = `Z: ${zVal}${units}`;
         }
     },
+    singleSliderPercent: function(slider, output) {
+        
+        slider.oninput = function() {
+            output.innerHTML = `${parseInt(this.value * 100)}%`
+        }
+    },
     singleSlider: function(slider, output) {
         
         slider.oninput = function() {
-            output.innerHTML = `${parseInt(this.value * 100)}%`;
+            output.innerHTML = this.value
         }
-    },
+    }
     
 }
     
@@ -142,17 +148,18 @@ editToolsOutput.scaleSlider(scaleXSlider,
         posZOutput);
 
 
-    editToolsOutput.singleSlider(opacitySliderInput, opacitySliderOutput);
-    editToolsOutput.singleSlider(transmissionSliderInput, transmissionSliderOutput);
-    editToolsOutput.singleSlider(sheenSliderInput, sheenSliderOutput);
-    editToolsOutput.singleSlider(sheenRoughnessSliderInput, sheenRoughnessSliderOutput);
-    editToolsOutput.singleSlider(roughnessSliderInput, roughnessSliderOutput);
-    editToolsOutput.singleSlider(metalnessSliderInput, metalnessSliderOutput);
-    editToolsOutput.singleSlider(reflectionSliderInput, reflectionSliderOutput);
-    editToolsOutput.singleSlider(clearcoatSliderInput, clearcoatSliderOutput);
-    editToolsOutput.singleSlider(clearcoatRoughnessSliderInput, clearcoatRoughnessSliderOutput);
+    editToolsOutput.singleSliderPercent(opacitySliderInput, opacitySliderOutput);
+    editToolsOutput.singleSliderPercent(transmissionSliderInput, transmissionSliderOutput);
+    editToolsOutput.singleSliderPercent(sheenSliderInput, sheenSliderOutput);
+    editToolsOutput.singleSliderPercent(sheenRoughnessSliderInput, sheenRoughnessSliderOutput);
+    editToolsOutput.singleSliderPercent(roughnessSliderInput, roughnessSliderOutput);
+    editToolsOutput.singleSliderPercent(metalnessSliderInput, metalnessSliderOutput);
+    editToolsOutput.singleSliderPercent(reflectionSliderInput, reflectionSliderOutput);
+    editToolsOutput.singleSliderPercent(clearcoatSliderInput, clearcoatSliderOutput);
+    editToolsOutput.singleSliderPercent(clearcoatRoughnessSliderInput, clearcoatRoughnessSliderOutput);
+    editToolsOutput.singleSliderPercent(emissiveIntensitySliderInput, emissiveIntensitySliderOutput);
+    editToolsOutput.singleSlider(iorSliderInput, iorSliderOutput);
     editToolsOutput.singleSlider(thicknessSliderInput, thicknessSliderOutput);
-    editToolsOutput.singleSlider(emissiveIntensitySliderInput, emissiveIntensitySliderOutput);
     
     editToolsOutput.colorSlider(sheenRedSlider,
         sheenGreenSlider,

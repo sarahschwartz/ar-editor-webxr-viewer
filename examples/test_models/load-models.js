@@ -32,19 +32,21 @@ function init() {
     const light = new THREE.AmbientLight( 0x404040 ); // soft white light
     scene.add( light );
 
-    const loader = new GLTFLoader().setPath('../assets/models/');
-    loader.load('table_chair_set.glb', function (gltf) {
-        let model = gltf.scene
-        console.log(model)
-        model.rotation.y = 0
-        scene.add(model)
+    // const loader = new GLTFLoader().setPath('../assets/models/');
+    // loader.load('table_chair_set.glb', function (gltf) {
+    //     let model = gltf.scene
+    //     console.log(model)
+    //     model.rotation.y = 0
+    //     scene.add(model)
 
-     })
+    //  })
     
-    // const geometry = new THREE.BoxGeometry();
-    // const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-    // const cube = new THREE.Mesh( geometry, material );
-    // scene.add( cube );
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshPhysicalMaterial( { color: 0x00ff00 } );
+    const cube = new THREE.Mesh( geometry, material );
+    scene.add(cube);
+    
+    console.log(material)
 
     camera.position.z = 5;
     

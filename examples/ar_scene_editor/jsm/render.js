@@ -88,6 +88,11 @@ export default function updateScene() {
                         object.material.clearcoatRoughness = clearcoatRoughness;
                     }
                     break;
+                case "ior":
+                    if (object.material.ior !== ior) {
+                        object.material.ior = ior;
+                    }
+                    break;
                 case "thickness":
                     if (object.material.thickness !== thickness) {
                         object.material.thickness = thickness;

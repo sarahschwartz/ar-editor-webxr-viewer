@@ -30,6 +30,7 @@ export default function updateState() {
     reflection = reflectionSliderInput.value
     clearcoat = clearcoatSliderInput.value
     clearcoatRoughness = clearcoatRoughnessSliderInput.value
+    ior = iorSliderInput.value
     thickness = thicknessSliderInput.value
     emissiveIntensity = emissiveIntensitySliderInput.value
     

@@ -42,6 +42,9 @@ const removeSliders = (editTool) => {
         case "clearcoat-roughness":
             clearcoatRoughnessSlider.style.display = "none";
             break;
+        case "ior":
+            iorSlider.style.display = "none";
+            break;
         case "thickness":
             thicknessSlider.style.display = "none";
             break;

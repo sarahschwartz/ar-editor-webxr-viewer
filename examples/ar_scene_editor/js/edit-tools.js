@@ -111,6 +111,12 @@ clearcoatRoughnessButton.addEventListener("click", () => {
     changeEditTool(clearcoatRoughnessButton, clearcoatRoughnessSlider);
 })
 
+iorButton.addEventListener("click", () => {
+    removeSliders(currentEditTool);
+    currentEditTool = "ior";
+    changeEditTool(iorButton, iorSlider);
+})
+
 thicknessButton.addEventListener("click", () => {
     removeSliders(currentEditTool);
     currentEditTool = "thickness";
