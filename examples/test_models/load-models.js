@@ -33,8 +33,8 @@ function init() {
     scene.add( light );
 
     const loader = new GLTFLoader().setPath('../assets/models/');
-    loader.load('bench1.glb', function (gltf) {
-        let model = gltf.scene.children[0]
+    loader.load('table_chair_set.glb', function (gltf) {
+        let model = gltf.scene
         console.log(model)
         model.rotation.y = 0
         scene.add(model)

@@ -7,7 +7,6 @@ import initializeLight from './jsm/light.js';
 import { GLTFLoader } from '../libs/new-three/examples/jsm/loaders/GLTFLoader.js'
 import addGLTFModel from './jsm/load-models.js';
 import updateScene from './jsm/render.js';
-import getGeometry from './jsm/get-geometry.js';
 import showSliders from './jsm/show-sliders.js';
 import updateState from './jsm/update-state.js';
 import updateSliders from './jsm/update-sliders.js';
@@ -32,9 +31,7 @@ const reticleMaterial = new THREE.MeshBasicMaterial({color: reticleTrackedColor}
 ////////////////////// Start of AR Scene ///////////////////////////
 // Add light and toolbar functionality
 const addScene = () => {
-
-    initializeLight(engine);
-
+    initializeLight();
     reticle = new THREE.Mesh(
         new THREE.RingGeometry(0.04, 0.05, 36, 64),
         reticleMaterial
@@ -194,7 +191,6 @@ const handleAnimationFrame = (t, frame) => {
 // show the retice if adding a new object and hitting surface
     if (isAdding) {
         if (hitTestSource) {
-            toolbarInstructions.style.display = "none";
             const results = frame.getHitTestResults(hitTestSource);
             if (results.length > 0) {
                 const result = results[0];
@@ -229,11 +225,8 @@ const handleAnimationFrame = (t, frame) => {
             } else {
                 reticle.material.color = reticleNotTrackedColor;
             }
-        } else {
-            toolbarInstructions.style.display = "grid";
         }
     } else {
-        toolbarInstructions.style.display = "none";
         reticleParent.visible = false;
     }
 
@@ -306,7 +299,6 @@ function addMainToolbar() {
 
     const selectObject = (ev) => {
         let index = parseInt(ev.target.id) + 2
-        debug.innerHTML = `Target ID: ${ev.target.id}`
         currentObjectIndex = index;
         document.querySelector('.active-object').classList.remove('active-object');
         ev.target.classList.add('active-object')
@@ -339,27 +331,18 @@ function addMainToolbar() {
         objectsContainer.classList.add('objects-container');
 
         if (objectsList.length > 0) {
-    
             let count = 1;
-
-            debug.innerHTML = `Cube Group UUID ${objectsList[0].uuid}`
-            // debug.innerHTML += `<br>Cube Mesh UUID ${objectsList[0].children[0].uuid}`
-            debug.innerHTML += `<br>Current Object UUID ${currentObject.uuid}`
-
             for (let i = 0; i < objectsList.length; i++){
                 let objectContainer = document.createElement('div');
                 objectContainer.classList.add('object-container');
-                let geometry = getGeometry(objectsList[i]);
+                let geometry = objectsList[i].children[0].name;
                 let div = newObjectDiv(geometry, count);
                 count++;
                 div.addEventListener('click', selectObject)
-
-                debug.innerHTML += `<br>objectList[i] UUID ${objectsList[i].uuid}`
                 
                 if (currentObject.uuid === objectsList[i].uuid) {
                     div.classList.add('active-object')
                 }
-
 
                 let button = newDeleteButton(div.id);
                 button.addEventListener('click', deleteObject);

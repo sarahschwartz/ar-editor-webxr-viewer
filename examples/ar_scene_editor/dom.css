@@ -66,18 +66,6 @@
     left: 2vw;
 }
 
-#toolbar-instructions{
-    position: fixed;
-    color: black;
-    background-color: rgba(200,200,200,0.5);
-    border-radius: 15px;
-    bottom: 20vh;
-    left: 20vw;
-    text-align: center;
-    width: 60%;
-    padding: 10px;
-}
-
 .slider-section{
     position: fixed;
     left: 5vw;;

@@ -11,16 +11,10 @@ addShapeButton.addEventListener("click", () => {
     changeMainTool(addShapeButton, addShapeToolbar);
 })
 
-// Add Seating Button
-addSeatingButton.addEventListener("click", () => {
-    isAdding = true;
-    changeMainTool(addSeatingButton, addSeatingToolbar);
-})
-
-// Add Models 1 Button
-addModels1Button.addEventListener("click", () => {
+// Add Models Button
+addModelsButton.addEventListener("click", () => {
      isAdding = true;
-    changeMainTool(addModels1Button, addModels1Toolbar);
+    changeMainTool(addModelsButton, addModelsToolbar);
 })
 
 
@@ -53,21 +47,5 @@ torusButton.addEventListener("click", function () {
 })
 ringButton.addEventListener("click", function () {
     objectToPlace = "ring"
-    placeObject = true;
-})
-tetrahedronButton.addEventListener("click", function () {
-    objectToPlace = "tetrahedron"
-    placeObject = true;
-})
-octahedronButton.addEventListener("click", function () {
-    objectToPlace = "octahedron"
-    placeObject = true;
-})
-icosahedronButton.addEventListener("click", function () {
-    objectToPlace = "icosahedron"
-    placeObject = true;
-})
-dodecahedronButton.addEventListener("click", function () {
-    objectToPlace = "dodecahedron"
     placeObject = true;
 })
