@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 html, body {
     overscroll-behavior-x: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    text-align: center;
 }
 
 .toolbar-button {
@@ -93,6 +98,8 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* background-color: blue; */
+    width: 5rem;
 }
 
 .slider-container{
