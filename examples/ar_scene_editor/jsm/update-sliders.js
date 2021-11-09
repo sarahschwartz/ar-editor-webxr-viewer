@@ -90,12 +90,6 @@ export default function updateSliders() {
         blueOutput.innerHTML = "Blue: " + blueSlider.value;
         
     }
-
-    if (object.material.opacity) {
-        //Opacity
-        opacitySliderInput.value = object.material.opacity;
-        opacitySliderOutput.innerHTML = `${opacitySliderInput.value * 100}%`;
-    }
     if (object.material.transmission) {
         // Transmission
         transmissionSliderInput.value = object.material.transmission;

@@ -12,9 +12,6 @@ const removeSliders = (editTool) => {
         case "move":
             posSliders.style.display = "none";
             break;
-        case "opacity":
-            opacitySlider.style.display = "none";
-            break;
         case "transmission":
             transmissionSlider.style.display = "none";
             break;

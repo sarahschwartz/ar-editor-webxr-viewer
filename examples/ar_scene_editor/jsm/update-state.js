@@ -16,7 +16,6 @@ export default function updateState() {
     posY = posYSlider.value;
     posZ = posZSlider.value;
     
-    opacity = opacitySliderInput.value
     transmission = transmissionSliderInput.value
     sheen = sheenSliderInput.value
     sheenRoughness = sheenRoughnessSliderInput.value

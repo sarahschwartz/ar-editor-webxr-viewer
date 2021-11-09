@@ -148,7 +148,6 @@ editToolsOutput.scaleSlider(scaleXSlider,
         posZOutput);
 
 
-    editToolsOutput.singleSliderPercent(opacitySliderInput, opacitySliderOutput);
     editToolsOutput.singleSliderPercent(transmissionSliderInput, transmissionSliderOutput);
     editToolsOutput.singleSliderPercent(sheenSliderInput, sheenSliderOutput);
     editToolsOutput.singleSliderPercent(sheenRoughnessSliderInput, sheenRoughnessSliderOutput);

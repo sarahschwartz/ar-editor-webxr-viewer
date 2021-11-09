@@ -51,12 +51,6 @@ moveButton.addEventListener("click", () => {
     changeEditTool(moveButton, posSliders);
 })
 
-opacityButton.addEventListener("click", () => {
-    removeSliders(currentEditTool);
-    currentEditTool = "opacity";
-    changeEditTool(opacityButton, opacitySlider);
-})
-
 transmissionButton.addEventListener("click", () => {
     removeSliders(currentEditTool);
     currentEditTool = "transmission";

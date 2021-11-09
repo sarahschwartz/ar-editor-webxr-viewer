@@ -62,7 +62,6 @@ const scaleButton = document.getElementById('scale-button');
 const rotateButton = document.getElementById('rotate-button');
 const colorButton = document.getElementById('color-button');
 const moveButton = document.getElementById('move-button');
-const opacityButton = document.getElementById('opacity-button');
 const transmissionButton = document.getElementById('transmission-button');
 const sheenButton = document.getElementById('sheen-button');
 const sheenColorButton = document.getElementById('sheen-color-button');
@@ -114,11 +113,6 @@ const posZSlider = document.getElementById("posZ-slider-input");
 const posXOutput = document.getElementById("posX-slider-output");
 const posYOutput = document.getElementById("posY-slider-output");
 const posZOutput = document.getElementById("posZ-slider-output");
-
-// Opacity Slider
-const opacitySlider = document.getElementById('opacity-slider')
-const opacitySliderInput = document.getElementById('opacity-slider-input')
-const opacitySliderOutput = document.getElementById('opacity-slider-output')
 
 // Transmission Slider
 const transmissionSlider = document.getElementById('transmission-slider')
@@ -209,7 +203,6 @@ let posX = posXSlider.value;
 let posY = posYSlider.value;
 let posZ = posZSlider.value;
 
-let opacity = opacitySliderInput.value
 let transmission = transmissionSliderInput.value
 let sheen = sheenSliderInput.value
 let sheenRoughness = sheenRoughnessSliderInput.value
@@ -273,7 +266,6 @@ function disableMaterialButtons() {
 
     scaleButton.firstElementChild.classList.add("active-edit");
     colorButton.style.display = "none";
-    opacityButton.style.display = "none";
     transmissionButton.style.display = "none";
     sheenButton.style.display = "none";
     sheenColorButton.style.display = "none";
@@ -293,7 +285,6 @@ function disableMaterialButtons() {
 
 function enableMaterialButtons() {
     colorButton.style.display = "flex";
-    opacityButton.style.display = "flex";
     transmissionButton.style.display = "flex";
     sheenButton.style.display = "flex";
     sheenColorButton.style.display = "flex";

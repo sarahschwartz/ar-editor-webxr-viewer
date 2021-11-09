@@ -12,9 +12,6 @@ export default function showSliders() {
         case "move":
             posSliders.style.display = "grid";
             break;
-        case "opacity":
-            opacitySlider.style.display = "grid";
-            break;
         case "transmission":
             transmissionSlider.style.display = "grid";
             break;

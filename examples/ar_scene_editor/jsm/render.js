@@ -35,14 +35,6 @@ export default function updateScene() {
                         object.position.set(posX, posY, posZ);
                     }
                     break;
-                case "opacity":
-                    if (opacity < 1 && !object.transparent) {
-                        object.transparent = true
-                    }
-                    if (object.material.opacity !== opacity) {
-                        object.material.opacity = opacity;
-                    }
-                    break;
                 case "transmission":
                     if (object.material.transmission !== transmission) {
                         object.material.transmission = transmission;
