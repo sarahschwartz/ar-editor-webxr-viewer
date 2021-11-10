@@ -1,88 +1,18 @@
 <!doctype html>
 <html>
     <head>
-    <!-- <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-77033033-2');
-    </script> -->
-
     <title>AR Scene Editor</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-
-        body, html {
-            background-color: #DBDBDB;
-            color: black;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        header{
-            text-align: center;
-        }
-
-        h1{
-            color: black;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        #hero-home{
-            border: 2vw solid #9C19E0;
-            display: grid;
-            place-items: center;
-            height: 30vh;
-            min-height: 180px;
-            width: 80vw;
-            margin: 0 auto;
-        }
-
-        #hero-container{
-            height: 92%;
-            width: 96%;
-            border: 2vw solid #99DDCC;
-        }
-
-        #buttons-home{
-            margin-top: 5vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        button{
-            color: white;
-        }
-
-        .learn-more-button{
-            background-color: black;
-            border: none;
-            border-radius: 1.3rem;
-            box-shadow: none;
-            padding: 12px 25px;
-            font-size: 1rem;
-        }
-
-        .create-a-scene-button{
-            background-color: #9C19E0;
-            border: none;
-            border-radius: 1.3rem;
-            box-shadow: none;
-            padding: 12px 25px;
-            font-size: 1.3rem;
-        }
-
-    </style>
+    <link rel="stylesheet" href="./examples/common.css"/>
 </head>
 <body>
     <header>
-        <h1>Augmented Reality Scene Editor</h1>
+        <h1>
+            Augmented Reality
+            <br>
+            Scene Editor
+        </h1>
         <h3>for Mozilla WebXR Viewer</h3>
     </header>
     <section id="hero-home">
@@ -90,8 +20,8 @@
         </div>
     </section>
     <section id="buttons-home">
-        <button class="learn-more-button">Learn More</button>
-        <button class="create-a-scene-button">Create a Scene</button>
+        <a href="/examples/ar_scene_editor/" class="learn-more-button">Learn More</a>
+        <a href="/examples/ar_scene_editor/" class="create-a-scene-button">Create a Scene</a>
     </section>
 </body>
 </html>

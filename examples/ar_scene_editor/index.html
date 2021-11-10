@@ -5,17 +5,32 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<script src="../libs/new-three/build/three.min.js"></script>
 		<link rel="stylesheet" href="../common.css"/>
-		<link rel="stylesheet" href="./dom.css"/>
+		<link rel="stylesheet" href="./editor.css"/>
 		<script src="https://kit.fontawesome.com/97b3f6f004.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<div id="description">
-			<h2>Simple AR DOM Example</h2>
-			<p>Hold the phone upright ( camera pointing straight forward, not at ground )</p>
-		</div>
+		<section id="start" style="display: none;">
+			<button type=button id=go-button>START AR</button>
 
-		<button type=button id=go-button>Go</button>
+			<div class="description">
+				Hold device upright before starting.
+			</div>
+	
+			<a href="/examples/ar_scene_editor/" class="learn-more-button">Learn More</a>
+			
+		</section>
 
+		<section id="noXR">
+			<div class="description">
+				This app only works with Mozilla WebXRViewer.
+			</div>
+	
+			<a href="/examples/ar_scene_editor/" class="learn-more-button">Learn More</a>
+			
+		</section>
+	
+
+		
 		<div style="visibility: hidden;" id="xr-overlay">
 
 				<div class="toolbar-button-container">
@@ -703,6 +718,7 @@
 			<!-- <section id="debug">Debug</section> -->
 
 		</div>
+		<script src="./js/xr-check.js"></script>
 		<script src="./js/global.js"></script>
 		<script src="./js/remove-sliders.js"></script>
 		<script src="./js/add-tools.js"></script>
