@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto&display=swap');
+
+body, html {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+header{
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1{
+    color: black;
+    font-size: 1.6rem;
+    font-weight: 700;
+    /* margin: 0; */
+}
+
+h3{
+    font-size: 1rem;
+    /* margin: 0; */
+}
+
+a{
+    text-decoration: none;
+}
+
+#hero-home{
+    border: 1.2rem solid #9C19E0;
+    display: grid;
+    place-items: center;
+    height: 30vh;
+    min-height: 180px;
+    width: 80vw;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#hero-container{
+    height: 92%;
+    width: 96%; 
+    border: 1rem solid #99DDCC;
+}
+
+#buttons-home{
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.learn-more-button{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 1.3rem;
+    box-shadow: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+}
+
+.create-a-scene-button{
+    /* background-color: #9C19E0; */
+    background-image : linear-gradient(to right, #7A43E0, #5817D1);
+    color: white;
+    border: none;
+    border-radius: 1.3rem;
+    box-shadow: none;
+    padding: 12px 25px;
+    font-size: 1.3rem;
+}
