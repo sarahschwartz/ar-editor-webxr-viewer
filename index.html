@@ -1,146 +1,97 @@
 <!doctype html>
-
 <html>
-  <!-- Any copyright is dedicated to the Public Domain.
-			  http://creativecommons.org/publicdomain/zero/1.0/
-	-->
     <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-77033033-2"></script>
-    <script>
+    <!-- <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'UA-77033033-2');
-    </script>
+    </script> -->
 
-    <title>WebXR Viewer</title>
+    <title>AR Scene Editor</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
-        /*
-        colors
-         */
-
-        /*https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/wp-content/themes/frontierline/fonts/ZillaSlab-Regular.woff2*/
-
-
-        @font-face { font-family: 'Zilla Slab'; font-weight: normal; font-style: normal; src: url("https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/wp-content/themes/frontierline/fonts/ZillaSlab-Regular.woff2") format("woff2"), url("https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/wp-content/themes/frontierline/fonts/ZillaSlab-Regular.woff") format("woff"); }
-        @font-face { font-family: 'Zilla Slab'; font-weight: bold; font-style: normal; src: url("https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/wp-content/themes/frontierline/fonts/ZillaSlab-Bold.woff2") format("woff2"), url("https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/wp-content/themes/frontierline/fonts/ZillaSlab-Bold.woff") format("woff"); }
-        /*@font-face { font-family: 'Zilla Slab'; font-weight: normal; font-style: italic; src: url("fonts/ZillaSlab-RegularItalic.woff2") format("woff2"), url("fonts/ZillaSlab-RegularItalic.woff") format("woff"); }*/
-        /*@font-face { font-family: 'Zilla Slab'; font-weight: bold; font-style: italic; src: url("fonts/ZillaSlab-BoldItalic.woff2") format("woff2"), url("fonts/ZillaSlab-BoldItalic.woff") format("woff"); }*/
-        /*@font-face { font-family: 'Open Sans'; font-weight: normal; font-style: normal; src: url("fonts/opensans-regular.woff2") format("woff2"), url("fonts/opensans-regular.woff") format("woff"); }*/
-        /*@font-face { font-family: 'Open Sans'; font-weight: bold; font-style: normal; src: url("fonts/opensans-bold.woff2") format("woff2"), url("fonts/opensans-bold.woff") format("woff"); }*/
-
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
         body, html {
-            background-color: #ffffff;
-            color: #221E1D;
-            font-family: "Zilla Slab", "Open Sans", X-LocaleSpecific, sans-serif;
-            /*font-size: 12px;*/
-            line-height: 1.3em;
+            background-color: #DBDBDB;
+            color: black;
+            font-family: 'Roboto', sans-serif;
         }
 
-        h1, h2, h3 {
-            background-color: #221E1D;
+        header{
+            text-align: center;
+        }
+
+        h1{
+            color: black;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        #hero-home{
+            border: 2vw solid #9C19E0;
+            display: grid;
+            place-items: center;
+            height: 30vh;
+            min-height: 180px;
+            width: 80vw;
+            margin: 0 auto;
+        }
+
+        #hero-container{
+            height: 92%;
+            width: 96%;
+            border: 2vw solid #99DDCC;
+        }
+
+        #buttons-home{
+            margin-top: 5vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        button{
             color: white;
-            padding: 0.25rem 0.25rem 0.5rem 0.4rem;
-            font-weight: normal;
-            margin: 2rem 0 0 0;
         }
 
-        a {
-            color: #00a7e0;
+        .learn-more-button{
+            background-color: black;
+            border: none;
+            border-radius: 1.3rem;
+            box-shadow: none;
+            padding: 12px 25px;
+            font-size: 1rem;
         }
 
-        li {
-            border: 1px solid #ccc;
-            background-color: #eee;
-        }
-
-        /* layout */
-
-        body, html {
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            padding-bottom: 200px;
-        }
-
-        section {
-            margin: 0.5rem;
-        }
-        section > * {
-            margin-left: 0.5rem;
-            margin-right: 0.5rem;
-        }
-
-        ul li img {
-            width: 100%;
-            height: auto;
-            margin:0;
-            padding:0;
-        }
-
-        .intro {
-            max-width: 40em;
-            padding: 0.5rem 0;
-        }
-
-        .source {
-            font-size: 0.8rem;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        li a {
+        .create-a-scene-button{
+            background-color: #9C19E0;
+            border: none;
+            border-radius: 1.3rem;
+            box-shadow: none;
+            padding: 12px 25px;
             font-size: 1.3rem;
         }
 
-        li p {
-            margin-top: 0.5rem;
-        }
-
-        ul {
-            list-style: none;
-            margin:0;
-            padding:0;
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
-        }
-        li {
-            display: flex;
-            flex-direction: column;
-            padding: 0.5em;
-            margin: 0.5rem;
-            justify-content: flex-start;
-        }
-        li a.img {
-            flex: 1;
-            justify-self: flex-end;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
     </style>
 </head>
 <body>
-<section>
-    <h1>WebXR Viewer</h1>
-</section>
-<section>
-
-            <a href="examples/ar_scene_editor/">AR Scene Editor</a>
-            <p>Create and edit a simple AR scene</p>
-            <a  class="img" href="examples/ar_scene_editor/">
-                <img src="examples/ar_scene_editor/screenshot.jpeg" width="300" height="200"/>
-            </a>
-
-</section>
+    <header>
+        <h1>Augmented Reality Scene Editor</h1>
+        <h3>for Mozilla WebXR Viewer</h3>
+    </header>
+    <section id="hero-home">
+        <div id="hero-container">
+        </div>
+    </section>
+    <section id="buttons-home">
+        <button class="learn-more-button">Learn More</button>
+        <button class="create-a-scene-button">Create a Scene</button>
+    </section>
 </body>
 </html>
