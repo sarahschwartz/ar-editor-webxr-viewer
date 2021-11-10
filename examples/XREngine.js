@@ -159,7 +159,6 @@ export default class XREngine {
 		});
 		const plane = new THREE.Mesh( geometry, material );
 		plane.name = "Plane"
-		// plane.rotation.x = Math.PI/2
 		return plane
 	}
 
@@ -182,7 +181,6 @@ export default class XREngine {
 		});
 		const torus = new THREE.Mesh( geometry, material );
 		torus.name = "Torus"
-		// torus.rotation.x = Math.PI/2
 		return torus
 	}
 
@@ -194,7 +192,6 @@ export default class XREngine {
 		});
 		const ring = new THREE.Mesh( geometry, material );
 		ring.name = "Ring"
-		// ring.rotation.x = Math.PI/2
 		return ring
 	}
 
