@@ -17,6 +17,10 @@ h1{
     /* margin: 0; */
 }
 
+h2{
+    font-family: 'Poppins', sans-serif;
+}
+
 h3{
     font-size: 1rem;
     /* margin: 0; */
@@ -26,24 +30,35 @@ a{
     text-decoration: none;
 }
 
-#hero-home{
+.learn-more-button{
+    margin-top: 30px;
+}
+
+.learn-more-info{
+    margin: 0 auto;
+    /* background-color: grey; */
+    width: 90%;
+    max-width: 800px;
+}
+
+.hero-home{
     border: 1.2rem solid #9C19E0;
     display: grid;
     place-items: center;
     height: 30vh;
     min-height: 180px;
     width: 80vw;
-    max-width: 800px;
+    max-width: 780px;
     margin: 0 auto;
 }
 
-#hero-container{
+.hero-container{
     height: 92%;
     width: 96%; 
     border: 1rem solid #99DDCC;
 }
 
-#buttons-home{
+.buttons-home{
     margin-top: 5vh;
     display: flex;
     flex-direction: column;

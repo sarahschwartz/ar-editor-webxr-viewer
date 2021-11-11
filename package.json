@@ -1,7 +1,7 @@
 {
-  "name": "webxr-ios-js",
+  "name": "ar-scene-editor-webxr-viewer",
   "version": "0.0.1",
-  "description": "The JS for WebXR inside Mozilla WebXR Viewer",
+  "description": "AR scene editor for Mozilla WebXR Viewer",
   "main": "src/XRPolyfill.js",
   "directories": {},
   "scripts": {
@@ -9,17 +9,9 @@
     "minify": "cross-env NODE_ENV=production rollup -c rollup-minify.config.js",
     "start": "npm run build && http-server . -c-1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MozillaReality/webxr-ios-js.git"
-  },
   "keywords": [],
-  "author": "",
-  "license": "MPL",
-  "bugs": {
-    "url": "https://github.com/MozillaReality/webxr-ios-js/issues"
-  },
-  "homepage": "https://github.com/MozillaReality/webxr-ios-js#readme",
+  "author": "Sarah Schwartz",
+  "license": "",
   "devDependencies": {
     "cross-env": "^5.1.3",
     "rollup": "^0.55.3",

@@ -1,12 +1,12 @@
 <html>
 	<head>
-		<title>Simple AR example</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<script src="../libs/new-three/build/three.min.js"></script>
 		<link rel="stylesheet" href="../common.css"/>
 		<link rel="stylesheet" href="./editor.css"/>
 		<script src="https://kit.fontawesome.com/97b3f6f004.js" crossorigin="anonymous"></script>
+		<title>AR Scene Editor - Create a Scene</title>
 	</head>
 	<body>
 		<section id="start" style="display: none;">
@@ -16,7 +16,7 @@
 				Hold device upright before starting.
 			</div>
 	
-			<a href="/learn-more/" class="learn-more-button">Learn More</a>
+			<a href="/ar/learn-more/" class="learn-more-button">Learn More</a>
 			
 		</section>
 
@@ -25,7 +25,7 @@
 				This app only works with Mozilla WebXRViewer.
 			</div>
 	
-			<a href="/learn-more/" class="learn-more-button">Learn More</a>
+			<a href="/ar/learn-more/" class="learn-more-button">Learn More</a>
 			
 		</section>
 	
@@ -35,7 +35,7 @@
 
 				<div class="toolbar-button-container">
 					<button class="toolbar-button" id="end-session">
-						X
+						<i class="fas fa-times fa-lg"></i>
 					</button>
 				</div>
 
@@ -51,7 +51,7 @@
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="add-button">
-							<i class="fas fa-plus"></i>
+							<i class="fas fa-plus fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Add
@@ -60,7 +60,7 @@
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="edit-button">
-							<i class="fas fa-pen"></i>
+							<i class="fas fa-pen fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Edit
@@ -69,7 +69,7 @@
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="select-button">
-							<i class="fas fa-list"></i>
+							<i class="fas fa-list fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Select
@@ -81,13 +81,13 @@
 				<section id="add-toolbar" style="display: none;">
 					<div class="toolbar-button-container">
 						<button class="menu-back-button">
-							<i class="far fa-arrow-alt-circle-left fa-2x" id="menu-back-button"></i>
+							<i class="far fa-arrow-alt-circle-left fa-3x" id="menu-back-button"></i>
 						</button>
 					</div>
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="shapes-button">
-							<i class="fas fa-shapes"></i>
+							<i class="fas fa-shapes fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Shapes
@@ -96,7 +96,7 @@
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="models-1-button">
-							<i class="fas fa-star"></i>
+							<i class="fas fa-star fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Models
@@ -110,13 +110,13 @@
 
 					<div class="toolbar-button-container">
 						<button class="add-menu-back-button">
-							<i class="far fa-arrow-alt-circle-left fa-2x" id="menu-back-button"></i>
+							<i class="far fa-arrow-alt-circle-left fa-3x" id="menu-back-button"></i>
 						</button>
 					</div>
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="cube-button">
-							<i class="fas fa-cube fa-lg"></i>
+							<i class="fas fa-cube fa-2x"></i>
 						</button>
 						<div class="button-description">
 							Cube
@@ -125,7 +125,7 @@
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="sphere-button">
-							<i class="fas fa-circle fa-lg"></i>
+							<i class="fas fa-circle fa-2x"></i>
 						</button>
 						<div class="button-description">
 							Sphere
@@ -134,7 +134,7 @@
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="cylinder-button">
-							<i class="fas fa-coins fa-lg"></i>
+							<i class="fas fa-coins fa-2x"></i>
 						</button>
 						<div class="button-description">
 							Cylinder
@@ -143,7 +143,7 @@
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="plane-button">
-							<i class="far fa-square fa-lg"></i>
+							<i class="far fa-square fa-2x"></i>
 						</button>
 						<div class="button-description">
 							Plane
@@ -152,7 +152,7 @@
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="cone-button">
-							<i class="fas fa-caret-up fa-2x"></i>
+							<i class="fas fa-caret-up fa-3x"></i>
 						</button>
 						<div class="button-description">
 							Cone
@@ -161,7 +161,7 @@
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="torus-button">
-							<i class="fas fa-ring"></i>
+							<i class="fas fa-ring fa-2x"></i>
 						</button>
 						<div class="button-description">
 							Torus
@@ -170,7 +170,7 @@
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="ring-button">
-							<i class="far fa-circle"></i>
+							<i class="far fa-circle fa-2x"></i>
 						</button>
 						<div class="button-description">
 							Ring
@@ -184,13 +184,13 @@
 
 					<div class="toolbar-button-container">
 						<button class="add-menu-back-button">
-							<i class="far fa-arrow-alt-circle-left fa-2x" id="menu-back-button"></i>
+							<i class="far fa-arrow-alt-circle-left fa-3x" id="menu-back-button"></i>
 						</button>
 					</div>
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="suzanne-button">
-							<i class="fas fa-cube fa-lg"></i>
+							<i class="fas fa-cube fa-2x"></i>
 						</button>
 						<div class="button-description">
 							Suzanne
@@ -199,7 +199,7 @@
 
 					<div class="toolbar-button-container">
 						<button class="toolbar-button" id="bench-button">
-							<i class="fas fa-cube fa-lg"></i>
+							<i class="fas fa-cube fa-2x"></i>
 						</button>
 						<div class="button-description">
 							Bench
@@ -213,13 +213,13 @@
 
 					<div class="toolbar-button-container">
 						<button class="menu-back-button">
-							<i class="far fa-arrow-alt-circle-left fa-2x" id="menu-back-button"></i>
+							<i class="far fa-arrow-alt-circle-left fa-3x" id="menu-back-button"></i>
 						</button>
 					</div>
 
 					<div class="toolbar-button-container" id="scale-button">
 						<button class="toolbar-button active-edit">
-							<i class="fas fa-expand-alt"></i>
+							<i class="fas fa-expand-alt fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Scale
@@ -228,7 +228,7 @@
 
 					<div class="toolbar-button-container" id="move-button">
 						<button class="toolbar-button" >
-							<i class="fas fa-arrows-alt"></i>
+							<i class="fas fa-arrows-alt fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Move
@@ -237,7 +237,7 @@
 
 					<div class="toolbar-button-container" id="rotate-button">
 						<button class="toolbar-button" >
-							<i class="fas fa-sync-alt"></i>
+							<i class="fas fa-sync-alt fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Rotate
@@ -246,7 +246,7 @@
 
 					<div class="toolbar-button-container" id="color-button">
 						<button class="toolbar-button" >
-							<i class="fas fa-palette"></i>
+							<i class="fas fa-palette fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Color
@@ -255,7 +255,7 @@
 					
 					<div class="toolbar-button-container" id="texture-button">
 						<button class="toolbar-button">
-							<i class="fas fa-chess-board"></i>
+							<i class="fas fa-chess-board fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Texture
@@ -264,7 +264,7 @@
 					
 					<div class="toolbar-button-container" id="transmission-button">
 						<button class="toolbar-button" >
-							<i class="fas fa-adjust"></i>
+							<i class="fas fa-adjust fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Transmission
@@ -273,7 +273,7 @@
 										
 					<div class="toolbar-button-container" id="ior-button">
 						<button class="toolbar-button">
-							<i class="fas fa-filter"></i>
+							<i class="fas fa-filter fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Ior
@@ -282,7 +282,7 @@
 
 					<div class="toolbar-button-container" id="roughness-button">
 						<button class="toolbar-button" >
-							<i class="fas fa-certificate"></i>
+							<i class="fas fa-certificate fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Roughness
@@ -291,7 +291,7 @@
 					
 					<div class="toolbar-button-container" id="metalness-button">
 						<button class="toolbar-button" >
-							<i class="fas fa-shield-alt"></i>
+							<i class="fas fa-shield-alt fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Metalness
@@ -300,7 +300,7 @@
 					
 					<div class="toolbar-button-container" id="reflection-button">
 						<button class="toolbar-button">
-							<i class="fas fa-dot-circle"></i>
+							<i class="fas fa-dot-circle fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Reflectivity
@@ -309,7 +309,7 @@
 					
 					<div class="toolbar-button-container" id="sheen-color-button">
 						<button class="toolbar-button" >
-							<i class="fas fa-tint"></i>
+							<i class="fas fa-tint fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Sheen Color
@@ -318,7 +318,7 @@
 					
 					<div class="toolbar-button-container" id="sheen-roughness-button">
 						<button class="toolbar-button" >
-							<i class="fas fa-compress"></i>
+							<i class="fas fa-compress fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Sheen Roughness
@@ -327,7 +327,7 @@
 					
 					<div class="toolbar-button-container" id="sheen-button">
 						<button class="toolbar-button" >
-							<i class="fas fa-asterisk"></i>
+							<i class="fas fa-asterisk fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Sheen Intensity
@@ -336,7 +336,7 @@
 					
 					<div class="toolbar-button-container" id="clearcoat-button">
 						<button class="toolbar-button">
-							<i class="fas fa-burn"></i>
+							<i class="fas fa-burn fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Clearcoat
@@ -345,7 +345,7 @@
 					
 					<div class="toolbar-button-container" id="clearcoat-roughness-button">
 						<button class="toolbar-button">
-							<i class="fas fa-egg"></i>
+							<i class="fas fa-egg fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Clearcoat Roughness
@@ -354,7 +354,7 @@
 					
 					<div class="toolbar-button-container" id="emissive-color-button">
 						<button class="toolbar-button">
-							<i class="fas fa-fill-drip"></i>
+							<i class="fas fa-fill-drip fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Emissive Color
@@ -363,7 +363,7 @@
 					
 					<div class="toolbar-button-container" id="emissive-intensity-button">
 						<button class="toolbar-button">
-							<i class="fas fa-sun"></i>
+							<i class="fas fa-sun fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Emissive Intensity
@@ -372,7 +372,7 @@
 					
 					<div class="toolbar-button-container" id="thickness-button">
 						<button class="toolbar-button">
-							<i class="fas fa-equals"></i>
+							<i class="fas fa-equals fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Thickness
@@ -381,7 +381,7 @@
 					
 					<div class="toolbar-button-container" id="wireframe-button">
 						<button class="toolbar-button">
-							<i class="fas fa-border-all"></i>
+							<i class="fas fa-border-all fa-lg"></i>
 						</button>
 						<div class="button-description">
 							Wireframe
@@ -394,7 +394,7 @@
 				<section id="select-toolbar" style="display: none;">
 					<div class="toolbar-button-container">
 						<button class="menu-back-button">
-							<i class="far fa-arrow-alt-circle-left fa-2x" id="menu-back-button"></i>
+							<i class="far fa-arrow-alt-circle-left fa-3x" id="menu-back-button"></i>
 						</button>
 					</div>
 					<div class="objects-container"></div>
@@ -404,13 +404,13 @@
 			<section id="texture-toolbar" style="display: none;">
 				<div class="toolbar-button-container">
 					<button class="edit-menu-back-button">
-						<i class="far fa-arrow-alt-circle-left fa-2x" id="menu-back-button"></i>
+						<i class="far fa-arrow-alt-circle-left fa-3x" id="menu-back-button"></i>
 					</button>
 				</div>
 
 				<div class="toolbar-button-container">
 					<button class="toolbar-button" id="remove-texture-button">
-						<i class="fas fa-ban"></i>
+						<i class="fas fa-ban fa-lg"></i>
 					</button>
 					<div class="button-description">
 						None
@@ -436,7 +436,7 @@
 			<section id="materials-toolbar" style="display: none;">
 				<div class="toolbar-button-container">
 					<button class="texture-menu-back-button">
-						<i class="far fa-arrow-alt-circle-left fa-2x" id="menu-back-button"></i>
+						<i class="far fa-arrow-alt-circle-left fa-3x" id="menu-back-button"></i>
 					</button>
 				</div>
 
@@ -488,7 +488,7 @@
 			<section id="pattern-textures-toolbar" style="display: none;">
 				<div class="toolbar-button-container">
 					<button class="texture-menu-back-button">
-						<i class="far fa-arrow-alt-circle-left fa-2x" id="menu-back-button"></i>
+						<i class="far fa-arrow-alt-circle-left fa-3x" id="menu-back-button"></i>
 					</button>
 				</div>
 
