@@ -30,6 +30,20 @@ a{
     text-decoration: none;
 }
 
+img{
+    height: 500px;
+    border: 8px solid #99DDCC;
+    padding: 0px;
+    margin: 0px;
+}
+
+.img-container{
+    border: 8px solid #9C19E0;
+    display: inline-block;
+    margin: 0 auto 20px auto;
+    height: 516px;
+}
+
 .learn-more-button{
     margin-top: 30px;
 }
