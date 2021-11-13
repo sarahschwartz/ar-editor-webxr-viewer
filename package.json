@@ -1,7 +1,7 @@
 {
-  "name": "ar-scene-editor-webxr-viewer",
+  "name": "ar-editor-webxr-viewer",
   "version": "0.0.1",
-  "description": "AR scene editor for Mozilla WebXR Viewer",
+  "description": "Augmented reality editor for Mozilla WebXR Viewer",
   "main": "src/XRPolyfill.js",
   "directories": {},
   "scripts": {
