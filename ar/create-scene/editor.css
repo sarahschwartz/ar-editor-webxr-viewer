@@ -189,7 +189,6 @@ html, body {
 }
 
 .object-container{
-    /* background-color: green; */
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -225,23 +224,29 @@ html, body {
     height: 90%;
 }
 
-#white-marble-texture-button, #materials-button{
-    background-image: url('../assets/textures/material-textures/white-marble-texture/baseColor.jpg');
+
+#asphalt-texture-button{
+    background-image: url('../assets/textures/material-textures/asphalt/Screen_Shot_Asphalt.png');
     background-size: 200%;
 }
 
 #bark-texture-button{
-    background-image: url('../assets/textures/material-textures/bark/bark_brown_02_diff_4k.jpg');
+    background-image: url('../assets/textures/material-textures/bark/Screen_Shot_Bark.png');
     background-size: 200%;
 }
 
-#wood-texture-button{
-    background-image: url('../assets/textures/material-textures/wood/wood_table_001_diff_4k.jpg');
+#brick-texture-button{
+    background-image: url('../assets/textures/material-textures/brick/Screen_Shot_Brick.png');
     background-size: 200%;
 }
 
-#rocks-texture-button{
-    background-image: url('../assets/textures/material-textures/rocks/rocks_ground_01_diff_4k.jpg');
+#cobblestone-texture-button{
+    background-image: url('../assets/textures/material-textures/cobblestone/Screen_Shot_Cobblestone.png');
+    background-size: 200%;
+}
+
+#dirt-texture-button{
+    background-image: url('../assets/textures/material-textures/dirt/Screen_Shot_dirt.png');
     background-size: 200%;
 }
 
@@ -250,13 +255,28 @@ html, body {
     background-size: 200%;
 }
 
-#ice-texture-button{
-    background-image: url('../assets/textures/material-textures/ice/Ice_basecolor.jpg');
+#rocks-texture-button{
+    background-image: url('../assets/textures/material-textures/rocks/Screen_Shot_Rocks.png');
     background-size: 200%;
 }
 
-#asphalt-texture-button{
-    background-image: url('../assets/textures/material-textures/asphalt/asphalt_02_diff_4k.jpg');
+#tiles-texture-button{
+    background-image: url('../assets/textures/material-textures/tiles/Screen_Shot_Tiles.png');
+    background-size: 200%;
+}
+
+#white-marble-texture-button, #materials-button{
+    background-image: url('../assets/textures/material-textures/white-marble-texture/baseColor.jpg');
+    background-size: 200%;
+}
+
+#wood-texture-button{
+    background-image: url('../assets/textures/material-textures/wood/Screen_Shot_Wood1.png');
+    background-size: 200%;
+}
+
+#wood-2-texture-button{
+    background-image: url('../assets/textures/material-textures/wood2/Screen_Shot_Wood2.png');
     background-size: 200%;
 }
 
