@@ -3,6 +3,7 @@
 body, html {
     color: black;
     font-family: 'Roboto', sans-serif;
+    max-width: 800px;
 }
 
 header{
