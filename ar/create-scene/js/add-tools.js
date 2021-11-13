@@ -2,6 +2,7 @@
 
  // Add Button
 addButton.addEventListener("click", () => {
+    isAdding = true;
     changeMainTool(addButton, addToolbar);
 })
 
