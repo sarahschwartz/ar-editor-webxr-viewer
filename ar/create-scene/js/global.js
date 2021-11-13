@@ -233,22 +233,6 @@ const removeTextureButton = document.getElementById('remove-texture-button');
 const materialsButton = document.getElementById('materials-button');
 const patternTextureButton = document.getElementById('pattern-texture-button');
 
-// material texture buttons
-const whiteMarbleTextureButton = document.getElementById('white-marble-texture-button');
-const barkTextureButton = document.getElementById('bark-texture-button');
-const asphaltTextureButton = document.getElementById('asphalt-texture-button');
-const woodTextureButton = document.getElementById('wood-texture-button');
-const rocksTextureButton = document.getElementById('rocks-texture-button');
-const pebblesTextureButton = document.getElementById('pebbles-texture-button');
-
-// pattern texture buttons
-const texture1Button = document.getElementById('texture1-button');
-const texture2Button = document.getElementById('texture2-button');
-const texture3Button = document.getElementById('texture3-button');
-const texture4Button = document.getElementById('texture4-button');
-const texture5Button = document.getElementById('texture5-button');
-const texture6Button = document.getElementById('texture6-button');
-
 let color = new THREE.Color(redVal, greenVal, blueVal);
 let ecColor = new THREE.Color(ecRedVal, ecGreenVal, ecBlueVal);
 let sheenColor = new THREE.Color(sheenRedVal, sheenGreenVal, sheenBlueVal);

@@ -1,3 +1,13 @@
+
+// pattern texture buttons
+const texture1Button = document.getElementById('texture1-button');
+const texture2Button = document.getElementById('texture2-button');
+const texture3Button = document.getElementById('texture3-button');
+const texture4Button = document.getElementById('texture4-button');
+const texture5Button = document.getElementById('texture5-button');
+const texture6Button = document.getElementById('texture6-button');
+
+
 const patternTextures = {
     loader: new THREE.TextureLoader(),
     getTexture_1: function() {
