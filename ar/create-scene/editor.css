@@ -261,31 +261,121 @@ html, body {
 }
 
 #texture1-button, #pattern-texture-button{
-    background-image: url('../assets/textures/color-textures/Texture_1.jpg');
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_1.png');
     background-size: 200%;
 }
 
 #texture2-button{
-    background-image: url('../assets/textures/color-textures/Texture_2.jpg');
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_2.png');
     background-size: 200%;
 }
 
 #texture3-button{
-    background-image: url('../assets/textures/color-textures/Texture_3.jpg');
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_3.png');
     background-size: 200%;
 }
 
 #texture4-button{
-    background-image: url('../assets/textures/color-textures/Texture_4.jpg');
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_4.png');
     background-size: 200%;
 }
 
 #texture5-button{
-    background-image: url('../assets/textures/color-textures/Texture_5.jpg');
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_5.png');
     background-size: 200%;
 }
 
 #texture6-button{
-    background-image: url('../assets/textures/color-textures/Texture_6.jpg');
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_6.png');
+    background-size: 200%;
+}
+
+#texture7-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_7.png');
+    background-size: 200%;
+}
+
+#texture8-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_8.png');
+    background-size: 200%;
+}
+
+#texture9-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_9.png');
+    background-size: 200%;
+}
+
+#texture10-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_10.png');
+    background-size: 200%;
+}
+
+#texture11-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_11.png');
+    background-size: 200%;
+}
+
+#texture12-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_12.png');
+    background-size: 200%;
+}
+
+#texture12-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_12.png');
+    background-size: 200%;
+}
+
+#texture13-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_13.png');
+    background-size: 200%;
+}
+
+#texture14-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_14.png');
+    background-size: 200%;
+}
+
+#texture15-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_15.png');
+    background-size: 200%;
+}
+
+#texture16-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_16.png');
+    background-size: 200%;
+}
+
+#texture17-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_17.png');
+    background-size: 200%;
+}
+
+#texture18-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_18.png');
+    background-size: 200%;
+}
+
+#texture19-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_19.png');
+    background-size: 200%;
+}
+
+#texture20-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_20.png');
+    background-size: 200%;
+}
+
+#texture21-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_21.png');
+    background-size: 200%;
+}
+
+#texture22-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_22.png');
+    background-size: 200%;
+}
+
+#texture23-button{
+    background-image: url('../assets/textures/color-textures/Screen_Shot_Texture_23.png');
     background-size: 200%;
 }
