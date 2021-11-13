@@ -24,7 +24,6 @@ h2{
 
 h3{
     font-size: 1rem;
-    /* margin: 0; */
 }
 
 a{
@@ -51,34 +50,22 @@ img{
 
 .learn-more-info{
     margin: 0 auto;
-    /* background-color: grey; */
     width: 90%;
     max-width: 800px;
 }
 
-.hero-home{
-    border: 1.2rem solid #9C19E0;
-    display: grid;
-    place-items: center;
-    height: 30vh;
-    min-height: 180px;
-    width: 80vw;
-    max-width: 780px;
-    margin: 0 auto;
-}
-
-.hero-container{
-    height: 92%;
-    width: 96%; 
-    border: 1rem solid #99DDCC;
+#home-img{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
 }
 
 .buttons-home{
-    margin-top: 5vh;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 
@@ -93,7 +80,6 @@ img{
 }
 
 .create-a-scene-button{
-    /* background-color: #9C19E0; */
     background-image : linear-gradient(to right, #7A43E0, #5817D1);
     color: white;
     border: none;
