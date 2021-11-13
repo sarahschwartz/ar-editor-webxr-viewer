@@ -32,8 +32,8 @@ const materialTextures = {
         return material;
     },
     getAsphaltTexture: function() {
-        const baseTexture = this.loader.load('../assets/textures/material-textures/asphalt/asphalt_02_diff_4k.jpg')
-        const roughTexture = this.loader.load('../assets/textures/material-textures/asphalt/asphalt_02_rough_4k.jpg')
+        const baseTexture = this.loader.load('../assets/textures/material-textures/asphalt/asphalt_02_diff_4k-min.jpeg')
+        const roughTexture = this.loader.load('../assets/textures/material-textures/asphalt/asphalt_02_rough_4k-min.jpeg')
     
         const material = new THREE.MeshPhysicalMaterial({
             map: baseTexture,
@@ -46,9 +46,8 @@ const materialTextures = {
         return material;
     },
     getBrickTexture: function() {
-        const baseTexture = this.loader.load('../assets/textures/material-textures/brick/red_bricks_04_diff_4k.jpg')
-        const dispTexture = this.loader.load('../assets/textures/material-textures/brick/red_bricks_04_disp_4k.jpg')
-        const roughTexture = this.loader.load('../assets/textures/material-textures/brick/red_bricks_04_rough_4k.jpg')
+        const baseTexture = this.loader.load('../assets/textures/material-textures/brick/red_bricks_04_diff_4k-min.jpg')
+        const roughTexture = this.loader.load('../assets/textures/material-textures/brick/red_bricks_04_rough_4k-min.jpg')
     
         const material = new THREE.MeshPhysicalMaterial({
             map: baseTexture,
@@ -56,15 +55,13 @@ const materialTextures = {
         })
 
         material.map.name = "Brick"
-        // material.displacementMap = dispTexture
         material.roughnessMap = roughTexture
     
         return material;
     },
     getCobblestoneTexture: function() {
-        const baseTexture = this.loader.load('../assets/textures/material-textures/cobblestone/cobblestone_floor_08_diff_4k.jpg')
-        const dispTexture = this.loader.load('../assets/textures/material-textures/cobblestone/cobblestone_floor_08_disp_4k.jpg')
-        const roughTexture = this.loader.load('../assets/textures/material-textures/cobblestone/cobblestone_floor_08_rough_4k.jpg')
+        const baseTexture = this.loader.load('../assets/textures/material-textures/cobblestone/cobblestone_floor_08_diff_4k-min.jpg')
+        const roughTexture = this.loader.load('../assets/textures/material-textures/cobblestone/cobblestone_floor_08_rough_4k-min.jpg')
     
         const material = new THREE.MeshPhysicalMaterial({
             map: baseTexture,
@@ -72,15 +69,13 @@ const materialTextures = {
         })
 
         material.map.name = "Cobblestone"
-        // material.displacementMap = dispTexture
         material.roughnessMap = roughTexture
     
         return material;
     },
     getDirtTexture: function() {
-        const baseTexture = this.loader.load('../assets/textures/material-textures/dirt/brown_mud_leaves_01_diff_4k.jpg')
-        const dispTexture = this.loader.load('../assets/textures/material-textures/dirt/brown_mud_leaves_01_disp_4k.jpg')
-        const roughTexture = this.loader.load('../assets/textures/material-textures/dirt/brown_mud_leaves_01_rough_4k.jpg')
+        const baseTexture = this.loader.load('../assets/textures/material-textures/dirt/brown_mud_leaves_01_diff_4k-min.jpg')
+        const roughTexture = this.loader.load('../assets/textures/material-textures/dirt/brown_mud_leaves_01_rough_4k-min.jpg')
     
         const material = new THREE.MeshPhysicalMaterial({
             map: baseTexture,
@@ -88,7 +83,6 @@ const materialTextures = {
         })
 
         material.map.name = "Dirt"
-        // material.displacementMap = dispTexture
         material.roughnessMap = roughTexture
     
         return material;
@@ -112,9 +106,8 @@ const materialTextures = {
         return material;
     },
     getRocksTexture: function() {
-        const baseTexture = this.loader.load('../assets/textures/material-textures/rocks/rocks_ground_01_diff_4k.jpg')
-        const roughTexture = this.loader.load('../assets/textures/material-textures/rocks/rocks_ground_01_rough_4k.jpg')
-        const dispTexture = this.loader.load('../assets/textures/material-textures/white-marble-texture/normal.jpg')
+        const baseTexture = this.loader.load('../assets/textures/material-textures/rocks/rocks_ground_01_diff_4k-min.jpg')
+        const roughTexture = this.loader.load('../assets/textures/material-textures/rocks/rocks_ground_01_rough_4k-min.jpg')
     
         const material = new THREE.MeshPhysicalMaterial({
             map: baseTexture,
@@ -122,15 +115,14 @@ const materialTextures = {
         })
 
         material.map.name = "Rocks"
-        // material.displacementMap = dispTexture
         material.roughnessMap = roughTexture
         
     
         return material;
     },
     getWoodTexture: function() {
-        const baseTexture = this.loader.load('../assets/textures/material-textures/wood/wood_table_001_diff_4k.jpg')
-        const roughTexture = this.loader.load('../assets/textures/material-textures/wood/wood_table_001_rough_4k.jpg')
+        const baseTexture = this.loader.load('../assets/textures/material-textures/wood/wood_table_001_diff_4k-min.jpg')
+        const roughTexture = this.loader.load('../assets/textures/material-textures/wood/wood_table_001_rough_4k-min.jpg')
     
         const material = new THREE.MeshPhysicalMaterial({
             map: baseTexture,
@@ -143,9 +135,8 @@ const materialTextures = {
         return material;
     },
     getWood2Texture: function() {
-        const baseTexture = this.loader.load('../assets/textures/material-textures/wood2/weathered_brown_planks_diff_4k.jpg')
-        const roughTexture = this.loader.load('../assets/textures/material-textures/wood2/weathered_brown_planks_disp_4k.jpg')
-        const dispTexture = this.loader.load('../assets/textures/material-textures/wood2/weathered_brown_planks_rough_4k.jpg')
+        const baseTexture = this.loader.load('../assets/textures/material-textures/wood2/weathered_brown_planks_diff_4k-min.jpg')
+        const roughTexture = this.loader.load('../assets/textures/material-textures/wood2/weathered_brown_planks_disp_4k-min.jpg')
     
         const material = new THREE.MeshPhysicalMaterial({
             map: baseTexture,
@@ -153,16 +144,14 @@ const materialTextures = {
         })
 
         material.map.name = "Wood2"
-        // material.displacementMap = dispTexture
         material.roughnessMap = roughTexture
         
     
         return material;
     },
     getTilesTexture: function() {
-        const baseTexture = this.loader.load('../assets/textures/material-textures/tiles/tiled_floor_001_diffuse_4k.jpg')
-        const roughTexture = this.loader.load('../assets/textures/material-textures/tiles/tiled_floor_001_displacement_4k.jpg')
-        const dispTexture = this.loader.load('../assets/textures/material-textures/tiles/tiled_floor_001_rough_4k.jpg')
+        const baseTexture = this.loader.load('../assets/textures/material-textures/tiles/tiled_floor_001_diffuse_4k-min.jpg')
+        const roughTexture = this.loader.load('../assets/textures/material-textures/tiles/tiled_floor_001_displacement_4k-min.jpg')
     
         const material = new THREE.MeshPhysicalMaterial({
             map: baseTexture,
@@ -170,15 +159,14 @@ const materialTextures = {
         })
 
         material.map.name = "Tiles"
-        // material.displacementMap = dispTexture
         material.roughnessMap = roughTexture
         
     
         return material;
     },
     getBarkTexture: function() {
-        const baseTexture = this.loader.load('../assets/textures/material-textures/bark/bark_brown_02_diff_4k.jpg')
-        const roughTexture = this.loader.load('../assets/textures/material-textures/bark/bark_brown_02_rough_4k.jpg')
+        const baseTexture = this.loader.load('../assets/textures/material-textures/bark/bark_brown_02_diff_4k-min.jpg')
+        const roughTexture = this.loader.load('../assets/textures/material-textures/bark/bark_brown_02_rough_4k-min.jpg')
 
     
         const material = new THREE.MeshPhysicalMaterial({
@@ -207,6 +195,9 @@ export default function addMaterialButtons() {
     })
     cobblestoneTextureButton.addEventListener("click", () => {
         currentObject.children[0].material = materialTextures.getCobblestoneTexture()
+    })
+    dirtTextureButton.addEventListener("click", () => {
+        currentObject.children[0].material = materialTextures.getDirtTexture()
     })
     pebblesTextureButton.addEventListener("click", () => {
         currentObject.children[0].material = materialTextures.getPebblesTexture()
