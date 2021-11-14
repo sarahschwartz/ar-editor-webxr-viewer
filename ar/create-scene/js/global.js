@@ -285,15 +285,3 @@ function enableMaterialButtons() {
     wireframeButton.style.display = "flex";
     // textureButton.style.display = "flex";
 }
-
-let goBack = true;
-
-
-history.pushState(null, null, location.href);
-window.onpopstate = function (event) {
-    if (!goBack) {
-        history.go(1);
-    } else {
-        window.history.back();
-    }
-}

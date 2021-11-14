@@ -100,7 +100,6 @@ const initSession = async xrSession => {
     session = xrSession;
     session.addEventListener('end', onSessionEnd);
 	// session.addEventListener('inputsourceschange', onInputSourcesChange);
-    goBack = false;
     localReferenceSpace = await session.requestReferenceSpace('local');
     viewerReferenceSpace = await session.requestReferenceSpace('viewer');
 
@@ -284,7 +283,6 @@ function addMainToolbar() {
 
     // End session
     endButton.addEventListener("click", function () {
-        goBack = true;
         session.end()
         window.history.back();
     })
@@ -328,8 +326,15 @@ function addMainToolbar() {
         // remove object from the scene
         engine._scene.remove(object);
         // dispose of object information in memory
-        object.children[0].geometry?.dispose();
-        object.children[0].material?.dispose();
+        if (object.children.length > 0) {
+            object.children.forEach(child => {
+                child.geometry?.dispose();
+                child.material?.dispose();
+            })
+        } else {
+            object.geometry?.dispose()
+            object.material?.dispose()
+        }
 
         // update to show the new list
         currentObjectIndex = engine._scene.children.length - 1;
