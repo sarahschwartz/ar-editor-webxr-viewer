@@ -1,3 +1,6 @@
+// Clone
+const addCloneButton = document.getElementById('clone-button');
+
 ////////////////////// Add Tools///////////////////////////
 
  // Add Button
@@ -16,6 +19,15 @@ addShapeButton.addEventListener("click", () => {
 addModelsButton.addEventListener("click", () => {
      isAdding = true;
     changeMainTool(addModelsButton, addModelsToolbar);
+})
+
+// Clone Button
+addCloneButton.addEventListener("click", () => {
+    const clone = currentObject.clone()
+    clone.children[0].name += " Copy"
+    objectsList.push(clone)
+    engine._scene.add(clone);
+    currentObjectIndex = engine._scene.children.length - 1;
 })
 
 
