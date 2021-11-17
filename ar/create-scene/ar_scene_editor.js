@@ -255,6 +255,7 @@ const handleAnimationFrame = (t, frame) => {
 function addMainToolbar() {
     // Menu Back Buttons
     const menuBack = () => {
+        isAdding = false;
         removeSliders(currentEditTool);
         changeMainTool("none", mainToolbar);
     }
